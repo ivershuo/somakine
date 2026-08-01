@@ -6,6 +6,8 @@ const viewer = await createSomakine(container, {
   accessibleLabel: "Interactive body model",
   onSelection(selection) {},
 });
+
+viewer.setLocale("zh-CN");
 ```
 
 The host owns controls, navigation, labels, panels, and educational content.

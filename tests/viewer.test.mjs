@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
 import test from "node:test";
-import { assertSelfContainedGlb, createPrimitiveObject, disposeObject3D, verifyAssetBytes } from "@somakine/viewer";
+import * as THREE from "three";
+import { assertSelfContainedGlb, createPrimitiveObject, disposeObject3D, findGltfNode, verifyAssetBytes } from "@somakine/viewer";
 
 if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
@@ -42,6 +43,14 @@ test("GLB inspection rejects hidden network references", () => {
     () => assertSelfContainedGlb(glb({ asset: { version: "2.0" }, images: [{ uri: "https://tracker.example/image.png" }] })),
     /must not contain external or data URIs/,
   );
+});
+
+test("node selection accepts original glTF names sanitized by Three.js", () => {
+  const root = new THREE.Group();
+  const child = new THREE.Group();
+  child.name = THREE.PropertyBinding.sanitizeNodeName("head-neck:atlas");
+  root.add(child);
+  assert.equal(findGltfNode(root, "head-neck:atlas"), child);
 });
 
 function glb(document) {

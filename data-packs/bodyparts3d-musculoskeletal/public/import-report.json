@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "importedAt": "2026-08-01T00:00:00Z",
+  "sourceVersion": "4.0",
+  "upstreamSnapshot": {
+    "files": 15,
+    "bytes": 210599722
+  },
+  "copiedAssets": [
+    {
+      "uri": "assets/bodyparts3d/ankle-foot.glb",
+      "bytes": 1003952,
+      "sha256": "e2479f566085003888e40dbc262b6126c352a4999188a69167adc75438f2dc0e"
+    },
+    {
+      "uri": "assets/bodyparts3d/elbow-forearm.glb",
+      "bytes": 188000,
+      "sha256": "11dd4446f38622903490c36d21ea86d82872c3bbf93fe344b8aec7e41e923229"
+    },
+    {
+      "uri": "assets/bodyparts3d/head-neck.glb",
+      "bytes": 3429076,
+      "sha256": "296eba3c1fdd91eaff770e95bc3d84fdf685766e68737473ad476ec6c6e601de"
+    },
+    {
+      "uri": "assets/bodyparts3d/hip-pelvis.glb",
+      "bytes": 641388,
+      "sha256": "25bb37cb47c2f51917bbe7ff6c88c1571f1f69b377b75edeb094c706abf44940"
+    },
+    {
+      "uri": "assets/bodyparts3d/knee.glb",
+      "bytes": 239896,
+      "sha256": "a8b468223b5ec028a1e6040e21dbfd40edbe26eede35cfbd678291bf02215846"
+    },
+    {
+      "uri": "assets/bodyparts3d/shoulder.glb",
+      "bytes": 965320,
+      "sha256": "5c6f561f1ddb7d26352ee3f115a9d4c2666e3376afb3ba3f5556a9166273d085"
+    },
+    {
+      "uri": "assets/bodyparts3d/spine-trunk.glb",
+      "bytes": 4552616,
+      "sha256": "7cfc11d9e4895bf3df0c3bf610c2cfec705592e2f690b61493199a92e9f5ad3c"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-elbow-forearm-biceps-brachii.glb",
+      "bytes": 178064,
+      "sha256": "a57b1701d67ffe7e4d76a9ab8ed53a5f231c0d1e296020397addecd6024b9b90"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-knee-quadriceps.glb",
+      "bytes": 878672,
+      "sha256": "510ea8ff4336308737b28012cb1c670064d9dc063241f8d53d29ec3bcc832f63"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-shoulder-deltoid.glb",
+      "bytes": 258004,
+      "sha256": "c97b46f98922e432ca04697d2b5b01916b0a0b79d43419c3f82736667cd187ce"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-wrist-hand-finger-flexors.glb",
+      "bytes": 688588,
+      "sha256": "a4a0d7608cff843829c928ffea6dbcff7e30b782aff585b207e39a9612970c30"
+    },
+    {
+      "uri": "assets/bodyparts3d/wrist-hand.glb",
+      "bytes": 508984,
+      "sha256": "b8bdaf8fdcf10f99e8659180b67f2d428db4a11e5b677dbe6beddb0bcc3d4748"
+    }
+  ],
+  "coverage": {
+    "direct": 121,
+    "compound": 4,
+    "context": 25,
+    "unavailable": 0
+  }
+}

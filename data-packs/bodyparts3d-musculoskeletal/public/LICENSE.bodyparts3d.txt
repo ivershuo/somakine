@@ -1,0 +1,14 @@
+BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International
+
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Dataset license record: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html
+Source: https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html
+
+Modifications:
+- Mapped all 152 public graph structures: 123 direct, 4 compound, and 25 contextual.
+- Selected exact source elements from the verified BodyParts3D 4.0 IS-A and PART-OF archives.
+- Combined direct meshes into eight region GLBs and packaged compound structures as lazy region supplements.
+- Applied a reviewed 18% vertex-removal web LOD to shoulder meshes so base plus first supplement stays inside the cumulative region budget.
+- Converted Z-up millimetres to Y-up metres, indexed duplicate vertices, and added application grouping and category materials.
+- Context entries reference related source-backed meshes only; no missing joint, ligament, muscle, or tendon geometry was inferred.

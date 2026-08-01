@@ -17,10 +17,12 @@ an application architecture.
 - a Three.js viewer with layers, picking, focus, reset, abort, and disposal;
 - a BodyParts3D adapter boundary;
 - a CLI for validation, inspection, coverage, and asset verification;
-- a standalone vanilla example using a synthetic musculoskeletal pack.
+- a standalone vanilla example using the real BodyParts3D 4.0 musculoskeletal pack.
 
-The synthetic pack proves the framework contract; it is not a medical anatomy
-model. The first real BodyParts3D pack is the next data milestone.
+The real BodyParts3D pack contains 150 canonical structures across eight body
+regions. Its 25 contextual entries explicitly disclose structures for which no
+direct target mesh is present. The synthetic pack remains available as a small
+framework fixture.
 
 See [the foundation plan](docs/FOUNDATION_PLAN.md) for the implemented alpha
 scope and the acceptance criteria for the first real anatomy pack.
@@ -42,6 +44,8 @@ Then open the local URL printed by Vite.
 - `@somakine/bodyparts3d` — BodyParts3D provenance and adapter helpers.
 - `@somakine/cli` — `soma` validation and inspection commands.
 - `@somakine/musculoskeletal-basic` — synthetic alpha fixture and demo pack.
+- `@somakine/bodyparts3d-musculoskeletal` — verified BodyParts3D 4.0 geometry,
+  canonical identities, bilingual labels, and honest coverage metadata.
 
 ## Safety and scope
 

@@ -1,7 +1,7 @@
 import "./style.css";
 import { SomakineCatalog, type RegionId, type StructureId, type StructureType } from "@somakine/core";
 import { createSomakine } from "@somakine/viewer";
-import { musculoskeletalBasic } from "@somakine/musculoskeletal-basic";
+import { bodyParts3DMusculoskeletal } from "@somakine/bodyparts3d-musculoskeletal";
 
 void main().catch((error: unknown) => {
   const message = error instanceof Error ? error.message : String(error);
@@ -9,7 +9,7 @@ void main().catch((error: unknown) => {
 });
 
 async function main(): Promise<void> {
-const catalog = new SomakineCatalog(musculoskeletalBasic);
+const catalog = new SomakineCatalog(bodyParts3DMusculoskeletal);
 const viewerHost = required<HTMLElement>("viewer");
 const localeSelect = required<HTMLSelectElement>("locale");
 const regionSelect = required<HTMLSelectElement>("region");
@@ -26,9 +26,9 @@ const attribution = required<HTMLElement>("attribution");
 
 let locale = localeSelect.value;
 const viewer = await createSomakine(viewerHost, {
-  dataset: musculoskeletalBasic,
+  dataset: bodyParts3DMusculoskeletal,
   locale,
-  accessibleLabel: "Interactive synthetic body model",
+  accessibleLabel: "Interactive BodyParts3D musculoskeletal model",
   onStateChange(next) {
     status.textContent = next.message;
     viewerHost.setAttribute("aria-busy", String(next.phase === "loading"));
@@ -46,10 +46,11 @@ const viewer = await createSomakine(viewerHost, {
 });
 
 renderControls();
-attribution.textContent = musculoskeletalBasic.licenses.map((license) => license.attribution).join(" · ");
+attribution.textContent = bodyParts3DMusculoskeletal.licenses.map((license) => license.attribution).join(" · ");
 
 localeSelect.addEventListener("change", () => {
   locale = localeSelect.value;
+  viewer.setLocale(locale);
   renderControls();
   viewer.reset();
   clearSelection();

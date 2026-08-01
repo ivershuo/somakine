@@ -44,6 +44,7 @@ export interface CreateSomakineOptions {
 
 export interface SomakineViewer {
   readonly canvas: HTMLCanvasElement;
+  setLocale(locale: string): void;
   setLayer(type: StructureType | null): void;
   focusStructure(id: StructureId): void;
   focusRegion(id: RegionId): void;
@@ -59,7 +60,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   if (options.signal?.aborted) throw abortError();
 
   const catalog = new SomakineCatalog(options.dataset);
-  const locale = options.locale ?? "en";
+  let locale = options.locale ?? "en";
   const internalAbort = new AbortController();
   const canvas = document.createElement("canvas");
   canvas.className = "somakine-canvas";
@@ -154,22 +155,17 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
       for (const instance of catalog.instancesFor(structure.id)) {
         const asset = catalog.asset(instance.assetId);
         if (!asset) throw new Error(`Missing asset ${instance.assetId}`);
-        const object = asset.kind === "primitive"
-          ? createPrimitiveObject(asset)
-          : cloneRenderable(await loadGltf(asset));
-        if (instance.selector.kind === "node-name") {
-          const selected = object.getObjectByName(instance.selector.value ?? "");
+        let object: THREE.Object3D;
+        if (asset.kind === "primitive") object = createPrimitiveObject(asset);
+        else if (instance.selector.kind === "node-name") {
+          const source = await loadGltf(asset);
+          const selected = findGltfNode(source, instance.selector.value ?? "");
           if (!selected) throw new Error(`Missing glTF node ${instance.selector.value ?? ""}`);
-          const selectedClone = cloneRenderable(selected);
-          disposeObject3D(object);
-          applyTransform(selectedClone, instance.transform);
-          markStructure(selectedClone, structure.id);
-          group.add(selectedClone);
-        } else {
-          applyTransform(object, instance.transform);
-          markStructure(object, structure.id);
-          group.add(object);
-        }
+          object = cloneRenderable(selected);
+        } else object = cloneRenderable(await loadGltf(asset));
+        applyTransform(object, instance.transform);
+        markStructure(object, structure.id);
+        group.add(object);
       }
       groups.set(structure.id, group);
       model.add(group);
@@ -181,14 +177,21 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     emitState("ready", "Anatomy ready");
     render();
   } catch (error) {
+    const wasAborted = internalAbort.signal.aborted || (error instanceof DOMException && error.name === "AbortError");
     dispose();
-    if (internalAbort.signal.aborted) throw abortError();
+    if (wasAborted) throw abortError();
     throw error;
   } finally {
     for (const source of sourceScenes.values()) source.then(disposeObject3D).catch(() => undefined);
   }
 
-  return { canvas, setLayer, focusStructure, focusRegion, setVisible, showBody, reset, dispose };
+  return { canvas, setLocale, setLayer, focusStructure, focusRegion, setVisible, showBody, reset, dispose };
+
+  function setLocale(nextLocale: string): void {
+    ensureActive();
+    if (!nextLocale.trim()) throw new TypeError("Somakine locale must be non-empty");
+    locale = nextLocale;
+  }
 
   async function loadGltf(asset: GltfAsset): Promise<THREE.Object3D> {
     let pending = sourceScenes.get(asset.id);
@@ -354,6 +357,10 @@ export function createPrimitiveObject(asset: PrimitiveAsset): THREE.Object3D {
   }
   const material = new THREE.MeshStandardMaterial({ color: asset.primitive.color, roughness: 0.72, metalness: 0.02 });
   return new THREE.Mesh(geometry, material);
+}
+
+export function findGltfNode(root: THREE.Object3D, sourceName: string): THREE.Object3D | undefined {
+  return root.getObjectByName(sourceName) ?? root.getObjectByName(THREE.PropertyBinding.sanitizeNodeName(sourceName));
 }
 
 export async function defaultAssetResolver(asset: GltfAsset, signal: AbortSignal): Promise<ArrayBuffer> {

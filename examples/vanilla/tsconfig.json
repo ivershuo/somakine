@@ -11,6 +11,6 @@
   "references": [
     { "path": "../../packages/core" },
     { "path": "../../packages/viewer" },
-    { "path": "../../data-packs/musculoskeletal-basic" }
+    { "path": "../../data-packs/bodyparts3d-musculoskeletal" }
   ]
 }

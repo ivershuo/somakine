@@ -3,11 +3,12 @@ Copyright 2026 Somakine contributors
 
 Framework code is licensed under the Apache License, Version 2.0.
 
-No BodyParts3D geometry is included in the alpha source tree. The optional
-BodyParts3D adapter describes data originating from BodyParts3D, © The Database
-Center for Life Science, licensed under Creative Commons Attribution 4.0
-International. Any future derived asset pack must include the dataset's exact
-attribution, license URL, transformation record, and file digests.
+The `@somakine/bodyparts3d-musculoskeletal` data pack includes modified geometry
+originating from BodyParts3D, © The Database Center for Life Science, licensed
+under Creative Commons Attribution 4.0 International. Its public directory
+contains the exact attribution, license URL, transformation record, upstream
+manifest, derived manifest, byte counts, and SHA-256 digests. That data pack is
+CC-BY-4.0 and is not relicensed under the framework's Apache-2.0 license.
 
 The synthetic musculoskeletal-basic pack contains simple programmatic shapes.
 It is a software demonstration and must not be presented as medical anatomy.

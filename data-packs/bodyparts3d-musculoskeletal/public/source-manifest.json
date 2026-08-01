@@ -1,0 +1,5727 @@
+{
+  "schemaVersion": 2,
+  "source": {
+    "id": "bodyparts3d-4",
+    "version": "4.0",
+    "licenseId": "CC-BY-4.0",
+    "licenseUrl": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+    "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+    "downloadUrl": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html",
+    "upstreamManifest": "data/upstream/bodyparts3d/4.0/CC-BY-4.0/manifest.json"
+  },
+  "coordinateSystem": {
+    "source": "BodyParts3D millimetres; Z-up",
+    "output": "Three.js metres; Y-up",
+    "transform": "rotate -90 degrees around X, then scale by 0.001"
+  },
+  "modifications": [
+    "Mapped all 152 public graph structures: 123 direct, 4 compound, and 25 contextual.",
+    "Selected exact source elements from the verified BodyParts3D 4.0 IS-A and PART-OF archives.",
+    "Combined direct meshes into eight region GLBs and packaged compound structures as lazy region supplements.",
+    "Applied a reviewed 18% vertex-removal web LOD to shoulder meshes so base plus first supplement stays inside the cumulative region budget.",
+    "Converted Z-up millimetres to Y-up metres, indexed duplicate vertices, and added application grouping and category materials.",
+    "Context entries reference related source-backed meshes only; no missing joint, ligament, muscle, or tendon geometry was inferred."
+  ],
+  "coverage": [
+    {
+      "nodeId": "head-neck:occiput",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52735",
+          "representationId": "BP9177",
+          "name": "occipital bone",
+          "elementIds": [
+            "FJ3309"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:atlas",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12519",
+          "representationId": "BP8831",
+          "name": "atlas",
+          "elementIds": [
+            "FJ3176"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:atlanto-occipital-joint",
+      "regionId": "head-neck",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "head-neck:occiput",
+        "head-neck:atlas"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "head-neck:nuchal-ligament",
+      "regionId": "head-neck",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "head-neck:occiput",
+        "head-neck:atlas"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "head-neck:sternocleidomastoid",
+      "regionId": "head-neck",
+      "type": "muscle",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13407",
+          "representationId": "BP4908",
+          "name": "sternocleidomastoid",
+          "elementIds": [
+            "FJ1573",
+            "FJ1595"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:sternocleidomastoid-tendon",
+      "regionId": "head-neck",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "head-neck:sternocleidomastoid"
+      ],
+      "contextRelationship": "containing-muscle-organ"
+    },
+    {
+      "nodeId": "shoulder:scapula",
+      "regionId": "shoulder",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13394",
+          "representationId": "BP9102",
+          "name": "scapula",
+          "elementIds": [
+            "FJ3279",
+            "FJ3384"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "shoulder:humerus",
+      "regionId": "shoulder",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13303",
+          "representationId": "BP9192",
+          "name": "humerus",
+          "elementIds": [
+            "FJ3262",
+            "FJ3368"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "shoulder:glenohumeral-joint",
+      "regionId": "shoulder",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "shoulder:scapula",
+        "shoulder:humerus"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "shoulder:coracohumeral-ligament",
+      "regionId": "shoulder",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "shoulder:scapula",
+        "shoulder:humerus"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "shoulder:deltoid",
+      "regionId": "shoulder",
+      "type": "muscle",
+      "mode": "compound",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA34676",
+          "representationId": "BP8153",
+          "name": "zone of deltoid",
+          "elementIds": [
+            "FJ1467",
+            "FJ1467M",
+            "FJ1468",
+            "FJ1468M",
+            "FJ1513",
+            "FJ1513M"
+          ]
+        }
+      ],
+      "reviewReason": "The official zone of deltoid representation resolves all bilateral clavicular, acromial, and spinal deltoid element meshes."
+    },
+    {
+      "nodeId": "shoulder:rotator-cuff-tendons",
+      "regionId": "shoulder",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "shoulder:scapula",
+        "shoulder:humerus"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "elbow-forearm:humerus",
+      "regionId": "elbow-forearm",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13303",
+          "representationId": "BP9192",
+          "name": "humerus",
+          "elementIds": [
+            "FJ3262",
+            "FJ3368"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "elbow-forearm:ulna",
+      "regionId": "elbow-forearm",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23466",
+          "representationId": "BP8234",
+          "name": "ulna",
+          "elementIds": [
+            "FJ3286",
+            "FJ3391"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "elbow-forearm:humeroulnar-joint",
+      "regionId": "elbow-forearm",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "elbow-forearm:humerus",
+        "elbow-forearm:ulna"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "elbow-forearm:ulnar-collateral-ligament",
+      "regionId": "elbow-forearm",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "elbow-forearm:humerus",
+        "elbow-forearm:ulna"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "elbow-forearm:biceps-brachii",
+      "regionId": "elbow-forearm",
+      "type": "muscle",
+      "mode": "compound",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA37682",
+          "representationId": "BP9154",
+          "name": "short head of biceps brachii",
+          "elementIds": [
+            "FJ1512",
+            "FJ1512M"
+          ]
+        },
+        {
+          "tree": "isa",
+          "fmaId": "FMA37683",
+          "representationId": "BP8817",
+          "name": "long head of biceps brachii",
+          "elementIds": [
+            "FJ1478",
+            "FJ1478M"
+          ]
+        }
+      ],
+      "reviewReason": "The official short-head and long-head representations supply the complete bilateral component set for biceps brachii."
+    },
+    {
+      "nodeId": "elbow-forearm:distal-biceps-tendon",
+      "regionId": "elbow-forearm",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "elbow-forearm:biceps-brachii"
+      ],
+      "contextRelationship": "containing-muscle-organ"
+    },
+    {
+      "nodeId": "wrist-hand:radius",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23463",
+          "representationId": "BP8465",
+          "name": "radius",
+          "elementIds": [
+            "FJ3277",
+            "FJ3349"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:scaphoid",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23709",
+          "representationId": "BP8123",
+          "name": "scaphoid",
+          "elementIds": [
+            "FJ3278",
+            "FJ3383"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:radiocarpal-joint",
+      "regionId": "wrist-hand",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "wrist-hand:radius",
+        "wrist-hand:scaphoid"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "wrist-hand:scapholunate-ligament",
+      "regionId": "wrist-hand",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "wrist-hand:scaphoid",
+        "wrist-hand:radius"
+      ],
+      "contextRelationship": "regional-bony-frame"
+    },
+    {
+      "nodeId": "wrist-hand:finger-flexors",
+      "regionId": "wrist-hand",
+      "type": "muscle",
+      "mode": "compound",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA38469",
+          "representationId": "BP8285",
+          "name": "flexor digitorum superficialis",
+          "elementIds": [
+            "FJ1475",
+            "FJ1475M",
+            "FJ1499",
+            "FJ1499M"
+          ]
+        },
+        {
+          "tree": "isa",
+          "fmaId": "FMA38478",
+          "representationId": "BP7827",
+          "name": "flexor digitorum profundus",
+          "elementIds": [
+            "FJ1497",
+            "FJ1497M"
+          ]
+        }
+      ],
+      "reviewReason": "The official flexor digitorum superficialis and profundus representations supply the bilateral primary finger-flexor component meshes; they remain visual components rather than target identity."
+    },
+    {
+      "nodeId": "wrist-hand:flexor-tendons",
+      "regionId": "wrist-hand",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "wrist-hand:finger-flexors"
+      ],
+      "contextRelationship": "containing-muscle-organs"
+    },
+    {
+      "nodeId": "spine-trunk:lumbar-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9921",
+          "representationId": "BP8134",
+          "name": "lumbar vertebra",
+          "elementIds": [
+            "FJ3157",
+            "FJ3159",
+            "FJ3162",
+            "FJ3165",
+            "FJ3168"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:sacrum",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA16202",
+          "representationId": "BP9174",
+          "name": "sacrum",
+          "elementIds": [
+            "FJ3393"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:lumbar-facet-joint",
+      "regionId": "spine-trunk",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "spine-trunk:lumbar-vertebra",
+        "spine-trunk:sacrum"
+      ],
+      "contextRelationship": "regional-bony-frame"
+    },
+    {
+      "nodeId": "spine-trunk:anterior-longitudinal-ligament",
+      "regionId": "spine-trunk",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "spine-trunk:lumbar-vertebra",
+        "spine-trunk:sacrum"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "spine-trunk:multifidus",
+      "regionId": "spine-trunk",
+      "type": "muscle",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "spine-trunk:lumbar-vertebra",
+        "spine-trunk:sacrum"
+      ],
+      "contextRelationship": "regional-bony-frame"
+    },
+    {
+      "nodeId": "spine-trunk:erector-spinae-tendon",
+      "regionId": "spine-trunk",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "spine-trunk:lumbar-vertebra",
+        "spine-trunk:sacrum"
+      ],
+      "contextRelationship": "regional-bony-frame"
+    },
+    {
+      "nodeId": "hip-pelvis:pelvis",
+      "regionId": "hip-pelvis",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "partof",
+          "fmaId": "FMA16580",
+          "representationId": "BP9951",
+          "name": "bony pelvis",
+          "elementIds": [
+            "FJ3152",
+            "FJ3288",
+            "FJ3393"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "hip-pelvis:femur",
+      "regionId": "hip-pelvis",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9611",
+          "representationId": "BP8921",
+          "name": "femur",
+          "elementIds": [
+            "FJ3259",
+            "FJ3365"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "hip-pelvis:hip-joint",
+      "regionId": "hip-pelvis",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "hip-pelvis:pelvis",
+        "hip-pelvis:femur"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "hip-pelvis:iliofemoral-ligament",
+      "regionId": "hip-pelvis",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "hip-pelvis:pelvis",
+        "hip-pelvis:femur"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "hip-pelvis:gluteus-medius",
+      "regionId": "hip-pelvis",
+      "type": "muscle",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA22315",
+          "representationId": "BP9214",
+          "name": "gluteus medius",
+          "elementIds": [
+            "FJ1419",
+            "FJ1419M"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "hip-pelvis:gluteal-tendon",
+      "regionId": "hip-pelvis",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "hip-pelvis:gluteus-medius"
+      ],
+      "contextRelationship": "containing-muscle-organ"
+    },
+    {
+      "nodeId": "knee:femur",
+      "regionId": "knee",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9611",
+          "representationId": "BP8921",
+          "name": "femur",
+          "elementIds": [
+            "FJ3259",
+            "FJ3365"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "knee:tibia",
+      "regionId": "knee",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24476",
+          "representationId": "BP8032",
+          "name": "tibia",
+          "elementIds": [
+            "FJ3282",
+            "FJ3387"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "knee:tibiofemoral-joint",
+      "regionId": "knee",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "knee:femur",
+        "knee:tibia"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "knee:anterior-cruciate-ligament",
+      "regionId": "knee",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "knee:femur",
+        "knee:tibia"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "knee:quadriceps",
+      "regionId": "knee",
+      "type": "muscle",
+      "mode": "compound",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA22429",
+          "representationId": "BP8096",
+          "name": "zone of quadriceps femoris",
+          "elementIds": [
+            "FJ1433",
+            "FJ1433M",
+            "FJ1441",
+            "FJ1441M",
+            "FJ1442",
+            "FJ1442M",
+            "FJ1443",
+            "FJ1443M"
+          ]
+        }
+      ],
+      "reviewReason": "The official zone of quadriceps femoris representation resolves the complete bilateral rectus femoris and three vastus element-mesh groups."
+    },
+    {
+      "nodeId": "knee:patellar-tendon",
+      "regionId": "knee",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "knee:quadriceps",
+        "knee:tibia"
+      ],
+      "contextRelationship": "muscle-and-attachment-region"
+    },
+    {
+      "nodeId": "ankle-foot:intermediate-cuneiform",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24519",
+          "representationId": "BP8521",
+          "name": "intermediate cuneiform bone",
+          "elementIds": [
+            "FJ3264",
+            "FJ3370"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:second-metatarsal",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24503",
+          "representationId": "BP8628",
+          "name": "second metatarsal bone",
+          "elementIds": [
+            "FJ3244",
+            "FJ3353"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:lisfranc-joint-complex",
+      "regionId": "ankle-foot",
+      "type": "joint",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "ankle-foot:intermediate-cuneiform",
+        "ankle-foot:second-metatarsal"
+      ],
+      "contextRelationship": "boundary-bones"
+    },
+    {
+      "nodeId": "ankle-foot:lisfranc-ligament",
+      "regionId": "ankle-foot",
+      "type": "ligament",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "ankle-foot:intermediate-cuneiform",
+        "ankle-foot:second-metatarsal"
+      ],
+      "contextRelationship": "attachment-region"
+    },
+    {
+      "nodeId": "ankle-foot:tibialis-posterior",
+      "regionId": "ankle-foot",
+      "type": "muscle",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA51099",
+          "representationId": "BP9160",
+          "name": "tibialis posterior",
+          "elementIds": [
+            "FJ1440",
+            "FJ1440M"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:tibialis-posterior-tendon",
+      "regionId": "ankle-foot",
+      "type": "tendon",
+      "mode": "context",
+      "hasDirectMesh": false,
+      "contextNodeIds": [
+        "ankle-foot:tibialis-posterior"
+      ],
+      "contextRelationship": "containing-muscle-organ"
+    },
+    {
+      "nodeId": "head-neck:axis",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12520",
+          "representationId": "BP8459",
+          "name": "axis",
+          "elementIds": [
+            "FJ3177"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:calcaneus",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24496",
+          "representationId": "BP8534",
+          "name": "calcaneus",
+          "elementIds": [
+            "FJ3256",
+            "FJ3360"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:capitate",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23727",
+          "representationId": "BP7960",
+          "name": "capitate",
+          "elementIds": [
+            "FJ3257",
+            "FJ3361"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "shoulder:clavicle",
+      "regionId": "shoulder",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13321",
+          "representationId": "BP8842",
+          "name": "clavicle",
+          "elementIds": [
+            "FJ3237",
+            "FJ3362"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:cuboid-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24527",
+          "representationId": "BP8539",
+          "name": "cuboid bone",
+          "elementIds": [
+            "FJ3258",
+            "FJ3364"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:distal-phalanx-of-big-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32627",
+          "representationId": "BP9248",
+          "name": "distal phalanx of big toe",
+          "elementIds": [
+            "FJ3182",
+            "FJ3192"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:distal-phalanx-of-fourth-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32630",
+          "representationId": "BP8790",
+          "name": "distal phalanx of fourth toe",
+          "elementIds": [
+            "FJ3181",
+            "FJ3191"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:distal-phalanx-of-index-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23946",
+          "representationId": "BP8296",
+          "name": "distal phalanx of index finger",
+          "elementIds": [
+            "FJ3183",
+            "FJ3193"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:distal-phalanx-of-little-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23949",
+          "representationId": "BP8638",
+          "name": "distal phalanx of little finger",
+          "elementIds": [
+            "FJ3184",
+            "FJ3194"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:distal-phalanx-of-little-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32631",
+          "representationId": "BP8696",
+          "name": "distal phalanx of little toe",
+          "elementIds": [
+            "FJ3185",
+            "FJ3195"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:distal-phalanx-of-middle-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23947",
+          "representationId": "BP8484",
+          "name": "distal phalanx of middle finger",
+          "elementIds": [
+            "FJ3186",
+            "FJ3196"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:distal-phalanx-of-ring-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23948",
+          "representationId": "BP7962",
+          "name": "distal phalanx of ring finger",
+          "elementIds": [
+            "FJ3187",
+            "FJ3197"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:distal-phalanx-of-second-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32628",
+          "representationId": "BP8109",
+          "name": "distal phalanx of second toe",
+          "elementIds": [
+            "FJ3179",
+            "FJ3189"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:distal-phalanx-of-third-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32629",
+          "representationId": "BP7956",
+          "name": "distal phalanx of third toe",
+          "elementIds": [
+            "FJ3180",
+            "FJ3190"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:distal-phalanx-of-thumb",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23945",
+          "representationId": "BP8437",
+          "name": "distal phalanx of thumb",
+          "elementIds": [
+            "FJ3188",
+            "FJ3198"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:eighth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA8120",
+          "representationId": "BP8709",
+          "name": "eighth rib",
+          "elementIds": [
+            "FJ3235",
+            "FJ3347"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:eighth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9991",
+          "representationId": "BP9221",
+          "name": "eighth thoracic vertebra",
+          "elementIds": [
+            "FJ3174"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:eleventh-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA8499",
+          "representationId": "BP8952",
+          "name": "eleventh rib",
+          "elementIds": [
+            "FJ3226",
+            "FJ3331"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:eleventh-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA10059",
+          "representationId": "BP8043",
+          "name": "eleventh thoracic vertebra",
+          "elementIds": [
+            "FJ3155"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:ethmoid",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52740",
+          "representationId": "BP8991",
+          "name": "ethmoid",
+          "elementIds": [
+            "FJ3199"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "knee:fibula",
+      "regionId": "knee",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24479",
+          "representationId": "BP8010",
+          "name": "fibula",
+          "elementIds": [
+            "FJ3260",
+            "FJ3366"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:fifth-cervical-vertebra",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12523",
+          "representationId": "BP8835",
+          "name": "fifth cervical vertebra",
+          "elementIds": [
+            "FJ3167"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:fifth-lumbar-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13076",
+          "representationId": "BP8280",
+          "name": "fifth lumbar vertebra",
+          "elementIds": [
+            "FJ3168"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:fifth-metacarpal-bone",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23903",
+          "representationId": "BP8001",
+          "name": "fifth metacarpal bone",
+          "elementIds": [
+            "FJ3252",
+            "FJ3358"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:fifth-metatarsal-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24506",
+          "representationId": "BP7913",
+          "name": "fifth metatarsal bone",
+          "elementIds": [
+            "FJ3253",
+            "FJ3359"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:fifth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA7776",
+          "representationId": "BP8480",
+          "name": "fifth rib",
+          "elementIds": [
+            "FJ3232",
+            "FJ3342"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:fifth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9922",
+          "representationId": "BP8643",
+          "name": "fifth thoracic vertebra",
+          "elementIds": [
+            "FJ3169"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:first-lumbar-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13072",
+          "representationId": "BP8948",
+          "name": "first lumbar vertebra",
+          "elementIds": [
+            "FJ3157"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:first-metacarpal-bone",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23899",
+          "representationId": "BP8548",
+          "name": "first metacarpal bone",
+          "elementIds": [
+            "FJ3240",
+            "FJ3350"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:first-metatarsal-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24502",
+          "representationId": "BP8161",
+          "name": "first metatarsal bone",
+          "elementIds": [
+            "FJ3241",
+            "FJ3351"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:first-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA7597",
+          "representationId": "BP8342",
+          "name": "first rib",
+          "elementIds": [
+            "FJ3228",
+            "FJ3334"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:first-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9165",
+          "representationId": "BP8981",
+          "name": "first thoracic vertebra",
+          "elementIds": [
+            "FJ3158"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:fourth-cervical-vertebra",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12522",
+          "representationId": "BP8003",
+          "name": "fourth cervical vertebra",
+          "elementIds": [
+            "FJ3164"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:fourth-lumbar-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13075",
+          "representationId": "BP8133",
+          "name": "fourth lumbar vertebra",
+          "elementIds": [
+            "FJ3165"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:fourth-metacarpal-bone",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23902",
+          "representationId": "BP8445",
+          "name": "fourth metacarpal bone",
+          "elementIds": [
+            "FJ3249",
+            "FJ3356"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:fourth-metatarsal-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24505",
+          "representationId": "BP8512",
+          "name": "fourth metatarsal bone",
+          "elementIds": [
+            "FJ3250",
+            "FJ3357"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:fourth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA7749",
+          "representationId": "BP8082",
+          "name": "fourth rib",
+          "elementIds": [
+            "FJ3231",
+            "FJ3340"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:fourth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9248",
+          "representationId": "BP9156",
+          "name": "fourth thoracic vertebra",
+          "elementIds": [
+            "FJ3166"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:frontal-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52734",
+          "representationId": "BP8209",
+          "name": "frontal bone",
+          "elementIds": [
+            "FJ3200"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:hamate",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23730",
+          "representationId": "BP8884",
+          "name": "hamate",
+          "elementIds": [
+            "FJ3261",
+            "FJ3367"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "hip-pelvis:hip-bone",
+      "regionId": "hip-pelvis",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA16585",
+          "representationId": "BP8769",
+          "name": "hip bone",
+          "elementIds": [
+            "FJ3152",
+            "FJ3288"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:hyoid-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52749",
+          "representationId": "BP8836",
+          "name": "hyoid bone",
+          "elementIds": [
+            "FJ2772",
+            "FJ3201"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:inferior-nasal-concha",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA54736",
+          "representationId": "BP8414",
+          "name": "inferior nasal concha",
+          "elementIds": [
+            "FJ3263",
+            "FJ3369"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:lacrimal-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52741",
+          "representationId": "BP8104",
+          "name": "lacrimal bone",
+          "elementIds": [
+            "FJ3265",
+            "FJ3371"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:lateral-cuneiform-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24520",
+          "representationId": "BP8348",
+          "name": "lateral cuneiform bone",
+          "elementIds": [
+            "FJ3267",
+            "FJ3373"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:lunate",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23712",
+          "representationId": "BP8494",
+          "name": "lunate",
+          "elementIds": [
+            "FJ3268",
+            "FJ3374"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:mandible",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52748",
+          "representationId": "BP8107",
+          "name": "mandible",
+          "elementIds": [
+            "FJ3289"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:maxilla",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9711",
+          "representationId": "BP8310",
+          "name": "maxilla",
+          "elementIds": [
+            "FJ3269",
+            "FJ3375"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:medial-cuneiform-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24518",
+          "representationId": "BP8775",
+          "name": "medial cuneiform bone",
+          "elementIds": [
+            "FJ3271",
+            "FJ3377"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:middle-phalanx-of-fourth-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32625",
+          "representationId": "BP8577",
+          "name": "middle phalanx of fourth toe",
+          "elementIds": [
+            "FJ3295",
+            "FJ3302"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:middle-phalanx-of-index-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23933",
+          "representationId": "BP8524",
+          "name": "middle phalanx of index finger",
+          "elementIds": [
+            "FJ3296",
+            "FJ3303"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:middle-phalanx-of-little-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23936",
+          "representationId": "BP8492",
+          "name": "middle phalanx of little finger",
+          "elementIds": [
+            "FJ3297",
+            "FJ3304"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:middle-phalanx-of-little-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA230984",
+          "representationId": "BP9036",
+          "name": "middle phalanx of little toe",
+          "elementIds": [
+            "FJ3298",
+            "FJ3305"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:middle-phalanx-of-middle-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23934",
+          "representationId": "BP8457",
+          "name": "middle phalanx of middle finger",
+          "elementIds": [
+            "FJ3299",
+            "FJ3306"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:middle-phalanx-of-ring-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23935",
+          "representationId": "BP8452",
+          "name": "middle phalanx of ring finger",
+          "elementIds": [
+            "FJ3291",
+            "FJ3292"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:middle-phalanx-of-second-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32623",
+          "representationId": "BP7874",
+          "name": "middle phalanx of second toe",
+          "elementIds": [
+            "FJ3293",
+            "FJ3300"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:middle-phalanx-of-third-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32624",
+          "representationId": "BP7749",
+          "name": "middle phalanx of third toe",
+          "elementIds": [
+            "FJ3294",
+            "FJ3301"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:nasal-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52745",
+          "representationId": "BP8559",
+          "name": "nasal bone",
+          "elementIds": [
+            "FJ3272",
+            "FJ3378"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:navicular-bone-of-foot",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24499",
+          "representationId": "BP8600",
+          "name": "navicular bone of foot",
+          "elementIds": [
+            "FJ3307",
+            "FJ3308"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:ninth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA8337",
+          "representationId": "BP8439",
+          "name": "ninth rib",
+          "elementIds": [
+            "FJ3236",
+            "FJ3348"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:ninth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA10014",
+          "representationId": "BP8178",
+          "name": "ninth thoracic vertebra",
+          "elementIds": [
+            "FJ3175"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:palatine-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52746",
+          "representationId": "BP7931",
+          "name": "palatine bone",
+          "elementIds": [
+            "FJ3273",
+            "FJ3379"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:parietal-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9613",
+          "representationId": "BP9058",
+          "name": "parietal bone",
+          "elementIds": [
+            "FJ3274",
+            "FJ3380"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "knee:patella",
+      "regionId": "knee",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24485",
+          "representationId": "BP8379",
+          "name": "patella",
+          "elementIds": [
+            "FJ3275",
+            "FJ3381"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:pisiform",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23718",
+          "representationId": "BP8771",
+          "name": "pisiform",
+          "elementIds": [
+            "FJ3276",
+            "FJ3382"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:proximal-phalanx-of-big-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA43252",
+          "representationId": "BP8654",
+          "name": "proximal phalanx of big toe",
+          "elementIds": [
+            "FJ3310",
+            "FJ3329"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:proximal-phalanx-of-fourth-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32620",
+          "representationId": "BP8282",
+          "name": "proximal phalanx of fourth toe",
+          "elementIds": [
+            "FJ3312",
+            "FJ3321"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:proximal-phalanx-of-index-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23919",
+          "representationId": "BP8329",
+          "name": "proximal phalanx of index finger",
+          "elementIds": [
+            "FJ3313",
+            "FJ3322"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:proximal-phalanx-of-little-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23922",
+          "representationId": "BP8101",
+          "name": "proximal phalanx of little finger",
+          "elementIds": [
+            "FJ3314",
+            "FJ3323"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:proximal-phalanx-of-little-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32621",
+          "representationId": "BP8418",
+          "name": "proximal phalanx of little toe",
+          "elementIds": [
+            "FJ3315",
+            "FJ3324"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:proximal-phalanx-of-middle-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23920",
+          "representationId": "BP8865",
+          "name": "proximal phalanx of middle finger",
+          "elementIds": [
+            "FJ3316",
+            "FJ3325"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:proximal-phalanx-of-ring-finger",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23921",
+          "representationId": "BP7937",
+          "name": "proximal phalanx of ring finger",
+          "elementIds": [
+            "FJ3317",
+            "FJ3326"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:proximal-phalanx-of-second-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32618",
+          "representationId": "BP9089",
+          "name": "proximal phalanx of second toe",
+          "elementIds": [
+            "FJ3319",
+            "FJ3328"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:proximal-phalanx-of-third-toe",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA32619",
+          "representationId": "BP8763",
+          "name": "proximal phalanx of third toe",
+          "elementIds": [
+            "FJ3311",
+            "FJ3320"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:proximal-phalanx-of-thumb",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23918",
+          "representationId": "BP7898",
+          "name": "proximal phalanx of thumb",
+          "elementIds": [
+            "FJ3318",
+            "FJ3327"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:second-lumbar-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13073",
+          "representationId": "BP8995",
+          "name": "second lumbar vertebra",
+          "elementIds": [
+            "FJ3159"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:second-metacarpal-bone",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23900",
+          "representationId": "BP8220",
+          "name": "second metacarpal bone",
+          "elementIds": [
+            "FJ3243",
+            "FJ3352"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:second-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA7620",
+          "representationId": "BP8997",
+          "name": "second rib",
+          "elementIds": [
+            "FJ3229",
+            "FJ3336"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:second-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9187",
+          "representationId": "BP8475",
+          "name": "second thoracic vertebra",
+          "elementIds": [
+            "FJ3160"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:sesamoid-bone-of-foot",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA45096",
+          "representationId": "BP8273",
+          "name": "sesamoid bone of foot",
+          "elementIds": [
+            "FJ3266",
+            "FJ3270",
+            "FJ3372",
+            "FJ3376"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:seventh-cervical-vertebra",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12525",
+          "representationId": "BP7979",
+          "name": "seventh cervical vertebra",
+          "elementIds": [
+            "FJ3172"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:seventh-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA7830",
+          "representationId": "BP8212",
+          "name": "seventh rib",
+          "elementIds": [
+            "FJ3234",
+            "FJ3346"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:seventh-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9968",
+          "representationId": "BP8840",
+          "name": "seventh thoracic vertebra",
+          "elementIds": [
+            "FJ3173"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:sixth-cervical-vertebra",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12524",
+          "representationId": "BP7845",
+          "name": "sixth cervical vertebra",
+          "elementIds": [
+            "FJ3170"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:sixth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA8147",
+          "representationId": "BP8882",
+          "name": "sixth rib",
+          "elementIds": [
+            "FJ3233",
+            "FJ3344"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:sixth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9945",
+          "representationId": "BP8303",
+          "name": "sixth thoracic vertebra",
+          "elementIds": [
+            "FJ3171"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:sphenoid-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52736",
+          "representationId": "BP8498",
+          "name": "sphenoid bone",
+          "elementIds": [
+            "FJ3394"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:talus",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9708",
+          "representationId": "BP8034",
+          "name": "talus",
+          "elementIds": [
+            "FJ3280",
+            "FJ3385"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:temporal-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52737",
+          "representationId": "BP7992",
+          "name": "temporal bone",
+          "elementIds": [
+            "FJ3281",
+            "FJ3386"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:tenth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA8418",
+          "representationId": "BP8408",
+          "name": "tenth rib",
+          "elementIds": [
+            "FJ3225",
+            "FJ3330"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:tenth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA10037",
+          "representationId": "BP8412",
+          "name": "tenth thoracic vertebra",
+          "elementIds": [
+            "FJ3154"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:third-cervical-vertebra",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA12521",
+          "representationId": "BP9108",
+          "name": "third cervical vertebra",
+          "elementIds": [
+            "FJ3161"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:third-lumbar-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA13074",
+          "representationId": "BP8227",
+          "name": "third lumbar vertebra",
+          "elementIds": [
+            "FJ3162"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:third-metacarpal-bone",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23901",
+          "representationId": "BP8630",
+          "name": "third metacarpal bone",
+          "elementIds": [
+            "FJ3246",
+            "FJ3354"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "ankle-foot:third-metatarsal-bone",
+      "regionId": "ankle-foot",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA24504",
+          "representationId": "BP8803",
+          "name": "third metatarsal bone",
+          "elementIds": [
+            "FJ3247",
+            "FJ3355"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:third-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA7638",
+          "representationId": "BP8358",
+          "name": "third rib",
+          "elementIds": [
+            "FJ3230",
+            "FJ3338"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:third-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9209",
+          "representationId": "BP8726",
+          "name": "third thoracic vertebra",
+          "elementIds": [
+            "FJ3163"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:trapezium",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23721",
+          "representationId": "BP8567",
+          "name": "trapezium",
+          "elementIds": [
+            "FJ3283",
+            "FJ3388"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:trapezoid",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23724",
+          "representationId": "BP7881",
+          "name": "trapezoid",
+          "elementIds": [
+            "FJ3284",
+            "FJ3389"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "wrist-hand:triquetral",
+      "regionId": "wrist-hand",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA23715",
+          "representationId": "BP8308",
+          "name": "triquetral",
+          "elementIds": [
+            "FJ3285",
+            "FJ3390"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:twelfth-rib",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA8515",
+          "representationId": "BP9062",
+          "name": "twelfth rib",
+          "elementIds": [
+            "FJ3227",
+            "FJ3332"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "spine-trunk:twelfth-thoracic-vertebra",
+      "regionId": "spine-trunk",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA10081",
+          "representationId": "BP9250",
+          "name": "twelfth thoracic vertebra",
+          "elementIds": [
+            "FJ3156"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:vomer",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA9710",
+          "representationId": "BP8776",
+          "name": "vomer",
+          "elementIds": [
+            "FJ3395"
+          ]
+        }
+      ]
+    },
+    {
+      "nodeId": "head-neck:zygomatic-bone",
+      "regionId": "head-neck",
+      "type": "bone",
+      "mode": "direct",
+      "hasDirectMesh": true,
+      "meshSources": [
+        {
+          "tree": "isa",
+          "fmaId": "FMA52747",
+          "representationId": "BP8496",
+          "name": "zygomatic bone",
+          "elementIds": [
+            "FJ3287",
+            "FJ3392"
+          ]
+        }
+      ]
+    }
+  ],
+  "assets": {
+    "atlas": {
+      "file": "/static/bodyparts3d/atlas.glb",
+      "bytes": 4901384,
+      "sha256": "d5945ce8e6b24f83035ba9da32070687a52d221e944f974e82da84d768edd65b",
+      "geometry": {
+        "vertices": 102467,
+        "triangles": 203382,
+        "gpuBytes": 4899792
+      },
+      "entities": [
+        {
+          "type": "skin",
+          "mode": "context",
+          "meshSources": [
+            {
+              "tree": "isa",
+              "fmaId": "FMA7163",
+              "representationId": "BP9115",
+              "name": "skin",
+              "elementIds": [
+                "FJ2810"
+              ]
+            }
+          ],
+          "elementIds": [
+            "FJ2810"
+          ],
+          "context": true
+        }
+      ]
+    },
+    "regions": {
+      "head-neck": {
+        "file": "/static/bodyparts3d/head-neck.glb",
+        "bytes": 3429076,
+        "sha256": "296eba3c1fdd91eaff770e95bc3d84fdf685766e68737473ad476ec6c6e601de",
+        "geometry": {
+          "vertices": 99864,
+          "triangles": 165266,
+          "gpuBytes": 3388332
+        },
+        "entities": [
+          {
+            "nodeId": "head-neck:occiput",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52735",
+                "representationId": "BP9177",
+                "name": "occipital bone",
+                "elementIds": [
+                  "FJ3309"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3309"
+            ]
+          },
+          {
+            "nodeId": "head-neck:atlas",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12519",
+                "representationId": "BP8831",
+                "name": "atlas",
+                "elementIds": [
+                  "FJ3176"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3176"
+            ]
+          },
+          {
+            "nodeId": "head-neck:sternocleidomastoid",
+            "regionId": "head-neck",
+            "type": "muscle",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13407",
+                "representationId": "BP4908",
+                "name": "sternocleidomastoid",
+                "elementIds": [
+                  "FJ1573",
+                  "FJ1595"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ1573",
+              "FJ1595"
+            ]
+          },
+          {
+            "nodeId": "head-neck:axis",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12520",
+                "representationId": "BP8459",
+                "name": "axis",
+                "elementIds": [
+                  "FJ3177"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3177"
+            ]
+          },
+          {
+            "nodeId": "head-neck:ethmoid",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52740",
+                "representationId": "BP8991",
+                "name": "ethmoid",
+                "elementIds": [
+                  "FJ3199"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3199"
+            ]
+          },
+          {
+            "nodeId": "head-neck:fifth-cervical-vertebra",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12523",
+                "representationId": "BP8835",
+                "name": "fifth cervical vertebra",
+                "elementIds": [
+                  "FJ3167"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3167"
+            ]
+          },
+          {
+            "nodeId": "head-neck:fourth-cervical-vertebra",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12522",
+                "representationId": "BP8003",
+                "name": "fourth cervical vertebra",
+                "elementIds": [
+                  "FJ3164"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3164"
+            ]
+          },
+          {
+            "nodeId": "head-neck:frontal-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52734",
+                "representationId": "BP8209",
+                "name": "frontal bone",
+                "elementIds": [
+                  "FJ3200"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3200"
+            ]
+          },
+          {
+            "nodeId": "head-neck:hyoid-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52749",
+                "representationId": "BP8836",
+                "name": "hyoid bone",
+                "elementIds": [
+                  "FJ2772",
+                  "FJ3201"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ2772",
+              "FJ3201"
+            ]
+          },
+          {
+            "nodeId": "head-neck:inferior-nasal-concha",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA54736",
+                "representationId": "BP8414",
+                "name": "inferior nasal concha",
+                "elementIds": [
+                  "FJ3263",
+                  "FJ3369"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3263",
+              "FJ3369"
+            ]
+          },
+          {
+            "nodeId": "head-neck:lacrimal-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52741",
+                "representationId": "BP8104",
+                "name": "lacrimal bone",
+                "elementIds": [
+                  "FJ3265",
+                  "FJ3371"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3265",
+              "FJ3371"
+            ]
+          },
+          {
+            "nodeId": "head-neck:mandible",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52748",
+                "representationId": "BP8107",
+                "name": "mandible",
+                "elementIds": [
+                  "FJ3289"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3289"
+            ]
+          },
+          {
+            "nodeId": "head-neck:maxilla",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9711",
+                "representationId": "BP8310",
+                "name": "maxilla",
+                "elementIds": [
+                  "FJ3269",
+                  "FJ3375"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3269",
+              "FJ3375"
+            ]
+          },
+          {
+            "nodeId": "head-neck:nasal-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52745",
+                "representationId": "BP8559",
+                "name": "nasal bone",
+                "elementIds": [
+                  "FJ3272",
+                  "FJ3378"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3272",
+              "FJ3378"
+            ]
+          },
+          {
+            "nodeId": "head-neck:palatine-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52746",
+                "representationId": "BP7931",
+                "name": "palatine bone",
+                "elementIds": [
+                  "FJ3273",
+                  "FJ3379"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3273",
+              "FJ3379"
+            ]
+          },
+          {
+            "nodeId": "head-neck:parietal-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9613",
+                "representationId": "BP9058",
+                "name": "parietal bone",
+                "elementIds": [
+                  "FJ3274",
+                  "FJ3380"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3274",
+              "FJ3380"
+            ]
+          },
+          {
+            "nodeId": "head-neck:seventh-cervical-vertebra",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12525",
+                "representationId": "BP7979",
+                "name": "seventh cervical vertebra",
+                "elementIds": [
+                  "FJ3172"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3172"
+            ]
+          },
+          {
+            "nodeId": "head-neck:sixth-cervical-vertebra",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12524",
+                "representationId": "BP7845",
+                "name": "sixth cervical vertebra",
+                "elementIds": [
+                  "FJ3170"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3170"
+            ]
+          },
+          {
+            "nodeId": "head-neck:sphenoid-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52736",
+                "representationId": "BP8498",
+                "name": "sphenoid bone",
+                "elementIds": [
+                  "FJ3394"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3394"
+            ]
+          },
+          {
+            "nodeId": "head-neck:temporal-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52737",
+                "representationId": "BP7992",
+                "name": "temporal bone",
+                "elementIds": [
+                  "FJ3281",
+                  "FJ3386"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3281",
+              "FJ3386"
+            ]
+          },
+          {
+            "nodeId": "head-neck:third-cervical-vertebra",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA12521",
+                "representationId": "BP9108",
+                "name": "third cervical vertebra",
+                "elementIds": [
+                  "FJ3161"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3161"
+            ]
+          },
+          {
+            "nodeId": "head-neck:vomer",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9710",
+                "representationId": "BP8776",
+                "name": "vomer",
+                "elementIds": [
+                  "FJ3395"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3395"
+            ]
+          },
+          {
+            "nodeId": "head-neck:zygomatic-bone",
+            "regionId": "head-neck",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA52747",
+                "representationId": "BP8496",
+                "name": "zygomatic bone",
+                "elementIds": [
+                  "FJ3287",
+                  "FJ3392"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3287",
+              "FJ3392"
+            ]
+          }
+        ]
+      },
+      "shoulder": {
+        "file": "/static/bodyparts3d/shoulder.glb",
+        "bytes": 965320,
+        "sha256": "5c6f561f1ddb7d26352ee3f115a9d4c2666e3376afb3ba3f5556a9166273d085",
+        "geometry": {
+          "vertices": 26798,
+          "triangles": 52470,
+          "gpuBytes": 957972
+        },
+        "entities": [
+          {
+            "nodeId": "shoulder:scapula",
+            "regionId": "shoulder",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13394",
+                "representationId": "BP9102",
+                "name": "scapula",
+                "elementIds": [
+                  "FJ3279",
+                  "FJ3384"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3279",
+              "FJ3384"
+            ]
+          },
+          {
+            "nodeId": "shoulder:humerus",
+            "regionId": "shoulder",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13303",
+                "representationId": "BP9192",
+                "name": "humerus",
+                "elementIds": [
+                  "FJ3262",
+                  "FJ3368"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3262",
+              "FJ3368"
+            ]
+          },
+          {
+            "nodeId": "shoulder:clavicle",
+            "regionId": "shoulder",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13321",
+                "representationId": "BP8842",
+                "name": "clavicle",
+                "elementIds": [
+                  "FJ3237",
+                  "FJ3362"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3237",
+              "FJ3362"
+            ]
+          }
+        ]
+      },
+      "elbow-forearm": {
+        "file": "/static/bodyparts3d/elbow-forearm.glb",
+        "bytes": 188000,
+        "sha256": "11dd4446f38622903490c36d21ea86d82872c3bbf93fe344b8aec7e41e923229",
+        "geometry": {
+          "vertices": 5302,
+          "triangles": 9286,
+          "gpuBytes": 182964
+        },
+        "entities": [
+          {
+            "nodeId": "elbow-forearm:humerus",
+            "regionId": "elbow-forearm",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13303",
+                "representationId": "BP9192",
+                "name": "humerus",
+                "elementIds": [
+                  "FJ3262",
+                  "FJ3368"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3262",
+              "FJ3368"
+            ]
+          },
+          {
+            "nodeId": "elbow-forearm:ulna",
+            "regionId": "elbow-forearm",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23466",
+                "representationId": "BP8234",
+                "name": "ulna",
+                "elementIds": [
+                  "FJ3286",
+                  "FJ3391"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3286",
+              "FJ3391"
+            ]
+          }
+        ]
+      },
+      "wrist-hand": {
+        "file": "/static/bodyparts3d/wrist-hand.glb",
+        "bytes": 508984,
+        "sha256": "b8bdaf8fdcf10f99e8659180b67f2d428db4a11e5b677dbe6beddb0bcc3d4748",
+        "geometry": {
+          "vertices": 13087,
+          "triangles": 21252,
+          "gpuBytes": 441600
+        },
+        "entities": [
+          {
+            "nodeId": "wrist-hand:radius",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23463",
+                "representationId": "BP8465",
+                "name": "radius",
+                "elementIds": [
+                  "FJ3277",
+                  "FJ3349"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3277",
+              "FJ3349"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:scaphoid",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23709",
+                "representationId": "BP8123",
+                "name": "scaphoid",
+                "elementIds": [
+                  "FJ3278",
+                  "FJ3383"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3278",
+              "FJ3383"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:capitate",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23727",
+                "representationId": "BP7960",
+                "name": "capitate",
+                "elementIds": [
+                  "FJ3257",
+                  "FJ3361"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3257",
+              "FJ3361"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:distal-phalanx-of-index-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23946",
+                "representationId": "BP8296",
+                "name": "distal phalanx of index finger",
+                "elementIds": [
+                  "FJ3183",
+                  "FJ3193"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3183",
+              "FJ3193"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:distal-phalanx-of-little-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23949",
+                "representationId": "BP8638",
+                "name": "distal phalanx of little finger",
+                "elementIds": [
+                  "FJ3184",
+                  "FJ3194"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3184",
+              "FJ3194"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:distal-phalanx-of-middle-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23947",
+                "representationId": "BP8484",
+                "name": "distal phalanx of middle finger",
+                "elementIds": [
+                  "FJ3186",
+                  "FJ3196"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3186",
+              "FJ3196"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:distal-phalanx-of-ring-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23948",
+                "representationId": "BP7962",
+                "name": "distal phalanx of ring finger",
+                "elementIds": [
+                  "FJ3187",
+                  "FJ3197"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3187",
+              "FJ3197"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:distal-phalanx-of-thumb",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23945",
+                "representationId": "BP8437",
+                "name": "distal phalanx of thumb",
+                "elementIds": [
+                  "FJ3188",
+                  "FJ3198"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3188",
+              "FJ3198"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:fifth-metacarpal-bone",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23903",
+                "representationId": "BP8001",
+                "name": "fifth metacarpal bone",
+                "elementIds": [
+                  "FJ3252",
+                  "FJ3358"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3252",
+              "FJ3358"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:first-metacarpal-bone",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23899",
+                "representationId": "BP8548",
+                "name": "first metacarpal bone",
+                "elementIds": [
+                  "FJ3240",
+                  "FJ3350"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3240",
+              "FJ3350"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:fourth-metacarpal-bone",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23902",
+                "representationId": "BP8445",
+                "name": "fourth metacarpal bone",
+                "elementIds": [
+                  "FJ3249",
+                  "FJ3356"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3249",
+              "FJ3356"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:hamate",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23730",
+                "representationId": "BP8884",
+                "name": "hamate",
+                "elementIds": [
+                  "FJ3261",
+                  "FJ3367"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3261",
+              "FJ3367"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:lunate",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23712",
+                "representationId": "BP8494",
+                "name": "lunate",
+                "elementIds": [
+                  "FJ3268",
+                  "FJ3374"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3268",
+              "FJ3374"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:middle-phalanx-of-index-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23933",
+                "representationId": "BP8524",
+                "name": "middle phalanx of index finger",
+                "elementIds": [
+                  "FJ3296",
+                  "FJ3303"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3296",
+              "FJ3303"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:middle-phalanx-of-little-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23936",
+                "representationId": "BP8492",
+                "name": "middle phalanx of little finger",
+                "elementIds": [
+                  "FJ3297",
+                  "FJ3304"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3297",
+              "FJ3304"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:middle-phalanx-of-middle-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23934",
+                "representationId": "BP8457",
+                "name": "middle phalanx of middle finger",
+                "elementIds": [
+                  "FJ3299",
+                  "FJ3306"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3299",
+              "FJ3306"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:middle-phalanx-of-ring-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23935",
+                "representationId": "BP8452",
+                "name": "middle phalanx of ring finger",
+                "elementIds": [
+                  "FJ3291",
+                  "FJ3292"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3291",
+              "FJ3292"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:pisiform",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23718",
+                "representationId": "BP8771",
+                "name": "pisiform",
+                "elementIds": [
+                  "FJ3276",
+                  "FJ3382"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3276",
+              "FJ3382"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:proximal-phalanx-of-index-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23919",
+                "representationId": "BP8329",
+                "name": "proximal phalanx of index finger",
+                "elementIds": [
+                  "FJ3313",
+                  "FJ3322"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3313",
+              "FJ3322"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:proximal-phalanx-of-little-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23922",
+                "representationId": "BP8101",
+                "name": "proximal phalanx of little finger",
+                "elementIds": [
+                  "FJ3314",
+                  "FJ3323"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3314",
+              "FJ3323"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:proximal-phalanx-of-middle-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23920",
+                "representationId": "BP8865",
+                "name": "proximal phalanx of middle finger",
+                "elementIds": [
+                  "FJ3316",
+                  "FJ3325"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3316",
+              "FJ3325"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:proximal-phalanx-of-ring-finger",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23921",
+                "representationId": "BP7937",
+                "name": "proximal phalanx of ring finger",
+                "elementIds": [
+                  "FJ3317",
+                  "FJ3326"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3317",
+              "FJ3326"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:proximal-phalanx-of-thumb",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23918",
+                "representationId": "BP7898",
+                "name": "proximal phalanx of thumb",
+                "elementIds": [
+                  "FJ3318",
+                  "FJ3327"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3318",
+              "FJ3327"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:second-metacarpal-bone",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23900",
+                "representationId": "BP8220",
+                "name": "second metacarpal bone",
+                "elementIds": [
+                  "FJ3243",
+                  "FJ3352"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3243",
+              "FJ3352"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:third-metacarpal-bone",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23901",
+                "representationId": "BP8630",
+                "name": "third metacarpal bone",
+                "elementIds": [
+                  "FJ3246",
+                  "FJ3354"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3246",
+              "FJ3354"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:trapezium",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23721",
+                "representationId": "BP8567",
+                "name": "trapezium",
+                "elementIds": [
+                  "FJ3283",
+                  "FJ3388"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3283",
+              "FJ3388"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:trapezoid",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23724",
+                "representationId": "BP7881",
+                "name": "trapezoid",
+                "elementIds": [
+                  "FJ3284",
+                  "FJ3389"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3284",
+              "FJ3389"
+            ]
+          },
+          {
+            "nodeId": "wrist-hand:triquetral",
+            "regionId": "wrist-hand",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA23715",
+                "representationId": "BP8308",
+                "name": "triquetral",
+                "elementIds": [
+                  "FJ3285",
+                  "FJ3390"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3285",
+              "FJ3390"
+            ]
+          }
+        ]
+      },
+      "spine-trunk": {
+        "file": "/static/bodyparts3d/spine-trunk.glb",
+        "bytes": 4552616,
+        "sha256": "7cfc11d9e4895bf3df0c3bf610c2cfec705592e2f690b61493199a92e9f5ad3c",
+        "geometry": {
+          "vertices": 126635,
+          "triangles": 242498,
+          "gpuBytes": 4494228
+        },
+        "entities": [
+          {
+            "nodeId": "spine-trunk:lumbar-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9921",
+                "representationId": "BP8134",
+                "name": "lumbar vertebra",
+                "elementIds": [
+                  "FJ3157",
+                  "FJ3159",
+                  "FJ3162",
+                  "FJ3165",
+                  "FJ3168"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3157",
+              "FJ3159",
+              "FJ3162",
+              "FJ3165",
+              "FJ3168"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:sacrum",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA16202",
+                "representationId": "BP9174",
+                "name": "sacrum",
+                "elementIds": [
+                  "FJ3393"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3393"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:eighth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA8120",
+                "representationId": "BP8709",
+                "name": "eighth rib",
+                "elementIds": [
+                  "FJ3235",
+                  "FJ3347"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3235",
+              "FJ3347"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:eighth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9991",
+                "representationId": "BP9221",
+                "name": "eighth thoracic vertebra",
+                "elementIds": [
+                  "FJ3174"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3174"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:eleventh-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA8499",
+                "representationId": "BP8952",
+                "name": "eleventh rib",
+                "elementIds": [
+                  "FJ3226",
+                  "FJ3331"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3226",
+              "FJ3331"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:eleventh-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA10059",
+                "representationId": "BP8043",
+                "name": "eleventh thoracic vertebra",
+                "elementIds": [
+                  "FJ3155"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3155"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:fifth-lumbar-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13076",
+                "representationId": "BP8280",
+                "name": "fifth lumbar vertebra",
+                "elementIds": [
+                  "FJ3168"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3168"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:fifth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA7776",
+                "representationId": "BP8480",
+                "name": "fifth rib",
+                "elementIds": [
+                  "FJ3232",
+                  "FJ3342"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3232",
+              "FJ3342"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:fifth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9922",
+                "representationId": "BP8643",
+                "name": "fifth thoracic vertebra",
+                "elementIds": [
+                  "FJ3169"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3169"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:first-lumbar-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13072",
+                "representationId": "BP8948",
+                "name": "first lumbar vertebra",
+                "elementIds": [
+                  "FJ3157"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3157"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:first-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA7597",
+                "representationId": "BP8342",
+                "name": "first rib",
+                "elementIds": [
+                  "FJ3228",
+                  "FJ3334"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3228",
+              "FJ3334"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:first-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9165",
+                "representationId": "BP8981",
+                "name": "first thoracic vertebra",
+                "elementIds": [
+                  "FJ3158"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3158"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:fourth-lumbar-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13075",
+                "representationId": "BP8133",
+                "name": "fourth lumbar vertebra",
+                "elementIds": [
+                  "FJ3165"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3165"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:fourth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA7749",
+                "representationId": "BP8082",
+                "name": "fourth rib",
+                "elementIds": [
+                  "FJ3231",
+                  "FJ3340"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3231",
+              "FJ3340"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:fourth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9248",
+                "representationId": "BP9156",
+                "name": "fourth thoracic vertebra",
+                "elementIds": [
+                  "FJ3166"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3166"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:ninth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA8337",
+                "representationId": "BP8439",
+                "name": "ninth rib",
+                "elementIds": [
+                  "FJ3236",
+                  "FJ3348"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3236",
+              "FJ3348"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:ninth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA10014",
+                "representationId": "BP8178",
+                "name": "ninth thoracic vertebra",
+                "elementIds": [
+                  "FJ3175"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3175"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:second-lumbar-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13073",
+                "representationId": "BP8995",
+                "name": "second lumbar vertebra",
+                "elementIds": [
+                  "FJ3159"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3159"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:second-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA7620",
+                "representationId": "BP8997",
+                "name": "second rib",
+                "elementIds": [
+                  "FJ3229",
+                  "FJ3336"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3229",
+              "FJ3336"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:second-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9187",
+                "representationId": "BP8475",
+                "name": "second thoracic vertebra",
+                "elementIds": [
+                  "FJ3160"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3160"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:seventh-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA7830",
+                "representationId": "BP8212",
+                "name": "seventh rib",
+                "elementIds": [
+                  "FJ3234",
+                  "FJ3346"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3234",
+              "FJ3346"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:seventh-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9968",
+                "representationId": "BP8840",
+                "name": "seventh thoracic vertebra",
+                "elementIds": [
+                  "FJ3173"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3173"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:sixth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA8147",
+                "representationId": "BP8882",
+                "name": "sixth rib",
+                "elementIds": [
+                  "FJ3233",
+                  "FJ3344"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3233",
+              "FJ3344"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:sixth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9945",
+                "representationId": "BP8303",
+                "name": "sixth thoracic vertebra",
+                "elementIds": [
+                  "FJ3171"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3171"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:tenth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA8418",
+                "representationId": "BP8408",
+                "name": "tenth rib",
+                "elementIds": [
+                  "FJ3225",
+                  "FJ3330"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3225",
+              "FJ3330"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:tenth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA10037",
+                "representationId": "BP8412",
+                "name": "tenth thoracic vertebra",
+                "elementIds": [
+                  "FJ3154"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3154"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:third-lumbar-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA13074",
+                "representationId": "BP8227",
+                "name": "third lumbar vertebra",
+                "elementIds": [
+                  "FJ3162"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3162"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:third-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA7638",
+                "representationId": "BP8358",
+                "name": "third rib",
+                "elementIds": [
+                  "FJ3230",
+                  "FJ3338"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3230",
+              "FJ3338"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:third-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9209",
+                "representationId": "BP8726",
+                "name": "third thoracic vertebra",
+                "elementIds": [
+                  "FJ3163"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3163"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:twelfth-rib",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA8515",
+                "representationId": "BP9062",
+                "name": "twelfth rib",
+                "elementIds": [
+                  "FJ3227",
+                  "FJ3332"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3227",
+              "FJ3332"
+            ]
+          },
+          {
+            "nodeId": "spine-trunk:twelfth-thoracic-vertebra",
+            "regionId": "spine-trunk",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA10081",
+                "representationId": "BP9250",
+                "name": "twelfth thoracic vertebra",
+                "elementIds": [
+                  "FJ3156"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3156"
+            ]
+          }
+        ]
+      },
+      "hip-pelvis": {
+        "file": "/static/bodyparts3d/hip-pelvis.glb",
+        "bytes": 641388,
+        "sha256": "25bb37cb47c2f51917bbe7ff6c88c1571f1f69b377b75edeb094c706abf44940",
+        "geometry": {
+          "vertices": 18188,
+          "triangles": 32352,
+          "gpuBytes": 630624
+        },
+        "entities": [
+          {
+            "nodeId": "hip-pelvis:pelvis",
+            "regionId": "hip-pelvis",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "partof",
+                "fmaId": "FMA16580",
+                "representationId": "BP9951",
+                "name": "bony pelvis",
+                "elementIds": [
+                  "FJ3152",
+                  "FJ3288",
+                  "FJ3393"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3152",
+              "FJ3288",
+              "FJ3393"
+            ]
+          },
+          {
+            "nodeId": "hip-pelvis:femur",
+            "regionId": "hip-pelvis",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9611",
+                "representationId": "BP8921",
+                "name": "femur",
+                "elementIds": [
+                  "FJ3259",
+                  "FJ3365"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3259",
+              "FJ3365"
+            ]
+          },
+          {
+            "nodeId": "hip-pelvis:gluteus-medius",
+            "regionId": "hip-pelvis",
+            "type": "muscle",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA22315",
+                "representationId": "BP9214",
+                "name": "gluteus medius",
+                "elementIds": [
+                  "FJ1419",
+                  "FJ1419M"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ1419",
+              "FJ1419M"
+            ]
+          },
+          {
+            "nodeId": "hip-pelvis:hip-bone",
+            "regionId": "hip-pelvis",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA16585",
+                "representationId": "BP8769",
+                "name": "hip bone",
+                "elementIds": [
+                  "FJ3152",
+                  "FJ3288"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3152",
+              "FJ3288"
+            ]
+          }
+        ]
+      },
+      "knee": {
+        "file": "/static/bodyparts3d/knee.glb",
+        "bytes": 239896,
+        "sha256": "a8b468223b5ec028a1e6040e21dbfd40edbe26eede35cfbd678291bf02215846",
+        "geometry": {
+          "vertices": 6462,
+          "triangles": 12544,
+          "gpuBytes": 230352
+        },
+        "entities": [
+          {
+            "nodeId": "knee:femur",
+            "regionId": "knee",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9611",
+                "representationId": "BP8921",
+                "name": "femur",
+                "elementIds": [
+                  "FJ3259",
+                  "FJ3365"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3259",
+              "FJ3365"
+            ]
+          },
+          {
+            "nodeId": "knee:tibia",
+            "regionId": "knee",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24476",
+                "representationId": "BP8032",
+                "name": "tibia",
+                "elementIds": [
+                  "FJ3282",
+                  "FJ3387"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3282",
+              "FJ3387"
+            ]
+          },
+          {
+            "nodeId": "knee:fibula",
+            "regionId": "knee",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24479",
+                "representationId": "BP8010",
+                "name": "fibula",
+                "elementIds": [
+                  "FJ3260",
+                  "FJ3366"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3260",
+              "FJ3366"
+            ]
+          },
+          {
+            "nodeId": "knee:patella",
+            "regionId": "knee",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24485",
+                "representationId": "BP8379",
+                "name": "patella",
+                "elementIds": [
+                  "FJ3275",
+                  "FJ3381"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3275",
+              "FJ3381"
+            ]
+          }
+        ]
+      },
+      "ankle-foot": {
+        "file": "/static/bodyparts3d/ankle-foot.glb",
+        "bytes": 1003952,
+        "sha256": "e2479f566085003888e40dbc262b6126c352a4999188a69167adc75438f2dc0e",
+        "geometry": {
+          "vertices": 28645,
+          "triangles": 41082,
+          "gpuBytes": 933972
+        },
+        "entities": [
+          {
+            "nodeId": "ankle-foot:intermediate-cuneiform",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24519",
+                "representationId": "BP8521",
+                "name": "intermediate cuneiform bone",
+                "elementIds": [
+                  "FJ3264",
+                  "FJ3370"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3264",
+              "FJ3370"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:second-metatarsal",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24503",
+                "representationId": "BP8628",
+                "name": "second metatarsal bone",
+                "elementIds": [
+                  "FJ3244",
+                  "FJ3353"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3244",
+              "FJ3353"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:tibialis-posterior",
+            "regionId": "ankle-foot",
+            "type": "muscle",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA51099",
+                "representationId": "BP9160",
+                "name": "tibialis posterior",
+                "elementIds": [
+                  "FJ1440",
+                  "FJ1440M"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ1440",
+              "FJ1440M"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:calcaneus",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24496",
+                "representationId": "BP8534",
+                "name": "calcaneus",
+                "elementIds": [
+                  "FJ3256",
+                  "FJ3360"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3256",
+              "FJ3360"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:cuboid-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24527",
+                "representationId": "BP8539",
+                "name": "cuboid bone",
+                "elementIds": [
+                  "FJ3258",
+                  "FJ3364"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3258",
+              "FJ3364"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:distal-phalanx-of-big-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32627",
+                "representationId": "BP9248",
+                "name": "distal phalanx of big toe",
+                "elementIds": [
+                  "FJ3182",
+                  "FJ3192"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3182",
+              "FJ3192"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:distal-phalanx-of-fourth-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32630",
+                "representationId": "BP8790",
+                "name": "distal phalanx of fourth toe",
+                "elementIds": [
+                  "FJ3181",
+                  "FJ3191"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3181",
+              "FJ3191"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:distal-phalanx-of-little-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32631",
+                "representationId": "BP8696",
+                "name": "distal phalanx of little toe",
+                "elementIds": [
+                  "FJ3185",
+                  "FJ3195"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3185",
+              "FJ3195"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:distal-phalanx-of-second-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32628",
+                "representationId": "BP8109",
+                "name": "distal phalanx of second toe",
+                "elementIds": [
+                  "FJ3179",
+                  "FJ3189"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3179",
+              "FJ3189"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:distal-phalanx-of-third-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32629",
+                "representationId": "BP7956",
+                "name": "distal phalanx of third toe",
+                "elementIds": [
+                  "FJ3180",
+                  "FJ3190"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3180",
+              "FJ3190"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:fifth-metatarsal-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24506",
+                "representationId": "BP7913",
+                "name": "fifth metatarsal bone",
+                "elementIds": [
+                  "FJ3253",
+                  "FJ3359"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3253",
+              "FJ3359"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:first-metatarsal-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24502",
+                "representationId": "BP8161",
+                "name": "first metatarsal bone",
+                "elementIds": [
+                  "FJ3241",
+                  "FJ3351"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3241",
+              "FJ3351"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:fourth-metatarsal-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24505",
+                "representationId": "BP8512",
+                "name": "fourth metatarsal bone",
+                "elementIds": [
+                  "FJ3250",
+                  "FJ3357"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3250",
+              "FJ3357"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:lateral-cuneiform-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24520",
+                "representationId": "BP8348",
+                "name": "lateral cuneiform bone",
+                "elementIds": [
+                  "FJ3267",
+                  "FJ3373"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3267",
+              "FJ3373"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:medial-cuneiform-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24518",
+                "representationId": "BP8775",
+                "name": "medial cuneiform bone",
+                "elementIds": [
+                  "FJ3271",
+                  "FJ3377"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3271",
+              "FJ3377"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:middle-phalanx-of-fourth-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32625",
+                "representationId": "BP8577",
+                "name": "middle phalanx of fourth toe",
+                "elementIds": [
+                  "FJ3295",
+                  "FJ3302"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3295",
+              "FJ3302"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:middle-phalanx-of-little-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA230984",
+                "representationId": "BP9036",
+                "name": "middle phalanx of little toe",
+                "elementIds": [
+                  "FJ3298",
+                  "FJ3305"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3298",
+              "FJ3305"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:middle-phalanx-of-second-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32623",
+                "representationId": "BP7874",
+                "name": "middle phalanx of second toe",
+                "elementIds": [
+                  "FJ3293",
+                  "FJ3300"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3293",
+              "FJ3300"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:middle-phalanx-of-third-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32624",
+                "representationId": "BP7749",
+                "name": "middle phalanx of third toe",
+                "elementIds": [
+                  "FJ3294",
+                  "FJ3301"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3294",
+              "FJ3301"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:navicular-bone-of-foot",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24499",
+                "representationId": "BP8600",
+                "name": "navicular bone of foot",
+                "elementIds": [
+                  "FJ3307",
+                  "FJ3308"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3307",
+              "FJ3308"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:proximal-phalanx-of-big-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA43252",
+                "representationId": "BP8654",
+                "name": "proximal phalanx of big toe",
+                "elementIds": [
+                  "FJ3310",
+                  "FJ3329"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3310",
+              "FJ3329"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:proximal-phalanx-of-fourth-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32620",
+                "representationId": "BP8282",
+                "name": "proximal phalanx of fourth toe",
+                "elementIds": [
+                  "FJ3312",
+                  "FJ3321"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3312",
+              "FJ3321"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:proximal-phalanx-of-little-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32621",
+                "representationId": "BP8418",
+                "name": "proximal phalanx of little toe",
+                "elementIds": [
+                  "FJ3315",
+                  "FJ3324"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3315",
+              "FJ3324"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:proximal-phalanx-of-second-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32618",
+                "representationId": "BP9089",
+                "name": "proximal phalanx of second toe",
+                "elementIds": [
+                  "FJ3319",
+                  "FJ3328"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3319",
+              "FJ3328"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:proximal-phalanx-of-third-toe",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA32619",
+                "representationId": "BP8763",
+                "name": "proximal phalanx of third toe",
+                "elementIds": [
+                  "FJ3311",
+                  "FJ3320"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3311",
+              "FJ3320"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:sesamoid-bone-of-foot",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA45096",
+                "representationId": "BP8273",
+                "name": "sesamoid bone of foot",
+                "elementIds": [
+                  "FJ3266",
+                  "FJ3270",
+                  "FJ3372",
+                  "FJ3376"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3266",
+              "FJ3270",
+              "FJ3372",
+              "FJ3376"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:talus",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA9708",
+                "representationId": "BP8034",
+                "name": "talus",
+                "elementIds": [
+                  "FJ3280",
+                  "FJ3385"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3280",
+              "FJ3385"
+            ]
+          },
+          {
+            "nodeId": "ankle-foot:third-metatarsal-bone",
+            "regionId": "ankle-foot",
+            "type": "bone",
+            "mode": "direct",
+            "meshSources": [
+              {
+                "tree": "isa",
+                "fmaId": "FMA24504",
+                "representationId": "BP8803",
+                "name": "third metatarsal bone",
+                "elementIds": [
+                  "FJ3247",
+                  "FJ3355"
+                ]
+              }
+            ],
+            "elementIds": [
+              "FJ3247",
+              "FJ3355"
+            ]
+          }
+        ]
+      }
+    },
+    "supplements": {
+      "shoulder": [
+        {
+          "file": "/static/bodyparts3d/supplement-shoulder-deltoid.glb",
+          "bytes": 258004,
+          "sha256": "c97b46f98922e432ca04697d2b5b01916b0a0b79d43419c3f82736667cd187ce",
+          "geometry": {
+            "vertices": 8509,
+            "triangles": 7804,
+            "gpuBytes": 251040
+          },
+          "entities": [
+            {
+              "nodeId": "shoulder:deltoid",
+              "regionId": "shoulder",
+              "type": "muscle",
+              "mode": "compound",
+              "meshSources": [
+                {
+                  "tree": "isa",
+                  "fmaId": "FMA34676",
+                  "representationId": "BP8153",
+                  "name": "zone of deltoid",
+                  "elementIds": [
+                    "FJ1467",
+                    "FJ1467M",
+                    "FJ1468",
+                    "FJ1468M",
+                    "FJ1513",
+                    "FJ1513M"
+                  ]
+                }
+              ],
+              "elementIds": [
+                "FJ1467",
+                "FJ1467M",
+                "FJ1468",
+                "FJ1468M",
+                "FJ1513",
+                "FJ1513M"
+              ]
+            }
+          ]
+        }
+      ],
+      "elbow-forearm": [
+        {
+          "file": "/static/bodyparts3d/supplement-elbow-forearm-biceps-brachii.glb",
+          "bytes": 178064,
+          "sha256": "a57b1701d67ffe7e4d76a9ab8ed53a5f231c0d1e296020397addecd6024b9b90",
+          "geometry": {
+            "vertices": 5574,
+            "triangles": 6564,
+            "gpuBytes": 173160
+          },
+          "entities": [
+            {
+              "nodeId": "elbow-forearm:biceps-brachii",
+              "regionId": "elbow-forearm",
+              "type": "muscle",
+              "mode": "compound",
+              "meshSources": [
+                {
+                  "tree": "isa",
+                  "fmaId": "FMA37682",
+                  "representationId": "BP9154",
+                  "name": "short head of biceps brachii",
+                  "elementIds": [
+                    "FJ1512",
+                    "FJ1512M"
+                  ]
+                },
+                {
+                  "tree": "isa",
+                  "fmaId": "FMA37683",
+                  "representationId": "BP8817",
+                  "name": "long head of biceps brachii",
+                  "elementIds": [
+                    "FJ1478",
+                    "FJ1478M"
+                  ]
+                }
+              ],
+              "elementIds": [
+                "FJ1512",
+                "FJ1512M",
+                "FJ1478",
+                "FJ1478M"
+              ]
+            }
+          ]
+        }
+      ],
+      "wrist-hand": [
+        {
+          "file": "/static/bodyparts3d/supplement-wrist-hand-finger-flexors.glb",
+          "bytes": 688588,
+          "sha256": "a4a0d7608cff843829c928ffea6dbcff7e30b782aff585b207e39a9612970c30",
+          "geometry": {
+            "vertices": 21196,
+            "triangles": 28804,
+            "gpuBytes": 681528
+          },
+          "entities": [
+            {
+              "nodeId": "wrist-hand:finger-flexors",
+              "regionId": "wrist-hand",
+              "type": "muscle",
+              "mode": "compound",
+              "meshSources": [
+                {
+                  "tree": "isa",
+                  "fmaId": "FMA38469",
+                  "representationId": "BP8285",
+                  "name": "flexor digitorum superficialis",
+                  "elementIds": [
+                    "FJ1475",
+                    "FJ1475M",
+                    "FJ1499",
+                    "FJ1499M"
+                  ]
+                },
+                {
+                  "tree": "isa",
+                  "fmaId": "FMA38478",
+                  "representationId": "BP7827",
+                  "name": "flexor digitorum profundus",
+                  "elementIds": [
+                    "FJ1497",
+                    "FJ1497M"
+                  ]
+                }
+              ],
+              "elementIds": [
+                "FJ1475",
+                "FJ1475M",
+                "FJ1499",
+                "FJ1499M",
+                "FJ1497",
+                "FJ1497M"
+              ]
+            }
+          ]
+        }
+      ],
+      "knee": [
+        {
+          "file": "/static/bodyparts3d/supplement-knee-quadriceps.glb",
+          "bytes": 878672,
+          "sha256": "510ea8ff4336308737b28012cb1c670064d9dc063241f8d53d29ec3bcc832f63",
+          "geometry": {
+            "vertices": 25638,
+            "triangles": 42376,
+            "gpuBytes": 869568
+          },
+          "entities": [
+            {
+              "nodeId": "knee:quadriceps",
+              "regionId": "knee",
+              "type": "muscle",
+              "mode": "compound",
+              "meshSources": [
+                {
+                  "tree": "isa",
+                  "fmaId": "FMA22429",
+                  "representationId": "BP8096",
+                  "name": "zone of quadriceps femoris",
+                  "elementIds": [
+                    "FJ1433",
+                    "FJ1433M",
+                    "FJ1441",
+                    "FJ1441M",
+                    "FJ1442",
+                    "FJ1442M",
+                    "FJ1443",
+                    "FJ1443M"
+                  ]
+                }
+              ],
+              "elementIds": [
+                "FJ1433",
+                "FJ1433M",
+                "FJ1441",
+                "FJ1441M",
+                "FJ1442",
+                "FJ1442M",
+                "FJ1443",
+                "FJ1443M"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

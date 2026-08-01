@@ -1,0 +1,27 @@
+{
+  "name": "@somakine/bodyparts3d-musculoskeletal",
+  "version": "0.1.0-alpha.0",
+  "description": "Real BodyParts3D 4.0 musculoskeletal data pack for Somakine.",
+  "type": "module",
+  "license": "CC-BY-4.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./pack.json": "./public/pack.json"
+  },
+  "files": [
+    "dist/**/*.js", "dist/**/*.js.map", "dist/**/*.d.ts", "dist/**/*.d.ts.map",
+    "public", "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false"
+  },
+  "dependencies": {
+    "@somakine/core": "0.1.0-alpha.0"
+  }
+}

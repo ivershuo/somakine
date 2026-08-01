@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@somakine/core": "0.1.0-alpha.0",
-    "@somakine/musculoskeletal-basic": "0.1.0-alpha.0",
+    "@somakine/bodyparts3d-musculoskeletal": "0.1.0-alpha.0",
     "@somakine/viewer": "0.1.0-alpha.0",
     "three": "^0.181.2"
   },

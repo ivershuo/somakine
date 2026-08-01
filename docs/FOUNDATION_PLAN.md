@@ -12,14 +12,13 @@ Status: alpha foundation implemented on 2026-08-01.
 - BodyParts3D provenance adapter, validation/inspection CLI, synthetic data pack,
   vanilla example, tests, security checks, and distribution budgets.
 
-## Next milestone: real anatomy pack
+## Real anatomy pack — delivered 2026-08-01
 
-1. Freeze a reviewed BodyParts3D source snapshot and checksums.
-2. Build a deterministic conversion pipeline to optimized self-contained GLBs.
-3. Map source objects to Somakine structure IDs and explicitly classify gaps as
-   direct, compound, contextual, or unavailable.
-4. Obtain license/provenance review and qualified anatomical review.
-5. Add golden screenshots and browser journeys once CI has a WebGL-capable browser.
+The verified BodyParts3D 4.0 snapshot and twelve existing self-contained GLBs
+were imported without another network download. The generated pack contains 150
+canonical structures: 121 direct, four compound and 25 contextual. License and
+source provenance are included. Qualified terminology/anatomical review and
+golden browser screenshots remain release work.
 
 ## Release exit criteria
 

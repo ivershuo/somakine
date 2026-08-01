@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "id": "bodyparts3d-4",
+    "name": "BodyParts3D",
+    "version": "4.0",
+    "retrieved": "2026-07-30",
+    "licenseId": "CC-BY-4.0",
+    "licenseUrl": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html",
+    "attribution": "BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International",
+    "downloadPage": "https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html"
+  },
+  "files": {
+    "archive": {
+      "name": "isa_BP3D_4.0_obj_99.zip",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+      "bytes": 142903898,
+      "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+    },
+    "partsTable": {
+      "name": "isa_parts_list_e.txt",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt",
+      "bytes": 128086,
+      "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513"
+    },
+    "elementTable": {
+      "name": "isa_element_parts.txt",
+      "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt",
+      "bytes": 1142159,
+      "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf"
+    }
+  },
+  "completeSnapshot": {
+    "directoryUrl": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/",
+    "fileCount": 15,
+    "totalBytes": 210599722,
+    "files": [
+      {
+        "name": "README.html",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/README.html",
+        "bytes": 21448,
+        "sha256": "a0c587bc71cb94265dad506c710ed460cb140beb83dd3635ca6111392ad5eda6"
+      },
+      {
+        "name": "README_e.html",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/README_e.html",
+        "bytes": 19263,
+        "sha256": "f9a90b4d945ad0fe50db45c712e931aa54e52667187b30d7085b6cc394f40107"
+      },
+      {
+        "name": "coordinate_system.png",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/coordinate_system.png",
+        "bytes": 28425,
+        "sha256": "338736275c11eac8c89531fdc14193c9a8adf5baab674033d9d89259f152a5f6"
+      },
+      {
+        "name": "isa_BP3D_4.0_obj_99.zip",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_BP3D_4.0_obj_99.zip",
+        "bytes": 142903898,
+        "sha256": "40665852c49f218326590e204db91064a1ecfc3c6f8cbd7bbbcaac62c7cd409e"
+      },
+      {
+        "name": "isa_element_parts.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_element_parts.txt",
+        "bytes": 1142159,
+        "sha256": "a3de74423f943b0d724ae8f59b3a817f87c423a544f8db98113b1980817cbeaf"
+      },
+      {
+        "name": "isa_inclusion_relation_list.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_inclusion_relation_list.txt",
+        "bytes": 207664,
+        "sha256": "26e7d818e03a8c909fe09c561f38d0d513423c87681f9450a803bc38f5b07564"
+      },
+      {
+        "name": "isa_parts_list.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list.txt",
+        "bytes": 302828,
+        "sha256": "e5f32398b916e259b88b8aabadac347fe4e0d6bcb2b6535a45ec66b5e60b32b5"
+      },
+      {
+        "name": "isa_parts_list_e.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/isa_parts_list_e.txt",
+        "bytes": 128086,
+        "sha256": "ab7796deedd49205e77f3609a1cb8c53e2bbee14ecb5c9a6ca05227469780513"
+      },
+      {
+        "name": "partof_BP3D_4.0_obj_99.zip",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_BP3D_4.0_obj_99.zip",
+        "bytes": 64888505,
+        "sha256": "9fbc713fffeee924a5a657d9813d84d7eb957bded63adb854931dd5e3eb61c97"
+      },
+      {
+        "name": "partof_element_parts.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_element_parts.txt",
+        "bytes": 651179,
+        "sha256": "3f5f6df1028eb122b30de77c711597b6bb8e5541658e5985859fd228adbf88ea"
+      },
+      {
+        "name": "partof_inclusion_relation_list.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_inclusion_relation_list.txt",
+        "bytes": 91241,
+        "sha256": "1b40738270931e3c1d955ce34e0fce0d8d10d8c5ad543463e40b4b4c0243007c"
+      },
+      {
+        "name": "partof_parts_list.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_parts_list.txt",
+        "bytes": 142590,
+        "sha256": "dd29cceba270ffaa5d5f53003b1c3284f70a15fba7137bb81f26f176f4bdb5e3"
+      },
+      {
+        "name": "partof_parts_list_e.txt",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/partof_parts_list_e.txt",
+        "bytes": 59351,
+        "sha256": "9224080557053e6f1322f1e13ab27f0ecde0db19bb3b505f0631afad230eeebd"
+      },
+      {
+        "name": "release_4.0.html",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/release_4.0.html",
+        "bytes": 6775,
+        "sha256": "dbee0fc3a696d5fa4d5a4eb41cbd0e0cfe5bafa7fa41d1cfa560d23a18a2399e"
+      },
+      {
+        "name": "release_4.0_e.html",
+        "url": "https://dbarchive.biosciencedbc.jp/data/bodyparts3d/LATEST/release_4.0_e.html",
+        "bytes": 6310,
+        "sha256": "771bd30a47ab11396eb6333e73a946426093c57fa4d4a1db8f718910fea7d985"
+      }
+    ]
+  },
+  "selectedObjects": {
+    "FJ1419.obj": "e2e06899b8a61640b32086432ec4b577b2bf2db6f044d469c01bdceb38bd3831",
+    "FJ1419M.obj": "37f92300b952b93099dd8dd417b154b1af7484fd28780d990ff21e0e7684af84",
+    "FJ1440.obj": "6fc367885524fc416139372b55c64d8e1e4bc9010bee64020a72ad8e6f34a57d",
+    "FJ1440M.obj": "889b43062ffa5bc75a7acd866f8a9cc5a6296413c5d0fcefd2f5cb144c82ac9a",
+    "FJ1573.obj": "2035124d82e26f8e2ba9985925a746d0fd1fd94535d6ca7eed4b622f60bf5363",
+    "FJ1595.obj": "287ce88ff3321e41d83b34bb0c30f66ab273aceac9fd0a6c693af4532d0e0681",
+    "FJ2810.obj": "682f402206f15592acdeaae8ffb6b34c3e5c3267fa4685e63d2e4920ef2a80e0",
+    "FJ3157.obj": "67940f16382935851ebeb7a86c926dbf922070f390c438fdbbb56f7b7fb76057",
+    "FJ3159.obj": "5e6301d2020ba73167e71c274848ddcbec0f7936d9f26a78f2de8ffa82f095c7",
+    "FJ3162.obj": "aa58bbebf75e858d5258926b3f85ef6bc27f765464e87bfc828baf24156bf155",
+    "FJ3165.obj": "2b02ea3874d39295b15a7de2a2b2dd1367cf5a00a5ba5f87519f2a7064b2286f",
+    "FJ3168.obj": "0b8d0317800abd7c7cb66473cfa23bcecf2b2a8060a4434f32eb9f6ea93c1cc4",
+    "FJ3176.obj": "8ac9ee6d7631edc066a322af278ed508eab4d9c0919e9a77657ead17c14c8a79",
+    "FJ3244.obj": "4992101f55b96d8fe47abca6e441c902ba1e60429ee41576a1d3a9fc17e4f22a",
+    "FJ3259.obj": "d291cc3619c32c68edb9d29e0b755634c2cb85e3db89f0d0b63a316f879ef86d",
+    "FJ3262.obj": "4a07066d7c7f17dfeb61797dc31c529d0d6fd3fda8136912ebd8a92ccc1ac6fc",
+    "FJ3264.obj": "6770594a46c236c3585febbea87f2e19ce4e27e83def3f37d2a653888c7e60dc",
+    "FJ3277.obj": "c41a7de7eddf5b91543fb22cf34c7dcad50241ffe1faae6ae22e1be30ca9390a",
+    "FJ3278.obj": "5389b07855a3273ac4646092eaf667466eb3f00cf5f78ed90993e82200f550ab",
+    "FJ3279.obj": "e63a5675c6cdbe942322305920241b4a63762d7a65879572400f444fa3d42739",
+    "FJ3282.obj": "40e55d7d28f060be61815603ee5eb1c0ba4c2e93af6fed6b5db7ca88d4ed82ef",
+    "FJ3286.obj": "0e3c48a4b664ffc37ef11eb4754c6c7f4adc8fd1d3e54d1286307432c7d04bfc",
+    "FJ3309.obj": "c0262a08591e48504c8a53302525377e0c4ad1c165456475f3bb80aab6202d44",
+    "FJ3349.obj": "0f824e639b13ea02959734a0d9bd8d7ca67d0b51f531a138d769e1d3b22e0c98",
+    "FJ3353.obj": "f6c034b6b18aee623f510ee40e4171346c084e8bdd092354d634c87fc9af6acf",
+    "FJ3365.obj": "5eff0f92905dd45bd0e79b1de0144dc15988c73c683468163255ba1452d58037",
+    "FJ3368.obj": "85f5445a11ecb029b027db0b9b34933982836d442b19ff531d1ca35a3bc3a237",
+    "FJ3370.obj": "3501e34aec7f81bd12b237c9bdccf2c8185d05895637427a92b210edc8423c33",
+    "FJ3383.obj": "e96e60d6c03b0581caa5733e3ab65aca6dc3671a476d78f123dcd48ecbee0050",
+    "FJ3384.obj": "1641b04e55f9d75bdd6f1f4f07ea596e5dea0a8cb6b348bff47281b8a0bc6e5d",
+    "FJ3387.obj": "01879d7310938e82eecc02e1115332497e94085ff5cc1fa8eeee47ad1f5d3578",
+    "FJ3391.obj": "0aad73148e036c980ab24dfa675fcc1f109e5c60d82c12f3696420cf93cb4a98",
+    "FJ3393.obj": "cd04cc9f78d758ba34e92896914f647d22d257b9e7e51b97764670f694033489"
+  }
+}

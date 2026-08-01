@@ -6,6 +6,7 @@
     { "path": "packages/bodyparts3d" },
     { "path": "packages/cli" },
     { "path": "data-packs/musculoskeletal-basic" },
+    { "path": "data-packs/bodyparts3d-musculoskeletal" },
     { "path": "examples/vanilla" }
   ]
 }
