@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Somakine framework alpha example" />
+    <title>Somakine · The open body framework</title>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">SOMAKINE / ALPHA 0.1</p>
+        <h1>The open body framework.</h1>
+        <p class="intro">A host-independent anatomy model, honest visual coverage, and a small semantic viewer API.</p>
+      </header>
+
+      <section class="workspace" aria-label="Somakine interactive example">
+        <aside class="panel controls-panel">
+          <div class="field">
+            <label for="locale">Language</label>
+            <select id="locale">
+              <option value="en">English</option>
+              <option value="zh-CN">简体中文</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="region">Region view</label>
+            <select id="region"></select>
+          </div>
+
+          <fieldset>
+            <legend>Visual layer</legend>
+            <div id="layers" class="chip-row"></div>
+          </fieldset>
+
+          <div class="field grow">
+            <label for="structure">Structure</label>
+            <select id="structure" size="9"></select>
+          </div>
+
+          <button id="reset" class="reset-button" type="button">Reset body</button>
+        </aside>
+
+        <div class="viewer-column">
+          <div id="viewer" class="viewer" aria-busy="true"></div>
+          <p id="status" class="status" role="status" aria-live="polite">Loading anatomy…</p>
+        </div>
+
+        <aside class="panel detail-panel">
+          <p class="eyebrow">SEMANTIC SELECTION</p>
+          <h2 id="selection-title">Choose a structure</h2>
+          <dl>
+            <div><dt>Canonical ID</dt><dd id="selection-id">—</dd></div>
+            <div><dt>Type</dt><dd id="selection-type">—</dd></div>
+            <div><dt>Coverage</dt><dd id="selection-coverage">—</dd></div>
+            <div><dt>Context</dt><dd id="selection-context">—</dd></div>
+          </dl>
+          <div class="notice">
+            <strong>Synthetic alpha pack</strong>
+            <p>These programmatic shapes test the framework. They are not medical anatomy.</p>
+          </div>
+          <p id="attribution" class="attribution"></p>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

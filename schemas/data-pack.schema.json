@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://somakine.dev/schemas/data-pack-0.1.0.json",
+  "title": "Somakine data pack",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion", "id", "version", "title", "description", "createdAt",
+    "sources", "licenses", "regions", "structures", "relations", "assets",
+    "meshInstances", "representations", "locales"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "0.1.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "sources": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/source" } },
+    "licenses": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/license" } },
+    "regions": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/region" } },
+    "structures": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/structure" } },
+    "relations": { "type": "array", "items": { "$ref": "#/$defs/relation" } },
+    "assets": { "type": "array", "items": { "oneOf": [{ "$ref": "#/$defs/primitiveAsset" }, { "$ref": "#/$defs/gltfAsset" }] } },
+    "meshInstances": { "type": "array", "items": { "$ref": "#/$defs/meshInstance" } },
+    "representations": { "type": "array", "items": { "$ref": "#/$defs/representation" } },
+    "locales": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/locale" } }
+  },
+  "$defs": {
+    "sourceIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "type": "string", "minLength": 1 } },
+    "regionId": { "type": "string", "pattern": "^somakine:region:[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "structureId": { "type": "string", "pattern": "^somakine:structure:[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "assetId": { "type": "string", "pattern": "^somakine:asset:[a-z0-9]+(?:[-:][a-z0-9]+)*$" },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title", "version", "url", "retrievedAt"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 }, "title": { "type": "string", "minLength": 1 },
+        "version": { "type": "string", "minLength": 1 }, "url": { "type": "string", "format": "uri" },
+        "retrievedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "license": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "name", "url", "attribution", "redistribution"],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 }, "name": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri" }, "attribution": { "type": "string", "minLength": 1 },
+        "redistribution": { "enum": ["permissive", "attribution", "share-alike", "restricted"] }
+      }
+    },
+    "region": {
+      "type": "object", "additionalProperties": false, "required": ["id", "order", "sourceIds"],
+      "properties": { "id": { "$ref": "#/$defs/regionId" }, "order": { "type": "integer", "minimum": 0 }, "sourceIds": { "$ref": "#/$defs/sourceIds" } }
+    },
+    "structure": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "laterality", "regionIds", "externalIds", "sourceIds", "reviewState"],
+      "properties": {
+        "id": { "$ref": "#/$defs/structureId" }, "type": { "enum": ["bone", "joint", "ligament", "muscle", "tendon", "skin"] },
+        "laterality": { "enum": ["none", "paired", "midline", "variable"] },
+        "regionIds": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/$defs/regionId" } },
+        "externalIds": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+        "sourceIds": { "$ref": "#/$defs/sourceIds" }, "reviewState": { "$ref": "#/$defs/reviewState" }
+      }
+    },
+    "relation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "type", "sourceId", "targetId", "sourceIds", "reviewState"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^somakine:relation:[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "type": { "enum": ["part_of", "articulates_with", "attaches_to", "originates_from", "inserts_into", "crosses", "contains"] },
+        "sourceId": { "$ref": "#/$defs/structureId" }, "targetId": { "$ref": "#/$defs/structureId" },
+        "sourceIds": { "$ref": "#/$defs/sourceIds" }, "reviewState": { "$ref": "#/$defs/reviewState" }
+      }
+    },
+    "primitiveAsset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "primitive", "sourceIds", "licenseId"],
+      "properties": {
+        "id": { "$ref": "#/$defs/assetId" }, "kind": { "const": "primitive" },
+        "primitive": {
+          "type": "object", "additionalProperties": false, "required": ["shape", "dimensions", "color"],
+          "properties": {
+            "shape": { "enum": ["box", "sphere", "cylinder", "capsule"] },
+            "dimensions": { "$ref": "#/$defs/vector3Positive" }, "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" }
+          }
+        },
+        "sourceIds": { "$ref": "#/$defs/sourceIds" }, "licenseId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "gltfAsset": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "kind", "uri", "mediaType", "sha256", "bytes", "geometry", "sourceIds", "licenseId"],
+      "properties": {
+        "id": { "$ref": "#/$defs/assetId" }, "kind": { "const": "gltf" },
+        "uri": { "type": "string", "pattern": "^[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$" },
+        "mediaType": { "enum": ["model/gltf-binary", "model/gltf+json"] }, "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "bytes": { "type": "integer", "minimum": 1, "maximum": 134217728 },
+        "geometry": {
+          "type": "object", "additionalProperties": false, "required": ["vertices", "gpuBytes"],
+          "properties": { "vertices": { "type": "integer", "minimum": 1 }, "gpuBytes": { "type": "integer", "minimum": 1 } }
+        },
+        "sourceIds": { "$ref": "#/$defs/sourceIds" }, "licenseId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "meshInstance": {
+      "type": "object", "additionalProperties": false, "required": ["id", "assetId", "laterality", "selector"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^somakine:instance:[a-z0-9]+(?:-[a-z0-9]+)*$" }, "assetId": { "$ref": "#/$defs/assetId" },
+        "laterality": { "enum": ["none", "left", "right", "bilateral"] },
+        "selector": {
+          "type": "object", "additionalProperties": false, "required": ["kind"],
+          "properties": { "kind": { "enum": ["scene", "node-name"] }, "value": { "type": "string", "minLength": 1 } },
+          "allOf": [{ "if": { "properties": { "kind": { "const": "node-name" } } }, "then": { "required": ["value"] } }]
+        },
+        "transform": { "$ref": "#/$defs/transform" }
+      }
+    },
+    "representation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "structureId", "mode", "instanceIds", "contextStructureIds", "sourceIds", "reviewState"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^somakine:representation:[a-z0-9]+(?:-[a-z0-9]+)*$" }, "structureId": { "$ref": "#/$defs/structureId" },
+        "mode": { "enum": ["direct", "compound", "context", "unavailable"] },
+        "instanceIds": { "type": "array", "uniqueItems": true, "items": { "type": "string", "pattern": "^somakine:instance:" } },
+        "contextStructureIds": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/structureId" } },
+        "sourceIds": { "$ref": "#/$defs/sourceIds" }, "reviewState": { "$ref": "#/$defs/reviewState" }
+      }
+    },
+    "locale": {
+      "type": "object", "additionalProperties": false, "required": ["locale", "labels", "aliases"],
+      "properties": {
+        "locale": { "type": "string", "minLength": 2 }, "labels": { "type": "object", "additionalProperties": { "type": "string", "minLength": 1 } },
+        "aliases": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string", "minLength": 1 } } }
+      }
+    },
+    "reviewState": { "enum": ["unreviewed", "source-reviewed", "expert-reviewed"] },
+    "transform": {
+      "type": "object", "additionalProperties": false,
+      "properties": { "position": { "$ref": "#/$defs/vector3" }, "rotation": { "$ref": "#/$defs/vector3" }, "scale": { "$ref": "#/$defs/vector3Positive" } }
+    },
+    "vector3": { "type": "array", "prefixItems": [{ "type": "number" }, { "type": "number" }, { "type": "number" }], "items": false },
+    "vector3Positive": { "type": "array", "prefixItems": [{ "type": "number", "exclusiveMinimum": 0 }, { "type": "number", "exclusiveMinimum": 0 }, { "type": "number", "exclusiveMinimum": 0 }], "items": false }
+  }
+}

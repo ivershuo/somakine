@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/core" },
+    { "path": "packages/viewer" },
+    { "path": "packages/bodyparts3d" },
+    { "path": "packages/cli" },
+    { "path": "data-packs/musculoskeletal-basic" },
+    { "path": "examples/vanilla" }
+  ]
+}
