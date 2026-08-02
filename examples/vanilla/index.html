@@ -54,7 +54,7 @@
 
         <div class="viewer-column">
           <div id="viewer" class="viewer" aria-busy="true"></div>
-          <p id="viewer-help" class="viewer-help">Drag to rotate · Scroll to zoom · Right-drag to pan</p>
+          <p id="viewer-help" class="viewer-help">Drag to rotate · Right-drag to pan · Ctrl/Cmd-click to multi-select · Scroll to zoom</p>
           <p id="status" class="status" role="status" aria-live="polite">Loading anatomy…</p>
         </div>
 
@@ -112,7 +112,7 @@ viewer.setStructureStyle(structureId, { color: <span class="code-string">"#e19a5
               <div><dt><code>setLayer(type | null) · setVisible(ids)</code></dt><dd>Show one structure type or apply a host-computed visibility set.</dd></div>
               <div><dt><code>selectStructure(id) · selectStructures(ids)</code></dt><dd>Highlight one structure or an arbitrary cross-Region set; unknown IDs are ignored and visibility is preserved.</dd></div>
               <div><dt><code>focusStructure(id)</code></dt><dd>Explicitly isolate one structure and its declared context geometry.</dd></div>
-              <div><dt><code>onSelectionGroup(selections)</code></dt><dd>Receive the resolved selection records after a single or multi-structure highlight.</dd></div>
+              <div><dt><code>onSelectionGroup(selections)</code></dt><dd>Receive the resolved selection records after a single or multi-structure highlight; canvas Ctrl/Cmd-click toggles picked meshes.</dd></div>
               <div><dt><code>setStructureStyle(id, style)</code></dt><dd>Set a structure-specific colour, emissive, opacity, or surface style; pass <code>null</code> to reset.</dd></div>
               <div><dt><code>showBody() · reset()</code></dt><dd>Restore the complete framed model and initial camera.</dd></div>
               <div><dt><code>dispose()</code></dt><dd>Release controls, listeners, renderer, and loaded resources.</dd></div>

@@ -47,6 +47,9 @@ const viewer = await createSomakine(viewerHost, {
   onSelection(selection) {
     handleSelection(selection);
   },
+  onSelectionGroup(selections) {
+    if (selections.length !== 1) handleSelectionGroup(selections);
+  },
 });
 
 renderControls();
@@ -152,8 +155,12 @@ function renderControls(): void {
   }
   resetButton.textContent = locale === "zh-CN" ? "重置全身视图" : "Reset body";
   viewerHelp.textContent = interactionMode === "rotate"
-    ? (locale === "zh-CN" ? "左键拖拽旋转 · 右键拖拽平移 · 滚轮缩放" : "Drag to rotate · Right-drag to pan · Scroll to zoom")
-    : (locale === "zh-CN" ? "左键拖拽平移 · 右键拖拽旋转 · 滚轮缩放" : "Drag to pan · Right-drag to rotate · Scroll to zoom");
+    ? (locale === "zh-CN"
+      ? "左键拖拽旋转 · 右键拖拽平移 · Ctrl/Cmd 点击可多选 · 滚轮缩放"
+      : "Drag to rotate · Right-drag to pan · Ctrl/Cmd-click to multi-select · Scroll to zoom")
+    : (locale === "zh-CN"
+      ? "左键拖拽平移 · 右键拖拽旋转 · Ctrl/Cmd 点击可多选 · 滚轮缩放"
+      : "Drag to pan · Right-drag to rotate · Ctrl/Cmd-click to multi-select · Scroll to zoom");
 }
 
 function applyFilters(): void {
@@ -201,6 +208,25 @@ function handleSelection(selection: ViewerSelection): void {
   selectionContext.textContent = selection.contextStructureIds.length
     ? selection.contextStructureIds.map((id) => catalog.label(id, locale)).join(", ")
     : "—";
+}
+
+function handleSelectionGroup(selections: readonly ViewerSelection[]): void {
+  if (selections.length === 0) {
+    clearSelection();
+    return;
+  }
+  if (selections.length === 1) {
+    const [selection] = selections;
+    if (selection) handleSelection(selection);
+    return;
+  }
+  selectedStructureId = null;
+  renderControls();
+  selectionTitle.textContent = locale === "zh-CN" ? `已选择 ${selections.length} 个结构` : `${selections.length} structures selected`;
+  selectionId.textContent = selections.map((selection) => selection.structure.id).join(", ");
+  selectionType.textContent = [...new Set(selections.map((selection) => selection.structure.type))].join(", ");
+  selectionCoverage.textContent = [...new Set(selections.map((selection) => selection.coverage))].join(", ");
+  selectionContext.textContent = "—";
 }
 
 function structureMatchesRegion(id: StructureId, region: RegionId | "body"): boolean {

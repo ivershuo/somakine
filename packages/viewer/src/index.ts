@@ -24,6 +24,11 @@ export interface ViewerSelection {
 
 export type ViewerSelectionGroup = readonly ViewerSelection[];
 
+interface HighlightTarget {
+  object: THREE.Object3D;
+  structureId: StructureId;
+}
+
 export type ViewerPhase = "loading" | "ready" | "selected" | "empty" | "error" | "disposed";
 
 export type InteractionMode = "rotate" | "pan";
@@ -215,7 +220,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   let initialView: { position: THREE.Vector3; target: THREE.Vector3 } | null = null;
-  let selectedGroups: THREE.Group[] = [];
+  let selectedTargets: HighlightTarget[] = [];
   let pointerDown: { x: number; y: number } | null = null;
   let pointerDragged = false;
 
@@ -241,7 +246,10 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
     raycaster.setFromCamera(pointer, camera);
     const hit = raycaster.intersectObject(model, true).find((entry) => typeof entry.object.userData.structureId === "string");
-    if (hit) selectStructure(hit.object.userData.structureId as StructureId);
+    if (hit) {
+      const structureId = hit.object.userData.structureId as StructureId;
+      selectPickedObject(hit.object, structureId, event.ctrlKey || event.metaKey);
+    }
   };
   canvas.addEventListener("pointerdown", onPointerDown);
   canvas.addEventListener("pointermove", onPointerMove);
@@ -354,24 +362,19 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
 
   function selectStructures(ids: readonly StructureId[]): void {
     ensureActive();
-    const selections = uniqueStructureIds(ids)
-      .map((id) => {
-        const structure = catalog.structure(id);
-        const representation = catalog.representation(id);
-        if (!structure || !representation) return undefined;
-        return selectionRecord(structure, representation);
-      })
-      .filter((selection): selection is ViewerSelection => Boolean(selection));
+    const selections = selectionRecords(ids);
     clearHighlight();
-    const targetSet = new Set<THREE.Group>();
+    const targetSet = new Map<THREE.Object3D, HighlightTarget>();
     for (const selection of selections) {
       const representation = catalog.representation(selection.structure.id);
       if (!representation) continue;
-      for (const group of selectionTargets(selection.structure.id, representation)) targetSet.add(group);
+      for (const object of selectionTargets(selection.structure.id, representation)) {
+        targetSet.set(object, { object, structureId: targetStructureId(object, selection.structure.id) });
+      }
     }
-    const targets = [...targetSet];
-    for (const group of targets) setHighlighted(group, true);
-    selectedGroups = targets;
+    const targets = [...targetSet.values()];
+    for (const target of targets) setHighlightedTarget(target, true);
+    selectedTargets = targets;
     if (selections.length === 1) {
       const [selection] = selections;
       if (selection) options.onSelection?.(selection);
@@ -386,6 +389,39 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     render();
   }
 
+  function selectPickedObject(object: THREE.Object3D, id: StructureId, additive: boolean): void {
+    ensureActive();
+    const structure = catalog.structure(id);
+    const representation = catalog.representation(id);
+    if (!structure || !representation) return;
+    const target: HighlightTarget = { object, structureId: id };
+    const existingIndex = selectedTargets.findIndex((entry) => entry.object === object);
+    if (!additive) {
+      clearHighlight();
+      selectedTargets = [target];
+      setHighlightedTarget(target, true);
+    } else if (existingIndex >= 0) {
+      const [removed] = selectedTargets.splice(existingIndex, 1);
+      if (removed) setHighlightedTarget(removed, false);
+    } else {
+      selectedTargets = [...selectedTargets, target];
+      setHighlightedTarget(target, true);
+    }
+    const selections = selectionRecords(uniqueStructureIds(selectedTargets.map((entry) => entry.structureId)));
+    if (selections.length === 1) {
+      const [selection] = selections;
+      if (selection) options.onSelection?.(selection);
+    }
+    options.onSelectionGroup?.(selections);
+    const message = selections.length === 0
+      ? "No structures selected"
+      : selections.length === 1 && selections[0]
+        ? `${selections[0].label} · ${selections[0].coverage}`
+        : `${selections.length} structures selected`;
+    emitState(selectedTargets.length > 0 ? "selected" : "empty", message);
+    render();
+  }
+
   function focusStructure(id: StructureId): void {
     ensureActive();
     const structure = catalog.structure(id);
@@ -396,7 +432,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     const targetSet = new Set(targets);
     for (const group of groups.values()) group.visible = targetSet.has(group);
     for (const group of targets) { group.visible = true; setHighlighted(group, true) }
-    selectedGroups = targets;
+    selectedTargets = targets.map((object) => ({ object, structureId: targetStructureId(object, id) }));
     if (targets.length > 0) frameObjects(targets, true);
     announceSelection(structure, representation, targets);
   }
@@ -429,7 +465,8 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     if (!group) return;
     if (style === null) delete group.userData.somakineStyle;
     else group.userData.somakineStyle = normalizeStructureStyle(style);
-    setHighlighted(group, selectedGroups.includes(group));
+    setHighlighted(group, false);
+    for (const target of selectedTargets) if (target.structureId === id) setHighlightedTarget(target, true);
     render();
   }
 
@@ -487,14 +524,39 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   }
 
   function clearHighlight(): void {
-    for (const group of selectedGroups) setHighlighted(group, false);
-    selectedGroups = [];
+    for (const target of selectedTargets) setHighlightedTarget(target, false);
+    selectedTargets = [];
   }
 
-  function selectionTargets(id: StructureId, representation: import("@somakine/core").Representation): THREE.Group[] {
+  function selectionTargets(id: StructureId, representation: import("@somakine/core").Representation): THREE.Object3D[] {
     return representation.mode === "context"
       ? representation.contextStructureIds.map((contextId) => groups.get(contextId)).filter(isGroup)
       : [groups.get(id)].filter(isGroup);
+  }
+
+  function selectionRecords(ids: readonly StructureId[]): ViewerSelection[] {
+    return uniqueStructureIds(ids)
+      .map((id) => {
+        const structure = catalog.structure(id);
+        const representation = catalog.representation(id);
+        if (!structure || !representation) return undefined;
+        return selectionRecord(structure, representation);
+      })
+      .filter((selection): selection is ViewerSelection => Boolean(selection));
+  }
+
+  function targetStructureId(object: THREE.Object3D, fallback: StructureId): StructureId {
+    return typeof object.userData.structureId === "string"
+      ? object.userData.structureId as StructureId
+      : fallback;
+  }
+
+  function setHighlightedTarget(target: HighlightTarget, highlighted: boolean): void {
+    setHighlighted(target.object, highlighted, structureStyle(target.structureId));
+  }
+
+  function structureStyle(id: StructureId): StructureStyle | undefined {
+    return groups.get(id)?.userData.somakineStyle as StructureStyle | undefined;
   }
 
   function selectionRecord(structure: Structure, representation: import("@somakine/core").Representation): ViewerSelection {
@@ -513,7 +575,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   function announceSelection(
     structure: Structure,
     representation: import("@somakine/core").Representation,
-    targets: readonly THREE.Group[],
+    targets: readonly THREE.Object3D[],
   ): void {
     const selection = selectionRecord(structure, representation);
     options.onSelection?.(selection);
@@ -688,12 +750,20 @@ const BASE_STYLE_KEY = "somakineBaseStyle";
 
 interface BaseMaterialStyle {
   color: number;
-  emissive: number;
-  emissiveIntensity: number;
+  emissive?: number;
+  emissiveIntensity?: number;
   opacity: number;
   transparent: boolean;
-  roughness: number;
-  metalness: number;
+  roughness?: number;
+  metalness?: number;
+}
+
+interface HighlightMaterial extends THREE.Material {
+  color: THREE.Color;
+  emissive?: THREE.Color;
+  emissiveIntensity?: number;
+  roughness?: number;
+  metalness?: number;
 }
 
 function normalizeStructureStyle(style: StructureStyle): StructureStyle {
@@ -721,41 +791,48 @@ function normalizeStructureStyle(style: StructureStyle): StructureStyle {
   return next;
 }
 
-function setHighlighted(root: THREE.Object3D, highlighted: boolean): void {
-  const style = root.userData.somakineStyle as StructureStyle | undefined;
+function setHighlighted(root: THREE.Object3D, highlighted: boolean, style = root.userData.somakineStyle as StructureStyle | undefined): void {
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh)) return;
     const materials = Array.isArray(object.material) ? object.material : [object.material];
     for (const material of materials) {
-      if (!(material instanceof THREE.MeshStandardMaterial)) continue;
-      applyMaterialAppearance(material, style, highlighted);
+      const highlightMaterial = asHighlightMaterial(material);
+      if (highlightMaterial) applyMaterialAppearance(highlightMaterial, style, highlighted);
     }
   });
 }
 
-function applyMaterialAppearance(material: THREE.MeshStandardMaterial, style: StructureStyle | undefined, highlighted: boolean): void {
+function asHighlightMaterial(material: THREE.Material): HighlightMaterial | null {
+  const candidate = material as unknown as Partial<HighlightMaterial>;
+  return candidate.color instanceof THREE.Color ? candidate as HighlightMaterial : null;
+}
+
+function applyMaterialAppearance(material: HighlightMaterial, style: StructureStyle | undefined, highlighted: boolean): void {
   const base = material.userData[BASE_STYLE_KEY] as BaseMaterialStyle | undefined ?? captureBaseStyle(material);
   material.color.set(highlighted ? HIGHLIGHT_COLOR : style?.color ?? base.color);
-  material.emissive.set(highlighted ? HIGHLIGHT_EMISSIVE : style?.emissive ?? base.emissive);
-  material.emissiveIntensity = highlighted
-    ? HIGHLIGHT_EMISSIVE_INTENSITY
-    : style?.emissiveIntensity ?? base.emissiveIntensity;
+  const emissive = highlighted ? HIGHLIGHT_EMISSIVE : style?.emissive ?? base.emissive;
+  if (material.emissive && emissive !== undefined) material.emissive.set(emissive);
+  if (material.emissiveIntensity !== undefined) {
+    material.emissiveIntensity = highlighted
+      ? HIGHLIGHT_EMISSIVE_INTENSITY
+      : style?.emissiveIntensity ?? base.emissiveIntensity ?? material.emissiveIntensity;
+  }
   material.opacity = style?.opacity ?? base.opacity;
   material.transparent = style?.transparent ?? (style?.opacity !== undefined && style.opacity < 1 ? true : base.transparent);
-  material.roughness = style?.roughness ?? base.roughness;
-  material.metalness = style?.metalness ?? base.metalness;
+  if (material.roughness !== undefined) material.roughness = style?.roughness ?? base.roughness ?? material.roughness;
+  if (material.metalness !== undefined) material.metalness = style?.metalness ?? base.metalness ?? material.metalness;
   material.needsUpdate = true;
 }
 
-function captureBaseStyle(material: THREE.MeshStandardMaterial): BaseMaterialStyle {
+function captureBaseStyle(material: HighlightMaterial): BaseMaterialStyle {
   const base: BaseMaterialStyle = {
     color: material.color.getHex(),
-    emissive: material.emissive.getHex(),
-    emissiveIntensity: material.emissiveIntensity,
     opacity: material.opacity,
     transparent: material.transparent,
-    roughness: material.roughness,
-    metalness: material.metalness,
+    ...(material.emissive ? { emissive: material.emissive.getHex() } : {}),
+    ...(material.emissiveIntensity !== undefined ? { emissiveIntensity: material.emissiveIntensity } : {}),
+    ...(material.roughness !== undefined ? { roughness: material.roughness } : {}),
+    ...(material.metalness !== undefined ? { metalness: material.metalness } : {}),
   };
   material.userData[BASE_STYLE_KEY] = base;
   return base;

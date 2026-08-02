@@ -52,3 +52,9 @@ bounds. Packs with a non-default up/front axis can pass
 `initialViewDirection` and `initialViewUp`; hosts can expose the canvas
 guidance from the active interaction mode, for example “drag to rotate,
 right-drag to pan” or the inverse in pan mode.
+
+Canvas picking is side-aware even when a source node contains bilateral
+children: a normal click highlights only the raycast mesh, while Ctrl-click
+or Cmd-click toggles additional picked meshes. Programmatic
+`selectStructure` and `selectStructures` continue to operate on the semantic
+Structure representation, which may intentionally contain bilateral geometry.
