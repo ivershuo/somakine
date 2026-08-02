@@ -4,7 +4,7 @@ Status: alpha foundation implemented on 2026-08-01.
 
 ## Delivered
 
-- Independent Apache-2.0 TypeScript workspace with no Kinexis compatibility layer.
+- Independent MIT TypeScript workspace with no Kinexis compatibility layer.
 - Framework-neutral core schema, executable validation, localization, catalog,
   provenance, licenses, coverage semantics, and JSON Schema.
 - Three.js viewer with primitives, verified self-contained GLB loading, semantic

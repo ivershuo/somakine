@@ -7,6 +7,8 @@ unavailable states where the source has no exact target representation.
 
 BodyParts3D is © The Database Center for Life Science and licensed under
 [CC Attribution 4.0 International](https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html).
+This data pack and its derived assets remain CC BY 4.0; the Somakine framework
+code license does not relicense the anatomy data.
 The imported Chinese terminology is review-pending and is not medical advice.
 The supplemental source mapping and audit are shipped as
 `public/supplemental-manifest.json`; its generated-asset notice is in

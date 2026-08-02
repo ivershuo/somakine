@@ -17,3 +17,11 @@ claims are outside the core repository. Never commit credentials, private health
 data, unregistered assets, or files with unclear redistribution rights.
 
 Run `npm run check` before requesting review.
+
+## Licensing
+
+Original framework code and tests are distributed under the MIT License. Data,
+meshes, and source-derived mappings are not automatically MIT-licensed; every
+such contribution must identify its source, license, attribution, and any
+modifications. Contributions with unclear redistribution rights will not be
+accepted.

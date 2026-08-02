@@ -1,14 +1,19 @@
 Somakine
 Copyright 2026 Somakine contributors
 
-Framework code is licensed under the Apache License, Version 2.0.
+Framework code is licensed under the MIT License.
 
 The `@somakine/bodyparts3d-musculoskeletal` data pack includes modified geometry
 originating from BodyParts3D, © The Database Center for Life Science, licensed
 under Creative Commons Attribution 4.0 International. Its public directory
 contains the exact attribution, license URL, transformation record, upstream
 manifest, derived manifest, byte counts, and SHA-256 digests. That data pack is
-CC-BY-4.0 and is not relicensed under the framework's Apache-2.0 license.
+CC-BY-4.0 and is not relicensed under the framework's MIT license.
 
 The synthetic musculoskeletal-basic pack contains simple programmatic shapes.
-It is a software demonstration and must not be presented as medical anatomy.
+Its original code and shapes are MIT-licensed software demonstrations and must
+not be presented as medical anatomy.
+
+The MIT license does not change the license of any third-party dependency or
+data pack. Every redistributed data pack must retain its own source license,
+attribution, and modification record.

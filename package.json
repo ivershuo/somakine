@@ -2,6 +2,7 @@
   "name": "somakine",
   "version": "0.1.0-alpha.0",
   "private": true,
+  "license": "MIT",
   "description": "The open body framework.",
   "type": "module",
   "workspaces": [

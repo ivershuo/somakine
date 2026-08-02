@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.0",
   "description": "Synthetic musculoskeletal data pack for Somakine alpha development.",
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {

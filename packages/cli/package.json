@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.0",
   "description": "Somakine data-pack validation and inspection CLI.",
   "type": "module",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {

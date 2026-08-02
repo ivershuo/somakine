@@ -5,6 +5,8 @@ import { musculoskeletalBasic } from "@somakine/musculoskeletal-basic";
 
 test("synthetic pack satisfies the executable contract", () => {
   assert.deepEqual(validateDataPack(musculoskeletalBasic), { valid: true, issues: [] });
+  assert.equal(musculoskeletalBasic.licenses[0].id, "MIT");
+  assert.equal(musculoskeletalBasic.licenses[0].url, "https://opensource.org/license/mit");
   const catalog = new SomakineCatalog(musculoskeletalBasic);
   assert.deepEqual(catalog.coverage(), { direct: 5, compound: 1, context: 2, unavailable: 1 });
   assert.equal(catalog.search("ACL", "en")[0]?.id, "somakine:structure:anterior-cruciate-ligament");

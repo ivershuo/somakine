@@ -55,5 +55,6 @@ their sources, licenses, review state, and unavailable geometry.
 
 ## License
 
-Framework code is licensed under Apache-2.0. Data packs and visual assets retain
-their own licenses and attribution requirements. See [NOTICE](NOTICE).
+Framework code is licensed under MIT. Data packs and visual assets retain their
+own licenses and attribution requirements; for example, the BodyParts3D pack
+remains CC BY 4.0. See [NOTICE](NOTICE).

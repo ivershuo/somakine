@@ -1,7 +1,7 @@
 import { SOMAKINE_SCHEMA_VERSION, type DataPack } from "@somakine/core";
 
 const sourceId = "somakine-synthetic-alpha";
-const licenseId = "Apache-2.0";
+const licenseId = "MIT";
 
 export const musculoskeletalBasic: DataPack = {
   schemaVersion: SOMAKINE_SCHEMA_VERSION,
@@ -22,8 +22,8 @@ export const musculoskeletalBasic: DataPack = {
   licenses: [
     {
       id: licenseId,
-      name: "Apache License 2.0",
-      url: "https://www.apache.org/licenses/LICENSE-2.0",
+      name: "MIT License",
+      url: "https://opensource.org/license/mit",
       attribution: "Synthetic shapes © 2026 Somakine contributors",
       redistribution: "permissive"
     }
