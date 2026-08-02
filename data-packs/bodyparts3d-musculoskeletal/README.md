@@ -1,5 +1,9 @@
 # @somakine/bodyparts3d-musculoskeletal
 
+```sh
+npm install @somakine/core @somakine/viewer @somakine/bodyparts3d-musculoskeletal three
+```
+
 Real musculoskeletal geometry derived from BodyParts3D 4.0. The pack contains
 187 canonical structures across eight regions, including source-native
 joint/ligament/tendon meshes, reviewed compound coverage, and explicit
@@ -13,6 +17,12 @@ The imported Chinese terminology is review-pending and is not medical advice.
 The supplemental source mapping and audit are shipped as
 `public/supplemental-manifest.json`; its generated-asset notice is in
 `public/LICENSE.bodyparts3d-supplemental.txt`.
+
+The package exports `./pack.json` and `./assets/*`. Browser hosts must still
+serve or bundle the GLB files and provide an `assetResolver` to the Viewer;
+the Viewer intentionally does not read files directly from `node_modules`.
+Bundlers that support asset URL imports can map each `asset.uri` (for example,
+`assets/bodyparts3d/ankle-foot.glb`) to the corresponding exported asset URL.
 
 Regenerate from a previously acquired, verified source workspace:
 

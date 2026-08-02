@@ -1,5 +1,9 @@
 # @somakine/bodyparts3d
 
+```sh
+npm install @somakine/core @somakine/bodyparts3d
+```
+
 Creates strictly validated Somakine data packs whose real geometry comes from
 BodyParts3D 4.0. It injects the required source and CC BY 4.0 license records and
 refuses assets that do not carry the exact provenance.

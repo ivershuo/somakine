@@ -15,7 +15,7 @@ export const musculoskeletalBasic: DataPack = {
       id: sourceId,
       title: "Somakine synthetic alpha fixture",
       version: "0.1.0",
-      url: "https://github.com/somakine-project/somakine",
+      url: "https://github.com/ivershuo/somakine",
       retrievedAt: "2026-08-01T00:00:00Z"
     }
   ],

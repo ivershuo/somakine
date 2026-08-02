@@ -1,5 +1,11 @@
 # @somakine/viewer
 
+```sh
+npm install @somakine/core @somakine/viewer three
+```
+
+`three` is a peer dependency and must be installed by the host application.
+
 ```ts
 const viewer = await createSomakine(container, {
   dataset,

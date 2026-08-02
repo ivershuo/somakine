@@ -29,6 +29,55 @@ npm run dev
 
 Then open the local URL printed by Vite.
 
+## Developer example
+
+Install the published viewer, a small starter data pack, and its Three.js peer
+dependency:
+
+```sh
+npm install @somakine/viewer @somakine/musculoskeletal-basic three
+```
+
+Give the viewer a container with an explicit height, then initialize it from
+your browser entry point:
+
+```html
+<div id="somakine-viewer" style="height: 32rem"></div>
+```
+
+```ts
+import { createSomakine } from "@somakine/viewer";
+import { musculoskeletalBasic } from "@somakine/musculoskeletal-basic";
+
+const container = document.querySelector<HTMLElement>("#somakine-viewer");
+if (!container) throw new Error("Missing #somakine-viewer");
+
+const viewer = await createSomakine(container, {
+  dataset: musculoskeletalBasic,
+  accessibleLabel: "Somakine anatomy model",
+  onSelection(selection) {
+    console.log("selected", selection.label, selection.structure.id);
+  },
+});
+
+viewer.setLayer("bone");
+viewer.setStructureStyle("somakine:structure:femur", {
+  color: "#bf7a5a",
+  emissive: "#3a1610",
+  emissiveIntensity: 0.25,
+});
+viewer.selectStructures([
+  "somakine:structure:femur",
+  "somakine:structure:humerus",
+]);
+```
+
+The starter pack uses generated primitives, so this example needs no asset
+loader. For the real BodyParts3D geometry, install
+`@somakine/bodyparts3d-musculoskeletal`, replace `dataset` with
+`bodyParts3DMusculoskeletal`, and configure your bundler's asset URLs through
+the viewer's `assetResolver`; the data-pack README documents that setup.
+
 ## Packages
 
 - `@somakine/core` — schema, validation, catalog, and public types.

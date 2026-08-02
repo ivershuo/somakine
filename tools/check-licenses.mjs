@@ -13,6 +13,11 @@ for await (const file of glob("{packages,data-packs}/*/package.json")) {
   const manifest = JSON.parse(await readFile(file, "utf8"));
   const expected = manifest.name === "@somakine/bodyparts3d-musculoskeletal" ? "CC-BY-4.0" : "MIT";
   if (manifest.license !== expected) failures.push(`${file}: expected ${expected}`);
+  try {
+    await access(file.replace(/package\.json$/, "LICENSE"));
+  } catch {
+    failures.push(`${file}: missing package LICENSE file`);
+  }
 }
 const exampleManifest = JSON.parse(await readFile("examples/vanilla/package.json", "utf8"));
 if (exampleManifest.license !== "MIT") failures.push("examples/vanilla/package.json: expected MIT");

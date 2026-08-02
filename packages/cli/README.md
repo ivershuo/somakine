@@ -1,6 +1,13 @@
 # @somakine/cli
 
 ```sh
+npm install @somakine/cli
+```
+
+The package exposes the `soma` binary; use `npx soma ...` from a project or
+install it globally when a system-wide command is preferred.
+
+```sh
 soma validate pack.json
 soma inspect pack.json
 soma coverage pack.json

@@ -19,7 +19,7 @@ export const demoExtension = {
     id: sourceId,
     title: "Somakine extension fixture",
     version: "0.1.0",
-    url: "https://github.com/somakine-project/somakine",
+    url: "https://github.com/ivershuo/somakine",
     retrievedAt: "2026-08-02T00:00:00.000Z",
   }],
   licenses: [{

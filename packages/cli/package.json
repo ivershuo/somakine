@@ -2,12 +2,18 @@
   "name": "@somakine/cli",
   "version": "0.1.0-alpha.0",
   "description": "Somakine data-pack validation and inspection CLI.",
+  "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "packages/cli" },
+  "homepage": "https://github.com/ivershuo/somakine#readme",
+  "bugs": { "url": "https://github.com/ivershuo/somakine/issues" },
+  "author": "Somakine contributors",
+  "keywords": ["anatomy", "data-pack", "cli", "validation", "glb", "somakine"],
   "type": "module",
   "license": "MIT",
+  "publishConfig": { "access": "public" },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "soma": "./dist/bin.js"
+    "soma": "dist/bin.js"
   },
   "exports": {
     ".": {
