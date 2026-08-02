@@ -15,9 +15,12 @@ Status: alpha foundation implemented on 2026-08-01.
 ## Real anatomy pack — delivered 2026-08-01
 
 The verified BodyParts3D 4.0 snapshot and twelve existing self-contained GLBs
-were imported without another network download. The generated pack contains 150
-canonical structures: 121 direct, four compound and 25 contextual. License and
-source provenance are included. Qualified terminology/anatomical review and
+were imported without another network download. The generated pack now contains
+187 canonical structures: 158 direct, four compound and 25 unavailable. The
+direct set includes 24 source-native intervertebral/symphysis structures and 13
+locomotor ligament/tendon structures generated from the verified OBJ archives;
+the 25 unavailable entries have no exact source target representation. License
+and source provenance are included. Qualified terminology/anatomical review and
 golden browser screenshots remain release work.
 
 ## Release exit criteria

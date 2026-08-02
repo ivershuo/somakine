@@ -6,7 +6,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
   "id": "somakine-bodyparts3d-musculoskeletal",
   "version": "4.0.0-somakine.0",
   "title": "Somakine BodyParts3D musculoskeletal pack",
-  "description": "Real BodyParts3D 4.0 geometry with honest direct, compound, and contextual coverage; terminology review pending.",
+  "description": "Real BodyParts3D 4.0 geometry with source-native connective coverage and explicit unavailable states where no target representation exists.",
   "createdAt": "2026-08-01T00:00:00Z",
   "sources": [
     {
@@ -2415,6 +2415,635 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "bodyparts3d-4"
       ],
       "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:articular-disk-of-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA67396",
+        "bodyParts3D": "BP7813",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA25511",
+        "bodyParts3D": "BP9766",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:intervertebral-symphysis-of-axis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA25571",
+        "bodyParts3D": "BP10172",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:third-cervical-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26078",
+        "bodyParts3D": "BP10194",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:fourth-cervical-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26083",
+        "bodyParts3D": "BP9924",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:fifth-cervical-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26084",
+        "bodyParts3D": "BP9492",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:sixth-cervical-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26085",
+        "bodyParts3D": "BP10188",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:seventh-cervical-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26086",
+        "bodyParts3D": "BP9683",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:first-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26089",
+        "bodyParts3D": "BP10176",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:second-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26094",
+        "bodyParts3D": "BP9816",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:third-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26095",
+        "bodyParts3D": "BP10095",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:fourth-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26096",
+        "bodyParts3D": "BP10224",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:fifth-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26097",
+        "bodyParts3D": "BP9871",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:sixth-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26098",
+        "bodyParts3D": "BP9890",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:seventh-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26099",
+        "bodyParts3D": "BP9770",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:eighth-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26100",
+        "bodyParts3D": "BP9995",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:ninth-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26101",
+        "bodyParts3D": "BP9917",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:tenth-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26102",
+        "bodyParts3D": "BP10129",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:eleventh-thoracic-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26103",
+        "bodyParts3D": "BP9338",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:first-lumbar-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26105",
+        "bodyParts3D": "BP10039",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:second-lumbar-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26106",
+        "bodyParts3D": "BP9908",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:third-lumbar-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26107",
+        "bodyParts3D": "BP9568",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:fourth-lumbar-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26108",
+        "bodyParts3D": "BP9689",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:fifth-lumbar-intervertebral-symphysis",
+      "type": "joint",
+      "laterality": "midline",
+      "regionIds": [
+        "somakine:region:spine-trunk"
+      ],
+      "externalIds": {
+        "fma": "FMA26109",
+        "bodyParts3D": "BP9969",
+        "bodyParts3DTree": "partof"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:tarsal-ligament",
+      "type": "ligament",
+      "laterality": "paired",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA44197",
+        "bodyParts3D": "BP9276",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:plantar-tarsal-ligament",
+      "type": "ligament",
+      "laterality": "paired",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA44245",
+        "bodyParts3D": "BP9275",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:long-plantar-ligament",
+      "type": "ligament",
+      "laterality": "paired",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA44248",
+        "bodyParts3D": "BP9274",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:right-long-plantar-ligament",
+      "type": "ligament",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA44249",
+        "bodyParts3D": "BP5093",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:left-long-plantar-ligament",
+      "type": "ligament",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA44250",
+        "bodyParts3D": "BP9273",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:calcaneal-tendon",
+      "type": "tendon",
+      "laterality": "paired",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA51061",
+        "bodyParts3D": "BP8740",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:right-calcaneal-tendon",
+      "type": "tendon",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA258847",
+        "bodyParts3D": "BP5098",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:left-calcaneal-tendon",
+      "type": "tendon",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:ankle-foot"
+      ],
+      "externalIds": {
+        "fma": "FMA264844",
+        "bodyParts3D": "BP8739",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:stylohyoid-ligament",
+      "type": "ligament",
+      "laterality": "paired",
+      "regionIds": [
+        "somakine:region:head-neck"
+      ],
+      "externalIds": {
+        "fma": "FMA72308",
+        "bodyParts3D": "BP8290",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:right-stylohyoid-ligament",
+      "type": "ligament",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:head-neck"
+      ],
+      "externalIds": {
+        "fma": "FMA72309",
+        "bodyParts3D": "BP8422",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:left-stylohyoid-ligament",
+      "type": "ligament",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:head-neck"
+      ],
+      "externalIds": {
+        "fma": "FMA72311",
+        "bodyParts3D": "BP8289",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:intermediate-tendon",
+      "type": "tendon",
+      "laterality": "variable",
+      "regionIds": [
+        "somakine:region:head-neck"
+      ],
+      "externalIds": {
+        "fma": "FMA65410",
+        "bodyParts3D": "BP6513",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:structure:right-intermediate-tendon",
+      "type": "tendon",
+      "laterality": "none",
+      "regionIds": [
+        "somakine:region:head-neck"
+      ],
+      "externalIds": {
+        "fma": "FMA258850",
+        "bodyParts3D": "BP6514",
+        "bodyParts3DTree": "isa"
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
     }
   ],
   "relations": [],
@@ -2605,6 +3234,54 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "geometry": {
         "vertices": 13087,
         "gpuBytes": 441600
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "licenseId": "CC-BY-4.0"
+    },
+    {
+      "id": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "kind": "gltf",
+      "uri": "assets/bodyparts3d/supplement-ankle-foot-connective.glb",
+      "mediaType": "model/gltf-binary",
+      "sha256": "54c44640432f7d0fe636c3923190877718368c648b061c993fb455a294ec9464",
+      "bytes": 1060368,
+      "geometry": {
+        "vertices": 34228,
+        "gpuBytes": 1045296
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "licenseId": "CC-BY-4.0"
+    },
+    {
+      "id": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "kind": "gltf",
+      "uri": "assets/bodyparts3d/supplement-head-neck-connective.glb",
+      "mediaType": "model/gltf-binary",
+      "sha256": "6bd3cb9caa6d08df0ee2eb55453c9d307b77bb4a809b5055cf230bf79cce6378",
+      "bytes": 509492,
+      "geometry": {
+        "vertices": 14900,
+        "gpuBytes": 501408
+      },
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "licenseId": "CC-BY-4.0"
+    },
+    {
+      "id": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "kind": "gltf",
+      "uri": "assets/bodyparts3d/supplement-spine-trunk-connective.glb",
+      "mediaType": "model/gltf-binary",
+      "sha256": "990283440bcbbcef0768fa8b331bb8c36265b46379a8fbe72ac14078ea08cf40",
+      "bytes": 3125624,
+      "geometry": {
+        "vertices": 100780,
+        "gpuBytes": 3068328
       },
       "sourceIds": [
         "bodyparts3d-4"
@@ -3917,18 +4594,591 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "kind": "node-name",
         "value": "head-neck:zygomatic-bone"
       }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3202",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3202"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3203",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3203"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3204",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3204"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3205",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3205"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3206",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3206"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3207",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3207"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3208",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3208"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3209",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3209"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3210",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3210"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3211",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3211"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3212",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3212"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3213",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3213"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3214",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3214"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3215",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3215"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3216",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3216"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3217",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3217"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3218",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3218"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3219",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3219"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3220",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3220"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3221",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3221"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3222",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3222"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3223",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3223"
+      }
+    },
+    {
+      "id": "somakine:instance:articular-disk-of-symphysis-fj3224",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:articular-disk-of-symphysis:isa:FJ3224"
+      }
+    },
+    {
+      "id": "somakine:instance:intervertebral-symphysis-fj3211",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:intervertebral-symphysis:partof:FJ3211"
+      }
+    },
+    {
+      "id": "somakine:instance:intervertebral-symphysis-of-axis-fj3202",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:intervertebral-symphysis-of-axis:partof:FJ3202"
+      }
+    },
+    {
+      "id": "somakine:instance:third-cervical-intervertebral-symphysis-fj3213",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:third-cervical-intervertebral-symphysis:partof:FJ3213"
+      }
+    },
+    {
+      "id": "somakine:instance:fourth-cervical-intervertebral-symphysis-fj3218",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:fourth-cervical-intervertebral-symphysis:partof:FJ3218"
+      }
+    },
+    {
+      "id": "somakine:instance:fifth-cervical-intervertebral-symphysis-fj3219",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:fifth-cervical-intervertebral-symphysis:partof:FJ3219"
+      }
+    },
+    {
+      "id": "somakine:instance:sixth-cervical-intervertebral-symphysis-fj3220",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:sixth-cervical-intervertebral-symphysis:partof:FJ3220"
+      }
+    },
+    {
+      "id": "somakine:instance:seventh-cervical-intervertebral-symphysis-fj3221",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:seventh-cervical-intervertebral-symphysis:partof:FJ3221"
+      }
+    },
+    {
+      "id": "somakine:instance:first-thoracic-intervertebral-symphysis-fj3222",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:first-thoracic-intervertebral-symphysis:partof:FJ3222"
+      }
+    },
+    {
+      "id": "somakine:instance:second-thoracic-intervertebral-symphysis-fj3223",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:second-thoracic-intervertebral-symphysis:partof:FJ3223"
+      }
+    },
+    {
+      "id": "somakine:instance:third-thoracic-intervertebral-symphysis-fj3224",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:third-thoracic-intervertebral-symphysis:partof:FJ3224"
+      }
+    },
+    {
+      "id": "somakine:instance:fourth-thoracic-intervertebral-symphysis-fj3203",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:fourth-thoracic-intervertebral-symphysis:partof:FJ3203"
+      }
+    },
+    {
+      "id": "somakine:instance:fifth-thoracic-intervertebral-symphysis-fj3204",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:fifth-thoracic-intervertebral-symphysis:partof:FJ3204"
+      }
+    },
+    {
+      "id": "somakine:instance:sixth-thoracic-intervertebral-symphysis-fj3205",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:sixth-thoracic-intervertebral-symphysis:partof:FJ3205"
+      }
+    },
+    {
+      "id": "somakine:instance:seventh-thoracic-intervertebral-symphysis-fj3206",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:seventh-thoracic-intervertebral-symphysis:partof:FJ3206"
+      }
+    },
+    {
+      "id": "somakine:instance:eighth-thoracic-intervertebral-symphysis-fj3207",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:eighth-thoracic-intervertebral-symphysis:partof:FJ3207"
+      }
+    },
+    {
+      "id": "somakine:instance:ninth-thoracic-intervertebral-symphysis-fj3208",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:ninth-thoracic-intervertebral-symphysis:partof:FJ3208"
+      }
+    },
+    {
+      "id": "somakine:instance:tenth-thoracic-intervertebral-symphysis-fj3209",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:tenth-thoracic-intervertebral-symphysis:partof:FJ3209"
+      }
+    },
+    {
+      "id": "somakine:instance:eleventh-thoracic-intervertebral-symphysis-fj3210",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:eleventh-thoracic-intervertebral-symphysis:partof:FJ3210"
+      }
+    },
+    {
+      "id": "somakine:instance:first-lumbar-intervertebral-symphysis-fj3212",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:first-lumbar-intervertebral-symphysis:partof:FJ3212"
+      }
+    },
+    {
+      "id": "somakine:instance:second-lumbar-intervertebral-symphysis-fj3214",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:second-lumbar-intervertebral-symphysis:partof:FJ3214"
+      }
+    },
+    {
+      "id": "somakine:instance:third-lumbar-intervertebral-symphysis-fj3215",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:third-lumbar-intervertebral-symphysis:partof:FJ3215"
+      }
+    },
+    {
+      "id": "somakine:instance:fourth-lumbar-intervertebral-symphysis-fj3216",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:fourth-lumbar-intervertebral-symphysis:partof:FJ3216"
+      }
+    },
+    {
+      "id": "somakine:instance:fifth-lumbar-intervertebral-symphysis-fj3217",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-spine-trunk-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:fifth-lumbar-intervertebral-symphysis:partof:FJ3217"
+      }
+    },
+    {
+      "id": "somakine:instance:tarsal-ligament-fj1424",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:tarsal-ligament:isa:FJ1424"
+      }
+    },
+    {
+      "id": "somakine:instance:tarsal-ligament-fj1424m",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:tarsal-ligament:isa:FJ1424M"
+      }
+    },
+    {
+      "id": "somakine:instance:plantar-tarsal-ligament-fj1424",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:plantar-tarsal-ligament:isa:FJ1424"
+      }
+    },
+    {
+      "id": "somakine:instance:plantar-tarsal-ligament-fj1424m",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:plantar-tarsal-ligament:isa:FJ1424M"
+      }
+    },
+    {
+      "id": "somakine:instance:long-plantar-ligament-fj1424",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:long-plantar-ligament:isa:FJ1424"
+      }
+    },
+    {
+      "id": "somakine:instance:long-plantar-ligament-fj1424m",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:long-plantar-ligament:isa:FJ1424M"
+      }
+    },
+    {
+      "id": "somakine:instance:right-long-plantar-ligament-fj1424",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:right-long-plantar-ligament:isa:FJ1424"
+      }
+    },
+    {
+      "id": "somakine:instance:left-long-plantar-ligament-fj1424m",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:left-long-plantar-ligament:isa:FJ1424M"
+      }
+    },
+    {
+      "id": "somakine:instance:calcaneal-tendon-fj1405",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:calcaneal-tendon:isa:FJ1405"
+      }
+    },
+    {
+      "id": "somakine:instance:calcaneal-tendon-fj1405m",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:calcaneal-tendon:isa:FJ1405M"
+      }
+    },
+    {
+      "id": "somakine:instance:right-calcaneal-tendon-fj1405",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:right-calcaneal-tendon:isa:FJ1405"
+      }
+    },
+    {
+      "id": "somakine:instance:left-calcaneal-tendon-fj1405m",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:left-calcaneal-tendon:isa:FJ1405M"
+      }
+    },
+    {
+      "id": "somakine:instance:stylohyoid-ligament-fj2763",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:stylohyoid-ligament:isa:FJ2763"
+      }
+    },
+    {
+      "id": "somakine:instance:stylohyoid-ligament-fj2764",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:stylohyoid-ligament:isa:FJ2764"
+      }
+    },
+    {
+      "id": "somakine:instance:right-stylohyoid-ligament-fj2764",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:right-stylohyoid-ligament:isa:FJ2764"
+      }
+    },
+    {
+      "id": "somakine:instance:left-stylohyoid-ligament-fj2763",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:left-stylohyoid-ligament:isa:FJ2763"
+      }
+    },
+    {
+      "id": "somakine:instance:intermediate-tendon-fj1581",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "laterality": "none",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:intermediate-tendon:isa:FJ1581"
+      }
+    },
+    {
+      "id": "somakine:instance:right-intermediate-tendon-fj1581",
+      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "supplemental:right-intermediate-tendon:isa:FJ1581"
+      }
     }
   ],
   "representations": [
     {
       "id": "somakine:representation:anterior-cruciate-ligament",
       "structureId": "somakine:structure:anterior-cruciate-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:femur",
-        "somakine:structure:tibia"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -3937,12 +5187,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:anterior-longitudinal-ligament",
       "structureId": "somakine:structure:anterior-longitudinal-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:lumbar-vertebra",
-        "somakine:structure:sacrum"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -3951,12 +5198,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:atlanto-occipital-joint",
       "structureId": "somakine:structure:atlanto-occipital-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:occiput",
-        "somakine:structure:atlas"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4046,12 +5290,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:coracohumeral-ligament",
       "structureId": "somakine:structure:coracohumeral-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:scapula",
-        "somakine:structure:humerus"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4091,11 +5332,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:distal-biceps-tendon",
       "structureId": "somakine:structure:distal-biceps-tendon",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:biceps-brachii"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4286,12 +5525,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:erector-spinae-tendon",
       "structureId": "somakine:structure:erector-spinae-tendon",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:lumbar-vertebra",
-        "somakine:structure:sacrum"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4500,11 +5736,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:flexor-tendons",
       "structureId": "somakine:structure:flexor-tendons",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:finger-flexors"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4604,12 +5838,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:glenohumeral-joint",
       "structureId": "somakine:structure:glenohumeral-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:scapula",
-        "somakine:structure:humerus"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4618,11 +5849,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:gluteal-tendon",
       "structureId": "somakine:structure:gluteal-tendon",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:gluteus-medius"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4670,12 +5899,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:hip-joint",
       "structureId": "somakine:structure:hip-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:pelvis",
-        "somakine:structure:femur"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4684,12 +5910,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:humeroulnar-joint",
       "structureId": "somakine:structure:humeroulnar-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:humerus",
-        "somakine:structure:ulna"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4724,12 +5947,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:iliofemoral-ligament",
       "structureId": "somakine:structure:iliofemoral-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:pelvis",
-        "somakine:structure:femur"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4790,12 +6010,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:lisfranc-joint-complex",
       "structureId": "somakine:structure:lisfranc-joint-complex",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:intermediate-cuneiform",
-        "somakine:structure:second-metatarsal"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4804,12 +6021,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:lisfranc-ligament",
       "structureId": "somakine:structure:lisfranc-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:intermediate-cuneiform",
-        "somakine:structure:second-metatarsal"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -4818,12 +6032,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:lumbar-facet-joint",
       "structureId": "somakine:structure:lumbar-facet-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:lumbar-vertebra",
-        "somakine:structure:sacrum"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5001,12 +6212,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:multifidus",
       "structureId": "somakine:structure:multifidus",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:lumbar-vertebra",
-        "somakine:structure:sacrum"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5067,12 +6275,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:nuchal-ligament",
       "structureId": "somakine:structure:nuchal-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:occiput",
-        "somakine:structure:atlas"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5133,12 +6338,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:patellar-tendon",
       "structureId": "somakine:structure:patellar-tendon",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:quadriceps",
-        "somakine:structure:tibia"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5323,12 +6525,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:radiocarpal-joint",
       "structureId": "somakine:structure:radiocarpal-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:radius",
-        "somakine:structure:scaphoid"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5350,12 +6549,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:rotator-cuff-tendons",
       "structureId": "somakine:structure:rotator-cuff-tendons",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:scapula",
-        "somakine:structure:humerus"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5390,12 +6586,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:scapholunate-ligament",
       "structureId": "somakine:structure:scapholunate-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:scaphoid",
-        "somakine:structure:radius"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5599,11 +6792,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:sternocleidomastoid-tendon",
       "structureId": "somakine:structure:sternocleidomastoid-tendon",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:sternocleidomastoid"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5768,11 +6959,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:tibialis-posterior-tendon",
       "structureId": "somakine:structure:tibialis-posterior-tendon",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:tibialis-posterior"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5781,12 +6970,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:tibiofemoral-joint",
       "structureId": "somakine:structure:tibiofemoral-joint",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:femur",
-        "somakine:structure:tibia"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5873,12 +7059,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:representation:ulnar-collateral-ligament",
       "structureId": "somakine:structure:ulnar-collateral-ligament",
-      "mode": "context",
+      "mode": "unavailable",
       "instanceIds": [],
-      "contextStructureIds": [
-        "somakine:structure:humerus",
-        "somakine:structure:ulna"
-      ],
+      "contextStructureIds": [],
       "sourceIds": [
         "bodyparts3d-4"
       ],
@@ -5903,6 +7086,514 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "mode": "direct",
       "instanceIds": [
         "somakine:instance:zygomatic-bone"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:articular-disk-of-symphysis",
+      "structureId": "somakine:structure:articular-disk-of-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:articular-disk-of-symphysis-fj3202",
+        "somakine:instance:articular-disk-of-symphysis-fj3203",
+        "somakine:instance:articular-disk-of-symphysis-fj3204",
+        "somakine:instance:articular-disk-of-symphysis-fj3205",
+        "somakine:instance:articular-disk-of-symphysis-fj3206",
+        "somakine:instance:articular-disk-of-symphysis-fj3207",
+        "somakine:instance:articular-disk-of-symphysis-fj3208",
+        "somakine:instance:articular-disk-of-symphysis-fj3209",
+        "somakine:instance:articular-disk-of-symphysis-fj3210",
+        "somakine:instance:articular-disk-of-symphysis-fj3211",
+        "somakine:instance:articular-disk-of-symphysis-fj3212",
+        "somakine:instance:articular-disk-of-symphysis-fj3213",
+        "somakine:instance:articular-disk-of-symphysis-fj3214",
+        "somakine:instance:articular-disk-of-symphysis-fj3215",
+        "somakine:instance:articular-disk-of-symphysis-fj3216",
+        "somakine:instance:articular-disk-of-symphysis-fj3217",
+        "somakine:instance:articular-disk-of-symphysis-fj3218",
+        "somakine:instance:articular-disk-of-symphysis-fj3219",
+        "somakine:instance:articular-disk-of-symphysis-fj3220",
+        "somakine:instance:articular-disk-of-symphysis-fj3221",
+        "somakine:instance:articular-disk-of-symphysis-fj3222",
+        "somakine:instance:articular-disk-of-symphysis-fj3223",
+        "somakine:instance:articular-disk-of-symphysis-fj3224"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:intervertebral-symphysis",
+      "structureId": "somakine:structure:intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:intervertebral-symphysis-fj3211"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:intervertebral-symphysis-of-axis",
+      "structureId": "somakine:structure:intervertebral-symphysis-of-axis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:intervertebral-symphysis-of-axis-fj3202"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:third-cervical-intervertebral-symphysis",
+      "structureId": "somakine:structure:third-cervical-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:third-cervical-intervertebral-symphysis-fj3213"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:fourth-cervical-intervertebral-symphysis",
+      "structureId": "somakine:structure:fourth-cervical-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:fourth-cervical-intervertebral-symphysis-fj3218"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:fifth-cervical-intervertebral-symphysis",
+      "structureId": "somakine:structure:fifth-cervical-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:fifth-cervical-intervertebral-symphysis-fj3219"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:sixth-cervical-intervertebral-symphysis",
+      "structureId": "somakine:structure:sixth-cervical-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:sixth-cervical-intervertebral-symphysis-fj3220"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:seventh-cervical-intervertebral-symphysis",
+      "structureId": "somakine:structure:seventh-cervical-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:seventh-cervical-intervertebral-symphysis-fj3221"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:first-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:first-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:first-thoracic-intervertebral-symphysis-fj3222"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:second-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:second-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:second-thoracic-intervertebral-symphysis-fj3223"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:third-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:third-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:third-thoracic-intervertebral-symphysis-fj3224"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:fourth-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:fourth-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:fourth-thoracic-intervertebral-symphysis-fj3203"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:fifth-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:fifth-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:fifth-thoracic-intervertebral-symphysis-fj3204"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:sixth-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:sixth-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:sixth-thoracic-intervertebral-symphysis-fj3205"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:seventh-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:seventh-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:seventh-thoracic-intervertebral-symphysis-fj3206"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:eighth-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:eighth-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:eighth-thoracic-intervertebral-symphysis-fj3207"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:ninth-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:ninth-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:ninth-thoracic-intervertebral-symphysis-fj3208"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:tenth-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:tenth-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:tenth-thoracic-intervertebral-symphysis-fj3209"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:eleventh-thoracic-intervertebral-symphysis",
+      "structureId": "somakine:structure:eleventh-thoracic-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:eleventh-thoracic-intervertebral-symphysis-fj3210"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:first-lumbar-intervertebral-symphysis",
+      "structureId": "somakine:structure:first-lumbar-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:first-lumbar-intervertebral-symphysis-fj3212"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:second-lumbar-intervertebral-symphysis",
+      "structureId": "somakine:structure:second-lumbar-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:second-lumbar-intervertebral-symphysis-fj3214"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:third-lumbar-intervertebral-symphysis",
+      "structureId": "somakine:structure:third-lumbar-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:third-lumbar-intervertebral-symphysis-fj3215"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:fourth-lumbar-intervertebral-symphysis",
+      "structureId": "somakine:structure:fourth-lumbar-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:fourth-lumbar-intervertebral-symphysis-fj3216"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:fifth-lumbar-intervertebral-symphysis",
+      "structureId": "somakine:structure:fifth-lumbar-intervertebral-symphysis",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:fifth-lumbar-intervertebral-symphysis-fj3217"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:tarsal-ligament",
+      "structureId": "somakine:structure:tarsal-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:tarsal-ligament-fj1424",
+        "somakine:instance:tarsal-ligament-fj1424m"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:plantar-tarsal-ligament",
+      "structureId": "somakine:structure:plantar-tarsal-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:plantar-tarsal-ligament-fj1424",
+        "somakine:instance:plantar-tarsal-ligament-fj1424m"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:long-plantar-ligament",
+      "structureId": "somakine:structure:long-plantar-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:long-plantar-ligament-fj1424",
+        "somakine:instance:long-plantar-ligament-fj1424m"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:right-long-plantar-ligament",
+      "structureId": "somakine:structure:right-long-plantar-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:right-long-plantar-ligament-fj1424"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:left-long-plantar-ligament",
+      "structureId": "somakine:structure:left-long-plantar-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:left-long-plantar-ligament-fj1424m"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:calcaneal-tendon",
+      "structureId": "somakine:structure:calcaneal-tendon",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:calcaneal-tendon-fj1405",
+        "somakine:instance:calcaneal-tendon-fj1405m"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:right-calcaneal-tendon",
+      "structureId": "somakine:structure:right-calcaneal-tendon",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:right-calcaneal-tendon-fj1405"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:left-calcaneal-tendon",
+      "structureId": "somakine:structure:left-calcaneal-tendon",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:left-calcaneal-tendon-fj1405m"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:stylohyoid-ligament",
+      "structureId": "somakine:structure:stylohyoid-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:stylohyoid-ligament-fj2763",
+        "somakine:instance:stylohyoid-ligament-fj2764"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:right-stylohyoid-ligament",
+      "structureId": "somakine:structure:right-stylohyoid-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:right-stylohyoid-ligament-fj2764"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:left-stylohyoid-ligament",
+      "structureId": "somakine:structure:left-stylohyoid-ligament",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:left-stylohyoid-ligament-fj2763"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:intermediate-tendon",
+      "structureId": "somakine:structure:intermediate-tendon",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:intermediate-tendon-fj1581"
+      ],
+      "contextStructureIds": [],
+      "sourceIds": [
+        "bodyparts3d-4"
+      ],
+      "reviewState": "source-reviewed"
+    },
+    {
+      "id": "somakine:representation:right-intermediate-tendon",
+      "structureId": "somakine:structure:right-intermediate-tendon",
+      "mode": "direct",
+      "instanceIds": [
+        "somakine:instance:right-intermediate-tendon-fj1581"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6072,7 +7763,44 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "somakine:structure:twelfth-rib": "Twelfth Rib",
         "somakine:structure:twelfth-thoracic-vertebra": "Twelfth Thoracic Vertebra",
         "somakine:structure:vomer": "Vomer",
-        "somakine:structure:zygomatic-bone": "Zygomatic Bone"
+        "somakine:structure:zygomatic-bone": "Zygomatic Bone",
+        "somakine:structure:articular-disk-of-symphysis": "Articular disk of symphysis",
+        "somakine:structure:intervertebral-symphysis": "Intervertebral symphysis",
+        "somakine:structure:intervertebral-symphysis-of-axis": "Intervertebral symphysis of axis",
+        "somakine:structure:third-cervical-intervertebral-symphysis": "Third cervical intervertebral symphysis",
+        "somakine:structure:fourth-cervical-intervertebral-symphysis": "Fourth cervical intervertebral symphysis",
+        "somakine:structure:fifth-cervical-intervertebral-symphysis": "Fifth cervical intervertebral symphysis",
+        "somakine:structure:sixth-cervical-intervertebral-symphysis": "Sixth cervical intervertebral symphysis",
+        "somakine:structure:seventh-cervical-intervertebral-symphysis": "Seventh cervical intervertebral symphysis",
+        "somakine:structure:first-thoracic-intervertebral-symphysis": "First thoracic intervertebral symphysis",
+        "somakine:structure:second-thoracic-intervertebral-symphysis": "Second thoracic intervertebral symphysis",
+        "somakine:structure:third-thoracic-intervertebral-symphysis": "Third thoracic intervertebral symphysis",
+        "somakine:structure:fourth-thoracic-intervertebral-symphysis": "Fourth thoracic intervertebral symphysis",
+        "somakine:structure:fifth-thoracic-intervertebral-symphysis": "Fifth thoracic intervertebral symphysis",
+        "somakine:structure:sixth-thoracic-intervertebral-symphysis": "Sixth thoracic intervertebral symphysis",
+        "somakine:structure:seventh-thoracic-intervertebral-symphysis": "Seventh thoracic intervertebral symphysis",
+        "somakine:structure:eighth-thoracic-intervertebral-symphysis": "Eighth thoracic intervertebral symphysis",
+        "somakine:structure:ninth-thoracic-intervertebral-symphysis": "Ninth thoracic intervertebral symphysis",
+        "somakine:structure:tenth-thoracic-intervertebral-symphysis": "Tenth thoracic intervertebral symphysis",
+        "somakine:structure:eleventh-thoracic-intervertebral-symphysis": "Eleventh thoracic intervertebral symphysis",
+        "somakine:structure:first-lumbar-intervertebral-symphysis": "First lumbar intervertebral symphysis",
+        "somakine:structure:second-lumbar-intervertebral-symphysis": "Second lumbar intervertebral symphysis",
+        "somakine:structure:third-lumbar-intervertebral-symphysis": "Third lumbar intervertebral symphysis",
+        "somakine:structure:fourth-lumbar-intervertebral-symphysis": "Fourth lumbar intervertebral symphysis",
+        "somakine:structure:fifth-lumbar-intervertebral-symphysis": "Fifth lumbar intervertebral symphysis",
+        "somakine:structure:tarsal-ligament": "Tarsal ligament",
+        "somakine:structure:plantar-tarsal-ligament": "Plantar tarsal ligament",
+        "somakine:structure:long-plantar-ligament": "Long plantar ligament",
+        "somakine:structure:right-long-plantar-ligament": "Right long plantar ligament",
+        "somakine:structure:left-long-plantar-ligament": "Left long plantar ligament",
+        "somakine:structure:calcaneal-tendon": "Calcaneal tendon",
+        "somakine:structure:right-calcaneal-tendon": "Right calcaneal tendon",
+        "somakine:structure:left-calcaneal-tendon": "Left calcaneal tendon",
+        "somakine:structure:stylohyoid-ligament": "Stylohyoid ligament",
+        "somakine:structure:right-stylohyoid-ligament": "Right stylohyoid ligament",
+        "somakine:structure:left-stylohyoid-ligament": "Left stylohyoid ligament",
+        "somakine:structure:intermediate-tendon": "Intermediate tendon",
+        "somakine:structure:right-intermediate-tendon": "Right intermediate tendon"
       },
       "aliases": {
         "somakine:region:head-neck": [
@@ -6278,7 +8006,44 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "somakine:structure:twelfth-rib": "第12肋",
         "somakine:structure:twelfth-thoracic-vertebra": "第12胸椎",
         "somakine:structure:vomer": "犁骨",
-        "somakine:structure:zygomatic-bone": "颧骨"
+        "somakine:structure:zygomatic-bone": "颧骨",
+        "somakine:structure:articular-disk-of-symphysis": "联合关节盘",
+        "somakine:structure:intervertebral-symphysis": "椎间联合",
+        "somakine:structure:intervertebral-symphysis-of-axis": "寰枢椎间联合",
+        "somakine:structure:third-cervical-intervertebral-symphysis": "第三颈椎椎间联合",
+        "somakine:structure:fourth-cervical-intervertebral-symphysis": "第四颈椎椎间联合",
+        "somakine:structure:fifth-cervical-intervertebral-symphysis": "第五颈椎椎间联合",
+        "somakine:structure:sixth-cervical-intervertebral-symphysis": "第六颈椎椎间联合",
+        "somakine:structure:seventh-cervical-intervertebral-symphysis": "第七颈椎椎间联合",
+        "somakine:structure:first-thoracic-intervertebral-symphysis": "第一胸椎椎间联合",
+        "somakine:structure:second-thoracic-intervertebral-symphysis": "第二胸椎椎间联合",
+        "somakine:structure:third-thoracic-intervertebral-symphysis": "第三胸椎椎间联合",
+        "somakine:structure:fourth-thoracic-intervertebral-symphysis": "第四胸椎椎间联合",
+        "somakine:structure:fifth-thoracic-intervertebral-symphysis": "第五胸椎椎间联合",
+        "somakine:structure:sixth-thoracic-intervertebral-symphysis": "第六胸椎椎间联合",
+        "somakine:structure:seventh-thoracic-intervertebral-symphysis": "第七胸椎椎间联合",
+        "somakine:structure:eighth-thoracic-intervertebral-symphysis": "第八胸椎椎间联合",
+        "somakine:structure:ninth-thoracic-intervertebral-symphysis": "第九胸椎椎间联合",
+        "somakine:structure:tenth-thoracic-intervertebral-symphysis": "第十胸椎椎间联合",
+        "somakine:structure:eleventh-thoracic-intervertebral-symphysis": "第十一胸椎椎间联合",
+        "somakine:structure:first-lumbar-intervertebral-symphysis": "第一腰椎椎间联合",
+        "somakine:structure:second-lumbar-intervertebral-symphysis": "第二腰椎椎间联合",
+        "somakine:structure:third-lumbar-intervertebral-symphysis": "第三腰椎椎间联合",
+        "somakine:structure:fourth-lumbar-intervertebral-symphysis": "第四腰椎椎间联合",
+        "somakine:structure:fifth-lumbar-intervertebral-symphysis": "第五腰椎椎间联合",
+        "somakine:structure:tarsal-ligament": "跗骨韧带",
+        "somakine:structure:plantar-tarsal-ligament": "足底跗骨韧带",
+        "somakine:structure:long-plantar-ligament": "长跖韧带",
+        "somakine:structure:right-long-plantar-ligament": "右长跖韧带",
+        "somakine:structure:left-long-plantar-ligament": "左长跖韧带",
+        "somakine:structure:calcaneal-tendon": "跟腱",
+        "somakine:structure:right-calcaneal-tendon": "右跟腱",
+        "somakine:structure:left-calcaneal-tendon": "左跟腱",
+        "somakine:structure:stylohyoid-ligament": "茎突舌骨韧带",
+        "somakine:structure:right-stylohyoid-ligament": "右茎突舌骨韧带",
+        "somakine:structure:left-stylohyoid-ligament": "左茎突舌骨韧带",
+        "somakine:structure:intermediate-tendon": "中间腱",
+        "somakine:structure:right-intermediate-tendon": "右中间腱"
       },
       "aliases": {
         "somakine:region:head-neck": [
@@ -6329,12 +8094,12 @@ export const bodyParts3DMusculoskeletal: DataPack = {
 
 export const bodyParts3DMusculoskeletalStats = {
   "regions": 8,
-  "structures": 150,
-  "assets": 12,
+  "structures": 187,
+  "assets": 15,
   "coverage": {
-    "direct": 121,
+    "direct": 158,
     "compound": 4,
-    "context": 25,
-    "unavailable": 0
+    "context": 0,
+    "unavailable": 25
   }
 } as const;

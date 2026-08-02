@@ -19,10 +19,10 @@ an application architecture.
 - a CLI for validation, inspection, coverage, and asset verification;
 - a standalone vanilla example using the real BodyParts3D 4.0 musculoskeletal pack.
 
-The real BodyParts3D pack contains 150 canonical structures across eight body
-regions. Its 25 contextual entries explicitly disclose structures for which no
-direct target mesh is present. The synthetic pack remains available as a small
-framework fixture.
+The real BodyParts3D pack contains 187 canonical structures across eight body
+regions. It includes source-native joint, ligament, and tendon meshes, while 25
+product-oriented structures with no exact BodyParts3D target remain explicitly
+unavailable. The synthetic pack remains available as a small framework fixture.
 
 See [the foundation plan](docs/FOUNDATION_PLAN.md) for the implemented alpha
 scope and the acceptance criteria for the first real anatomy pack.

@@ -66,12 +66,1067 @@
       "uri": "assets/bodyparts3d/wrist-hand.glb",
       "bytes": 508984,
       "sha256": "b8bdaf8fdcf10f99e8659180b67f2d428db4a11e5b677dbe6beddb0bcc3d4748"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-ankle-foot-connective.glb",
+      "bytes": 1060368,
+      "sha256": "54c44640432f7d0fe636c3923190877718368c648b061c993fb455a294ec9464"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-head-neck-connective.glb",
+      "bytes": 509492,
+      "sha256": "6bd3cb9caa6d08df0ee2eb55453c9d307b77bb4a809b5055cf230bf79cce6378"
+    },
+    {
+      "uri": "assets/bodyparts3d/supplement-spine-trunk-connective.glb",
+      "bytes": 3125624,
+      "sha256": "990283440bcbbcef0768fa8b331bb8c36265b46379a8fbe72ac14078ea08cf40"
+    }
+  ],
+  "supplementalCoverage": {
+    "selected": [
+      {
+        "slug": "articular-disk-of-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA67396",
+          "representationId": "BP7813",
+          "name": "articular disk of symphysis"
+        },
+        "elementIds": [
+          "FJ3202",
+          "FJ3203",
+          "FJ3204",
+          "FJ3205",
+          "FJ3206",
+          "FJ3207",
+          "FJ3208",
+          "FJ3209",
+          "FJ3210",
+          "FJ3211",
+          "FJ3212",
+          "FJ3213",
+          "FJ3214",
+          "FJ3215",
+          "FJ3216",
+          "FJ3217",
+          "FJ3218",
+          "FJ3219",
+          "FJ3220",
+          "FJ3221",
+          "FJ3222",
+          "FJ3223",
+          "FJ3224"
+        ]
+      },
+      {
+        "slug": "intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA25511",
+          "representationId": "BP9766",
+          "name": "intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3211"
+        ]
+      },
+      {
+        "slug": "intervertebral-symphysis-of-axis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA25571",
+          "representationId": "BP10172",
+          "name": "intervertebral symphysis of axis"
+        },
+        "elementIds": [
+          "FJ3202"
+        ]
+      },
+      {
+        "slug": "third-cervical-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26078",
+          "representationId": "BP10194",
+          "name": "third cervical intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3213"
+        ]
+      },
+      {
+        "slug": "fourth-cervical-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26083",
+          "representationId": "BP9924",
+          "name": "fourth cervical intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3218"
+        ]
+      },
+      {
+        "slug": "fifth-cervical-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26084",
+          "representationId": "BP9492",
+          "name": "fifth cervical intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3219"
+        ]
+      },
+      {
+        "slug": "sixth-cervical-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26085",
+          "representationId": "BP10188",
+          "name": "sixth cervical intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3220"
+        ]
+      },
+      {
+        "slug": "seventh-cervical-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26086",
+          "representationId": "BP9683",
+          "name": "seventh cervical intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3221"
+        ]
+      },
+      {
+        "slug": "first-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26089",
+          "representationId": "BP10176",
+          "name": "first thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3222"
+        ]
+      },
+      {
+        "slug": "second-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26094",
+          "representationId": "BP9816",
+          "name": "second thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3223"
+        ]
+      },
+      {
+        "slug": "third-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26095",
+          "representationId": "BP10095",
+          "name": "third thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3224"
+        ]
+      },
+      {
+        "slug": "fourth-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26096",
+          "representationId": "BP10224",
+          "name": "fourth thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3203"
+        ]
+      },
+      {
+        "slug": "fifth-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26097",
+          "representationId": "BP9871",
+          "name": "fifth thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3204"
+        ]
+      },
+      {
+        "slug": "sixth-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26098",
+          "representationId": "BP9890",
+          "name": "sixth thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3205"
+        ]
+      },
+      {
+        "slug": "seventh-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26099",
+          "representationId": "BP9770",
+          "name": "seventh thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3206"
+        ]
+      },
+      {
+        "slug": "eighth-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26100",
+          "representationId": "BP9995",
+          "name": "eighth thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3207"
+        ]
+      },
+      {
+        "slug": "ninth-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26101",
+          "representationId": "BP9917",
+          "name": "ninth thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3208"
+        ]
+      },
+      {
+        "slug": "tenth-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26102",
+          "representationId": "BP10129",
+          "name": "tenth thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3209"
+        ]
+      },
+      {
+        "slug": "eleventh-thoracic-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26103",
+          "representationId": "BP9338",
+          "name": "eleventh thoracic intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3210"
+        ]
+      },
+      {
+        "slug": "first-lumbar-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26105",
+          "representationId": "BP10039",
+          "name": "first lumbar intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3212"
+        ]
+      },
+      {
+        "slug": "second-lumbar-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26106",
+          "representationId": "BP9908",
+          "name": "second lumbar intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3214"
+        ]
+      },
+      {
+        "slug": "third-lumbar-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26107",
+          "representationId": "BP9568",
+          "name": "third lumbar intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3215"
+        ]
+      },
+      {
+        "slug": "fourth-lumbar-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26108",
+          "representationId": "BP9689",
+          "name": "fourth lumbar intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3216"
+        ]
+      },
+      {
+        "slug": "fifth-lumbar-intervertebral-symphysis",
+        "type": "joint",
+        "regionId": "spine-trunk",
+        "laterality": "midline",
+        "source": {
+          "tree": "partof",
+          "fmaId": "FMA26109",
+          "representationId": "BP9969",
+          "name": "fifth lumbar intervertebral symphysis"
+        },
+        "elementIds": [
+          "FJ3217"
+        ]
+      },
+      {
+        "slug": "tarsal-ligament",
+        "type": "ligament",
+        "regionId": "ankle-foot",
+        "laterality": "paired",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA44197",
+          "representationId": "BP9276",
+          "name": "tarsal ligament"
+        },
+        "elementIds": [
+          "FJ1424",
+          "FJ1424M"
+        ]
+      },
+      {
+        "slug": "plantar-tarsal-ligament",
+        "type": "ligament",
+        "regionId": "ankle-foot",
+        "laterality": "paired",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA44245",
+          "representationId": "BP9275",
+          "name": "plantar tarsal ligament"
+        },
+        "elementIds": [
+          "FJ1424",
+          "FJ1424M"
+        ]
+      },
+      {
+        "slug": "long-plantar-ligament",
+        "type": "ligament",
+        "regionId": "ankle-foot",
+        "laterality": "paired",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA44248",
+          "representationId": "BP9274",
+          "name": "long plantar ligament"
+        },
+        "elementIds": [
+          "FJ1424",
+          "FJ1424M"
+        ]
+      },
+      {
+        "slug": "right-long-plantar-ligament",
+        "type": "ligament",
+        "regionId": "ankle-foot",
+        "laterality": "right",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA44249",
+          "representationId": "BP5093",
+          "name": "right long plantar ligament"
+        },
+        "elementIds": [
+          "FJ1424"
+        ]
+      },
+      {
+        "slug": "left-long-plantar-ligament",
+        "type": "ligament",
+        "regionId": "ankle-foot",
+        "laterality": "left",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA44250",
+          "representationId": "BP9273",
+          "name": "left long plantar ligament"
+        },
+        "elementIds": [
+          "FJ1424M"
+        ]
+      },
+      {
+        "slug": "calcaneal-tendon",
+        "type": "tendon",
+        "regionId": "ankle-foot",
+        "laterality": "paired",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA51061",
+          "representationId": "BP8740",
+          "name": "calcaneal tendon"
+        },
+        "elementIds": [
+          "FJ1405",
+          "FJ1405M"
+        ]
+      },
+      {
+        "slug": "right-calcaneal-tendon",
+        "type": "tendon",
+        "regionId": "ankle-foot",
+        "laterality": "right",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA258847",
+          "representationId": "BP5098",
+          "name": "right calcaneal tendon"
+        },
+        "elementIds": [
+          "FJ1405"
+        ]
+      },
+      {
+        "slug": "left-calcaneal-tendon",
+        "type": "tendon",
+        "regionId": "ankle-foot",
+        "laterality": "left",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA264844",
+          "representationId": "BP8739",
+          "name": "left calcaneal tendon"
+        },
+        "elementIds": [
+          "FJ1405M"
+        ]
+      },
+      {
+        "slug": "stylohyoid-ligament",
+        "type": "ligament",
+        "regionId": "head-neck",
+        "laterality": "paired",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA72308",
+          "representationId": "BP8290",
+          "name": "stylohyoid ligament"
+        },
+        "elementIds": [
+          "FJ2763",
+          "FJ2764"
+        ]
+      },
+      {
+        "slug": "right-stylohyoid-ligament",
+        "type": "ligament",
+        "regionId": "head-neck",
+        "laterality": "right",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA72309",
+          "representationId": "BP8422",
+          "name": "right stylohyoid ligament"
+        },
+        "elementIds": [
+          "FJ2764"
+        ]
+      },
+      {
+        "slug": "left-stylohyoid-ligament",
+        "type": "ligament",
+        "regionId": "head-neck",
+        "laterality": "left",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA72311",
+          "representationId": "BP8289",
+          "name": "left stylohyoid ligament"
+        },
+        "elementIds": [
+          "FJ2763"
+        ]
+      },
+      {
+        "slug": "intermediate-tendon",
+        "type": "tendon",
+        "regionId": "head-neck",
+        "laterality": "variable",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA65410",
+          "representationId": "BP6513",
+          "name": "intermediate tendon"
+        },
+        "elementIds": [
+          "FJ1581"
+        ]
+      },
+      {
+        "slug": "right-intermediate-tendon",
+        "type": "tendon",
+        "regionId": "head-neck",
+        "laterality": "right",
+        "source": {
+          "tree": "isa",
+          "fmaId": "FMA258850",
+          "representationId": "BP6514",
+          "name": "right intermediate tendon"
+        },
+        "elementIds": [
+          "FJ1581"
+        ]
+      }
+    ],
+    "excluded": [
+      {
+        "pattern": "ontology grouping rows",
+        "reason": "not user-facing structures",
+        "examples": [
+          "tendon",
+          "ligament organ",
+          "skeletal ligament",
+          "nonskeletal ligament",
+          "ligament organ component"
+        ]
+      },
+      {
+        "pattern": "ocular rows",
+        "reason": "outside the locomotor pack scope",
+        "examples": [
+          "check ligament of lateral rectus",
+          "check ligament of medial rectus",
+          "suspensory ligament of lens",
+          "tendon of levator palpebrae superioris"
+        ]
+      },
+      {
+        "pattern": "laryngeal and vocal rows",
+        "reason": "outside the locomotor pack scope",
+        "examples": [
+          "ligament of larynx",
+          "thyrohyoid ligament",
+          "vocal ligament",
+          "cricothyroid ligament"
+        ]
+      },
+      {
+        "pattern": "limb aggregate rows",
+        "reason": "duplicate grouping concepts for selected source rows",
+        "examples": [
+          "ligament of limb",
+          "ligament of lower limb"
+        ]
+      }
+    ]
+  },
+  "sourceAudit": {
+    "candidateRows": 72,
+    "selectedRows": 37,
+    "excludedRows": [
+      {
+        "tree": "isa",
+        "fmaId": "FMA21496",
+        "representationId": "BP8168",
+        "name": "ligament organ",
+        "elementCount": 13,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA25624",
+        "representationId": "BP8291",
+        "name": "skeletal ligament",
+        "elementCount": 8,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA25625",
+        "representationId": "BP8167",
+        "name": "nonskeletal ligament",
+        "elementCount": 5,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA265178",
+        "representationId": "BP9277",
+        "name": "ligament of lower limb",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA265180",
+        "representationId": "BP9278",
+        "name": "ligament of limb",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA49143",
+        "representationId": "BP6506",
+        "name": "check ligament of lateral rectus",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA49144",
+        "representationId": "BP6507",
+        "name": "check ligament of right lateral rectus",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA49145",
+        "representationId": "BP6508",
+        "name": "check ligament of left lateral rectus",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA49146",
+        "representationId": "BP6498",
+        "name": "check ligament of medial rectus",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA49147",
+        "representationId": "BP6499",
+        "name": "check ligament of right medial rectus",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA49148",
+        "representationId": "BP6500",
+        "name": "check ligament of left medial rectus",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA54158",
+        "representationId": "BP6510",
+        "name": "tendon of levator palpebrae superioris",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA54159",
+        "representationId": "BP6511",
+        "name": "tendon of right levator palpebrae superioris",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA54921",
+        "representationId": "BP9141",
+        "name": "extrinsic ligament of larynx",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55131",
+        "representationId": "BP8294",
+        "name": "ligament of larynx",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55135",
+        "representationId": "BP8166",
+        "name": "thyrohyoid ligament",
+        "elementCount": 3,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55138",
+        "representationId": "BP8311",
+        "name": "median thyrohyoid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55139",
+        "representationId": "BP8165",
+        "name": "lateral thyrohyoid ligament",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55140",
+        "representationId": "BP8164",
+        "name": "right lateral thyrohyoid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55141",
+        "representationId": "BP8424",
+        "name": "left lateral thyrohyoid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55227",
+        "representationId": "BP9140",
+        "name": "hyo-epiglottic ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55230",
+        "representationId": "BP8292",
+        "name": "thyro-epiglottic ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55233",
+        "representationId": "BP8582",
+        "name": "cricothyroid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55237",
+        "representationId": "BP8581",
+        "name": "median cricothyroid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55244",
+        "representationId": "BP8189",
+        "name": "vocal ligament",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55245",
+        "representationId": "BP9026",
+        "name": "right vocal ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA55246",
+        "representationId": "BP8188",
+        "name": "left vocal ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA58838",
+        "representationId": "BP6486",
+        "name": "suspensory ligament of lens",
+        "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA58839",
+        "representationId": "BP6488",
+        "name": "suspensory ligament of right lens",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA58840",
+        "representationId": "BP6487",
+        "name": "suspensory ligament of left lens",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA72058",
+        "representationId": "BP8293",
+        "name": "intrinsic ligament of larynx",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA86375",
+        "representationId": "BP8190",
+        "name": "ligament organ component",
+        "elementCount": 7,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA9721",
+        "representationId": "BP9017",
+        "name": "tendon",
+        "elementCount": 6,
+        "selected": false
+      },
+      {
+        "tree": "partof",
+        "fmaId": "FMA58839",
+        "representationId": "BP7102",
+        "name": "suspensory ligament of right lens",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "partof",
+        "fmaId": "FMA58840",
+        "representationId": "BP7118",
+        "name": "suspensory ligament of left lens",
+        "elementCount": 1,
+        "selected": false
+      }
+    ]
+  },
+  "unavailableLegacy": [
+    {
+      "nodeId": "head-neck:atlanto-occipital-joint",
+      "regionId": "head-neck",
+      "type": "joint"
+    },
+    {
+      "nodeId": "head-neck:nuchal-ligament",
+      "regionId": "head-neck",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "head-neck:sternocleidomastoid-tendon",
+      "regionId": "head-neck",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "shoulder:glenohumeral-joint",
+      "regionId": "shoulder",
+      "type": "joint"
+    },
+    {
+      "nodeId": "shoulder:coracohumeral-ligament",
+      "regionId": "shoulder",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "shoulder:rotator-cuff-tendons",
+      "regionId": "shoulder",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "elbow-forearm:humeroulnar-joint",
+      "regionId": "elbow-forearm",
+      "type": "joint"
+    },
+    {
+      "nodeId": "elbow-forearm:ulnar-collateral-ligament",
+      "regionId": "elbow-forearm",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "elbow-forearm:distal-biceps-tendon",
+      "regionId": "elbow-forearm",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "wrist-hand:radiocarpal-joint",
+      "regionId": "wrist-hand",
+      "type": "joint"
+    },
+    {
+      "nodeId": "wrist-hand:scapholunate-ligament",
+      "regionId": "wrist-hand",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "wrist-hand:flexor-tendons",
+      "regionId": "wrist-hand",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "spine-trunk:lumbar-facet-joint",
+      "regionId": "spine-trunk",
+      "type": "joint"
+    },
+    {
+      "nodeId": "spine-trunk:anterior-longitudinal-ligament",
+      "regionId": "spine-trunk",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "spine-trunk:multifidus",
+      "regionId": "spine-trunk",
+      "type": "muscle"
+    },
+    {
+      "nodeId": "spine-trunk:erector-spinae-tendon",
+      "regionId": "spine-trunk",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "hip-pelvis:hip-joint",
+      "regionId": "hip-pelvis",
+      "type": "joint"
+    },
+    {
+      "nodeId": "hip-pelvis:iliofemoral-ligament",
+      "regionId": "hip-pelvis",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "hip-pelvis:gluteal-tendon",
+      "regionId": "hip-pelvis",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "knee:tibiofemoral-joint",
+      "regionId": "knee",
+      "type": "joint"
+    },
+    {
+      "nodeId": "knee:anterior-cruciate-ligament",
+      "regionId": "knee",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "knee:patellar-tendon",
+      "regionId": "knee",
+      "type": "tendon"
+    },
+    {
+      "nodeId": "ankle-foot:lisfranc-joint-complex",
+      "regionId": "ankle-foot",
+      "type": "joint"
+    },
+    {
+      "nodeId": "ankle-foot:lisfranc-ligament",
+      "regionId": "ankle-foot",
+      "type": "ligament"
+    },
+    {
+      "nodeId": "ankle-foot:tibialis-posterior-tendon",
+      "regionId": "ankle-foot",
+      "type": "tendon"
     }
   ],
   "coverage": {
-    "direct": 121,
+    "direct": 158,
     "compound": 4,
-    "context": 25,
-    "unavailable": 0
+    "context": 0,
+    "unavailable": 25
   }
 }

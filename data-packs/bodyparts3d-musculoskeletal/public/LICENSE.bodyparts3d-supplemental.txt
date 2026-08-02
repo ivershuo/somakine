@@ -1,0 +1,6 @@
+BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International
+
+Supplemental source-native joint, ligament, and tendon GLBs were generated
+from the verified BodyParts3D 4.0 IS-A and PART-OF OBJ archives.
+License: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
