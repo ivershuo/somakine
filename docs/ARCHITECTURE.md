@@ -16,6 +16,16 @@ host product
   routes, UI, learning content, fitness or rehabilitation experience
 ```
 
+Developer data follows the same boundary:
+
+```text
+base DataPack + DataExtension[]
+        ↓ mapping, provenance, conflict policy, validation
+composeDataPacks()
+        ↓ ordinary DataPack
+@somakine/viewer
+```
+
 `@somakine/bodyparts3d` is an adapter, not a privileged core dependency. A
 second anatomy source must fit the same core contract without changing core
 types.
@@ -27,6 +37,8 @@ types.
 - Hosts own markup, accessibility wording, navigation, prose, and safety policy.
 - Data packs own anatomy coverage and localization; assets own provenance and
   license records.
+- Extensions own their namespaces, source/license records, and asset paths;
+  composition never erases those records.
 - Schema version and data-pack version change independently.
 
 ## Identity

@@ -1,7 +1,15 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { SOMAKINE_MAX_ASSET_BYTES, SomakineCatalog, isSafeAssetUri, validateDataPack } from "@somakine/core";
+import {
+  SOMAKINE_MAX_ASSET_BYTES,
+  SomakineCatalog,
+  composeDataPacks,
+  isSafeAssetUri,
+  validateDataExtension,
+  validateDataPack,
+} from "@somakine/core";
 import { musculoskeletalBasic } from "@somakine/musculoskeletal-basic";
+import { demoExtension } from "./extension-fixture.mjs";
 
 test("synthetic pack satisfies the executable contract", () => {
   assert.deepEqual(validateDataPack(musculoskeletalBasic), { valid: true, issues: [] });
@@ -11,6 +19,40 @@ test("synthetic pack satisfies the executable contract", () => {
   assert.deepEqual(catalog.coverage(), { direct: 5, compound: 1, context: 2, unavailable: 1 });
   assert.equal(catalog.search("ACL", "en")[0]?.id, "somakine:structure:anterior-cruciate-ligament");
   assert.equal(catalog.label("somakine:structure:femur", "zh-CN"), "股骨");
+});
+
+test("data extensions validate, fill missing coverage, and add namespaced structures", () => {
+  assert.deepEqual(validateDataExtension(demoExtension, musculoskeletalBasic), { valid: true, issues: [] });
+  const composed = composeDataPacks(musculoskeletalBasic, [demoExtension]);
+  assert.deepEqual(composed.dataset && new SomakineCatalog(composed.dataset).coverage(), {
+    direct: 5,
+    compound: 3,
+    context: 2,
+    unavailable: 0,
+  });
+  assert.equal(composed.dataset.structures.length, musculoskeletalBasic.structures.length + 1);
+  assert.equal(composed.dataset.regions.length, musculoskeletalBasic.regions.length + 1);
+  assert.equal(new SomakineCatalog(composed.dataset).label("somakine:structure:demo-knee-ligament", "zh-CN"), "演示膝韧带");
+  assert.deepEqual(composed.report.replacedRepresentationIds, ["somakine:representation:demo-knee-acl"]);
+  assert.deepEqual(composed.report.addedStructureIds, ["somakine:structure:demo-knee-ligament"]);
+});
+
+test("composition rejects direct geometry conflicts unless explicitly overridden", () => {
+  const conflicting = structuredClone(demoExtension);
+  conflicting.representations[0].structureId = "somakine:structure:femur";
+  conflicting.mappings = [{
+    targetStructureId: "somakine:structure:femur",
+    match: "exact",
+    confidence: 1,
+    sourceIds: ["demo-knee-source"],
+    reviewState: "source-reviewed",
+  }];
+  assert.throws(
+    () => composeDataPacks(musculoskeletalBasic, [conflicting]),
+    /representation conflict for somakine:structure:femur/,
+  );
+  const preferred = composeDataPacks(musculoskeletalBasic, [conflicting], { conflictPolicy: "prefer-extension" });
+  assert.equal(new SomakineCatalog(preferred.dataset).representation("somakine:structure:femur").mode, "compound");
 });
 
 test("catalog isolates callers from the input object", () => {

@@ -21,6 +21,8 @@ export type RelationType =
   | "contains";
 export type CoverageMode = "direct" | "compound" | "context" | "unavailable";
 export type ReviewState = "unreviewed" | "source-reviewed" | "expert-reviewed";
+export type ExtensionMatch = "exact" | "synonym" | "expert-reviewed";
+export type CompositionConflictPolicy = "fill-unavailable" | "prefer-extension" | "error-on-conflict";
 
 export interface SourceRecord {
   id: string;
@@ -131,6 +133,19 @@ export interface LocalePack {
   aliases: Record<string, string[]>;
 }
 
+export interface ExtensionTarget {
+  id: string;
+  version?: string;
+}
+
+export interface StructureMapping {
+  targetStructureId: StructureId;
+  match: ExtensionMatch;
+  confidence: number;
+  sourceIds: string[];
+  reviewState: ReviewState;
+}
+
 export interface DataPack {
   schemaVersion: typeof SOMAKINE_SCHEMA_VERSION;
   id: string;
@@ -149,9 +164,53 @@ export interface DataPack {
   locales: LocalePack[];
 }
 
+/**
+ * A partial, independently licensed data contribution that can be composed
+ * onto a validated DataPack. Extension-owned IDs must use the declared
+ * namespace; existing structure IDs may be referenced by representations and
+ * relations to fill or enrich the target pack.
+ */
+export interface DataExtension {
+  schemaVersion: typeof SOMAKINE_SCHEMA_VERSION;
+  id: string;
+  version: string;
+  title: string;
+  description: string;
+  createdAt: string;
+  namespace: string;
+  targetPack: ExtensionTarget;
+  sources: SourceRecord[];
+  licenses: LicenseRecord[];
+  regions: Region[];
+  structures: Structure[];
+  relations: Relation[];
+  assets: Asset[];
+  meshInstances: MeshInstance[];
+  representations: Representation[];
+  locales: LocalePack[];
+  mappings: StructureMapping[];
+}
+
 export interface CoverageSummary {
   direct: number;
   compound: number;
   context: number;
   unavailable: number;
+}
+
+export interface CompositionReport {
+  basePackId: string;
+  extensionIds: readonly string[];
+  addedRegionIds: readonly RegionId[];
+  addedStructureIds: readonly StructureId[];
+  addedRelationIds: readonly RelationId[];
+  addedAssetIds: readonly AssetId[];
+  addedInstanceIds: readonly MeshInstanceId[];
+  replacedRepresentationIds: readonly RepresentationId[];
+  deduplicatedRelationIds: readonly RelationId[];
+}
+
+export interface ComposedDataPack {
+  dataset: DataPack;
+  report: CompositionReport;
 }

@@ -14,6 +14,7 @@ an application architecture.
 - strict data-pack validation and deterministic catalog queries;
 - direct, compound, contextual, and unavailable visual coverage;
 - source, license, attribution, digest, and geometry-budget contracts;
+- developer-loaded `DataExtension` packs with deterministic composition policies;
 - a Three.js viewer with layers, picking, focus, reset, abort, and disposal;
 - a BodyParts3D adapter boundary;
 - a CLI for validation, inspection, coverage, and asset verification;
@@ -46,6 +47,13 @@ Then open the local URL printed by Vite.
 - `@somakine/musculoskeletal-basic` — synthetic alpha fixture and demo pack.
 - `@somakine/bodyparts3d-musculoskeletal` — verified BodyParts3D 4.0 geometry,
   canonical identities, bilingual labels, and honest coverage metadata.
+
+Extensions are ordinary JSON/TypeScript data contributions. Validate one with
+`soma validate-extension`, compose it with a base pack using `soma compose`, or
+call `composeDataPacks()` directly before passing the resulting `DataPack` to
+the Viewer. Extension assets retain their own provenance and are loaded through
+the host's `AssetResolver`. See [developer data extensions](docs/DATA_EXTENSIONS.md)
+for the authoring contract and conflict policies.
 
 ## Safety and scope
 

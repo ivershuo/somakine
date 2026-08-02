@@ -6,6 +6,7 @@
 - synthetic musculoskeletal pack;
 - framework-neutral Three.js viewer;
 - BodyParts3D adapter contract;
+- developer data-extension contract and deterministic pack composition;
 - vanilla example and package conformance checks.
 
 ## Alpha 0.2

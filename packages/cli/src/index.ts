@@ -1,16 +1,29 @@
 import { createHash } from "node:crypto";
-import { readFile, realpath, stat } from "node:fs/promises";
+import { readFile, realpath, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import {
   SomakineCatalog,
   assetHasRuntimeFile,
   assertDataPack,
+  composeDataPacks,
+  DataExtensionValidationError,
   isSafeAssetUri,
   validateDataPack,
+  validateDataExtension,
+  type CompositionConflictPolicy,
+  type ComposedDataPack,
+  type DataExtension,
   type DataPack,
 } from "@somakine/core";
 
-export type SomaCommand = "validate" | "inspect" | "coverage" | "verify-assets";
+export type SomaCommand = "validate" | "inspect" | "coverage" | "verify-assets" | "validate-extension" | "compose";
+
+export interface RunCommandOptions {
+  baseFile?: string;
+  extensionFiles?: readonly string[];
+  outputFile?: string;
+  conflictPolicy?: CompositionConflictPolicy;
+}
 
 export interface CommandResult {
   ok: boolean;
@@ -19,39 +32,94 @@ export interface CommandResult {
   errors?: unknown;
 }
 
-export async function runCommand(command: SomaCommand, file: string): Promise<CommandResult> {
+export async function runCommand(command: SomaCommand, file: string, options: RunCommandOptions = {}): Promise<CommandResult> {
   const absolute = path.resolve(file);
-  let value: unknown;
-  try {
-    value = JSON.parse(await readFile(absolute, "utf8"));
-  } catch (error) {
-    return { ok: false, command, errors: [{ code: "read_failed", message: errorMessage(error) }] };
-  }
-  const validation = validateDataPack(value);
+  const value = await readJson(absolute, command);
+  if (!value.ok) return value.result;
+  if (command === "validate-extension") return validateExtension(value.value, options.baseFile, command);
+  if (command === "compose") return composeCommand(value.value, absolute, options, command);
+  const validation = validateDataPack(value.value);
   if (!validation.valid) return { ok: false, command, errors: validation.issues };
-  assertDataPack(value);
-  if (command === "validate") return { ok: true, command, data: { id: value.id, version: value.version } };
-  const catalog = new SomakineCatalog(value);
+  assertDataPack(value.value);
+  if (command === "validate") return { ok: true, command, data: { id: value.value.id, version: value.value.version } };
+  const catalog = new SomakineCatalog(value.value);
   if (command === "coverage") return { ok: true, command, data: catalog.coverage() };
   if (command === "inspect") {
     return {
       ok: true,
       command,
       data: {
-        id: value.id,
-        version: value.version,
-        schemaVersion: value.schemaVersion,
-        regions: value.regions.length,
-        structures: value.structures.length,
-        relations: value.relations.length,
-        assets: value.assets.length,
-        meshInstances: value.meshInstances.length,
+        id: value.value.id,
+        version: value.value.version,
+        schemaVersion: value.value.schemaVersion,
+        regions: value.value.regions.length,
+        structures: value.value.structures.length,
+        relations: value.value.relations.length,
+        assets: value.value.assets.length,
+        meshInstances: value.value.meshInstances.length,
         coverage: catalog.coverage(),
-        locales: value.locales.map((locale) => locale.locale).sort(),
+        locales: value.value.locales.map((locale) => locale.locale).sort(),
       },
     };
   }
-  return verifyAssets(value, path.dirname(absolute));
+  return verifyAssets(value.value, path.dirname(absolute));
+}
+
+async function validateExtension(value: unknown, baseFile: string | undefined, command: SomaCommand): Promise<CommandResult> {
+  let base: DataPack | undefined;
+  if (baseFile) {
+    const baseResult = await readJson(path.resolve(baseFile), command);
+    if (!baseResult.ok) return baseResult.result;
+    const baseValidation = validateDataPack(baseResult.value);
+    if (!baseValidation.valid) return { ok: false, command, errors: baseValidation.issues };
+    assertDataPack(baseResult.value);
+    base = baseResult.value;
+  }
+  const validation = validateDataExtension(value, base);
+  if (!validation.valid) return { ok: false, command, errors: validation.issues };
+  const extension = value as { id: string; version: string; namespace: string; targetPack: { id: string } };
+  return { ok: true, command, data: { id: extension.id, version: extension.version, namespace: extension.namespace, targetPackId: extension.targetPack.id } };
+}
+
+async function composeCommand(value: unknown, baseFile: string, options: RunCommandOptions, command: SomaCommand): Promise<CommandResult> {
+  const extensionFiles = options.extensionFiles ?? [];
+  if (extensionFiles.length === 0) return { ok: false, command, errors: [{ code: "invalid_extension", message: "compose requires at least one extension file" }] };
+  const baseValidation = validateDataPack(value);
+  if (!baseValidation.valid) return { ok: false, command, errors: baseValidation.issues };
+  assertDataPack(value);
+  const extensions: DataExtension[] = [];
+  for (const file of extensionFiles) {
+    const result = await readJson(path.resolve(file), command);
+    if (!result.ok) return result.result;
+    const validation = validateDataExtension(result.value, value as DataPack);
+    if (!validation.valid) return { ok: false, command, errors: validation.issues };
+    extensions.push(result.value as DataExtension);
+  }
+  let composed: ComposedDataPack;
+  try {
+    composed = composeDataPacks(value as DataPack, extensions, options.conflictPolicy ? { conflictPolicy: options.conflictPolicy } : {});
+  } catch (error) {
+    if (error instanceof DataExtensionValidationError) return { ok: false, command, errors: error.issues };
+    return { ok: false, command, errors: [{ code: "extension_conflict", message: errorMessage(error) }] };
+  }
+  if (options.outputFile) await writeFile(path.resolve(options.outputFile), `${JSON.stringify(composed.dataset, null, 2)}\n`, "utf8");
+  return {
+    ok: true,
+    command,
+    data: {
+      outputFile: options.outputFile ? path.resolve(options.outputFile) : undefined,
+      ...composed.report,
+      baseFile,
+    },
+  };
+}
+
+async function readJson(file: string, command: SomaCommand): Promise<{ ok: true; value: unknown } | { ok: false; result: CommandResult }> {
+  try {
+    return { ok: true, value: JSON.parse(await readFile(file, "utf8")) };
+  } catch (error) {
+    return { ok: false, result: { ok: false, command, errors: [{ code: "read_failed", message: errorMessage(error) }] } };
+  }
 }
 
 async function verifyAssets(pack: DataPack, root: string): Promise<CommandResult> {

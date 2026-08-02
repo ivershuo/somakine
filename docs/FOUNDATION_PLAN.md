@@ -7,6 +7,8 @@ Status: alpha foundation implemented on 2026-08-01.
 - Independent MIT TypeScript workspace with no Kinexis compatibility layer.
 - Framework-neutral core schema, executable validation, localization, catalog,
   provenance, licenses, coverage semantics, and JSON Schema.
+- Developer-loaded data extensions with namespace, mapping, provenance, and
+  deterministic composition policies.
 - Three.js viewer with primitives, verified self-contained GLB loading, semantic
   selection, layers, region focus, reset, abort, and disposal.
 - BodyParts3D provenance adapter, validation/inspection CLI, synthetic data pack,

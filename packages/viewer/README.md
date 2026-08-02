@@ -18,6 +18,20 @@ The default resolver supports self-contained binary GLB assets only. Hosts may
 provide a custom resolver, but data-pack hashes and byte counts are still
 verified before parsing.
 
+To render developer-loaded data, compose extensions before creating the Viewer:
+
+```ts
+const { dataset } = composeDataPacks(basePack, [kneeExtension]);
+const viewer = await createSomakine(container, {
+  dataset,
+  assetResolver: resolvePackAsset,
+  accessibleLabel: "Interactive body model",
+});
+```
+
+`resolvePackAsset` remains host-owned so local files, package assets, and
+authenticated storage can use the same verified rendering contract.
+
 `focusStructure` isolates the selected direct/compound structure, or the
 declared context structures for a context-only entry. `showBody` and `reset`
 restore the whole-body view. Camera framing and orbit limits are calculated
