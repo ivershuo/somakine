@@ -24,6 +24,20 @@ export interface ViewerSelection {
 
 export type ViewerPhase = "loading" | "ready" | "selected" | "empty" | "error" | "disposed";
 
+export type InteractionMode = "rotate" | "pan";
+
+export interface StructureStyle {
+  /** Six-digit hex colour applied to compatible mesh materials. */
+  color?: string;
+  /** Six-digit hex emissive colour applied when the structure is not selected. */
+  emissive?: string;
+  emissiveIntensity?: number;
+  opacity?: number;
+  transparent?: boolean;
+  roughness?: number;
+  metalness?: number;
+}
+
 export interface ViewerState {
   phase: ViewerPhase;
   message: string;
@@ -53,10 +67,13 @@ export interface CreateSomakineOptions {
 export interface SomakineViewer {
   readonly canvas: HTMLCanvasElement;
   setLocale(locale: string): void;
+  setInteractionMode(mode: InteractionMode): void;
   setLayer(type: StructureType | null): void;
+  selectStructure(id: StructureId): void;
   focusStructure(id: StructureId): void;
   focusRegion(id: RegionId): void;
   setVisible(ids: readonly StructureId[]): void;
+  setStructureStyle(id: StructureId, style: StructureStyle | null): void;
   showBody(): void;
   reset(): void;
   dispose(): void;
@@ -184,6 +201,8 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   controls.screenSpacePanning = false;
   controls.minPolarAngle = Math.PI * 0.04;
   controls.maxPolarAngle = Math.PI * 0.96;
+  let interactionMode: InteractionMode = "rotate";
+  applyInteractionMode(controls, interactionMode);
   const initialViewDirectionVector = new THREE.Vector3(...initialViewDirection);
   const groups = new Map<StructureId, THREE.Group>();
   const sourceScenes = new Map<string, Promise<THREE.Object3D>>();
@@ -216,7 +235,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
     raycaster.setFromCamera(pointer, camera);
     const hit = raycaster.intersectObject(model, true).find((entry) => typeof entry.object.userData.structureId === "string");
-    if (hit) focusStructure(hit.object.userData.structureId as StructureId);
+    if (hit) selectStructure(hit.object.userData.structureId as StructureId);
   };
   canvas.addEventListener("pointerdown", onPointerDown);
   canvas.addEventListener("pointermove", onPointerMove);
@@ -266,12 +285,33 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     for (const source of sourceScenes.values()) source.then(disposeObject3D).catch(() => undefined);
   }
 
-  return { canvas, setLocale, setLayer, focusStructure, focusRegion, setVisible, showBody, reset, dispose };
+  return {
+    canvas,
+    setLocale,
+    setInteractionMode,
+    setLayer,
+    selectStructure,
+    focusStructure,
+    focusRegion,
+    setVisible,
+    setStructureStyle,
+    showBody,
+    reset,
+    dispose,
+  };
 
   function setLocale(nextLocale: string): void {
     ensureActive();
     if (!nextLocale.trim()) throw new TypeError("Somakine locale must be non-empty");
     locale = nextLocale;
+  }
+
+  function setInteractionMode(nextMode: InteractionMode): void {
+    ensureActive();
+    if (nextMode !== "rotate" && nextMode !== "pan") throw new TypeError("Somakine interaction mode must be rotate or pan");
+    interactionMode = nextMode;
+    applyInteractionMode(controls, interactionMode);
+    render();
   }
 
   async function loadGltf(asset: GltfAsset): Promise<THREE.Object3D> {
@@ -301,28 +341,31 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     render();
   }
 
+  function selectStructure(id: StructureId): void {
+    ensureActive();
+    const structure = catalog.structure(id);
+    const representation = catalog.representation(id);
+    if (!structure || !representation) return;
+    clearHighlight();
+    const targets = selectionTargets(id, representation);
+    for (const group of targets) setHighlighted(group, true);
+    selectedGroups = targets;
+    announceSelection(structure, representation, targets);
+  }
+
   function focusStructure(id: StructureId): void {
     ensureActive();
     const structure = catalog.structure(id);
     const representation = catalog.representation(id);
     if (!structure || !representation) return;
     clearHighlight();
-    const targets = representation.mode === "context"
-      ? representation.contextStructureIds.map((contextId) => groups.get(contextId)).filter(isGroup)
-      : [groups.get(id)].filter(isGroup);
+    const targets = selectionTargets(id, representation);
     const targetSet = new Set(targets);
     for (const group of groups.values()) group.visible = targetSet.has(group);
     for (const group of targets) { group.visible = true; setHighlighted(group, true) }
     selectedGroups = targets;
     if (targets.length > 0) frameObjects(targets, true);
-    options.onSelection?.({
-      structure,
-      label: catalog.label(id, locale),
-      coverage: representation.mode,
-      contextStructureIds: representation.contextStructureIds,
-    });
-    emitState(targets.length > 0 ? "selected" : "empty", `${catalog.label(id, locale)} · ${representation.mode}`);
-    render();
+    announceSelection(structure, representation, targets);
   }
 
   function focusRegion(id: RegionId): void {
@@ -344,6 +387,16 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     const visible = visibleGroups();
     if (visible.length > 0) { frameObjects(visible, true); emitState("ready", `${visible.length} visible structure groups`) }
     else emitState("empty", "No visible geometry");
+    render();
+  }
+
+  function setStructureStyle(id: StructureId, style: StructureStyle | null): void {
+    ensureActive();
+    const group = groups.get(id);
+    if (!group) return;
+    if (style === null) delete group.userData.somakineStyle;
+    else group.userData.somakineStyle = normalizeStructureStyle(style);
+    setHighlighted(group, selectedGroups.includes(group));
     render();
   }
 
@@ -403,6 +456,27 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   function clearHighlight(): void {
     for (const group of selectedGroups) setHighlighted(group, false);
     selectedGroups = [];
+  }
+
+  function selectionTargets(id: StructureId, representation: import("@somakine/core").Representation): THREE.Group[] {
+    return representation.mode === "context"
+      ? representation.contextStructureIds.map((contextId) => groups.get(contextId)).filter(isGroup)
+      : [groups.get(id)].filter(isGroup);
+  }
+
+  function announceSelection(
+    structure: Structure,
+    representation: import("@somakine/core").Representation,
+    targets: readonly THREE.Group[],
+  ): void {
+    options.onSelection?.({
+      structure,
+      label: catalog.label(structure.id, locale),
+      coverage: representation.mode,
+      contextStructureIds: representation.contextStructureIds,
+    });
+    emitState(targets.length > 0 ? "selected" : "empty", `${catalog.label(structure.id, locale)} · ${representation.mode}`);
+    render();
   }
 
   function visibleGroups(): THREE.Group[] { return [...groups.values()].filter((group) => group.visible) }
@@ -551,21 +625,97 @@ function applyTransform(object: THREE.Object3D, transform: import("@somakine/cor
   if (transform.scale) object.scale.fromArray(transform.scale);
 }
 
+function applyInteractionMode(controls: OrbitControls, mode: InteractionMode): void {
+  // The primary drag is the mode selected by the host. Keep the secondary
+  // drag available for the opposite operation so the canvas remains useful
+  // without requiring a modifier key.
+  controls.mouseButtons.LEFT = mode === "rotate" ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN;
+  controls.mouseButtons.RIGHT = mode === "rotate" ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE;
+}
+
 function markStructure(object: THREE.Object3D, structureId: StructureId): void {
   object.traverse((child) => { child.userData.structureId = structureId });
 }
 
+const STYLE_COLOR = /^#[0-9a-fA-F]{6}$/;
+const HIGHLIGHT_COLOR = "#e19a5b";
+const HIGHLIGHT_EMISSIVE = "#6b3d20";
+const HIGHLIGHT_EMISSIVE_INTENSITY = 0.9;
+const BASE_STYLE_KEY = "somakineBaseStyle";
+
+interface BaseMaterialStyle {
+  color: number;
+  emissive: number;
+  emissiveIntensity: number;
+  opacity: number;
+  transparent: boolean;
+  roughness: number;
+  metalness: number;
+}
+
+function normalizeStructureStyle(style: StructureStyle): StructureStyle {
+  if (!style || typeof style !== "object") throw new TypeError("Somakine structure style must be an object or null");
+  const next = { ...style };
+  for (const key of ["color", "emissive"] as const) {
+    if (next[key] !== undefined && (typeof next[key] !== "string" || !STYLE_COLOR.test(next[key]))) {
+      throw new TypeError(`Somakine ${key} style must be a six-digit hex colour`);
+    }
+  }
+  if (next.emissiveIntensity !== undefined && (!Number.isFinite(next.emissiveIntensity) || next.emissiveIntensity < 0)) {
+    throw new TypeError("Somakine emissiveIntensity must be a finite non-negative number");
+  }
+  if (next.opacity !== undefined && (!Number.isFinite(next.opacity) || next.opacity < 0 || next.opacity > 1)) {
+    throw new TypeError("Somakine opacity must be between 0 and 1");
+  }
+  for (const key of ["roughness", "metalness"] as const) {
+    if (next[key] !== undefined && (!Number.isFinite(next[key]) || next[key] < 0 || next[key] > 1)) {
+      throw new TypeError(`Somakine ${key} must be between 0 and 1`);
+    }
+  }
+  if (next.transparent !== undefined && typeof next.transparent !== "boolean") {
+    throw new TypeError("Somakine transparent style must be boolean");
+  }
+  return next;
+}
+
 function setHighlighted(root: THREE.Object3D, highlighted: boolean): void {
+  const style = root.userData.somakineStyle as StructureStyle | undefined;
   root.traverse((object) => {
     if (!(object instanceof THREE.Mesh)) return;
     const materials = Array.isArray(object.material) ? object.material : [object.material];
     for (const material of materials) {
       if (!(material instanceof THREE.MeshStandardMaterial)) continue;
-      if (!material.userData.somakineBaseEmissive) material.userData.somakineBaseEmissive = material.emissive.getHex();
-      material.emissive.setHex(highlighted ? 0x375a4c : material.userData.somakineBaseEmissive as number);
-      material.emissiveIntensity = highlighted ? 0.85 : 1;
+      applyMaterialAppearance(material, style, highlighted);
     }
   });
+}
+
+function applyMaterialAppearance(material: THREE.MeshStandardMaterial, style: StructureStyle | undefined, highlighted: boolean): void {
+  const base = material.userData[BASE_STYLE_KEY] as BaseMaterialStyle | undefined ?? captureBaseStyle(material);
+  material.color.set(highlighted ? HIGHLIGHT_COLOR : style?.color ?? base.color);
+  material.emissive.set(highlighted ? HIGHLIGHT_EMISSIVE : style?.emissive ?? base.emissive);
+  material.emissiveIntensity = highlighted
+    ? HIGHLIGHT_EMISSIVE_INTENSITY
+    : style?.emissiveIntensity ?? base.emissiveIntensity;
+  material.opacity = style?.opacity ?? base.opacity;
+  material.transparent = style?.transparent ?? (style?.opacity !== undefined && style.opacity < 1 ? true : base.transparent);
+  material.roughness = style?.roughness ?? base.roughness;
+  material.metalness = style?.metalness ?? base.metalness;
+  material.needsUpdate = true;
+}
+
+function captureBaseStyle(material: THREE.MeshStandardMaterial): BaseMaterialStyle {
+  const base: BaseMaterialStyle = {
+    color: material.color.getHex(),
+    emissive: material.emissive.getHex(),
+    emissiveIntensity: material.emissiveIntensity,
+    opacity: material.opacity,
+    transparent: material.transparent,
+    roughness: material.roughness,
+    metalness: material.metalness,
+  };
+  material.userData[BASE_STYLE_KEY] = base;
+  return base;
 }
 
 function isGroup(value: THREE.Group | undefined): value is THREE.Group { return value instanceof THREE.Group }

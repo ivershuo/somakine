@@ -8,6 +8,7 @@ const viewer = await createSomakine(container, {
 });
 
 viewer.setLocale("zh-CN");
+viewer.setInteractionMode("pan");
 ```
 
 The host owns controls, navigation, labels, panels, and educational content.
@@ -32,9 +33,16 @@ const viewer = await createSomakine(container, {
 `resolvePackAsset` remains host-owned so local files, package assets, and
 authenticated storage can use the same verified rendering contract.
 
-`focusStructure` isolates the selected direct/compound structure, or the
-declared context structures for a context-only entry. `showBody` and `reset`
-restore the whole-body view. Camera framing and orbit limits are calculated
-from the visible bounds. Packs with a non-default up/front axis can pass
+`selectStructure` keeps the current visibility set and applies a distinct
+selection style. `focusStructure` is the explicit isolation operation for
+callers that want only the selected direct/compound structure (or its declared
+context structures) visible. `setStructureStyle(id, style)` sets or clears a
+per-structure material style, including colour, emissive treatment, opacity,
+and surface parameters. `showBody` and `reset` restore the whole-body view.
+`setInteractionMode("rotate" | "pan")` chooses whether primary mouse drag
+rotates or pans the camera; the secondary drag keeps the opposite operation
+available. Camera framing and orbit limits are calculated from the visible
+bounds. Packs with a non-default up/front axis can pass
 `initialViewDirection` and `initialViewUp`; hosts can expose the canvas
-guidance as “drag to rotate, scroll to zoom, right-drag to pan”.
+guidance from the active interaction mode, for example “drag to rotate,
+right-drag to pan” or the inverse in pan mode.

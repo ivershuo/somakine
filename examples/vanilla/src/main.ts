@@ -1,6 +1,6 @@
 import "./style.css";
 import { SomakineCatalog, type RegionId, type StructureId, type StructureType } from "@somakine/core";
-import { createSomakine } from "@somakine/viewer";
+import { createSomakine, type InteractionMode, type ViewerSelection } from "@somakine/viewer";
 import { bodyParts3DMusculoskeletal } from "@somakine/bodyparts3d-musculoskeletal";
 
 void main().catch((error: unknown) => {
@@ -15,6 +15,7 @@ const localeSelect = required<HTMLSelectElement>("locale");
 const regionSelect = required<HTMLSelectElement>("region");
 const structureSelect = required<HTMLSelectElement>("structure");
 const layers = required<HTMLElement>("layers");
+const dragModes = required<HTMLElement>("drag-modes");
 const resetButton = required<HTMLButtonElement>("reset");
 const status = required<HTMLElement>("status");
 const viewerHelp = required<HTMLElement>("viewer-help");
@@ -26,6 +27,10 @@ const selectionContext = required<HTMLElement>("selection-context");
 const attribution = required<HTMLElement>("attribution");
 
 let locale = localeSelect.value;
+let regionFilter: RegionId | "body" = "body";
+let layerFilter: StructureType | null = null;
+let selectedStructureId: StructureId | null = null;
+let interactionMode: InteractionMode = "rotate";
 const viewer = await createSomakine(viewerHost, {
   dataset: bodyParts3DMusculoskeletal,
   locale,
@@ -40,20 +45,7 @@ const viewer = await createSomakine(viewerHost, {
     viewerHost.setAttribute("aria-busy", String(next.phase === "loading"));
   },
   onSelection(selection) {
-    const currentRegion = regionSelect.value as RegionId | "body";
-    const selectedRegion = currentRegion !== "body" && selection.structure.regionIds.includes(currentRegion)
-      ? currentRegion
-      : selection.structure.regionIds[0];
-    if (selectedRegion) regionSelect.value = selectedRegion;
-    pressLayer("all");
-    selectionTitle.textContent = catalog.label(selection.structure.id, locale);
-    selectionId.textContent = selection.structure.id;
-    selectionType.textContent = selection.structure.type;
-    selectionCoverage.textContent = selection.coverage;
-    selectionContext.textContent = selection.contextStructureIds.length
-      ? selection.contextStructureIds.map((id) => catalog.label(id, locale)).join(", ")
-      : "—";
-    structureSelect.value = selection.structure.id;
+    handleSelection(selection);
   },
 });
 
@@ -67,7 +59,8 @@ attribution.title = licenseAttribution;
 localeSelect.addEventListener("change", () => {
   locale = localeSelect.value;
   viewer.setLocale(locale);
-  regionSelect.value = "body";
+  regionFilter = "body";
+  layerFilter = null;
   renderControls();
   viewer.reset();
   clearSelection();
@@ -75,36 +68,36 @@ localeSelect.addEventListener("change", () => {
 });
 
 regionSelect.addEventListener("change", () => {
-  clearSelection();
-  pressLayer("all");
-  if (regionSelect.value === "body") viewer.showBody();
-  else viewer.focusRegion(regionSelect.value as RegionId);
+  regionFilter = (regionSelect.value || "body") as RegionId | "body";
+  if (selectedStructureId && !structureMatchesRegion(selectedStructureId, regionFilter)) clearSelection();
+  renderControls();
+  applyFilters();
 });
 
 structureSelect.addEventListener("change", () => {
-  if (structureSelect.value) viewer.focusStructure(structureSelect.value as StructureId);
+  if (structureSelect.value) chooseStructure(structureSelect.value as StructureId);
 });
 
 resetButton.addEventListener("click", () => {
-  regionSelect.value = "body";
-  pressLayer("all");
-  viewer.reset();
+  regionFilter = "body";
+  layerFilter = null;
   clearSelection();
+  renderControls();
+  viewer.reset();
 });
 
 function renderControls(): void {
-  const selectedRegion = regionSelect.value || "body";
   regionSelect.replaceChildren(option("body", locale === "zh-CN" ? "全身" : "Whole body"));
   for (const region of catalog.regions()) regionSelect.append(option(region.id, catalog.label(region.id, locale)));
-  regionSelect.value = [...regionSelect.options].some((entry) => entry.value === selectedRegion) ? selectedRegion : "body";
+  regionSelect.value = [...regionSelect.options].some((entry) => entry.value === regionFilter) ? regionFilter : "body";
+  regionFilter = regionSelect.value as RegionId | "body";
 
-  const selectedStructure = structureSelect.value;
   structureSelect.replaceChildren();
   for (const structure of catalog.structures()) {
     const coverage = catalog.representation(structure.id)!.mode;
     structureSelect.append(option(structure.id, `${catalog.label(structure.id, locale)} · ${coverage}`));
   }
-  if ([...structureSelect.options].some((entry) => entry.value === selectedStructure)) structureSelect.value = selectedStructure;
+  structureSelect.value = selectedStructureId ?? "";
 
   if (!layers.childElementCount) {
     const definitions: Array<[string, StructureType | null]> = [
@@ -115,11 +108,12 @@ function renderControls(): void {
       button.type = "button";
       button.textContent = label;
       button.dataset.layer = label;
-      button.setAttribute("aria-pressed", String(label === "all"));
+      button.setAttribute("aria-pressed", String((type === null && layerFilter === null) || type === layerFilter));
       button.addEventListener("click", () => {
-        clearSelection();
-        viewer.setLayer(type);
-        pressLayer(label);
+        layerFilter = type;
+        if (selectedStructureId && !structureMatchesLayer(selectedStructureId, layerFilter)) clearSelection();
+        renderControls();
+        applyFilters();
       });
       layers.append(button);
     }
@@ -130,24 +124,91 @@ function renderControls(): void {
   for (const button of layers.querySelectorAll("button")) {
     const key = button.dataset.layer as keyof typeof layerLabels;
     button.textContent = layerLabels[key];
+    const type = key === "all" ? null : key as StructureType;
+    button.setAttribute("aria-pressed", String((type === null && layerFilter === null) || type === layerFilter));
+  }
+
+  if (!dragModes.childElementCount) {
+    const definitions: Array<[InteractionMode, string]> = [["rotate", "rotate"], ["pan", "pan"]];
+    for (const [mode, label] of definitions) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.dragMode = mode;
+      button.setAttribute("aria-pressed", String(mode === interactionMode));
+      button.addEventListener("click", () => {
+        interactionMode = mode;
+        viewer.setInteractionMode(mode);
+        renderControls();
+      });
+      button.textContent = label;
+      dragModes.append(button);
+    }
+  }
+  const dragLabels = locale === "zh-CN" ? { rotate: "旋转", pan: "平移" } : { rotate: "Rotate", pan: "Pan" };
+  for (const button of dragModes.querySelectorAll("button")) {
+    const mode = button.dataset.dragMode as InteractionMode;
+    button.textContent = dragLabels[mode];
+    button.setAttribute("aria-pressed", String(mode === interactionMode));
   }
   resetButton.textContent = locale === "zh-CN" ? "重置全身视图" : "Reset body";
-  viewerHelp.textContent = locale === "zh-CN"
-    ? "拖拽旋转 · 滚轮缩放 · 右键拖拽平移"
-    : "Drag to rotate · Scroll to zoom · Right-drag to pan";
+  viewerHelp.textContent = interactionMode === "rotate"
+    ? (locale === "zh-CN" ? "左键拖拽旋转 · 右键拖拽平移 · 滚轮缩放" : "Drag to rotate · Right-drag to pan · Scroll to zoom")
+    : (locale === "zh-CN" ? "左键拖拽平移 · 右键拖拽旋转 · 滚轮缩放" : "Drag to pan · Right-drag to rotate · Scroll to zoom");
 }
 
-function pressLayer(layer: string): void {
-  for (const button of layers.querySelectorAll("button")) button.setAttribute("aria-pressed", String(button.dataset.layer === layer));
+function applyFilters(): void {
+  const visibleIds = catalog.structures()
+    .filter((structure) => regionFilter === "body" || structure.regionIds.includes(regionFilter))
+    .filter((structure) => layerFilter === null || structure.type === layerFilter)
+    .filter((structure) => {
+      const mode = catalog.representation(structure.id)?.mode;
+      return mode === "direct" || mode === "compound";
+    })
+    .map((structure) => structure.id);
+  viewer.setVisible(visibleIds);
 }
 
 function clearSelection(): void {
+  selectedStructureId = null;
   selectionTitle.textContent = locale === "zh-CN" ? "选择一个结构" : "Choose a structure";
   selectionId.textContent = "—";
   selectionType.textContent = "—";
   selectionCoverage.textContent = "—";
   selectionContext.textContent = "—";
   structureSelect.value = "";
+}
+
+function chooseStructure(id: StructureId): void {
+  const structure = catalog.structure(id);
+  if (!structure) return;
+  selectedStructureId = id;
+  if (!structureMatchesRegion(id, regionFilter)) regionFilter = structure.regionIds[0] ?? "body";
+  if (!structureMatchesLayer(id, layerFilter)) layerFilter = structure.type;
+  renderControls();
+  applyFilters();
+  viewer.selectStructure(id);
+}
+
+function handleSelection(selection: ViewerSelection): void {
+  selectedStructureId = selection.structure.id;
+  if (!structureMatchesRegion(selection.structure.id, regionFilter)) regionFilter = selection.structure.regionIds[0] ?? "body";
+  if (!structureMatchesLayer(selection.structure.id, layerFilter)) layerFilter = null;
+  renderControls();
+  selectionTitle.textContent = selection.label;
+  selectionId.textContent = selection.structure.id;
+  selectionType.textContent = selection.structure.type;
+  selectionCoverage.textContent = selection.coverage;
+  selectionContext.textContent = selection.contextStructureIds.length
+    ? selection.contextStructureIds.map((id) => catalog.label(id, locale)).join(", ")
+    : "—";
+}
+
+function structureMatchesRegion(id: StructureId, region: RegionId | "body"): boolean {
+  return region === "body" || catalog.structure(id)?.regionIds.includes(region) === true;
+}
+
+function structureMatchesLayer(id: StructureId, layer: StructureType | null): boolean {
+  return layer === null || catalog.structure(id)?.type === layer;
 }
 
 function setViewerAccessibility(): void {

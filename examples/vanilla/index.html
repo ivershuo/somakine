@@ -39,10 +39,15 @@
             <div id="layers" class="chip-row"></div>
           </fieldset>
 
-          <div class="field grow">
-            <label for="structure">Structure</label>
-            <select id="structure" size="9"></select>
-          </div>
+            <fieldset>
+              <legend>Drag mode</legend>
+              <div id="drag-modes" class="chip-row mode-switch" role="group" aria-label="Drag mode"></div>
+            </fieldset>
+
+            <div class="field grow">
+              <label for="structure">Structure</label>
+              <select id="structure" size="9"></select>
+            </div>
 
           <button id="reset" class="reset-button" type="button">Reset body</button>
         </aside>
@@ -91,7 +96,8 @@
 });
 
 viewer.setLayer(<span class="code-string">"muscle"</span>);
-viewer.focusStructure(structureId);</code></pre>
+viewer.selectStructure(structureId);
+viewer.setStructureStyle(structureId, { color: <span class="code-string">"#e19a5b"</span> });</code></pre>
           </article>
 
           <article class="api-card api-reference">
@@ -101,12 +107,14 @@ viewer.focusStructure(structureId);</code></pre>
             </div>
             <dl class="api-list">
               <div><dt><code>createSomakine(container, options)</code></dt><dd>Create a viewer with a verified data pack and host callbacks.</dd></div>
-              <div><dt><code>setLocale(locale) · setLayer(type | null)</code></dt><dd>Switch labels and show one structure type or restore all layers.</dd></div>
-              <div><dt><code>focusStructure(id) · focusRegion(id)</code></dt><dd>Isolate a canonical structure or focus a named anatomical region.</dd></div>
-              <div><dt><code>setVisible(ids) · showBody() · reset()</code></dt><dd>Control the visible set and return to the complete framed model.</dd></div>
+              <div><dt><code>setLocale(locale) · setInteractionMode(mode)</code></dt><dd>Switch labels and choose primary drag rotation or panning.</dd></div>
+              <div><dt><code>setLayer(type | null) · setVisible(ids)</code></dt><dd>Show one structure type or apply a host-computed visibility set.</dd></div>
+              <div><dt><code>selectStructure(id) · focusStructure(id)</code></dt><dd>Highlight a structure without hiding context, or explicitly isolate it.</dd></div>
+              <div><dt><code>setStructureStyle(id, style)</code></dt><dd>Set a structure-specific colour, emissive, opacity, or surface style; pass <code>null</code> to reset.</dd></div>
+              <div><dt><code>showBody() · reset()</code></dt><dd>Restore the complete framed model and initial camera.</dd></div>
               <div><dt><code>dispose()</code></dt><dd>Release controls, listeners, renderer, and loaded resources.</dd></div>
             </dl>
-            <p class="api-options"><code>options</code> accepts the data pack, accessibility label, view vectors, abort signal, asset resolver, callbacks, and canvas background. Public types include <code>ViewerSelection</code>, <code>ViewerState</code>, <code>ViewerPhase</code>, <code>CreateSomakineOptions</code>, <code>SomakineViewer</code>, <code>ViewFit</code>, <code>AssetResolver</code>, and <code>Asset</code>. Utilities: <code>calculateViewFit</code> · <code>normalizeViewVector</code> · <code>createPrimitiveObject</code> · <code>findGltfNode</code> · <code>defaultAssetResolver</code> · <code>verifyAssetBytes</code> · <code>assertSelfContainedGlb</code> · <code>disposeObject3D</code>.</p>
+            <p class="api-options"><code>options</code> accepts the data pack, accessibility label, view vectors, abort signal, asset resolver, callbacks, and canvas background. Public types include <code>ViewerSelection</code>, <code>ViewerState</code>, <code>ViewerPhase</code>, <code>InteractionMode</code>, <code>StructureStyle</code>, <code>CreateSomakineOptions</code>, <code>SomakineViewer</code>, <code>ViewFit</code>, <code>AssetResolver</code>, and <code>Asset</code>. Utilities: <code>calculateViewFit</code> · <code>normalizeViewVector</code> · <code>createPrimitiveObject</code> · <code>findGltfNode</code> · <code>defaultAssetResolver</code> · <code>verifyAssetBytes</code> · <code>assertSelfContainedGlb</code> · <code>disposeObject3D</code>.</p>
           </article>
         </div>
 

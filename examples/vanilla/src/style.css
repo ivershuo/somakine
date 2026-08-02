@@ -235,6 +235,10 @@ legend {
   color: var(--color-accent);
 }
 
+.mode-switch {
+  max-width: 14rem;
+}
+
 .reset-button {
   width: 100%;
   padding: var(--space-3xs) var(--space-2xs);
