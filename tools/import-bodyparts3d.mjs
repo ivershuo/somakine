@@ -285,7 +285,7 @@ console.log(`Imported ${pack.structures.length} canonical structures and ${pack.
 
 function argument(name) {
   const index = process.argv.indexOf(name);
-  if (index === -1 || !process.argv[index + 1]) throw new Error(`Usage: npm run import:bodyparts3d -- --source /absolute/path/to/kinexis`);
+  if (index === -1 || !process.argv[index + 1]) throw new Error("Usage: npm run import:bodyparts3d -- --source /absolute/path/to/source-workspace");
   return process.argv[index + 1];
 }
 

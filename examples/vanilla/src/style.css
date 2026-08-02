@@ -1,6 +1,6 @@
 /* Hallmark · genre: modern-minimal · tone: austere · anchor hue: 256 · macrostructure: Workbench · theme: Cobalt · enrichment: none · nav: none · footer: none · contrast: pass · slop: pass · responsive: pass */
 /* Hallmark · pre-emit critique: P5 H4 E4 S4 R5 V5 · quiet workbench, model-first */
-@import "../../../tokens.css";
+@import "./tokens.css";
 
 * {
   box-sizing: border-box;
@@ -84,12 +84,46 @@ canvas:active {
 }
 
 .hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-lg);
   padding-block: var(--space-lg) var(--space-xl);
   border-bottom: var(--rule-thin);
 }
 
 .hero-copy {
   min-width: 0;
+}
+
+.github-link {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--space-3xs);
+  min-height: var(--size-control);
+  padding: var(--space-2xs) var(--space-sm);
+  border: var(--rule-thin);
+  border-radius: var(--radius-input);
+  color: var(--color-ink-2);
+  background-color: var(--color-panel);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.github-link:hover {
+  border-color: var(--color-rule-strong);
+  color: var(--color-accent);
+  background-color: var(--color-paper-2);
+}
+
+.github-link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
 }
 
 .eyebrow,

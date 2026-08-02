@@ -14,8 +14,8 @@ The supplemental source mapping and audit are shipped as
 `public/supplemental-manifest.json`; its generated-asset notice is in
 `public/LICENSE.bodyparts3d-supplemental.txt`.
 
-Regenerate from a previously acquired, verified Kinexis workspace:
+Regenerate from a previously acquired, verified source workspace:
 
 ```sh
-npm run import:bodyparts3d -- --source /absolute/path/to/kinexis
+npm run import:bodyparts3d -- --source /absolute/path/to/source-workspace
 ```
