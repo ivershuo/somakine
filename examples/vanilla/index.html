@@ -4,14 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Somakine framework alpha example" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
     <title>Somakine · The open body framework</title>
   </head>
   <body>
     <main class="shell">
       <header class="hero">
-        <p class="eyebrow">SOMAKINE / ALPHA 0.1</p>
-        <h1>The open body framework.</h1>
-        <p class="intro">A host-independent anatomy model, honest visual coverage, and a small semantic viewer API.</p>
+        <div class="hero-copy">
+          <p class="eyebrow">SOMAKINE / ALPHA 0.1</p>
+          <h1>The open body framework.</h1>
+          <p class="intro">A host-independent anatomy model, honest visual coverage, and a small semantic viewer API.</p>
+        </div>
       </header>
 
       <section class="workspace" aria-label="Somakine interactive example">
@@ -44,6 +49,7 @@
 
         <div class="viewer-column">
           <div id="viewer" class="viewer" aria-busy="true"></div>
+          <p id="viewer-help" class="viewer-help">Drag to rotate · Scroll to zoom · Right-drag to pan</p>
           <p id="status" class="status" role="status" aria-live="polite">Loading anatomy…</p>
         </div>
 
@@ -57,11 +63,53 @@
             <div><dt>Context</dt><dd id="selection-context">—</dd></div>
           </dl>
           <div class="notice">
-            <strong>BodyParts3D 4.0</strong>
-            <p>Real source geometry with explicit contextual gaps. For education and framework evaluation, not diagnosis.</p>
+            <span class="notice-label">Source</span>
+            <span id="attribution" class="attribution"></span>
           </div>
-          <p id="attribution" class="attribution"></p>
         </aside>
+      </section>
+
+      <section class="api-section" aria-labelledby="api-title">
+        <div class="section-head">
+          <p class="eyebrow">DEVELOPER SURFACE</p>
+          <h2 id="api-title">A small viewer API, ready for your interface.</h2>
+          <p class="section-lede">Keep layout, controls, and education content in your host application. Somakine owns the verified model, camera, and semantic selection events.</p>
+        </div>
+
+        <div class="api-grid">
+          <article class="api-card api-example">
+            <div class="api-card-head">
+              <span class="api-label">QUICK START</span>
+              <span class="api-file">viewer.ts</span>
+            </div>
+            <pre><code><span class="code-keyword">const</span> viewer = <span class="code-keyword">await</span> createSomakine(container, {
+  dataset,
+  accessibleLabel: <span class="code-string">"Interactive body model"</span>,
+  onSelection: ({ structure }) =&gt; {
+    console.log(structure.id);
+  },
+});
+
+viewer.setLayer(<span class="code-string">"muscle"</span>);
+viewer.focusStructure(structureId);</code></pre>
+          </article>
+
+          <article class="api-card api-reference">
+            <div class="api-card-head">
+              <span class="api-label">CORE API</span>
+              <span class="api-file">viewer</span>
+            </div>
+            <dl class="api-list">
+              <div><dt><code>createSomakine(container, options)</code></dt><dd>Create a viewer with a verified data pack and host callbacks.</dd></div>
+              <div><dt><code>setLocale(locale) · setLayer(type | null)</code></dt><dd>Switch labels and show one structure type or restore all layers.</dd></div>
+              <div><dt><code>focusStructure(id) · focusRegion(id)</code></dt><dd>Isolate a canonical structure or focus a named anatomical region.</dd></div>
+              <div><dt><code>setVisible(ids) · showBody() · reset()</code></dt><dd>Control the visible set and return to the complete framed model.</dd></div>
+              <div><dt><code>dispose()</code></dt><dd>Release controls, listeners, renderer, and loaded resources.</dd></div>
+            </dl>
+            <p class="api-options"><code>options</code> accepts the data pack, accessibility label, view vectors, abort signal, asset resolver, callbacks, and canvas background. Public types include <code>ViewerSelection</code>, <code>ViewerState</code>, <code>ViewerPhase</code>, <code>CreateSomakineOptions</code>, <code>SomakineViewer</code>, <code>ViewFit</code>, <code>AssetResolver</code>, and <code>Asset</code>. Utilities: <code>calculateViewFit</code> · <code>normalizeViewVector</code> · <code>createPrimitiveObject</code> · <code>findGltfNode</code> · <code>defaultAssetResolver</code> · <code>verifyAssetBytes</code> · <code>assertSelfContainedGlb</code> · <code>disposeObject3D</code>.</p>
+          </article>
+        </div>
+
       </section>
     </main>
     <script type="module" src="/src/main.ts"></script>

@@ -35,11 +35,19 @@ export interface CreateSomakineOptions {
   dataset: DataPack;
   accessibleLabel: string;
   locale?: string;
+  /** Initial camera direction in the pack's coordinate system. */
+  initialViewDirection?: readonly [number, number, number];
+  /** Up axis used by OrbitControls in the pack's coordinate system. */
+  initialViewUp?: readonly [number, number, number];
   signal?: AbortSignal;
   assetResolver?: AssetResolver;
   onSelection?: (selection: ViewerSelection) => void;
   onStateChange?: (state: ViewerState) => void;
-  background?: string;
+  /**
+   * Canvas clear colour. Pass `null` when the host wants the canvas to inherit
+   * its own surface colour through the renderer's alpha channel.
+   */
+  background?: string | null;
 }
 
 export interface SomakineViewer {
@@ -52,6 +60,59 @@ export interface SomakineViewer {
   showBody(): void;
   reset(): void;
   dispose(): void;
+}
+
+export interface ViewFit {
+  distance: number;
+  minDistance: number;
+  maxDistance: number;
+  near: number;
+  far: number;
+}
+
+/**
+ * Calculate camera and orbit limits for a bounding sphere.
+ *
+ * The horizontal field of view matters on wide viewports while the vertical
+ * field of view is the limiting dimension on narrow ones. Keeping this math
+ * outside the renderer makes the fit behavior deterministic and testable.
+ */
+export function calculateViewFit(
+  radius: number,
+  fovDegrees: number,
+  aspect = 1,
+  padding = 1.2,
+): ViewFit {
+  const safeRadius = Number.isFinite(radius) && radius > 0 ? radius : 1;
+  const safeFov = THREE.MathUtils.clamp(Number.isFinite(fovDegrees) ? fovDegrees : 38, 1, 179);
+  const safeAspect = Number.isFinite(aspect) && aspect > 0 ? aspect : 1;
+  const safePadding = Number.isFinite(padding) && padding > 1 ? padding : 1.2;
+  const verticalFov = THREE.MathUtils.degToRad(safeFov);
+  const horizontalFov = 2 * Math.atan(Math.tan(verticalFov / 2) * safeAspect);
+  const limitingFov = Math.min(verticalFov, horizontalFov);
+  const distance = Math.max(safeRadius / Math.sin(limitingFov / 2) * safePadding, safeRadius * 2);
+
+  return {
+    distance,
+    minDistance: Math.max(safeRadius * 0.12, 0.001),
+    maxDistance: Math.max(safeRadius * 12, distance * 2.75, 0.25),
+    near: Math.max(safeRadius * 0.0015, 0.001),
+    far: Math.max(safeRadius * 32, distance * 4, 10),
+  };
+}
+
+export function normalizeViewVector(
+  value: readonly [number, number, number] | undefined,
+  fallback: readonly [number, number, number],
+): readonly [number, number, number] {
+  const vector = new THREE.Vector3(...(value ?? fallback));
+  if (![vector.x, vector.y, vector.z].every(Number.isFinite) || vector.lengthSq() === 0) {
+    vector.set(...fallback);
+  }
+  if (![vector.x, vector.y, vector.z].every(Number.isFinite) || vector.lengthSq() === 0) {
+    throw new TypeError("Somakine view vectors must contain a finite non-zero direction");
+  }
+  return vector.normalize().toArray() as [number, number, number];
 }
 
 export async function createSomakine(container: HTMLElement, options: CreateSomakineOptions): Promise<SomakineViewer> {
@@ -86,26 +147,44 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.05;
-  renderer.setClearColor(new THREE.Color(options.background ?? "#0f1717"), 1);
+  if (options.background === null) renderer.setClearColor(0x000000, 0);
+  else renderer.setClearColor(new THREE.Color(options.background ?? "#0f1717"), 1);
 
   const scene = new THREE.Scene();
   const model = new THREE.Group();
   model.name = "somakine-model";
   scene.add(model);
-  scene.add(new THREE.HemisphereLight(0xf7f0df, 0x263c3b, 2.8));
-  const key = new THREE.DirectionalLight(0xffffff, 3.2);
-  key.position.set(3, 5, 5);
-  scene.add(key);
-  const rim = new THREE.DirectionalLight(0x8fd8c3, 1.4);
-  rim.position.set(-4, 2, -3);
-  scene.add(rim);
+  // Use a neutral fill plus a soft camera-facing key so the source geometry
+  // keeps its volume without the previous colored rim or back-lighting.
+  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
 
+  const initialViewDirection = normalizeViewVector(options.initialViewDirection, [0, 0.2, 1]);
+  let initialViewUp = normalizeViewVector(options.initialViewUp, [0, 1, 0]);
+  if (Math.abs(new THREE.Vector3(...initialViewDirection).dot(new THREE.Vector3(...initialViewUp))) > 0.999) {
+    initialViewUp = normalizeViewVector(undefined, Math.abs(initialViewDirection[1]) < 0.999 ? [0, 1, 0] : [1, 0, 0]);
+  }
   const camera = new THREE.PerspectiveCamera(38, 1, 0.01, 100);
+  camera.up.fromArray(initialViewUp);
+  // Keep the key in camera space: rotating around the model rotates the light
+  // with the canvas, so the newly exposed back never becomes an unlit wall.
+  scene.add(camera);
+  const key = new THREE.DirectionalLight(0xffffff, 2.45);
+  const keyTarget = new THREE.Object3D();
+  key.position.set(-3, 2, 4);
+  keyTarget.position.set(0, 0, -8);
+  key.target = keyTarget;
+  camera.add(key, keyTarget);
   const controls = new OrbitControls(camera, canvas);
   controls.enableDamping = false;
   controls.enablePan = true;
-  controls.minPolarAngle = Math.PI * 0.06;
-  controls.maxPolarAngle = Math.PI * 0.94;
+  controls.rotateSpeed = 0.55;
+  controls.zoomSpeed = 0.8;
+  controls.panSpeed = 0.45;
+  controls.keyPanSpeed = 7;
+  controls.screenSpacePanning = false;
+  controls.minPolarAngle = Math.PI * 0.04;
+  controls.maxPolarAngle = Math.PI * 0.96;
+  const initialViewDirectionVector = new THREE.Vector3(...initialViewDirection);
   const groups = new Map<StructureId, THREE.Group>();
   const sourceScenes = new Map<string, Promise<THREE.Object3D>>();
   const raycaster = new THREE.Raycaster();
@@ -129,6 +208,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     if (pointerDown && Math.hypot(event.clientX - pointerDown.x, event.clientY - pointerDown.y) > 5) pointerDragged = true;
   };
   const onPointerEnd = () => { pointerDown = null };
+  const onContextMenu = (event: MouseEvent) => event.preventDefault();
   const onClick = (event: MouseEvent) => {
     if (pointerDragged) { pointerDragged = false; return }
     const rect = canvas.getBoundingClientRect();
@@ -142,6 +222,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   canvas.addEventListener("pointermove", onPointerMove);
   canvas.addEventListener("pointerup", onPointerEnd);
   canvas.addEventListener("pointercancel", onPointerEnd);
+  canvas.addEventListener("contextmenu", onContextMenu);
   canvas.addEventListener("click", onClick);
 
   emitState("loading", "Loading anatomy");
@@ -229,6 +310,8 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     const targets = representation.mode === "context"
       ? representation.contextStructureIds.map((contextId) => groups.get(contextId)).filter(isGroup)
       : [groups.get(id)].filter(isGroup);
+    const targetSet = new Set(targets);
+    for (const group of groups.values()) group.visible = targetSet.has(group);
     for (const group of targets) { group.visible = true; setHighlighted(group, true) }
     selectedGroups = targets;
     if (targets.length > 0) frameObjects(targets, true);
@@ -268,6 +351,9 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     ensureActive();
     clearHighlight();
     for (const group of groups.values()) group.visible = true;
+    const visible = visibleGroups();
+    if (visible.length > 0) frameObjects(visible, true);
+    emitState(visible.length > 0 ? "ready" : "empty", "Anatomy ready");
     render();
   }
 
@@ -299,14 +385,17 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     if (box.isEmpty()) return;
     const sphere = box.getBoundingSphere(new THREE.Sphere());
     const direction = camera.position.clone().sub(controls.target);
-    if (direction.lengthSq() === 0) direction.set(0, 0.2, 1);
+    if (direction.lengthSq() === 0) direction.copy(initialViewDirectionVector);
     direction.normalize();
-    const distance = Math.max(sphere.radius / Math.sin(THREE.MathUtils.degToRad(camera.fov / 2)) * 1.15, 0.5);
-    const nextPosition = sphere.center.clone().add(direction.multiplyScalar(distance));
+    const fit = calculateViewFit(sphere.radius, camera.fov, camera.aspect);
+    const nextPosition = sphere.center.clone().add(direction.multiplyScalar(fit.distance));
+    camera.near = fit.near;
+    camera.far = fit.far;
+    camera.updateProjectionMatrix();
     camera.position.copy(nextPosition);
     controls.target.copy(sphere.center);
-    controls.minDistance = Math.max(sphere.radius * 0.35, 0.05);
-    controls.maxDistance = Math.max(sphere.radius * 6, 2);
+    controls.minDistance = fit.minDistance;
+    controls.maxDistance = fit.maxDistance;
     controls.update();
     if (!animate || globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches) render();
   }
@@ -332,6 +421,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     canvas.removeEventListener("pointermove", onPointerMove);
     canvas.removeEventListener("pointerup", onPointerEnd);
     canvas.removeEventListener("pointercancel", onPointerEnd);
+    canvas.removeEventListener("contextmenu", onContextMenu);
     canvas.removeEventListener("click", onClick);
     disposeObject3D(model);
     renderer.dispose();

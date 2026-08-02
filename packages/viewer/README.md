@@ -17,3 +17,10 @@ resource disposal.
 The default resolver supports self-contained binary GLB assets only. Hosts may
 provide a custom resolver, but data-pack hashes and byte counts are still
 verified before parsing.
+
+`focusStructure` isolates the selected direct/compound structure, or the
+declared context structures for a context-only entry. `showBody` and `reset`
+restore the whole-body view. Camera framing and orbit limits are calculated
+from the visible bounds. Packs with a non-default up/front axis can pass
+`initialViewDirection` and `initialViewUp`; hosts can expose the canvas
+guidance as “drag to rotate, scroll to zoom, right-drag to pan”.

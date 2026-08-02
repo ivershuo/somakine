@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
 import test from "node:test";
 import * as THREE from "three";
-import { assertSelfContainedGlb, createPrimitiveObject, disposeObject3D, findGltfNode, verifyAssetBytes } from "@somakine/viewer";
+import { assertSelfContainedGlb, calculateViewFit, createPrimitiveObject, disposeObject3D, findGltfNode, normalizeViewVector, verifyAssetBytes } from "@somakine/viewer";
 
 if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
@@ -51,6 +51,22 @@ test("node selection accepts original glTF names sanitized by Three.js", () => {
   child.name = THREE.PropertyBinding.sanitizeNodeName("head-neck:atlas");
   root.add(child);
   assert.equal(findGltfNode(root, "head-neck:atlas"), child);
+});
+
+test("camera fit keeps portrait views inside the limiting field of view", () => {
+  const wide = calculateViewFit(1, 38, 2);
+  const portrait = calculateViewFit(1, 38, 0.5);
+  assert.ok(portrait.distance > wide.distance);
+  assert.ok(portrait.minDistance < portrait.distance);
+  assert.ok(portrait.distance < portrait.maxDistance);
+  assert.ok(portrait.near > 0);
+  assert.ok(portrait.far > portrait.distance);
+});
+
+test("view vectors normalize and safely fall back from invalid axes", () => {
+  assert.deepEqual(normalizeViewVector([0, 0, 2], [0, 1, 0]), [0, 0, 1]);
+  assert.deepEqual(normalizeViewVector([0, 0, 0], [0, 1, 0]), [0, 1, 0]);
+  assert.deepEqual(normalizeViewVector([Number.NaN, 0, 0], [0, 0, 1]), [0, 0, 1]);
 });
 
 function glb(document) {
