@@ -452,6 +452,10 @@ pre code {
   color: var(--color-code-ink);
 }
 
+.code-comment {
+  color: var(--color-code-muted);
+}
+
 .api-list {
   display: grid;
   gap: 0;

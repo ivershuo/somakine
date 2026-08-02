@@ -22,6 +22,8 @@ export interface ViewerSelection {
   contextStructureIds: readonly StructureId[];
 }
 
+export type ViewerSelectionGroup = readonly ViewerSelection[];
+
 export type ViewerPhase = "loading" | "ready" | "selected" | "empty" | "error" | "disposed";
 
 export type InteractionMode = "rotate" | "pan";
@@ -56,6 +58,7 @@ export interface CreateSomakineOptions {
   signal?: AbortSignal;
   assetResolver?: AssetResolver;
   onSelection?: (selection: ViewerSelection) => void;
+  onSelectionGroup?: (selections: ViewerSelectionGroup) => void;
   onStateChange?: (state: ViewerState) => void;
   /**
    * Canvas clear colour. Pass `null` when the host wants the canvas to inherit
@@ -70,6 +73,7 @@ export interface SomakineViewer {
   setInteractionMode(mode: InteractionMode): void;
   setLayer(type: StructureType | null): void;
   selectStructure(id: StructureId): void;
+  selectStructures(ids: readonly StructureId[]): void;
   focusStructure(id: StructureId): void;
   focusRegion(id: RegionId): void;
   setVisible(ids: readonly StructureId[]): void;
@@ -198,7 +202,9 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   controls.zoomSpeed = 0.8;
   controls.panSpeed = 0.45;
   controls.keyPanSpeed = 7;
-  controls.screenSpacePanning = false;
+  // Keep pan movement in the camera's screen plane so vertical and diagonal
+  // drags remain useful for packs that use a non-Y-up coordinate system.
+  controls.screenSpacePanning = true;
   controls.minPolarAngle = Math.PI * 0.04;
   controls.maxPolarAngle = Math.PI * 0.96;
   let interactionMode: InteractionMode = "rotate";
@@ -291,6 +297,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     setInteractionMode,
     setLayer,
     selectStructure,
+    selectStructures,
     focusStructure,
     focusRegion,
     setVisible,
@@ -342,15 +349,41 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
   }
 
   function selectStructure(id: StructureId): void {
+    selectStructures([id]);
+  }
+
+  function selectStructures(ids: readonly StructureId[]): void {
     ensureActive();
-    const structure = catalog.structure(id);
-    const representation = catalog.representation(id);
-    if (!structure || !representation) return;
+    const selections = uniqueStructureIds(ids)
+      .map((id) => {
+        const structure = catalog.structure(id);
+        const representation = catalog.representation(id);
+        if (!structure || !representation) return undefined;
+        return selectionRecord(structure, representation);
+      })
+      .filter((selection): selection is ViewerSelection => Boolean(selection));
     clearHighlight();
-    const targets = selectionTargets(id, representation);
+    const targetSet = new Set<THREE.Group>();
+    for (const selection of selections) {
+      const representation = catalog.representation(selection.structure.id);
+      if (!representation) continue;
+      for (const group of selectionTargets(selection.structure.id, representation)) targetSet.add(group);
+    }
+    const targets = [...targetSet];
     for (const group of targets) setHighlighted(group, true);
     selectedGroups = targets;
-    announceSelection(structure, representation, targets);
+    if (selections.length === 1) {
+      const [selection] = selections;
+      if (selection) options.onSelection?.(selection);
+    }
+    options.onSelectionGroup?.(selections);
+    const message = selections.length === 0
+      ? "No structures selected"
+      : selections.length === 1 && selections[0]
+        ? `${selections[0].label} · ${selections[0].coverage}`
+        : `${selections.length} structures selected`;
+    emitState(targets.length > 0 ? "selected" : "empty", message);
+    render();
   }
 
   function focusStructure(id: StructureId): void {
@@ -464,17 +497,27 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
       : [groups.get(id)].filter(isGroup);
   }
 
+  function selectionRecord(structure: Structure, representation: import("@somakine/core").Representation): ViewerSelection {
+    return {
+      structure,
+      label: catalog.label(structure.id, locale),
+      coverage: representation.mode,
+      contextStructureIds: representation.contextStructureIds,
+    };
+  }
+
+  function uniqueStructureIds(ids: readonly StructureId[]): StructureId[] {
+    return [...new Set(ids)];
+  }
+
   function announceSelection(
     structure: Structure,
     representation: import("@somakine/core").Representation,
     targets: readonly THREE.Group[],
   ): void {
-    options.onSelection?.({
-      structure,
-      label: catalog.label(structure.id, locale),
-      coverage: representation.mode,
-      contextStructureIds: representation.contextStructureIds,
-    });
+    const selection = selectionRecord(structure, representation);
+    options.onSelection?.(selection);
+    options.onSelectionGroup?.([selection]);
     emitState(targets.length > 0 ? "selected" : "empty", `${catalog.label(structure.id, locale)} · ${representation.mode}`);
     render();
   }

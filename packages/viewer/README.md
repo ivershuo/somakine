@@ -5,6 +5,7 @@ const viewer = await createSomakine(container, {
   dataset,
   accessibleLabel: "Interactive body model",
   onSelection(selection) {},
+  onSelectionGroup(selections) {},
 });
 
 viewer.setLocale("zh-CN");
@@ -34,11 +35,16 @@ const viewer = await createSomakine(container, {
 authenticated storage can use the same verified rendering contract.
 
 `selectStructure` keeps the current visibility set and applies a distinct
-selection style. `focusStructure` is the explicit isolation operation for
-callers that want only the selected direct/compound structure (or its declared
-context structures) visible. `setStructureStyle(id, style)` sets or clears a
-per-structure material style, including colour, emissive treatment, opacity,
-and surface parameters. `showBody` and `reset` restore the whole-body view.
+selection style. `selectStructures(ids)` does the same for any arbitrary set
+of IDs; the IDs do not need to share a Region, and `onSelectionGroup` receives
+the resulting selection records. IDs are deduplicated, unknown IDs are
+ignored, and an empty list clears the current highlight. `focusStructure` is
+the explicit isolation operation for callers that want only the selected
+direct/compound structure (or its declared context structures) visible.
+`setStructureStyle(id, style)`
+sets or clears a per-structure material style, including colour, emissive
+treatment, opacity, and surface parameters. `showBody` and `reset` restore the
+whole-body view.
 `setInteractionMode("rotate" | "pan")` chooses whether primary mouse drag
 rotates or pans the camera; the secondary drag keeps the opposite operation
 available. Camera framing and orbit limits are calculated from the visible
