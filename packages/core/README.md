@@ -16,3 +16,6 @@ an extension to replace an existing representation.
 
 This package has no DOM, renderer, filesystem, network, or clinical-content
 dependency.
+
+**API reference:** [docs/api/core.md](https://github.com/ivershuo/somakine/blob/main/docs/api/core.md) — every catalog
+method, validator, composer, type, and error with examples.

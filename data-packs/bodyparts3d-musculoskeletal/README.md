@@ -24,6 +24,10 @@ the Viewer intentionally does not read files directly from `node_modules`.
 Bundlers that support asset URL imports can map each `asset.uri` (for example,
 `assets/bodyparts3d/ankle-foot.glb`) to the corresponding exported asset URL.
 
+The package also exports `bodyParts3DMusculoskeletalStats`, a TypeScript-readonly
+summary of the included regions, structures, assets, and coverage. See the [data-pack
+API reference](https://github.com/ivershuo/somakine/blob/main/docs/api/data-packs.md).
+
 Regenerate from a previously acquired, verified source workspace:
 
 ```sh

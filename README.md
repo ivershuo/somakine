@@ -82,6 +82,23 @@ loader. For the real BodyParts3D geometry, install
 `bodyParts3DMusculoskeletal`, and configure your bundler's asset URLs through
 the viewer's `assetResolver`; the data-pack README documents that setup.
 
+## Documentation
+
+The [developer guide](docs/API.md) walks through loading a pack, querying the
+catalog, rendering the viewer, handling selection, styling structures, composing
+extensions, and handling errors — with runnable recipes for each.
+
+Function-by-function references:
+
+- [Architecture](docs/ARCHITECTURE.md) — layer boundaries and identity model
+- [Data-pack schema](docs/SCHEMA.md) — records and coverage modes
+- [Developer data extensions](docs/DATA_EXTENSIONS.md) — authoring and composition
+- [`@somakine/core`](docs/api/core.md) — catalog, validation, composition
+- [`@somakine/viewer`](docs/api/viewer.md) — Three.js viewer
+- [`@somakine/cli`](docs/api/cli.md) — `soma` CLI
+- [`@somakine/bodyparts3d`](docs/api/bodyparts3d.md) — BodyParts3D pack adapter
+- [Published data packs](docs/api/data-packs.md) — starter and BodyParts3D pack exports
+
 ## Packages
 
 - `@somakine/core` — schema, validation, catalog, and public types.

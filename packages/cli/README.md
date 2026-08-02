@@ -21,3 +21,6 @@ paths below the pack file's directory. `soma compose` accepts multiple extension
 files, validates their mappings and provenance, and uses
 `--policy fill-unavailable` by default. Other policies are
 `prefer-extension` and `error-on-conflict`.
+
+**API reference:** [docs/api/cli.md](https://github.com/ivershuo/somakine/blob/main/docs/api/cli.md) — every command,
+flag, exit code, and the programmatic `runCommand` API with examples.
