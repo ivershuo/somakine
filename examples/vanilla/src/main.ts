@@ -18,6 +18,7 @@ const layers = required<HTMLElement>("layers");
 const dragModes = required<HTMLElement>("drag-modes");
 const resetButton = required<HTMLButtonElement>("reset");
 const status = required<HTMLElement>("status");
+const viewerLoading = required<HTMLElement>("viewer-loading");
 const viewerHelp = required<HTMLElement>("viewer-help");
 const selectionTitle = required<HTMLElement>("selection-title");
 const selectionId = required<HTMLElement>("selection-id");
@@ -42,7 +43,10 @@ const viewer = await createSomakine(viewerHost, {
   accessibleLabel: "Interactive BodyParts3D musculoskeletal model",
   onStateChange(next) {
     status.textContent = next.message;
-    viewerHost.setAttribute("aria-busy", String(next.phase === "loading"));
+    const loading = next.phase === "loading";
+    viewerHost.setAttribute("aria-busy", String(loading));
+    viewerLoading.hidden = !loading;
+    viewerLoading.setAttribute("aria-hidden", String(!loading));
   },
   onSelection(selection) {
     handleSelection(selection);

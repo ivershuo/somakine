@@ -8,6 +8,10 @@ mesh instances, assets, provenance, and product content so education, fitness,
 and rehabilitation experiences can share one honest body layer without sharing
 an application architecture.
 
+Try the [live example](https://somakine.pages.dev).
+
+![Screenshot of the live example](https://somakine.pages.dev/screenshot.png)
+
 ## Alpha capabilities
 
 - canonical anatomy IDs and many-to-many regions;

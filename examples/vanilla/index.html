@@ -54,7 +54,14 @@
         </aside>
 
         <div class="viewer-column">
-          <div id="viewer" class="viewer" aria-busy="true"></div>
+          <div id="viewer" class="viewer" aria-busy="true">
+            <div id="viewer-loading" class="viewer-loading" aria-hidden="false">
+              <div class="viewer-loading-card">
+                <span class="viewer-spinner" aria-hidden="true"></span>
+                <span>Loading anatomy…</span>
+              </div>
+            </div>
+          </div>
           <p id="viewer-help" class="viewer-help">Drag to rotate · Right-drag to pan · Ctrl/Cmd-click to multi-select · Scroll to zoom</p>
           <p id="status" class="status" role="status" aria-live="polite">Loading anatomy…</p>
         </div>
