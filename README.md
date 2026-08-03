@@ -95,6 +95,8 @@ Function-by-function references:
 - [Developer data extensions](docs/DATA_EXTENSIONS.md) — authoring and composition
 - [`@somakine/core`](docs/api/core.md) — catalog, validation, composition
 - [`@somakine/viewer`](docs/api/viewer.md) — Three.js viewer
+- [`@somakine/react`](docs/api/react.md) — React component wrapper
+- [`@somakine/vue`](docs/api/vue.md) — Vue 3 component wrapper
 - [`@somakine/cli`](docs/api/cli.md) — `soma` CLI
 - [`@somakine/bodyparts3d`](docs/api/bodyparts3d.md) — BodyParts3D pack adapter
 - [Published data packs](docs/api/data-packs.md) — starter and BodyParts3D pack exports
@@ -103,6 +105,8 @@ Function-by-function references:
 
 - `@somakine/core` — schema, validation, catalog, and public types.
 - `@somakine/viewer` — framework-neutral Three.js viewer.
+- `@somakine/react` — React component wrapper for the viewer.
+- `@somakine/vue` — Vue 3 component wrapper for the viewer.
 - `@somakine/bodyparts3d` — BodyParts3D provenance and adapter helpers.
 - `@somakine/cli` — `soma` validation and inspection commands.
 - `@somakine/musculoskeletal-basic` — synthetic alpha fixture and demo pack.
