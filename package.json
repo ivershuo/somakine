@@ -12,10 +12,10 @@
   ],
   "scripts": {
     "clean": "node tools/clean.mjs",
-    "build": "npm run build -w @somakine/core && npm run build -w @somakine/viewer && npm run build -w @somakine/bodyparts3d && npm run build -w @somakine/cli && npm run build -w @somakine/musculoskeletal-basic && npm run build -w @somakine/bodyparts3d-musculoskeletal && npm run build -w @somakine/vanilla-example",
+    "build": "npm run build -w @somakine/core && npm run build -w @somakine/viewer && npm run build -w @somakine/react && npm run build -w @somakine/vue && npm run build -w @somakine/bodyparts3d && npm run build -w @somakine/cli && npm run build -w @somakine/musculoskeletal-basic && npm run build -w @somakine/bodyparts3d-musculoskeletal && npm run build -w @somakine/vanilla-example",
     "typecheck": "tsc -b --pretty false",
     "test": "npm run build:packages && node --test tests/*.test.mjs",
-    "build:packages": "npm run build -w @somakine/core && npm run build -w @somakine/viewer && npm run build -w @somakine/bodyparts3d && npm run build -w @somakine/cli && npm run build -w @somakine/musculoskeletal-basic && npm run build -w @somakine/bodyparts3d-musculoskeletal",
+    "build:packages": "npm run build -w @somakine/core && npm run build -w @somakine/viewer && npm run build -w @somakine/react && npm run build -w @somakine/vue && npm run build -w @somakine/bodyparts3d && npm run build -w @somakine/cli && npm run build -w @somakine/musculoskeletal-basic && npm run build -w @somakine/bodyparts3d-musculoskeletal",
     "import:bodyparts3d": "npm run build -w @somakine/core && npm run build -w @somakine/viewer && node tools/import-bodyparts3d.mjs",
     "check:boundaries": "node tools/check-boundaries.mjs",
     "check:licenses": "node tools/check-licenses.mjs",
@@ -28,9 +28,12 @@
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
     "@types/three": "^0.181.0",
+    "react": "^19.0.0",
     "three": "^0.181.2",
     "typescript": "^5.7.2",
-    "vite": "^6.0.0"
+    "vite": "^6.0.0",
+    "vue": "^3.5.0"
   }
 }
