@@ -7,6 +7,7 @@ export type {
   RegionId,
   Structure,
   StructureId,
+  StructureSide,
   StructureStyle,
   StructureType,
   ViewerSelection,

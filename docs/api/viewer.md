@@ -139,9 +139,12 @@ interface ViewerSelection {
   label: string;                   // localized label for the active locale
   coverage: CoverageMode;          // the representation's coverage mode
   contextStructureIds: readonly StructureId[]; // non-empty only for context mode
+  side: StructureSide;             // which side of the structure was selected
 }
 
 type ViewerSelectionGroup = readonly ViewerSelection[];
+
+type StructureSide = "none" | "left" | "right" | "bilateral";
 ```
 
 `onSelection` receives a single `ViewerSelection` for one-structure selections.
@@ -152,6 +155,14 @@ multi-select only `onSelectionGroup` fires with more than one entry. Operations
 that change visibility, such as `setLayer`, `focusRegion`, `setVisible`,
 `showBody`, and `reset`, clear highlighting without emitting these selection
 callbacks.
+
+`side` reports which side of a paired structure the selection resolves to. A
+canvas click on one half of a paired structure (for example the left femur)
+yields `"left"` or `"right"`; a programmatic whole-structure selection
+(`selectStructure` / `selectStructures` / `focusStructure`), a bilateral mesh
+instance, or both sides picked together yield `"bilateral"`; midline and
+non-lateral structures yield `"none"`. Use it to prefix a label (for example
+`"Left femur"`) or to disambiguate the two halves of a paired structure.
 
 ### `ViewerState` / `ViewerPhase`
 

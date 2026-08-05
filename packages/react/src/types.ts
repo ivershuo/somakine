@@ -3,6 +3,7 @@ import type { DataPack, RegionId, Structure, StructureId, StructureType } from "
 import type {
   AssetResolver,
   InteractionMode,
+  StructureSide,
   StructureStyle,
   ViewerSelection,
   ViewerSelectionGroup,
@@ -82,6 +83,7 @@ export type {
   RegionId,
   Structure,
   StructureId,
+  StructureSide,
   StructureStyle,
   StructureType,
   ViewerSelection,

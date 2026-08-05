@@ -15,11 +15,21 @@ import {
   type StructureType,
 } from "@somakine/core";
 
+export type StructureSide = "none" | "left" | "right" | "bilateral";
+
 export interface ViewerSelection {
   structure: Structure;
   label: string;
   coverage: CoverageMode;
   contextStructureIds: readonly StructureId[];
+  /**
+   * Which side of the structure the selection resolves to: `"left"` or
+   * `"right"` when a single side of a paired structure is picked, `"bilateral"`
+   * when both sides apply (a whole-structure selection, a bilateral instance, or
+   * both sides picked together), and `"none"` for midline or non-lateral
+   * structures.
+   */
+  side: StructureSide;
 }
 
 export type ViewerSelectionGroup = readonly ViewerSelection[];
@@ -141,6 +151,48 @@ export function normalizeViewVector(
   return vector.normalize().toArray() as [number, number, number];
 }
 
+/**
+ * Reduce a collection of instance sides to a single structure side.
+ *
+ * A `bilateral` side, or both `left` and `right` together, collapse to
+ * `"bilateral"`; a lone `left` or `right` is preserved; anything else (including
+ * an empty collection or only `none`) resolves to `"none"`. Used to derive the
+ * `side` of a {@link ViewerSelection} from the sides of the meshes it covers.
+ */
+export function combineStructureSides(sides: Iterable<StructureSide>): StructureSide {
+  const distinct = sides instanceof Set ? sides : new Set(sides);
+  if (distinct.has("bilateral")) return "bilateral";
+  const left = distinct.has("left");
+  const right = distinct.has("right");
+  if (left && right) return "bilateral";
+  if (left) return "left";
+  if (right) return "right";
+  return "none";
+}
+
+/**
+ * Pick the nearest raycast hit that belongs to a visible structure.
+ *
+ * Three.js `Raycaster` ignores `Object3D.visible`, so without filtering a hit on
+ * a structure hidden by `setLayer`/`setVisible`/`focusRegion`/`focusStructure`
+ * would still be selectable — for example clicking a bone and selecting an
+ * overlapped, hidden muscle. Pass a predicate that reports whether a structure's
+ * group is currently shown; hits with no `structureId` (or hidden ones) are
+ * skipped.
+ */
+export function pickStructureHit(
+  hits: ReadonlyArray<THREE.Intersection>,
+  isVisible: (id: StructureId) => boolean,
+): { object: THREE.Object3D; structureId: StructureId } | undefined {
+  for (const hit of hits) {
+    const id = hit.object?.userData?.structureId;
+    if (typeof id === "string" && isVisible(id as StructureId)) {
+      return { object: hit.object, structureId: id as StructureId };
+    }
+  }
+  return undefined;
+}
+
 export async function createSomakine(container: HTMLElement, options: CreateSomakineOptions): Promise<SomakineViewer> {
   if (!(container instanceof HTMLElement)) throw new TypeError("Somakine container must be an HTMLElement");
   if (!options.accessibleLabel.trim()) throw new TypeError("Somakine accessibleLabel is required");
@@ -245,11 +297,10 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     if (!rect.width || !rect.height) return;
     pointer.set(((event.clientX - rect.left) / rect.width) * 2 - 1, -((event.clientY - rect.top) / rect.height) * 2 + 1);
     raycaster.setFromCamera(pointer, camera);
-    const hit = raycaster.intersectObject(model, true).find((entry) => typeof entry.object.userData.structureId === "string");
-    if (hit) {
-      const structureId = hit.object.userData.structureId as StructureId;
-      selectPickedObject(hit.object, structureId, event.ctrlKey || event.metaKey);
-    }
+    // Three.js raycasting ignores `visible`, so skip hits on structures hidden
+    // by setLayer/setVisible/focus* and pick the nearest visible one instead.
+    const picked = pickStructureHit(raycaster.intersectObject(model, true), (id) => groups.get(id)?.visible === true);
+    if (picked) selectPickedObject(picked.object, picked.structureId, event.ctrlKey || event.metaKey);
   };
   canvas.addEventListener("pointerdown", onPointerDown);
   canvas.addEventListener("pointermove", onPointerMove);
@@ -278,7 +329,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
           object = cloneRenderable(selected);
         } else object = cloneRenderable(await loadGltf(asset));
         applyTransform(object, instance.transform);
-        markStructure(object, structure.id);
+        markStructure(object, structure.id, instance.laterality);
         group.add(object);
       }
       groups.set(structure.id, group);
@@ -362,15 +413,18 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
 
   function selectStructures(ids: readonly StructureId[]): void {
     ensureActive();
-    const selections = selectionRecords(ids);
     clearHighlight();
     const targetSet = new Map<THREE.Object3D, HighlightTarget>();
-    for (const selection of selections) {
-      const representation = catalog.representation(selection.structure.id);
-      if (!representation) continue;
-      for (const object of selectionTargets(selection.structure.id, representation)) {
-        targetSet.set(object, { object, structureId: targetStructureId(object, selection.structure.id) });
+    const selections: ViewerSelection[] = [];
+    for (const id of uniqueStructureIds(ids)) {
+      const structure = catalog.structure(id);
+      const representation = catalog.representation(id);
+      if (!structure || !representation) continue;
+      const objects = selectionTargets(id, representation);
+      for (const object of objects) {
+        targetSet.set(object, { object, structureId: targetStructureId(object, id) });
       }
+      selections.push(selectionRecord(structure, representation, combineStructureSides(sidesOfObjects(objects))));
     }
     const targets = [...targetSet.values()];
     for (const target of targets) setHighlightedTarget(target, true);
@@ -407,7 +461,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
       selectedTargets = [...selectedTargets, target];
       setHighlightedTarget(target, true);
     }
-    const selections = selectionRecords(uniqueStructureIds(selectedTargets.map((entry) => entry.structureId)));
+    const selections = selectionsFromTargets(selectedTargets);
     if (selections.length === 1) {
       const [selection] = selections;
       if (selection) options.onSelection?.(selection);
@@ -534,15 +588,32 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
       : [groups.get(id)].filter(isGroup);
   }
 
-  function selectionRecords(ids: readonly StructureId[]): ViewerSelection[] {
-    return uniqueStructureIds(ids)
-      .map((id) => {
-        const structure = catalog.structure(id);
-        const representation = catalog.representation(id);
-        if (!structure || !representation) return undefined;
-        return selectionRecord(structure, representation);
-      })
-      .filter((selection): selection is ViewerSelection => Boolean(selection));
+  function selectionsFromTargets(targets: readonly HighlightTarget[]): ViewerSelection[] {
+    const objectsByStructure = new Map<StructureId, THREE.Object3D[]>();
+    for (const target of targets) {
+      const list = objectsByStructure.get(target.structureId) ?? [];
+      list.push(target.object);
+      objectsByStructure.set(target.structureId, list);
+    }
+    const selections: ViewerSelection[] = [];
+    for (const [structureId, objects] of objectsByStructure) {
+      const structure = catalog.structure(structureId);
+      const representation = catalog.representation(structureId);
+      if (!structure || !representation) continue;
+      selections.push(selectionRecord(structure, representation, combineStructureSides(sidesOfObjects(objects))));
+    }
+    return selections;
+  }
+
+  function sidesOfObjects(objects: readonly THREE.Object3D[]): Set<StructureSide> {
+    const sides = new Set<StructureSide>();
+    for (const object of objects) {
+      object.traverse((child) => {
+        const side = child.userData.somakineSide as StructureSide | undefined;
+        if (side === "left" || side === "right" || side === "bilateral" || side === "none") sides.add(side);
+      });
+    }
+    return sides;
   }
 
   function targetStructureId(object: THREE.Object3D, fallback: StructureId): StructureId {
@@ -559,12 +630,13 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     return groups.get(id)?.userData.somakineStyle as StructureStyle | undefined;
   }
 
-  function selectionRecord(structure: Structure, representation: import("@somakine/core").Representation): ViewerSelection {
+  function selectionRecord(structure: Structure, representation: import("@somakine/core").Representation, side: StructureSide): ViewerSelection {
     return {
       structure,
       label: catalog.label(structure.id, locale),
       coverage: representation.mode,
       contextStructureIds: representation.contextStructureIds,
+      side,
     };
   }
 
@@ -577,7 +649,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     representation: import("@somakine/core").Representation,
     targets: readonly THREE.Object3D[],
   ): void {
-    const selection = selectionRecord(structure, representation);
+    const selection = selectionRecord(structure, representation, combineStructureSides(sidesOfObjects(targets)));
     options.onSelection?.(selection);
     options.onSelectionGroup?.([selection]);
     emitState(targets.length > 0 ? "selected" : "empty", `${catalog.label(structure.id, locale)} · ${representation.mode}`);
@@ -738,8 +810,11 @@ function applyInteractionMode(controls: OrbitControls, mode: InteractionMode): v
   controls.mouseButtons.RIGHT = mode === "rotate" ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE;
 }
 
-function markStructure(object: THREE.Object3D, structureId: StructureId): void {
-  object.traverse((child) => { child.userData.structureId = structureId });
+function markStructure(object: THREE.Object3D, structureId: StructureId, side: StructureSide): void {
+  object.traverse((child) => {
+    child.userData.structureId = structureId;
+    child.userData.somakineSide = side;
+  });
 }
 
 const STYLE_COLOR = /^#[0-9a-fA-F]{6}$/;

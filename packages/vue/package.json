@@ -1,6 +1,6 @@
 {
   "name": "@somakine/vue",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Vue 3 component for the Somakine 3D anatomy viewer.",
   "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "packages/vue" },
   "homepage": "https://github.com/ivershuo/somakine#readme",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@somakine/core": "0.1.0-alpha.0",
-    "@somakine/viewer": "0.1.0-alpha.0"
+    "@somakine/viewer": "0.1.0-alpha.1"
   },
   "peerDependencies": {
     "three": ">=0.180.0 <1",

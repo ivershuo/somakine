@@ -1,6 +1,6 @@
 {
   "name": "@somakine/viewer",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "description": "Framework-neutral Three.js viewer for Somakine.",
   "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "packages/viewer" },
   "homepage": "https://github.com/ivershuo/somakine#readme",

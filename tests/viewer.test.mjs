@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
 import test from "node:test";
 import * as THREE from "three";
-import { assertSelfContainedGlb, calculateViewFit, createPrimitiveObject, disposeObject3D, findGltfNode, normalizeViewVector, verifyAssetBytes } from "@somakine/viewer";
+import { assertSelfContainedGlb, calculateViewFit, combineStructureSides, createPrimitiveObject, disposeObject3D, findGltfNode, normalizeViewVector, pickStructureHit, verifyAssetBytes } from "@somakine/viewer";
 
 if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
@@ -68,6 +68,34 @@ test("view vectors normalize and safely fall back from invalid axes", () => {
   assert.deepEqual(normalizeViewVector([0, 0, 0], [0, 1, 0]), [0, 1, 0]);
   assert.deepEqual(normalizeViewVector([Number.NaN, 0, 0], [0, 0, 1]), [0, 0, 1]);
 });
+
+test("structure sides collapse to a single selection side", () => {
+  assert.equal(combineStructureSides([]), "none");
+  assert.equal(combineStructureSides(["none"]), "none");
+  assert.equal(combineStructureSides(["left"]), "left");
+  assert.equal(combineStructureSides(["right"]), "right");
+  assert.equal(combineStructureSides(["left", "right"]), "bilateral");
+  assert.equal(combineStructureSides(["bilateral"]), "bilateral");
+  assert.equal(combineStructureSides(["none", "left"]), "left");
+  assert.equal(combineStructureSides(new Set(["left", "none", "right"])), "bilateral");
+});
+
+test("picking skips hits on hidden structures and takes the nearest visible one", () => {
+  const bone = pickHit("somakine:structure:femur");
+  const muscle = pickHit("somakine:structure:deltoid");
+  // The hidden muscle is nearer (listed first) but must be skipped in favour of the bone.
+  assert.equal(pickStructureHit([muscle, bone], (id) => id === "somakine:structure:femur").structureId, "somakine:structure:femur");
+  // Both visible: the nearest (first) hit wins.
+  assert.equal(pickStructureHit([muscle, bone], () => true).structureId, "somakine:structure:deltoid");
+  // Everything hidden resolves to nothing.
+  assert.equal(pickStructureHit([muscle, bone], () => false), undefined);
+  // Hits without a structure id (decorations, controls) are ignored.
+  assert.equal(pickStructureHit([pickHit(), bone], () => true).structureId, "somakine:structure:femur");
+});
+
+function pickHit(structureId) {
+  return { object: { userData: structureId ? { structureId } : {} } };
+}
 
 function glb(document) {
   const encoded = new TextEncoder().encode(JSON.stringify(document));
