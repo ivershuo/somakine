@@ -32,14 +32,14 @@ function createViewerHandle(
     setLayer: (type) => {
       viewer.current?.setLayer(type);
     },
-    selectStructure: (id) => {
-      viewer.current?.selectStructure(id);
+    selectStructure: (id, options) => {
+      viewer.current?.selectStructure(id, options);
     },
-    selectStructures: (ids) => {
-      viewer.current?.selectStructures(ids);
+    selectStructures: (ids, options) => {
+      viewer.current?.selectStructures(ids, options);
     },
-    focusStructure: (id) => {
-      viewer.current?.focusStructure(id);
+    focusStructure: (id, options) => {
+      viewer.current?.focusStructure(id, options);
     },
     focusRegion: (id) => {
       viewer.current?.focusRegion(id);

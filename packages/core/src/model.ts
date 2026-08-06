@@ -11,6 +11,13 @@ export type AssetId = `somakine:asset:${string}`;
 
 export type StructureType = "bone" | "joint" | "ligament" | "muscle" | "tendon" | "skin";
 export type Laterality = "none" | "paired" | "midline" | "variable";
+/**
+ * The bilateral addressing dimension a host uses to target one side of a paired
+ * structure. This is an input/operation vocabulary only; the derived side of a
+ * selection (which may also be `"none"` or `"bilateral"`) is the viewer-owned
+ * `StructureSide`.
+ */
+export type LateralSide = "left" | "right";
 export type RelationType =
   | "part_of"
   | "articulates_with"

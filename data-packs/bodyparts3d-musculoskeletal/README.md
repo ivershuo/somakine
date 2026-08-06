@@ -33,3 +33,21 @@ Regenerate from a previously acquired, verified source workspace:
 ```sh
 npm run import:bodyparts3d -- --source /absolute/path/to/source-workspace
 ```
+
+### Laterality (side) consolidation
+
+As of pack version `4.0.0-somakine.1`, the supplemental side-specific structures
+(`left-`/`right-` prefixed slugs such as `left-calcaneal-tendon`,
+`right-calcaneal-tendon`, `left-long-plantar-ligament`, and
+`right/left-stylohyoid-ligament`) are consolidated into their paired base
+structures, whose source OBJ elements already split into left/right mesh
+instances. Target one side of a paired structure through the viewer's side
+option instead of a side-specific id:
+
+```ts
+viewer.selectStructure("somakine:structure:calcaneal-tendon", { side: "left" });
+```
+
+The shipped `generated.ts`/`pack.json` reflect this once regenerated from the
+verified source workspace. Until then they retain the previous 187-structure
+form.

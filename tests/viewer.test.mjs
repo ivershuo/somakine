@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
 import test from "node:test";
 import * as THREE from "three";
-import { assertSelfContainedGlb, calculateViewFit, combineStructureSides, createPrimitiveObject, disposeObject3D, findGltfNode, normalizeViewVector, pickStructureHit, verifyAssetBytes } from "@somakine/viewer";
+import { assertSelfContainedGlb, calculateViewFit, combineStructureSides, createPrimitiveObject, disposeObject3D, findGltfNode, matchesSide, normalizeViewVector, pickStructureHit, structureHighlightObjects, verifyAssetBytes } from "@somakine/viewer";
 
 if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
@@ -80,6 +80,57 @@ test("structure sides collapse to a single selection side", () => {
   assert.equal(combineStructureSides(new Set(["left", "none", "right"])), "bilateral");
 });
 
+test("matchesSide treats bilateral instances as part of either side", () => {
+  assert.equal(matchesSide("left", "left"), true);
+  assert.equal(matchesSide("left", "right"), false);
+  assert.equal(matchesSide("right", "right"), true);
+  assert.equal(matchesSide("bilateral", "left"), true);
+  assert.equal(matchesSide("bilateral", "right"), true);
+  assert.equal(matchesSide("none", "left"), false);
+  assert.equal(matchesSide(undefined, "left"), false);
+});
+
+test("structureHighlightObjects narrows to the requested side of a paired structure", () => {
+  const id = "somakine:structure:humerus";
+  const group = pairedGroup(id, ["left", "right"]);
+  const groups = new Map([[id, group]]);
+  const representation = { mode: "direct" };
+  // No side → the whole structure group.
+  assert.deepEqual(structureHighlightObjects(groups, id, representation, undefined), [group]);
+  // Side narrows to that side's instance child only.
+  assert.deepEqual(structureHighlightObjects(groups, id, representation, "left"), [group.children[0]]);
+  assert.deepEqual(structureHighlightObjects(groups, id, representation, "right"), [group.children[1]]);
+});
+
+test("structureHighlightObjects includes bilateral instances for either side", () => {
+  const id = "somakine:structure:skull";
+  const group = pairedGroup(id, ["bilateral"]);
+  const groups = new Map([[id, group]]);
+  const representation = { mode: "direct" };
+  assert.deepEqual(structureHighlightObjects(groups, id, representation, "left"), [group.children[0]]);
+  assert.deepEqual(structureHighlightObjects(groups, id, representation, "right"), [group.children[0]]);
+});
+
+test("structureHighlightObjects falls back to the whole structure when the requested side is absent", () => {
+  const id = "somakine:structure:second-metatarsal";
+  const group = pairedGroup(id, ["none"]); // a non-lateralized bone
+  const groups = new Map([[id, group]]);
+  const representation = { mode: "direct" };
+  // Asking for "left" on a none-only structure addresses the whole structure.
+  assert.deepEqual(structureHighlightObjects(groups, id, representation, "left"), [group]);
+});
+
+test("structureHighlightObjects filters context structures by side", () => {
+  const femurId = "somakine:structure:femur";
+  const femur = pairedGroup(femurId, ["left", "right"]);
+  const groups = new Map([[femurId, femur]]);
+  const representation = { mode: "context", contextStructureIds: [femurId] };
+  assert.deepEqual(
+    structureHighlightObjects(groups, "somakine:structure:knee-joint", representation, "left"),
+    [femur.children[0]],
+  );
+});
+
 test("picking skips hits on hidden structures and takes the nearest visible one", () => {
   const bone = pickHit("somakine:structure:femur");
   const muscle = pickHit("somakine:structure:deltoid");
@@ -95,6 +146,18 @@ test("picking skips hits on hidden structures and takes the nearest visible one"
 
 function pickHit(structureId) {
   return { object: { userData: structureId ? { structureId } : {} } };
+}
+
+function pairedGroup(id, sides) {
+  const group = new THREE.Group();
+  group.name = id;
+  group.userData.structureId = id;
+  for (const side of sides) {
+    const instance = new THREE.Object3D();
+    instance.userData.somakineSide = side;
+    group.add(instance);
+  }
+  return group;
 }
 
 function glb(document) {

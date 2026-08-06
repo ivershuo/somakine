@@ -220,44 +220,12 @@
       "label": { "en": "Long plantar ligament", "zh-CN": "长跖韧带" }
     },
     {
-      "slug": "right-long-plantar-ligament",
-      "type": "ligament",
-      "regionId": "ankle-foot",
-      "laterality": "right",
-      "source": { "tree": "isa", "fmaId": "FMA44249", "representationId": "BP5093" },
-      "label": { "en": "Right long plantar ligament", "zh-CN": "右长跖韧带" }
-    },
-    {
-      "slug": "left-long-plantar-ligament",
-      "type": "ligament",
-      "regionId": "ankle-foot",
-      "laterality": "left",
-      "source": { "tree": "isa", "fmaId": "FMA44250", "representationId": "BP9273" },
-      "label": { "en": "Left long plantar ligament", "zh-CN": "左长跖韧带" }
-    },
-    {
       "slug": "calcaneal-tendon",
       "type": "tendon",
       "regionId": "ankle-foot",
       "laterality": "paired",
       "source": { "tree": "isa", "fmaId": "FMA51061", "representationId": "BP8740" },
       "label": { "en": "Calcaneal tendon", "zh-CN": "跟腱" }
-    },
-    {
-      "slug": "right-calcaneal-tendon",
-      "type": "tendon",
-      "regionId": "ankle-foot",
-      "laterality": "right",
-      "source": { "tree": "isa", "fmaId": "FMA258847", "representationId": "BP5098" },
-      "label": { "en": "Right calcaneal tendon", "zh-CN": "右跟腱" }
-    },
-    {
-      "slug": "left-calcaneal-tendon",
-      "type": "tendon",
-      "regionId": "ankle-foot",
-      "laterality": "left",
-      "source": { "tree": "isa", "fmaId": "FMA264844", "representationId": "BP8739" },
-      "label": { "en": "Left calcaneal tendon", "zh-CN": "左跟腱" }
     },
     {
       "slug": "stylohyoid-ligament",
@@ -268,36 +236,12 @@
       "label": { "en": "Stylohyoid ligament", "zh-CN": "茎突舌骨韧带" }
     },
     {
-      "slug": "right-stylohyoid-ligament",
-      "type": "ligament",
-      "regionId": "head-neck",
-      "laterality": "right",
-      "source": { "tree": "isa", "fmaId": "FMA72309", "representationId": "BP8422" },
-      "label": { "en": "Right stylohyoid ligament", "zh-CN": "右茎突舌骨韧带" }
-    },
-    {
-      "slug": "left-stylohyoid-ligament",
-      "type": "ligament",
-      "regionId": "head-neck",
-      "laterality": "left",
-      "source": { "tree": "isa", "fmaId": "FMA72311", "representationId": "BP8289" },
-      "label": { "en": "Left stylohyoid ligament", "zh-CN": "左茎突舌骨韧带" }
-    },
-    {
       "slug": "intermediate-tendon",
       "type": "tendon",
       "regionId": "head-neck",
       "laterality": "variable",
       "source": { "tree": "isa", "fmaId": "FMA65410", "representationId": "BP6513" },
       "label": { "en": "Intermediate tendon", "zh-CN": "中间腱" }
-    },
-    {
-      "slug": "right-intermediate-tendon",
-      "type": "tendon",
-      "regionId": "head-neck",
-      "laterality": "right",
-      "source": { "tree": "isa", "fmaId": "FMA258850", "representationId": "BP6514" },
-      "label": { "en": "Right intermediate tendon", "zh-CN": "右中间腱" }
     }
   ],
   "excluded": [

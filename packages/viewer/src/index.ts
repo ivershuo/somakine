@@ -8,6 +8,7 @@ import {
   type CoverageMode,
   type DataPack,
   type GltfAsset,
+  type LateralSide,
   type PrimitiveAsset,
   type RegionId,
   type Structure,
@@ -55,6 +56,17 @@ export interface StructureStyle {
   metalness?: number;
 }
 
+/** Options for structure-level operations that can be restricted to one side. */
+export interface StructureSelectionOptions {
+  /**
+   * Restrict the operation to one side of a paired structure. Omit (or pass
+   * `{}`) to address the whole structure. When the requested side has no
+   * matching instance, the operation falls back to the whole structure and the
+   * emitted {@link ViewerSelection.side} reports what was actually shown.
+   */
+  side?: LateralSide;
+}
+
 export interface ViewerState {
   phase: ViewerPhase;
   message: string;
@@ -87,9 +99,9 @@ export interface SomakineViewer {
   setLocale(locale: string): void;
   setInteractionMode(mode: InteractionMode): void;
   setLayer(type: StructureType | null): void;
-  selectStructure(id: StructureId): void;
-  selectStructures(ids: readonly StructureId[]): void;
-  focusStructure(id: StructureId): void;
+  selectStructure(id: StructureId, options?: StructureSelectionOptions): void;
+  selectStructures(ids: readonly StructureId[], options?: StructureSelectionOptions): void;
+  focusStructure(id: StructureId, options?: StructureSelectionOptions): void;
   focusRegion(id: RegionId): void;
   setVisible(ids: readonly StructureId[]): void;
   setStructureStyle(id: StructureId, style: StructureStyle | null): void;
@@ -168,6 +180,45 @@ export function combineStructureSides(sides: Iterable<StructureSide>): Structure
   if (left) return "left";
   if (right) return "right";
   return "none";
+}
+
+/**
+ * Report whether an instance side matches a requested lateral side.
+ *
+ * A `"bilateral"` instance (one mesh spanning both sides) matches either
+ * `"left"` or `"right"`, since addressing one side still includes it.
+ */
+export function matchesSide(value: unknown, side: LateralSide): boolean {
+  return value === side || value === "bilateral";
+}
+
+/**
+ * Resolve the renderable objects a structure-level operation should act on.
+ *
+ * With no `side`, this is the structure's whole group (or, for `context` mode,
+ * its context structures' groups). With a `side`, it narrows to the per-instance
+ * child subtrees whose stamped `somakineSide` matches. When the requested side
+ * has no matching instance (a `variable`/`none`/midline structure, or a paired
+ * structure missing that side), it falls back to the whole structure so the
+ * operation still addresses what exists and the emitted `side` reports reality.
+ */
+export function structureHighlightObjects(
+  groups: ReadonlyMap<StructureId, THREE.Group>,
+  id: StructureId,
+  representation: import("@somakine/core").Representation,
+  side: LateralSide | undefined,
+): THREE.Object3D[] {
+  const baseGroups = representation.mode === "context"
+    ? representation.contextStructureIds.map((contextId) => groups.get(contextId)).filter(isGroup)
+    : [groups.get(id)].filter(isGroup);
+  if (side === undefined) return baseGroups;
+  const filtered: THREE.Object3D[] = [];
+  for (const group of baseGroups) {
+    for (const child of group.children) {
+      if (matchesSide(child.userData.somakineSide, side)) filtered.push(child);
+    }
+  }
+  return filtered.length > 0 ? filtered : baseGroups;
 }
 
 /**
@@ -399,6 +450,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
 
   function setLayer(type: StructureType | null): void {
     ensureActive();
+    restoreInstanceVisibility();
     clearHighlight();
     for (const [id, group] of groups) group.visible = type === null || catalog.structure(id)?.type === type;
     const visible = visibleGroups();
@@ -407,20 +459,21 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     render();
   }
 
-  function selectStructure(id: StructureId): void {
-    selectStructures([id]);
+  function selectStructure(id: StructureId, selectionOptions?: StructureSelectionOptions): void {
+    selectStructures([id], selectionOptions);
   }
 
-  function selectStructures(ids: readonly StructureId[]): void {
+  function selectStructures(ids: readonly StructureId[], selectionOptions?: StructureSelectionOptions): void {
     ensureActive();
     clearHighlight();
+    const side = selectionOptions?.side;
     const targetSet = new Map<THREE.Object3D, HighlightTarget>();
     const selections: ViewerSelection[] = [];
     for (const id of uniqueStructureIds(ids)) {
       const structure = catalog.structure(id);
       const representation = catalog.representation(id);
       if (!structure || !representation) continue;
-      const objects = selectionTargets(id, representation);
+      const objects = structureHighlightObjects(groups, id, representation, side);
       for (const object of objects) {
         targetSet.set(object, { object, structureId: targetStructureId(object, id) });
       }
@@ -476,16 +529,29 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     render();
   }
 
-  function focusStructure(id: StructureId): void {
+  function focusStructure(id: StructureId, selectionOptions?: StructureSelectionOptions): void {
     ensureActive();
     const structure = catalog.structure(id);
     const representation = catalog.representation(id);
     if (!structure || !representation) return;
+    const side = selectionOptions?.side;
     clearHighlight();
-    const targets = selectionTargets(id, representation);
-    const targetSet = new Set(targets);
-    for (const group of groups.values()) group.visible = targetSet.has(group);
-    for (const group of targets) { group.visible = true; setHighlighted(group, true) }
+    restoreInstanceVisibility();
+    const targets = structureHighlightObjects(groups, id, representation, side);
+    const visibleGroupIds = new Set<StructureId>();
+    for (const object of targets) visibleGroupIds.add(targetStructureId(object, id));
+    for (const [groupId, group] of groups) group.visible = visibleGroupIds.has(groupId);
+    // When a side is requested, hide the non-matching children of each shown
+    // group so focus isolates to that side; frameObjects then bounds only it.
+    if (side !== undefined) {
+      for (const group of groups.values()) {
+        if (!group.visible) continue;
+        for (const child of group.children) {
+          if (!matchesSide(child.userData.somakineSide, side)) child.visible = false;
+        }
+      }
+    }
+    for (const object of targets) setHighlighted(object, true, structureStyle(targetStructureId(object, id)));
     selectedTargets = targets.map((object) => ({ object, structureId: targetStructureId(object, id) }));
     if (targets.length > 0) frameObjects(targets, true);
     announceSelection(structure, representation, targets);
@@ -493,6 +559,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
 
   function focusRegion(id: RegionId): void {
     ensureActive();
+    restoreInstanceVisibility();
     clearHighlight();
     const regionStructures = new Set(catalog.structures({ regionId: id }).map((structure) => structure.id));
     for (const [structureId, group] of groups) group.visible = regionStructures.has(structureId);
@@ -504,6 +571,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
 
   function setVisible(ids: readonly StructureId[]): void {
     ensureActive();
+    restoreInstanceVisibility();
     clearHighlight();
     const wanted = new Set(ids);
     for (const [id, group] of groups) group.visible = wanted.has(id);
@@ -526,6 +594,7 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
 
   function showBody(): void {
     ensureActive();
+    restoreInstanceVisibility();
     clearHighlight();
     for (const group of groups.values()) group.visible = true;
     const visible = visibleGroups();
@@ -582,10 +651,8 @@ export async function createSomakine(container: HTMLElement, options: CreateSoma
     selectedTargets = [];
   }
 
-  function selectionTargets(id: StructureId, representation: import("@somakine/core").Representation): THREE.Object3D[] {
-    return representation.mode === "context"
-      ? representation.contextStructureIds.map((contextId) => groups.get(contextId)).filter(isGroup)
-      : [groups.get(id)].filter(isGroup);
+  function restoreInstanceVisibility(): void {
+    for (const group of groups.values()) for (const child of group.children) child.visible = true;
   }
 
   function selectionsFromTargets(targets: readonly HighlightTarget[]): ViewerSelection[] {
@@ -916,4 +983,4 @@ function captureBaseStyle(material: HighlightMaterial): BaseMaterialStyle {
 function isGroup(value: THREE.Group | undefined): value is THREE.Group { return value instanceof THREE.Group }
 function abortError(): DOMException { return new DOMException("Somakine initialization aborted", "AbortError") }
 
-export type { Asset };
+export type { Asset, LateralSide };

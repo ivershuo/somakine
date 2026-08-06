@@ -209,7 +209,7 @@ const regions = graph.regions.map((region, index) => ({
 const pack = {
   schemaVersion: SOMAKINE_SCHEMA_VERSION,
   id: "somakine-bodyparts3d-musculoskeletal",
-  version: "4.0.0-somakine.0",
+  version: "4.0.0-somakine.1",
   title: "Somakine BodyParts3D musculoskeletal pack",
   description: "Real BodyParts3D 4.0 geometry with source-native connective coverage and explicit unavailable states where no target representation exists.",
   createdAt: "2026-08-01T00:00:00Z",
@@ -675,10 +675,10 @@ function localePack(locale, content) {
 
 function assertCoverage(packValue, regionalCoverage, selectedEntries) {
   const counts = coverageSummary(packValue);
-  if (counts.direct !== 158 || counts.compound !== 4 || counts.context !== 0 || counts.unavailable !== 25) {
+  if (counts.direct !== 151 || counts.compound !== 4 || counts.context !== 0 || counts.unavailable !== 25) {
     throw new Error(`Unexpected canonical coverage: ${JSON.stringify(counts)}`);
   }
-  if (selectedEntries.length !== 37) throw new Error(`Unexpected supplemental entry count: ${selectedEntries.length}`);
+  if (selectedEntries.length !== 30) throw new Error(`Unexpected supplemental entry count: ${selectedEntries.length}`);
   const regional = Object.fromEntries(["direct", "compound", "context"].map((mode) => [mode, regionalCoverage.filter((entry) => entry.mode === mode).length]));
   if (regional.direct !== 123 || regional.compound !== 4 || regional.context !== 25) throw new Error(`Unexpected regional coverage: ${JSON.stringify(regional)}`);
   for (const slug of ["humerus", "femur"]) {
