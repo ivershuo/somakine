@@ -17,6 +17,7 @@ const structureSelect = required<HTMLSelectElement>("structure");
 const layers = required<HTMLElement>("layers");
 const dragModes = required<HTMLElement>("drag-modes");
 const resetButton = required<HTMLButtonElement>("reset");
+const demoSideButton = required<HTMLButtonElement>("demo-side");
 const status = required<HTMLElement>("status");
 const viewerLoading = required<HTMLElement>("viewer-loading");
 const viewerHelp = required<HTMLElement>("viewer-help");
@@ -25,6 +26,7 @@ const selectionId = required<HTMLElement>("selection-id");
 const selectionType = required<HTMLElement>("selection-type");
 const selectionCoverage = required<HTMLElement>("selection-coverage");
 const selectionContext = required<HTMLElement>("selection-context");
+const selectionSide = required<HTMLElement>("selection-side");
 const attribution = required<HTMLElement>("attribution");
 
 let locale = localeSelect.value;
@@ -93,6 +95,11 @@ resetButton.addEventListener("click", () => {
   viewer.reset();
 });
 
+demoSideButton.addEventListener("click", () => {
+  // Demonstrate { id, side } addressing: isolate the left second metatarsal.
+  viewer.focusStructure("somakine:structure:second-metatarsal", { side: "left" });
+});
+
 function renderControls(): void {
   regionSelect.replaceChildren(option("body", locale === "zh-CN" ? "全身" : "Whole body"));
   for (const region of catalog.regions()) regionSelect.append(option(region.id, catalog.label(region.id, locale)));
@@ -158,6 +165,7 @@ function renderControls(): void {
     button.setAttribute("aria-pressed", String(mode === interactionMode));
   }
   resetButton.textContent = locale === "zh-CN" ? "重置全身视图" : "Reset body";
+  demoSideButton.textContent = locale === "zh-CN" ? "聚焦左侧第二跖骨" : "Focus left 2nd metatarsal";
   viewerHelp.textContent = interactionMode === "rotate"
     ? (locale === "zh-CN"
       ? "左键拖拽旋转 · 右键拖拽平移 · Ctrl/Cmd 点击可多选 · 滚轮缩放"
@@ -186,6 +194,7 @@ function clearSelection(): void {
   selectionType.textContent = "—";
   selectionCoverage.textContent = "—";
   selectionContext.textContent = "—";
+  selectionSide.textContent = "—";
   structureSelect.value = "";
 }
 
@@ -205,7 +214,12 @@ function handleSelection(selection: ViewerSelection): void {
   if (!structureMatchesRegion(selection.structure.id, regionFilter)) regionFilter = selection.structure.regionIds[0] ?? "body";
   if (!structureMatchesLayer(selection.structure.id, layerFilter)) layerFilter = null;
   renderControls();
-  selectionTitle.textContent = selection.label;
+  // Prefix the localized label with the resolved side (左侧/右侧 · Left/Right).
+  const sidePrefix = (selection.side === "left" || selection.side === "right") ? sideDisplay(selection.side, locale) : "";
+  selectionTitle.textContent = sidePrefix
+    ? (locale === "zh-CN" ? `${sidePrefix}${selection.label}` : `${sidePrefix} ${selection.label}`)
+    : selection.label;
+  selectionSide.textContent = sideDisplay(selection.side, locale);
   selectionId.textContent = selection.structure.id;
   selectionType.textContent = selection.structure.type;
   selectionCoverage.textContent = selection.coverage;
@@ -235,6 +249,13 @@ function handleSelectionGroup(selections: readonly ViewerSelection[]): void {
 
 function structureMatchesRegion(id: StructureId, region: RegionId | "body"): boolean {
   return region === "body" || catalog.structure(id)?.regionIds.includes(region) === true;
+}
+
+function sideDisplay(side: ViewerSelection["side"], loc: string): string {
+  const labels: Record<ViewerSelection["side"], string> = loc === "zh-CN"
+    ? { left: "左侧", right: "右侧", bilateral: "双侧", none: "—" }
+    : { left: "Left", right: "Right", bilateral: "Bilateral", none: "—" };
+  return labels[side] ?? "—";
 }
 
 function structureMatchesLayer(id: StructureId, layer: StructureType | null): boolean {
