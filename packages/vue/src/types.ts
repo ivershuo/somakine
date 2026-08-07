@@ -3,6 +3,7 @@ import type {
   AssetResolver,
   InteractionMode,
   LateralSide,
+  StructureSelectionEntry,
   StructureSelectionOptions,
   StructureSide,
   StructureStyle,
@@ -27,11 +28,11 @@ export interface SomakineViewerHandle {
   setInteractionMode(mode: InteractionMode): void;
   setLayer(type: StructureType | null): void;
   selectStructure(id: StructureId, options?: StructureSelectionOptions): void;
-  selectStructures(ids: readonly StructureId[], options?: StructureSelectionOptions): void;
+  selectStructures(entries: readonly StructureSelectionEntry[], options?: StructureSelectionOptions): void;
   focusStructure(id: StructureId, options?: StructureSelectionOptions): void;
   focusRegion(id: RegionId): void;
-  setVisible(ids: readonly StructureId[]): void;
-  setStructureStyle(id: StructureId, style: StructureStyle | null): void;
+  setVisible(ids: readonly StructureId[], options?: StructureSelectionOptions): void;
+  setStructureStyle(id: StructureId, style: StructureStyle | null, options?: StructureSelectionOptions): void;
   showBody(): void;
   reset(): void;
 }
@@ -44,6 +45,7 @@ export type {
   RegionId,
   Structure,
   StructureId,
+  StructureSelectionEntry,
   StructureSelectionOptions,
   StructureSide,
   StructureStyle,

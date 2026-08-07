@@ -117,8 +117,8 @@ export const SomakineViewer = defineComponent({
       selectStructure: (id, options) => {
         viewer?.selectStructure(id, options);
       },
-      selectStructures: (ids, options) => {
-        viewer?.selectStructures(ids, options);
+      selectStructures: (entries, options) => {
+        viewer?.selectStructures(entries, options);
       },
       focusStructure: (id, options) => {
         viewer?.focusStructure(id, options);
@@ -126,11 +126,11 @@ export const SomakineViewer = defineComponent({
       focusRegion: (id) => {
         viewer?.focusRegion(id);
       },
-      setVisible: (ids) => {
-        viewer?.setVisible(ids);
+      setVisible: (ids, options) => {
+        viewer?.setVisible(ids, options);
       },
-      setStructureStyle: (id, style) => {
-        viewer?.setStructureStyle(id, style);
+      setStructureStyle: (id, style, options) => {
+        viewer?.setStructureStyle(id, style, options);
       },
       showBody: () => {
         viewer?.showBody();

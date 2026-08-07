@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { webcrypto } from "node:crypto";
 import test from "node:test";
 import * as THREE from "three";
-import { assertSelfContainedGlb, calculateViewFit, combineStructureSides, createPrimitiveObject, disposeObject3D, findGltfNode, matchesSide, normalizeViewVector, pickStructureHit, structureHighlightObjects, verifyAssetBytes } from "@somakine/viewer";
+import { assertSelfContainedGlb, applySideVisibility, calculateViewFit, combineStructureSides, createPrimitiveObject, disposeObject3D, findGltfNode, matchesSide, normalizeViewVector, pickStructureHit, structureHighlightObjects, verifyAssetBytes } from "@somakine/viewer";
 
 if (!globalThis.crypto) globalThis.crypto = webcrypto;
 
@@ -129,6 +129,26 @@ test("structureHighlightObjects filters context structures by side", () => {
     structureHighlightObjects(groups, "somakine:structure:knee-joint", representation, "left"),
     [femur.children[0]],
   );
+});
+
+test("applySideVisibility isolates a side but leaves a non-lateral group whole", () => {
+  const left = new THREE.Object3D();
+  left.userData.somakineSide = "left";
+  const right = new THREE.Object3D();
+  right.userData.somakineSide = "right";
+  const paired = new THREE.Group();
+  paired.add(left, right);
+  applySideVisibility(paired, "left");
+  assert.equal(left.visible, true);
+  assert.equal(right.visible, false);
+
+  // A non-lateral group has no matching-side instance: nothing is hidden.
+  const none = new THREE.Object3D();
+  none.userData.somakineSide = "none";
+  const midline = new THREE.Group();
+  midline.add(none);
+  applySideVisibility(midline, "left");
+  assert.equal(none.visible, true);
 });
 
 test("picking skips hits on hidden structures and takes the nearest visible one", () => {

@@ -35,8 +35,8 @@ function createViewerHandle(
     selectStructure: (id, options) => {
       viewer.current?.selectStructure(id, options);
     },
-    selectStructures: (ids, options) => {
-      viewer.current?.selectStructures(ids, options);
+    selectStructures: (entries, options) => {
+      viewer.current?.selectStructures(entries, options);
     },
     focusStructure: (id, options) => {
       viewer.current?.focusStructure(id, options);
@@ -44,11 +44,11 @@ function createViewerHandle(
     focusRegion: (id) => {
       viewer.current?.focusRegion(id);
     },
-    setVisible: (ids) => {
-      viewer.current?.setVisible(ids);
+    setVisible: (ids, options) => {
+      viewer.current?.setVisible(ids, options);
     },
-    setStructureStyle: (id, style) => {
-      viewer.current?.setStructureStyle(id, style);
+    setStructureStyle: (id, style, options) => {
+      viewer.current?.setStructureStyle(id, style, options);
     },
     showBody: () => {
       viewer.current?.showBody();

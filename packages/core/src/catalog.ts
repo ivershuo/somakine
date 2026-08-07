@@ -1,5 +1,5 @@
 import { DataPackValidationError } from "./errors.js";
-import type { Asset, CoverageMode, CoverageSummary, DataPack, LocalePack, MeshInstance, Region, RegionId, Relation, Representation, Structure, StructureId, StructureType } from "./model.js";
+import type { Asset, CoverageMode, CoverageSummary, DataPack, LateralSide, LocalePack, MeshInstance, Region, RegionId, Relation, Representation, Structure, StructureId, StructureType } from "./model.js";
 import { validateDataPack } from "./validation.js";
 
 export interface SearchResult { id: StructureId; label: string; type: StructureType; coverage: CoverageMode }
@@ -43,9 +43,13 @@ export class SomakineCatalog {
   structure(id: StructureId): Structure | null { return this.#structures.get(id) ?? null }
   region(id: RegionId): Region | null { return this.#regions.get(id) ?? null }
   representation(id: StructureId): Representation | null { return this.#representations.get(id) ?? null }
-  instancesFor(id: StructureId): readonly MeshInstance[] {
+  instancesFor(id: StructureId, options: { side?: LateralSide } = {}): readonly MeshInstance[] {
     const representation = this.#representations.get(id);
-    return representation?.instanceIds.map((instanceId) => this.#instances.get(instanceId)!).filter(Boolean) ?? [];
+    const instances = representation?.instanceIds.map((instanceId) => this.#instances.get(instanceId)!).filter(Boolean) ?? [];
+    const side = options.side;
+    if (side === undefined) return instances;
+    // A bilateral instance spans both sides, so it is included for either.
+    return instances.filter((instance) => instance.laterality === side || instance.laterality === "bilateral");
   }
   asset(id: string): Asset | null { return this.#assets.get(id) ?? null }
   relations(id: StructureId): readonly Relation[] { return this.#relationsByStructure.get(id) ?? [] }

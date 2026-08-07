@@ -21,6 +21,17 @@ test("synthetic pack satisfies the executable contract", () => {
   assert.equal(catalog.label("somakine:structure:femur", "zh-CN"), "股骨");
 });
 
+test("instancesFor filters by side and returns nothing for a non-lateral structure", () => {
+  const catalog = new SomakineCatalog(musculoskeletalBasic);
+  const humerus = "somakine:structure:humerus";
+  assert.equal(catalog.instancesFor(humerus).length, 2);
+  assert.equal(catalog.instancesFor(humerus, { side: "left" })[0].id, "somakine:instance:humerus-left");
+  assert.equal(catalog.instancesFor(humerus, { side: "right" })[0].id, "somakine:instance:humerus-right");
+  // a "none" structure has no side-specific instances, so a side filter is empty
+  assert.equal(catalog.instancesFor("somakine:structure:skull", { side: "left" }).length, 0);
+  assert.equal(catalog.instancesFor("somakine:structure:skull").length, 1);
+});
+
 test("data extensions validate, fill missing coverage, and add namespaced structures", () => {
   assert.deepEqual(validateDataExtension(demoExtension, musculoskeletalBasic), { valid: true, issues: [] });
   const composed = composeDataPacks(musculoskeletalBasic, [demoExtension]);
