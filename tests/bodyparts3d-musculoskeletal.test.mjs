@@ -22,6 +22,10 @@ test("real BodyParts3D pack has canonical bilingual whole-body coverage", () => 
   assert.deepEqual(humerus.regionIds, ["somakine:region:elbow-forearm", "somakine:region:shoulder"]);
   assert.equal(humerus.externalIds.fma, "FMA13303");
   assert.equal(catalog.label(humerus.id, "zh-CN"), "肱骨");
+  // Paired bone (left/right addressable) with the Arabic-ordinal label convention.
+  assert.equal(catalog.structure("somakine:structure:second-metatarsal").laterality, "paired");
+  assert.equal(catalog.instancesFor("somakine:structure:second-metatarsal", { side: "left" }).length, 1);
+  assert.equal(catalog.label("somakine:structure:second-metatarsal", "zh-CN"), "第2跖骨");
   assert.equal(catalog.representation("somakine:structure:anterior-cruciate-ligament").mode, "unavailable");
   assert.deepEqual(catalog.contextFor("somakine:structure:anterior-cruciate-ligament"), []);
   const calcanealTendon = catalog.structure("somakine:structure:calcaneal-tendon");

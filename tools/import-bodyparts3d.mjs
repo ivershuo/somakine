@@ -27,6 +27,7 @@ const SOURCE_TREES = new Set(["isa", "partof"]);
 const STRUCTURE_TYPES = new Set(["joint", "ligament", "tendon"]);
 const SOURCE_LATERALITIES = new Set(["paired", "midline", "variable", "none", "left", "right"]);
 const LATERALITY_MIDLINE_EPSILON = 0.01;
+const ZH_ORDINAL_DIGITS = { "一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9 };
 
 const [manifest, upstream, graph, english, chinese, supplemental] = await Promise.all([
   readJson(path.join(derivedRoot, "manifest.json")),
@@ -739,23 +740,46 @@ function indexedIds(firstKey, firstValues, secondKey, secondValues) {
 function localePack(locale, content) {
   const labels = {};
   const aliases = {};
+  const normalize = locale === "zh-CN" ? normalizeZhLabel : (label) => label;
   for (const region of content.regions ? Object.entries(content.regions) : []) {
     const [id, value] = region;
-    labels[regionId(id)] = value.name;
+    labels[regionId(id)] = normalize(value.name);
     if (value.aliases?.length) aliases[regionId(id)] = value.aliases;
   }
   for (const [slug, entries] of grouped) {
     const localized = content.nodes[entries[0].nodeId];
     if (!localized?.name) throw new Error(`Missing ${locale} label for ${entries[0].nodeId}`);
-    labels[structureId(slug)] = localized.name;
+    labels[structureId(slug)] = normalize(localized.name);
     if (localized.aliases?.length) aliases[structureId(slug)] = localized.aliases;
   }
   for (const entry of supplementalEntries) {
     const label = entry.label[locale];
     if (!label) throw new Error(`Missing ${locale} supplemental label for ${entry.slug}`);
-    labels[structureId(entry.slug)] = label;
+    labels[structureId(entry.slug)] = normalize(label);
   }
   return { locale, labels, aliases };
+}
+
+// Display convention: render the Chinese ordinal numeral in a 第N prefix as
+// Arabic (第二 → 第2, 第十一 → 第11) so generated labels stay consistent
+// regardless of the source's numeral style.
+function normalizeZhLabel(label) {
+  return label.replace(/第([一二三四五六七八九十]+)/gu, (match, numeral) => {
+    const value = zhOrdinalToArabic(numeral);
+    return value === null ? match : `第${value}`;
+  });
+}
+
+function zhOrdinalToArabic(numeral) {
+  if (!/^[一二三四五六七八九十]+$/u.test(numeral)) return null;
+  if (numeral === "十") return 10;
+  if (numeral.startsWith("十")) return 10 + (ZH_ORDINAL_DIGITS[numeral.slice(1)] ?? 0);
+  if (numeral.endsWith("十")) return (ZH_ORDINAL_DIGITS[numeral.slice(0, -1)] ?? 1) * 10;
+  if (numeral.includes("十")) {
+    const [tens, ones] = numeral.split("十");
+    return (ZH_ORDINAL_DIGITS[tens] ?? 1) * 10 + (ZH_ORDINAL_DIGITS[ones] ?? 0);
+  }
+  return ZH_ORDINAL_DIGITS[numeral] ?? null;
 }
 
 function assertCoverage(packValue, regionalCoverage, selectedEntries) {
