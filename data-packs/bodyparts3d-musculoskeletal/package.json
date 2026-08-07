@@ -1,6 +1,6 @@
 {
   "name": "@somakine/bodyparts3d-musculoskeletal",
-  "version": "0.1.0-alpha.1",
+  "version": "0.2.0-alpha.0",
   "description": "Real BodyParts3D 4.0 musculoskeletal data pack for Somakine.",
   "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "data-packs/bodyparts3d-musculoskeletal" },
   "homepage": "https://github.com/ivershuo/somakine#readme",
@@ -29,6 +29,6 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
-    "@somakine/core": "0.1.0-alpha.0"
+    "@somakine/core": "0.2.0-alpha.0"
   }
 }

@@ -19,7 +19,7 @@ clinical-content dependency — it runs in any modern JavaScript environment.
   - [`.structure(id)`](#structureid)
   - [`.region(id)`](#regionid)
   - [`.representation(id)`](#representationid)
-  - [`.instancesFor(id)`](#instancesforid)
+  - [`.instancesFor(id, options?)`](#instancesforid-options)
   - [`.asset(id)`](#assetid)
   - [`.relations(id)`](#relationsid)
   - [`.label(id, locale)`](#labelid-locale)
@@ -78,7 +78,7 @@ import type {
   SomakineId, StructureId, RegionId, RelationId,
   RepresentationId, MeshInstanceId, AssetId,
   // Enums
-  StructureType, Laterality, RelationType, CoverageMode,
+  StructureType, Laterality, LateralSide, RelationType, CoverageMode,
   ReviewState, ExtensionMatch, CompositionConflictPolicy,
   // Registries
   SourceRecord, LicenseRecord,
@@ -113,6 +113,7 @@ except asset IDs which additionally allow colon-separated segments.
 ```ts
 type StructureType = "bone" | "joint" | "ligament" | "muscle" | "tendon" | "skin";
 type Laterality = "none" | "paired" | "midline" | "variable";
+type LateralSide = "left" | "right";
 type RelationType =
   | "part_of" | "articulates_with" | "attaches_to"
   | "originates_from" | "inserts_into" | "crosses" | "contains";
@@ -465,19 +466,23 @@ const mode = catalog.representation("somakine:structure:femur")?.mode;
 if (mode === "direct") { /* safe to load/inspect instances */ }
 ```
 
-### `.instancesFor(id)`
+### `.instancesFor(id, options?)`
 
 ```ts
-instancesFor(id: StructureId): readonly MeshInstance[]
+instancesFor(id: StructureId, options?: { side?: LateralSide }): readonly MeshInstance[]
 ```
 
 The mesh instances that realize a structure (drawn from its representation).
-Empty for `context`/`unavailable` structures.
+Empty for `context`/`unavailable` structures. Pass `{ side }` to keep only the
+instances of one side of a paired structure; a `"bilateral"` instance is returned
+for either `"left"` or `"right"`.
 
 ```ts
 for (const instance of catalog.instancesFor("somakine:structure:femur")) {
   console.log(instance.id, instance.laterality, instance.assetId);
 }
+// Only the left-side instances of a paired structure:
+catalog.instancesFor("somakine:structure:femur", { side: "left" });
 ```
 
 ### `.asset(id)`

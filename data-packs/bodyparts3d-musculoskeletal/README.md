@@ -5,7 +5,7 @@ npm install @somakine/core @somakine/viewer @somakine/bodyparts3d-musculoskeleta
 ```
 
 Real musculoskeletal geometry derived from BodyParts3D 4.0. The pack contains
-187 canonical structures across eight regions, including source-native
+180 canonical structures across eight regions, including source-native
 joint/ligament/tendon meshes, reviewed compound coverage, and explicit
 unavailable states where the source has no exact target representation.
 
@@ -48,6 +48,5 @@ option instead of a side-specific id:
 viewer.selectStructure("somakine:structure:calcaneal-tendon", { side: "left" });
 ```
 
-The shipped `generated.ts`/`pack.json` reflect this once regenerated from the
-verified source workspace. Until then they retain the previous 187-structure
-form.
+The shipped `generated.ts`/`pack.json` have been regenerated from the verified
+source workspace and reflect this consolidated, side-addressable form.

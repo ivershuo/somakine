@@ -39,9 +39,9 @@ summary:
 bodyParts3DMusculoskeletalStats;
 // {
 //   regions: 8,
-//   structures: 187,
+//   structures: 180,
 //   assets: 15,
-//   coverage: { direct: 158, compound: 4, context: 0, unavailable: 25 },
+//   coverage: { direct: 151, compound: 4, context: 0, unavailable: 25 },
 // }
 ```
 

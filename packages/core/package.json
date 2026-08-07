@@ -1,6 +1,6 @@
 {
   "name": "@somakine/core",
-  "version": "0.1.0-alpha.0",
+  "version": "0.2.0-alpha.0",
   "description": "Schema, validation, and catalog for Somakine data packs.",
   "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "packages/core" },
   "homepage": "https://github.com/ivershuo/somakine#readme",

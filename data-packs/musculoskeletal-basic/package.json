@@ -1,6 +1,6 @@
 {
   "name": "@somakine/musculoskeletal-basic",
-  "version": "0.1.0-alpha.0",
+  "version": "0.2.0-alpha.0",
   "description": "Synthetic musculoskeletal data pack for Somakine alpha development.",
   "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "data-packs/musculoskeletal-basic" },
   "homepage": "https://github.com/ivershuo/somakine#readme",
@@ -24,6 +24,6 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
-    "@somakine/core": "0.1.0-alpha.0"
+    "@somakine/core": "0.2.0-alpha.0"
   }
 }

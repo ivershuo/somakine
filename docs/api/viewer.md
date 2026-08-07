@@ -19,7 +19,9 @@ application owns the surrounding markup, controls, navigation, and content.
   - [`StructureStyle`](#structurestyle)
   - [`InteractionMode`](#interactionmode)
   - [`SomakineViewer`](#somakineviewer)
+  - [`StructureSelectionOptions` / `StructureSelectionEntry`](#structureselectionoptions--structureselectionentry)
   - [`SomakineViewer` methods](#somakineviewer-methods)
+- [Selection helpers](#selection-helpers)
 - [Camera helpers](#camera-helpers)
 - [Asset helpers](#asset-helpers)
 
@@ -158,11 +160,13 @@ callbacks.
 
 `side` reports which side of a paired structure the selection resolves to. A
 canvas click on one half of a paired structure (for example the left femur)
-yields `"left"` or `"right"`; a programmatic whole-structure selection
-(`selectStructure` / `selectStructures` / `focusStructure`), a bilateral mesh
-instance, or both sides picked together yield `"bilateral"`; midline and
-non-lateral structures yield `"none"`. Use it to prefix a label (for example
-`"Left femur"`) or to disambiguate the two halves of a paired structure.
+yields `"left"` or `"right"`, as does a programmatic side-scoped selection
+(`selectStructure(id, { side: "left" })`). A whole-structure selection
+(`selectStructure(id)` / `selectStructures(...)` / `focusStructure(id)`), a
+bilateral mesh instance, or both sides picked together yield `"bilateral"`;
+midline and non-lateral structures yield `"none"`. Use it to prefix a label
+(for example `"Left femur"`) or to disambiguate the two halves of a paired
+structure.
 
 ### `ViewerState` / `ViewerPhase`
 
@@ -225,17 +229,43 @@ interface SomakineViewer {
   setLocale(locale: string): void;
   setInteractionMode(mode: InteractionMode): void;
   setLayer(type: StructureType | null): void;
-  selectStructure(id: StructureId): void;
-  selectStructures(ids: readonly StructureId[]): void;
-  focusStructure(id: StructureId): void;
+  selectStructure(id: StructureId, options?: StructureSelectionOptions): void;
+  selectStructures(entries: readonly StructureSelectionEntry[], options?: StructureSelectionOptions): void;
+  focusStructure(id: StructureId, options?: StructureSelectionOptions): void;
   focusRegion(id: RegionId): void;
-  setVisible(ids: readonly StructureId[]): void;
-  setStructureStyle(id: StructureId, style: StructureStyle | null): void;
+  setVisible(ids: readonly StructureId[], options?: StructureSelectionOptions): void;
+  setStructureStyle(id: StructureId, style: StructureStyle | null, options?: StructureSelectionOptions): void;
   showBody(): void;
   reset(): void;
   dispose(): void;
 }
 ```
+
+### `StructureSelectionOptions` / `StructureSelectionEntry`
+
+```ts
+type LateralSide = "left" | "right"; // re-exported from @somakine/core
+
+interface StructureSelectionOptions {
+  side?: LateralSide;
+}
+
+type StructureSelectionEntry = StructureId | { id: StructureId; side?: LateralSide };
+```
+
+`StructureSelectionOptions` restricts a structure-level operation to one side of
+a paired structure. Omit it (or pass `{}`) to address the whole structure. When
+the requested side has no matching instance (a non-lateral structure, or a paired
+structure missing that side), the operation falls back to the whole structure and
+the emitted [`ViewerSelection.side`](#viewerselection--viewerselectiongroup)
+reports what was actually shown. `LateralSide` is the input/operation dimension;
+the derived output dimension, `StructureSide` (`"none" | "left" | "right" |
+"bilateral"`), is carried on `ViewerSelection.side`.
+
+`selectStructures` accepts `StructureSelectionEntry` — a mix of bare ids and
+`{ id, side }` objects — so a single call can target different sides of different
+structures. An `options.side` passed to `selectStructures` is the default for
+entries that do not specify their own.
 
 ### `SomakineViewer` methods
 
@@ -294,38 +324,46 @@ viewer.setLayer("bone");
 viewer.setLayer(null); // everything
 ```
 
-#### `.selectStructure(id)`
+#### `.selectStructure(id, options?)`
 
 ```ts
-selectStructure(id: StructureId): void
+selectStructure(id: StructureId, options?: StructureSelectionOptions): void
 ```
 
 Selects one structure, keeping the current visibility set and applying the
-selection style. Equivalent to `selectStructures([id])`. Emits `onSelection` and
-`onSelectionGroup` when the ID resolves. An unknown ID resolves to an empty
-selection, clearing the current highlight and emitting an empty group. Operates
-on the semantic structure, which may include bilateral geometry.
+selection style. Equivalent to `selectStructures([id], options)`. Emits
+`onSelection` and `onSelectionGroup` when the ID resolves. An unknown ID resolves
+to an empty selection, clearing the current highlight and emitting an empty
+group. Pass `{ side }` to highlight only one side of a paired structure; the
+emitted `side` then reflects that side.
 
-#### `.selectStructures(ids)`
+#### `.selectStructures(entries, options?)`
 
 ```ts
-selectStructures(ids: readonly StructureId[]): void
+selectStructures(entries: readonly StructureSelectionEntry[], options?: StructureSelectionOptions): void
 ```
 
-Selects any set of structures. IDs are deduplicated and unknown IDs are omitted;
-if none resolve (including an empty list), the current highlight is cleared and
-an empty group is emitted. The IDs need not share a region. Emits
-`onSelectionGroup` (and `onSelection` when exactly one resolves). Keeps the
-current visibility set.
+Selects any set of structures. Entries are deduplicated by `id`/`side` and
+unknown IDs are omitted; if none resolve (including an empty list), the current
+highlight is cleared and an empty group is emitted. Entries may be bare ids or
+`{ id, side }` objects (an `options.side` is the default for entries that omit
+their own), so one call can address different sides. The IDs need not share a
+region. Emits `onSelectionGroup` (and `onSelection` when exactly one resolves).
+Keeps the current visibility set.
 
 ```ts
 viewer.selectStructures(["somakine:structure:femur", "somakine:structure:humerus"]);
+// Mixed sides in one call:
+viewer.selectStructures([
+  { id: "somakine:structure:femur", side: "left" },
+  { id: "somakine:structure:humerus", side: "right" },
+]);
 ```
 
-#### `.focusStructure(id)`
+#### `.focusStructure(id, options?)`
 
 ```ts
-focusStructure(id: StructureId): void
+focusStructure(id: StructureId, options?: StructureSelectionOptions): void
 ```
 
 The explicit isolation operation: shows only the selected direct/compound
@@ -333,6 +371,8 @@ structure (or, for `context` mode, its declared context structures), highlights
 it, frames it, and announces the selection. Use it when a caller wants only that
 structure visible, in contrast to `selectStructure` which keeps the current set.
 An unknown ID is ignored without changing the current visibility or highlight.
+Pass `{ side }` to isolate, highlight, and frame only one side of a paired
+structure.
 
 #### `.focusRegion(id)`
 
@@ -344,37 +384,42 @@ Shows only the structures in a region, frames them, and emits a state message
 with the region's localized label. Emits `empty` if the region has no direct
 geometry.
 
-#### `.setVisible(ids)`
+#### `.setVisible(ids, options?)`
 
 ```ts
-setVisible(ids: readonly StructureId[]): void
+setVisible(ids: readonly StructureId[], options?: StructureSelectionOptions): void
 ```
 
 Shows exactly the listed structures and hides everything else, then re-frames.
 Use this for arbitrary visibility (for example, a search-result view) that does
-not map to a single type or region.
+not map to a single type or region. Pass `{ side }` to show only one side of each
+listed paired structure.
 
 ```ts
 viewer.setVisible(catalog.structures({ type: "bone" }).map((s) => s.id));
 ```
 
-#### `.setStructureStyle(id, style)`
+#### `.setStructureStyle(id, style, options?)`
 
 ```ts
-setStructureStyle(id: StructureId, style: StructureStyle | null): void
+setStructureStyle(id: StructureId, style: StructureStyle | null, options?: StructureSelectionOptions): void
 ```
 
 Applies (or, with `null`, clears) a per-structure material style. The viewer
 captures each compatible material's base style when it first applies an
 appearance and restores it on `null`. Each call replaces the previous override;
 omitted fields fall back to the captured base style. A no-op if the structure
-has no group (for example, an `unavailable` structure).
+has no group (for example, an `unavailable` structure). Without a `side` the
+style is the structure's base; pass `{ side }` to style one side of a paired
+structure, where a per-side style overrides the base (clear it by passing `null`
+with the same `{ side }`).
 
 ```ts
 viewer.setStructureStyle("somakine:structure:femur", {
   color: "#bf7a5a", opacity: 0.85, transparent: true,
 });
 viewer.setStructureStyle("somakine:structure:femur", null); // restore
+viewer.setStructureStyle("somakine:structure:femur", { color: "#e19a5b" }, { side: "left" });
 ```
 
 #### `.showBody()`
@@ -407,6 +452,71 @@ releases `OrbitControls`, disposes every mesh geometry/material/texture, forces
 WebGL context loss, removes the canvas, and emits a final
 `onStateChange({ phase: "disposed" })`. It is idempotent; other viewer methods
 throw after disposal. Call this on host unmount or route change.
+
+## Selection helpers
+
+Pure functions the viewer exports for hosts that want to reason about selection
+sides or reuse the picking filter.
+
+### `combineStructureSides(sides)`
+
+```ts
+function combineStructureSides(sides: Iterable<StructureSide>): StructureSide
+```
+
+Reduces a collection of instance sides to a single structure side: a `bilateral`
+side, or both `left` and `right` together, collapse to `"bilateral"`; a lone
+`left`/`right` is preserved; anything else resolves to `"none"`. Used to derive
+`ViewerSelection.side` from the sides of the meshes a selection covers.
+
+### `matchesSide(value, side)`
+
+```ts
+function matchesSide(value: unknown, side: LateralSide): boolean
+```
+
+Reports whether an instance side matches a requested lateral side. A `bilateral`
+instance (one mesh spanning both sides) matches either `"left"` or `"right"`.
+
+### `structureHighlightObjects(groups, id, representation, side)`
+
+```ts
+function structureHighlightObjects(
+  groups: ReadonlyMap<StructureId, THREE.Group>,
+  id: StructureId,
+  representation: Representation,
+  side: LateralSide | undefined,
+): THREE.Object3D[]
+```
+
+Resolves the renderable objects a structure-level operation should act on. With
+no `side` it is the structure's whole group (or, for `context` mode, its context
+groups); with a `side` it narrows to the per-instance child subtrees whose
+stamped side matches. When the requested side has no matching instance it falls
+back to the whole structure.
+
+### `applySideVisibility(group, side)`
+
+```ts
+function applySideVisibility(group: THREE.Group, side: LateralSide): void
+```
+
+Hides the non-matching side of a group's instances, but only when the group
+actually has a matching-side instance — so a non-lateral structure stays fully
+visible instead of disappearing.
+
+### `pickStructureHit(hits, isVisible)`
+
+```ts
+function pickStructureHit(
+  hits: ReadonlyArray<THREE.Intersection>,
+  isVisible: (id: StructureId) => boolean,
+): { object: THREE.Object3D; structureId: StructureId } | undefined
+```
+
+Returns the nearest raycast hit that belongs to a currently visible structure.
+Three.js raycasting ignores `Object3D.visible`, so without this filter a hit on a
+structure hidden by `setLayer`/`setVisible`/`focus*` would still be selectable.
 
 ## Camera helpers
 
@@ -554,8 +664,9 @@ assets.
 
 ## Re-exports
 
-The viewer re-exports `Asset` from `@somakine/core` for convenience:
+The viewer re-exports `Asset` and `LateralSide` from `@somakine/core` for
+convenience:
 
 ```ts
-import type { Asset } from "@somakine/viewer";
+import type { Asset, LateralSide } from "@somakine/viewer";
 ```

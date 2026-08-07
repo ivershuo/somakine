@@ -226,8 +226,9 @@ The returned `viewer` is the imperative API. See
 ### Handle selection
 
 Picking a structure (by click or by code) emits callbacks carrying a
-`ViewerSelection`: the structure, its localized label, its coverage mode, and
-the context structures used when coverage is `context`.
+`ViewerSelection`: the structure, its localized label, its coverage mode, the
+context structures used when coverage is `context`, and which `side` of a paired
+structure was selected.
 
 ```ts
 const viewer = await createSomakine(container, {
@@ -235,7 +236,9 @@ const viewer = await createSomakine(container, {
   accessibleLabel: "Interactive anatomy model",
   onSelection(selection) {
     // Fires for single-structure selections (programmatic or click).
-    panel.title.textContent = selection.label;
+    panel.title.textContent = selection.side === "left" || selection.side === "right"
+      ? `${selection.side === "left" ? "Left " : "Right "}${selection.label}`
+      : selection.label;
     panel.id.textContent = selection.structure.id;
     panel.coverage.textContent = selection.coverage;
   },
@@ -249,20 +252,29 @@ const viewer = await createSomakine(container, {
 
 // Programmatic selection keeps the current visibility set.
 viewer.selectStructure("somakine:structure:femur");
+viewer.selectStructure("somakine:structure:femur", { side: "left" }); // one side
 viewer.selectStructures(["somakine:structure:femur", "somakine:structure:humerus"]);
+// Mixed sides in a single call:
+viewer.selectStructures([
+  { id: "somakine:structure:femur", side: "left" },
+  { id: "somakine:structure:humerus", side: "right" },
+]);
 ```
 
 Clicking the canvas highlights only the raycast mesh (side-aware), while
-Ctrl-click or Cmd-click toggles additional meshes. Programmatic selection
-operates on the semantic structure, which may include bilateral geometry. IDs
-that do not resolve are omitted; if a programmatic selection resolves none, it
-clears the current highlight and emits an empty selection group. See
+Ctrl-click or Cmd-click toggles additional meshes. Programmatic selection,
+focus, visibility, and styling accept an optional `{ side }` to target one side
+of a paired structure; without it they operate on the whole semantic structure,
+which may include bilateral geometry. IDs that do not resolve are omitted; if a
+programmatic selection resolves none, it clears the current highlight and emits
+an empty selection group. See
 [selection types](api/viewer.md#viewerselection--viewerselectiongroup).
 
 ### Style structures
 
 Apply a per-structure material style — colour, emissive treatment, opacity, and
-surface parameters — and clear it by passing `null`.
+surface parameters — and clear it by passing `null`. A `{ side }` option styles
+one side of a paired structure, overriding the structure's base style.
 
 ```ts
 // Tint the femur and make it slightly translucent.
@@ -275,6 +287,10 @@ viewer.setStructureStyle("somakine:structure:femur", {
   roughness: 0.6,
   metalness: 0.05,
 });
+
+// Style only the left side; clear it with the same { side }.
+viewer.setStructureStyle("somakine:structure:femur", { color: "#e19a5b" }, { side: "left" });
+viewer.setStructureStyle("somakine:structure:femur", null, { side: "left" });
 
 // Revert to the original material captured when the viewer first styled it.
 viewer.setStructureStyle("somakine:structure:femur", null);
@@ -491,9 +507,9 @@ import {
 bodyParts3DMusculoskeletalStats;
 // {
 //   regions: 8,
-//   structures: 187,
+//   structures: 180,
 //   assets: 15,
-//   coverage: { direct: 158, compound: 4, context: 0, unavailable: 25 },
+//   coverage: { direct: 151, compound: 4, context: 0, unavailable: 25 },
 // }
 ```
 

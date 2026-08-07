@@ -57,7 +57,7 @@ pack `id` and `version`. On failure prints the validation issues.
 
 ```sh
 soma validate pack.json --json
-# { "ok": true, "command": "validate", "data": { "id": "somakine-musculoskeletal-basic", "version": "0.1.0-alpha.0" } }
+# { "ok": true, "command": "validate", "data": { "id": "somakine-musculoskeletal-basic", "version": "0.2.0-alpha.0" } }
 ```
 
 ### `soma inspect`
@@ -74,7 +74,7 @@ locale codes.
 ```jsonc
 {
   "id": "somakine-musculoskeletal-basic",
-  "version": "0.1.0-alpha.0",
+  "version": "0.2.0-alpha.0",
   "schemaVersion": "0.1.0",
   "regions": 5,
   "structures": 9,

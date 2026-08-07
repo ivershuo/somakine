@@ -6,7 +6,7 @@ const licenseId = "MIT";
 export const musculoskeletalBasic: DataPack = {
   schemaVersion: SOMAKINE_SCHEMA_VERSION,
   id: "somakine-musculoskeletal-basic",
-  version: "0.1.0-alpha.0",
+  version: "0.2.0-alpha.0",
   title: "Somakine synthetic musculoskeletal pack",
   description: "Programmatic shapes for framework testing; not medical anatomy.",
   createdAt: "2026-08-01T00:00:00Z",

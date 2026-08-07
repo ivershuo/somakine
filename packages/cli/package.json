@@ -1,6 +1,6 @@
 {
   "name": "@somakine/cli",
-  "version": "0.1.0-alpha.0",
+  "version": "0.2.0-alpha.0",
   "description": "Somakine data-pack validation and inspection CLI.",
   "repository": { "type": "git", "url": "git+https://github.com/ivershuo/somakine.git", "directory": "packages/cli" },
   "homepage": "https://github.com/ivershuo/somakine#readme",
@@ -27,7 +27,7 @@
     "typecheck": "tsc -b --pretty false"
   },
   "dependencies": {
-    "@somakine/core": "0.1.0-alpha.0"
+    "@somakine/core": "0.2.0-alpha.0"
   },
   "engines": {
     "node": ">=20"
