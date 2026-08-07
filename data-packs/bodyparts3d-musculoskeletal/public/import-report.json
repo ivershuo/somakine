@@ -69,13 +69,13 @@
     },
     {
       "uri": "assets/bodyparts3d/supplement-ankle-foot-connective.glb",
-      "bytes": 1060368,
-      "sha256": "54c44640432f7d0fe636c3923190877718368c648b061c993fb455a294ec9464"
+      "bytes": 682580,
+      "sha256": "abe11bc1af4011390a91f456758abf26990a5a4fb01c3df9fb82754fdab0732d"
     },
     {
       "uri": "assets/bodyparts3d/supplement-head-neck-connective.glb",
-      "bytes": 509492,
-      "sha256": "6bd3cb9caa6d08df0ee2eb55453c9d307b77bb4a809b5055cf230bf79cce6378"
+      "bytes": 254784,
+      "sha256": "6f4a2f59151e81c951aac3e412885becfdccc4f15a29efa5dd684ff9f7dedc4c"
     },
     {
       "uri": "assets/bodyparts3d/supplement-spine-trunk-connective.glb",
@@ -516,36 +516,6 @@
         ]
       },
       {
-        "slug": "right-long-plantar-ligament",
-        "type": "ligament",
-        "regionId": "ankle-foot",
-        "laterality": "right",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA44249",
-          "representationId": "BP5093",
-          "name": "right long plantar ligament"
-        },
-        "elementIds": [
-          "FJ1424"
-        ]
-      },
-      {
-        "slug": "left-long-plantar-ligament",
-        "type": "ligament",
-        "regionId": "ankle-foot",
-        "laterality": "left",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA44250",
-          "representationId": "BP9273",
-          "name": "left long plantar ligament"
-        },
-        "elementIds": [
-          "FJ1424M"
-        ]
-      },
-      {
         "slug": "calcaneal-tendon",
         "type": "tendon",
         "regionId": "ankle-foot",
@@ -558,36 +528,6 @@
         },
         "elementIds": [
           "FJ1405",
-          "FJ1405M"
-        ]
-      },
-      {
-        "slug": "right-calcaneal-tendon",
-        "type": "tendon",
-        "regionId": "ankle-foot",
-        "laterality": "right",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA258847",
-          "representationId": "BP5098",
-          "name": "right calcaneal tendon"
-        },
-        "elementIds": [
-          "FJ1405"
-        ]
-      },
-      {
-        "slug": "left-calcaneal-tendon",
-        "type": "tendon",
-        "regionId": "ankle-foot",
-        "laterality": "left",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA264844",
-          "representationId": "BP8739",
-          "name": "left calcaneal tendon"
-        },
-        "elementIds": [
           "FJ1405M"
         ]
       },
@@ -608,36 +548,6 @@
         ]
       },
       {
-        "slug": "right-stylohyoid-ligament",
-        "type": "ligament",
-        "regionId": "head-neck",
-        "laterality": "right",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA72309",
-          "representationId": "BP8422",
-          "name": "right stylohyoid ligament"
-        },
-        "elementIds": [
-          "FJ2764"
-        ]
-      },
-      {
-        "slug": "left-stylohyoid-ligament",
-        "type": "ligament",
-        "regionId": "head-neck",
-        "laterality": "left",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA72311",
-          "representationId": "BP8289",
-          "name": "left stylohyoid ligament"
-        },
-        "elementIds": [
-          "FJ2763"
-        ]
-      },
-      {
         "slug": "intermediate-tendon",
         "type": "tendon",
         "regionId": "head-neck",
@@ -647,21 +557,6 @@
           "fmaId": "FMA65410",
           "representationId": "BP6513",
           "name": "intermediate tendon"
-        },
-        "elementIds": [
-          "FJ1581"
-        ]
-      },
-      {
-        "slug": "right-intermediate-tendon",
-        "type": "tendon",
-        "regionId": "head-neck",
-        "laterality": "right",
-        "source": {
-          "tree": "isa",
-          "fmaId": "FMA258850",
-          "representationId": "BP6514",
-          "name": "right intermediate tendon"
         },
         "elementIds": [
           "FJ1581"
@@ -712,7 +607,7 @@
   },
   "sourceAudit": {
     "candidateRows": 72,
-    "selectedRows": 37,
+    "selectedRows": 30,
     "excludedRows": [
       {
         "tree": "isa",
@@ -740,6 +635,30 @@
       },
       {
         "tree": "isa",
+        "fmaId": "FMA258847",
+        "representationId": "BP5098",
+        "name": "right calcaneal tendon",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA258850",
+        "representationId": "BP6514",
+        "name": "right intermediate tendon",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA264844",
+        "representationId": "BP8739",
+        "name": "left calcaneal tendon",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
         "fmaId": "FMA265178",
         "representationId": "BP9277",
         "name": "ligament of lower limb",
@@ -752,6 +671,22 @@
         "representationId": "BP9278",
         "name": "ligament of limb",
         "elementCount": 2,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA44249",
+        "representationId": "BP5093",
+        "name": "right long plantar ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA44250",
+        "representationId": "BP9273",
+        "name": "left long plantar ligament",
+        "elementCount": 1,
         "selected": false
       },
       {
@@ -964,6 +899,22 @@
       },
       {
         "tree": "isa",
+        "fmaId": "FMA72309",
+        "representationId": "BP8422",
+        "name": "right stylohyoid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
+        "fmaId": "FMA72311",
+        "representationId": "BP8289",
+        "name": "left stylohyoid ligament",
+        "elementCount": 1,
+        "selected": false
+      },
+      {
+        "tree": "isa",
         "fmaId": "FMA86375",
         "representationId": "BP8190",
         "name": "ligament organ component",
@@ -1124,7 +1075,7 @@
     }
   ],
   "coverage": {
-    "direct": 158,
+    "direct": 151,
     "compound": 4,
     "context": 0,
     "unavailable": 25

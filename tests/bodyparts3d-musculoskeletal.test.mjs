@@ -13,9 +13,9 @@ test("real BodyParts3D pack has canonical bilingual whole-body coverage", () => 
   assert.deepEqual(validateDataPack(bodyParts3DMusculoskeletal), { valid: true, issues: [] });
   assert.deepEqual(bodyParts3DMusculoskeletalStats, {
     regions: 8,
-    structures: 187,
+    structures: 180,
     assets: 15,
-    coverage: { direct: 158, compound: 4, context: 0, unavailable: 25 },
+    coverage: { direct: 151, compound: 4, context: 0, unavailable: 25 },
   });
   const catalog = new SomakineCatalog(bodyParts3DMusculoskeletal);
   const humerus = catalog.structure("somakine:structure:humerus");
@@ -54,6 +54,6 @@ test("supplemental manifest records the source comparison boundary", async () =>
       selected: report.sourceAudit.selectedRows,
       excluded: report.sourceAudit.excludedRows.length,
     },
-    { candidates: 72, selected: 37, excluded: 35 },
+    { candidates: 72, selected: 30, excluded: 42 },
   );
 });

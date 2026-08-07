@@ -7,6 +7,7 @@ import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import * as THREE from "three";
 import { GLTFExporter } from "three/addons/exporters/GLTFExporter.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { OBJLoader } from "three/addons/loaders/OBJLoader.js";
 import { mergeVertices } from "three/addons/utils/BufferGeometryUtils.js";
 import { assertDataPack, SOMAKINE_SCHEMA_VERSION } from "../packages/core/dist/index.js";
@@ -25,6 +26,7 @@ const ELEMENT_ID = /^FJ\d+M?$/u;
 const SOURCE_TREES = new Set(["isa", "partof"]);
 const STRUCTURE_TYPES = new Set(["joint", "ligament", "tendon"]);
 const SOURCE_LATERALITIES = new Set(["paired", "midline", "variable", "none", "left", "right"]);
+const LATERALITY_MIDLINE_EPSILON = 0.01;
 
 const [manifest, upstream, graph, english, chinese, supplemental] = await Promise.all([
   readJson(path.join(derivedRoot, "manifest.json")),
@@ -47,6 +49,7 @@ const destinationReal = await realpath(destination);
 const assetRecords = flattenAssets(manifest.assets);
 const assetByNode = indexAssetsByNode(assetRecords);
 const glbNodeNames = new Map();
+const regionCenters = new Map();
 const assets = [];
 for (const record of assetRecords) {
   const filename = path.basename(record.file);
@@ -57,6 +60,10 @@ for (const record of assetRecords) {
   const arrayBuffer = bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength);
   assertSelfContainedGlb(arrayBuffer);
   glbNodeNames.set(filename, glbNodes(arrayBuffer));
+  if (record.role === "region") {
+    const centers = await sideCentersOfGlb(arrayBuffer);
+    if (centers) regionCenters.set(filename, centers);
+  }
   await safeCopyFile(sourceFile, destinationFile);
   await verifyFile(destinationFile, record.bytes, record.sha256);
   assets.push({
@@ -93,6 +100,7 @@ for (const record of supplementalAssets.values()) {
 
 const graphNodes = new Map(graph.nodes.map((node) => [node.id, node]));
 const grouped = groupCoverage(manifest.coverage);
+const pairedBones = resolvePairedBones(grouped, assetByNode, glbNodeNames, regionCenters);
 const structures = [];
 const meshInstances = [];
 const representations = [];
@@ -106,7 +114,7 @@ for (const [slug, entries] of [...grouped].sort(([a], [b]) => a.localeCompare(b)
   structures.push({
     id,
     type: first.type,
-    laterality: "variable",
+    laterality: pairedBones.has(slug) ? "paired" : "variable",
     regionIds: [...new Set(entries.map((entry) => regionId(entry.regionId)))].sort(),
     externalIds: externalIds(entries, graphNodes),
     sourceIds: ["bodyparts3d-4"],
@@ -122,15 +130,33 @@ for (const [slug, entries] of [...grouped].sort(([a], [b]) => a.localeCompare(b)
   const mode = entry.mode === "context" ? "unavailable" : entry.mode;
   if (mode === "direct") {
     const asset = exactAsset(assetByNode, entry.nodeId, entry.regionId, "region");
-    assertNode(glbNodeNames, asset, entry.nodeId);
-    const instanceId = `somakine:instance:${slug}`;
-    meshInstances.push({
-      id: instanceId,
-      assetId: assetId(path.basename(asset.file)),
-      laterality: "none",
-      selector: { kind: "node-name", value: entry.nodeId },
-    });
-    instanceIds.push(instanceId);
+    const paired = pairedBones.get(slug);
+    if (paired) {
+      // Bilateral bone: emit one instance per side, selecting the per-side child
+      // mesh node (<nodeId>:<tree>:FJ####) instead of the merged parent node.
+      for (const side of ["left", "right"]) {
+        const { elementId, selector } = paired[side];
+        assertNode(glbNodeNames, asset, selector);
+        const instanceId = `somakine:instance:${slug}-${elementId.toLowerCase()}`;
+        meshInstances.push({
+          id: instanceId,
+          assetId: assetId(path.basename(asset.file)),
+          laterality: side,
+          selector: { kind: "node-name", value: selector },
+        });
+        instanceIds.push(instanceId);
+      }
+    } else {
+      assertNode(glbNodeNames, asset, entry.nodeId);
+      const instanceId = `somakine:instance:${slug}`;
+      meshInstances.push({
+        id: instanceId,
+        assetId: assetId(path.basename(asset.file)),
+        laterality: "none",
+        selector: { kind: "node-name", value: entry.nodeId },
+      });
+      instanceIds.push(instanceId);
+    }
   } else if (mode === "compound") {
     const asset = exactAsset(assetByNode, entry.nodeId, entry.regionId, "supplement");
     const elements = [...new Set(entry.meshSources.flatMap((source) => source.elementIds.map((elementId) => ({ tree: source.tree, elementId }))))];
@@ -609,6 +635,65 @@ function glbNodes(bytes) {
   const jsonLength = view.getUint32(12, true);
   const document = JSON.parse(new TextDecoder().decode(new Uint8Array(bytes, 20, jsonLength)).trim());
   return new Set((document.nodes ?? []).map((node) => node.name).filter(Boolean));
+}
+
+// Load a region GLB and map every named node to the x-center of its bounding
+// box (scene space). Used to read the left/right side of a bone's per-side
+// child mesh when splitting bilateral bones.
+async function sideCentersOfGlb(arrayBuffer) {
+  let gltf;
+  try {
+    gltf = await new GLTFLoader().parseAsync(arrayBuffer, "");
+  } catch {
+    return null;
+  }
+  const scene = gltf.scene;
+  scene.updateMatrixWorld(true);
+  const centers = new Map();
+  scene.traverse((object) => {
+    if (!object.name) return;
+    const box = new THREE.Box3().setFromObject(object);
+    if (box.isEmpty()) return;
+    centers.set(object.name, (box.min.x + box.max.x) / 2);
+  });
+  return centers;
+}
+
+// Bones are bilateral in BodyParts3D: each canonical bone node carries two
+// per-side child meshes (<nodeId>:<tree>:FJ####). The source ontology files both
+// elements under one bilateral FMA id, so side is read from geometry instead.
+// Ground truth (supplemental calcaneal-tendon, M-suffix=left) establishes that
+// in the pack's scene space the subject's LEFT side is at +x and RIGHT at -x.
+function resolvePairedBones(grouped, assetByNode, glbNodeNames, regionCenters) {
+  const paired = new Map();
+  for (const [slug, entries] of grouped) {
+    const entry = entries[0];
+    if (entry.mode !== "direct") continue;
+    const meshSource = entry.meshSources?.[0];
+    const elementIds = [...new Set(meshSource?.elementIds ?? [])];
+    if (!meshSource || elementIds.length !== 2) continue;
+    const asset = exactAsset(assetByNode, entry.nodeId, entry.regionId, "region");
+    const filename = path.basename(asset.file);
+    const centers = regionCenters.get(filename);
+    if (!centers) continue;
+    const sides = [];
+    for (const elementId of elementIds) {
+      const selector = `${entry.nodeId}:${meshSource.tree}:${elementId}`;
+      if (!glbNodeNames.get(filename)?.has(selector)) { sides.length = 0; break; }
+      const cx = centers.get(THREE.PropertyBinding.sanitizeNodeName(selector));
+      if (cx === undefined) { sides.length = 0; break; }
+      sides.push({ elementId, selector, cx });
+    }
+    if (sides.length !== 2) continue;
+    const positive = sides.find((side) => side.cx > LATERALITY_MIDLINE_EPSILON);
+    const negative = sides.find((side) => side.cx < -LATERALITY_MIDLINE_EPSILON);
+    if (!positive || !negative) continue; // midline or not cleanly bilateral
+    paired.set(slug, {
+      left: { elementId: positive.elementId, selector: positive.selector },
+      right: { elementId: negative.elementId, selector: negative.selector },
+    });
+  }
+  return paired;
 }
 
 function assertNode(nodeIndex, asset, nodeName) {

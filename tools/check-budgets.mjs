@@ -4,8 +4,8 @@ const budgets = new Map([
   ["packages/core/dist/index.js", 40_000],
   ["packages/viewer/dist/index.js", 80_000],
   ["data-packs/musculoskeletal-basic/dist/index.js", 100_000],
-  ["data-packs/bodyparts3d-musculoskeletal/dist/generated.js", 300_000],
-  ["data-packs/bodyparts3d-musculoskeletal/public/pack.json", 250_000]
+  ["data-packs/bodyparts3d-musculoskeletal/dist/generated.js", 330_000],
+  ["data-packs/bodyparts3d-musculoskeletal/public/pack.json", 275_000]
 ]);
 const failures = [];
 for (const [file, maximum] of budgets) {

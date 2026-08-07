@@ -4,7 +4,7 @@ import type { DataPack } from "@somakine/core";
 export const bodyParts3DMusculoskeletal: DataPack = {
   "schemaVersion": "0.1.0",
   "id": "somakine-bodyparts3d-musculoskeletal",
-  "version": "4.0.0-somakine.0",
+  "version": "4.0.0-somakine.1",
   "title": "Somakine BodyParts3D musculoskeletal pack",
   "description": "Real BodyParts3D 4.0 geometry with source-native connective coverage and explicit unavailable states where no target representation exists.",
   "createdAt": "2026-08-01T00:00:00Z",
@@ -177,7 +177,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:calcaneus",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -193,7 +193,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:capitate",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -209,7 +209,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:clavicle",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:shoulder"
       ],
@@ -238,7 +238,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:cuboid-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -283,7 +283,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-big-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -299,7 +299,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-fourth-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -315,7 +315,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-index-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -331,7 +331,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-little-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -347,7 +347,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-little-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -363,7 +363,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-middle-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -379,7 +379,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-ring-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -395,7 +395,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-second-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -411,7 +411,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-third-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -427,7 +427,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:distal-phalanx-of-thumb",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -443,7 +443,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:eighth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -475,7 +475,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:eleventh-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -536,7 +536,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:femur",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:hip-pelvis",
         "somakine:region:knee"
@@ -553,7 +553,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fibula",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:knee"
       ],
@@ -601,7 +601,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fifth-metacarpal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -617,7 +617,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fifth-metatarsal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -633,7 +633,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fifth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -699,7 +699,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:first-metacarpal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -715,7 +715,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:first-metatarsal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -731,7 +731,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:first-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -808,7 +808,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fourth-metacarpal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -824,7 +824,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fourth-metatarsal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -840,7 +840,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:fourth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -914,7 +914,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:gluteus-medius",
       "type": "muscle",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:hip-pelvis"
       ],
@@ -930,7 +930,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:hamate",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -946,7 +946,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:hip-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:hip-pelvis"
       ],
@@ -988,7 +988,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:humerus",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:elbow-forearm",
         "somakine:region:shoulder"
@@ -1034,7 +1034,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:inferior-nasal-concha",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -1050,7 +1050,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:intermediate-cuneiform",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1066,7 +1066,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:lacrimal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -1082,7 +1082,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:lateral-cuneiform-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1153,7 +1153,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:lunate",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1185,7 +1185,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:maxilla",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -1201,7 +1201,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:medial-cuneiform-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1217,7 +1217,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-fourth-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1233,7 +1233,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-index-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1249,7 +1249,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-little-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1265,7 +1265,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-little-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1281,7 +1281,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-middle-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1297,7 +1297,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-ring-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1313,7 +1313,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-second-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1329,7 +1329,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:middle-phalanx-of-third-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1374,7 +1374,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:navicular-bone-of-foot",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1390,7 +1390,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:ninth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -1451,7 +1451,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:palatine-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -1467,7 +1467,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:parietal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -1483,7 +1483,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:patella",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:knee"
       ],
@@ -1528,7 +1528,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:pisiform",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1544,7 +1544,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-big-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1560,7 +1560,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-fourth-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1576,7 +1576,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-index-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1592,7 +1592,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-little-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1608,7 +1608,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-little-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1624,7 +1624,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-middle-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1640,7 +1640,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-ring-finger",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1656,7 +1656,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-second-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1672,7 +1672,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-third-toe",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1688,7 +1688,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:proximal-phalanx-of-thumb",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1733,7 +1733,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:radius",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1778,7 +1778,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:scaphoid",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1807,7 +1807,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:scapula",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:shoulder"
       ],
@@ -1839,7 +1839,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:second-metacarpal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -1855,7 +1855,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:second-metatarsal",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -1871,7 +1871,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:second-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -1935,7 +1935,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:seventh-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -1983,7 +1983,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:sixth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -2060,7 +2060,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:talus",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -2076,7 +2076,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:temporal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -2092,7 +2092,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:tenth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -2156,7 +2156,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:third-metacarpal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -2172,7 +2172,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:third-metatarsal-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -2188,7 +2188,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:third-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -2220,7 +2220,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:tibia",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:knee"
       ],
@@ -2236,7 +2236,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:tibialis-posterior",
       "type": "muscle",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:ankle-foot"
       ],
@@ -2278,7 +2278,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:trapezium",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -2294,7 +2294,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:trapezoid",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -2310,7 +2310,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:triquetral",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:wrist-hand"
       ],
@@ -2326,7 +2326,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:twelfth-rib",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:spine-trunk"
       ],
@@ -2358,7 +2358,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:ulna",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:elbow-forearm"
       ],
@@ -2403,7 +2403,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
     {
       "id": "somakine:structure:zygomatic-bone",
       "type": "bone",
-      "laterality": "variable",
+      "laterality": "paired",
       "regionIds": [
         "somakine:region:head-neck"
       ],
@@ -2876,40 +2876,6 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "reviewState": "source-reviewed"
     },
     {
-      "id": "somakine:structure:right-long-plantar-ligament",
-      "type": "ligament",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:ankle-foot"
-      ],
-      "externalIds": {
-        "fma": "FMA44249",
-        "bodyParts3D": "BP5093",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:structure:left-long-plantar-ligament",
-      "type": "ligament",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:ankle-foot"
-      ],
-      "externalIds": {
-        "fma": "FMA44250",
-        "bodyParts3D": "BP9273",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
       "id": "somakine:structure:calcaneal-tendon",
       "type": "tendon",
       "laterality": "paired",
@@ -2919,40 +2885,6 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "externalIds": {
         "fma": "FMA51061",
         "bodyParts3D": "BP8740",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:structure:right-calcaneal-tendon",
-      "type": "tendon",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:ankle-foot"
-      ],
-      "externalIds": {
-        "fma": "FMA258847",
-        "bodyParts3D": "BP5098",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:structure:left-calcaneal-tendon",
-      "type": "tendon",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:ankle-foot"
-      ],
-      "externalIds": {
-        "fma": "FMA264844",
-        "bodyParts3D": "BP8739",
         "bodyParts3DTree": "isa"
       },
       "sourceIds": [
@@ -2978,40 +2910,6 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "reviewState": "source-reviewed"
     },
     {
-      "id": "somakine:structure:right-stylohyoid-ligament",
-      "type": "ligament",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:head-neck"
-      ],
-      "externalIds": {
-        "fma": "FMA72309",
-        "bodyParts3D": "BP8422",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:structure:left-stylohyoid-ligament",
-      "type": "ligament",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:head-neck"
-      ],
-      "externalIds": {
-        "fma": "FMA72311",
-        "bodyParts3D": "BP8289",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
       "id": "somakine:structure:intermediate-tendon",
       "type": "tendon",
       "laterality": "variable",
@@ -3021,23 +2919,6 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "externalIds": {
         "fma": "FMA65410",
         "bodyParts3D": "BP6513",
-        "bodyParts3DTree": "isa"
-      },
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:structure:right-intermediate-tendon",
-      "type": "tendon",
-      "laterality": "none",
-      "regionIds": [
-        "somakine:region:head-neck"
-      ],
-      "externalIds": {
-        "fma": "FMA258850",
-        "bodyParts3D": "BP6514",
         "bodyParts3DTree": "isa"
       },
       "sourceIds": [
@@ -3245,11 +3126,11 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "kind": "gltf",
       "uri": "assets/bodyparts3d/supplement-ankle-foot-connective.glb",
       "mediaType": "model/gltf-binary",
-      "sha256": "54c44640432f7d0fe636c3923190877718368c648b061c993fb455a294ec9464",
-      "bytes": 1060368,
+      "sha256": "abe11bc1af4011390a91f456758abf26990a5a4fb01c3df9fb82754fdab0732d",
+      "bytes": 682580,
       "geometry": {
-        "vertices": 34228,
-        "gpuBytes": 1045296
+        "vertices": 22009,
+        "gpuBytes": 672792
       },
       "sourceIds": [
         "bodyparts3d-4"
@@ -3261,11 +3142,11 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "kind": "gltf",
       "uri": "assets/bodyparts3d/supplement-head-neck-connective.glb",
       "mediaType": "model/gltf-binary",
-      "sha256": "6bd3cb9caa6d08df0ee2eb55453c9d307b77bb4a809b5055cf230bf79cce6378",
-      "bytes": 509492,
+      "sha256": "6f4a2f59151e81c951aac3e412885becfdccc4f15a29efa5dd684ff9f7dedc4c",
+      "bytes": 254784,
       "geometry": {
-        "vertices": 14900,
-        "gpuBytes": 501408
+        "vertices": 7450,
+        "gpuBytes": 250704
       },
       "sourceIds": [
         "bodyparts3d-4"
@@ -3345,39 +3226,75 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:calcaneus",
+      "id": "somakine:instance:calcaneus-fj3256",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:calcaneus"
+        "value": "ankle-foot:calcaneus:isa:FJ3256"
       }
     },
     {
-      "id": "somakine:instance:capitate",
+      "id": "somakine:instance:calcaneus-fj3360",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:calcaneus:isa:FJ3360"
+      }
+    },
+    {
+      "id": "somakine:instance:capitate-fj3257",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:capitate"
+        "value": "wrist-hand:capitate:isa:FJ3257"
       }
     },
     {
-      "id": "somakine:instance:clavicle",
+      "id": "somakine:instance:capitate-fj3361",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:capitate:isa:FJ3361"
+      }
+    },
+    {
+      "id": "somakine:instance:clavicle-fj3237",
       "assetId": "somakine:asset:bodyparts3d-4:shoulder",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "shoulder:clavicle"
+        "value": "shoulder:clavicle:isa:FJ3237"
       }
     },
     {
-      "id": "somakine:instance:cuboid-bone",
-      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "id": "somakine:instance:clavicle-fj3362",
+      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:cuboid-bone"
+        "value": "shoulder:clavicle:isa:FJ3362"
+      }
+    },
+    {
+      "id": "somakine:instance:cuboid-bone-fj3258",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:cuboid-bone:isa:FJ3258"
+      }
+    },
+    {
+      "id": "somakine:instance:cuboid-bone-fj3364",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:cuboid-bone:isa:FJ3364"
       }
     },
     {
@@ -3435,102 +3352,201 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:distal-phalanx-of-big-toe",
+      "id": "somakine:instance:distal-phalanx-of-big-toe-fj3182",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:distal-phalanx-of-big-toe"
+        "value": "ankle-foot:distal-phalanx-of-big-toe:isa:FJ3182"
       }
     },
     {
-      "id": "somakine:instance:distal-phalanx-of-fourth-toe",
+      "id": "somakine:instance:distal-phalanx-of-big-toe-fj3192",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:distal-phalanx-of-fourth-toe"
+        "value": "ankle-foot:distal-phalanx-of-big-toe:isa:FJ3192"
       }
     },
     {
-      "id": "somakine:instance:distal-phalanx-of-index-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:distal-phalanx-of-index-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:distal-phalanx-of-little-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:distal-phalanx-of-little-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:distal-phalanx-of-little-toe",
+      "id": "somakine:instance:distal-phalanx-of-fourth-toe-fj3181",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:distal-phalanx-of-little-toe"
+        "value": "ankle-foot:distal-phalanx-of-fourth-toe:isa:FJ3181"
       }
     },
     {
-      "id": "somakine:instance:distal-phalanx-of-middle-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:distal-phalanx-of-middle-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:distal-phalanx-of-ring-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:distal-phalanx-of-ring-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:distal-phalanx-of-second-toe",
+      "id": "somakine:instance:distal-phalanx-of-fourth-toe-fj3191",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:distal-phalanx-of-second-toe"
+        "value": "ankle-foot:distal-phalanx-of-fourth-toe:isa:FJ3191"
       }
     },
     {
-      "id": "somakine:instance:distal-phalanx-of-third-toe",
-      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "ankle-foot:distal-phalanx-of-third-toe"
-      }
-    },
-    {
-      "id": "somakine:instance:distal-phalanx-of-thumb",
+      "id": "somakine:instance:distal-phalanx-of-index-finger-fj3183",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:distal-phalanx-of-thumb"
+        "value": "wrist-hand:distal-phalanx-of-index-finger:isa:FJ3183"
       }
     },
     {
-      "id": "somakine:instance:eighth-rib",
+      "id": "somakine:instance:distal-phalanx-of-index-finger-fj3193",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-index-finger:isa:FJ3193"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-little-finger-fj3184",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-little-finger:isa:FJ3184"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-little-finger-fj3194",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-little-finger:isa:FJ3194"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-little-toe-fj3185",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:distal-phalanx-of-little-toe:isa:FJ3185"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-little-toe-fj3195",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:distal-phalanx-of-little-toe:isa:FJ3195"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-middle-finger-fj3186",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-middle-finger:isa:FJ3186"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-middle-finger-fj3196",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-middle-finger:isa:FJ3196"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-ring-finger-fj3187",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-ring-finger:isa:FJ3187"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-ring-finger-fj3197",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-ring-finger:isa:FJ3197"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-second-toe-fj3179",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:distal-phalanx-of-second-toe:isa:FJ3179"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-second-toe-fj3189",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:distal-phalanx-of-second-toe:isa:FJ3189"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-third-toe-fj3180",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:distal-phalanx-of-third-toe:isa:FJ3180"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-third-toe-fj3190",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:distal-phalanx-of-third-toe:isa:FJ3190"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-thumb-fj3188",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-thumb:isa:FJ3188"
+      }
+    },
+    {
+      "id": "somakine:instance:distal-phalanx-of-thumb-fj3198",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:distal-phalanx-of-thumb:isa:FJ3198"
+      }
+    },
+    {
+      "id": "somakine:instance:eighth-rib-fj3235",
       "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:eighth-rib"
+        "value": "spine-trunk:eighth-rib:isa:FJ3235"
+      }
+    },
+    {
+      "id": "somakine:instance:eighth-rib-fj3347",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:eighth-rib:isa:FJ3347"
       }
     },
     {
@@ -3543,12 +3559,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:eleventh-rib",
+      "id": "somakine:instance:eleventh-rib-fj3226",
       "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:eleventh-rib"
+        "value": "spine-trunk:eleventh-rib:isa:FJ3226"
+      }
+    },
+    {
+      "id": "somakine:instance:eleventh-rib-fj3331",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:eleventh-rib:isa:FJ3331"
       }
     },
     {
@@ -3570,21 +3595,39 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:femur",
+      "id": "somakine:instance:femur-fj3259",
       "assetId": "somakine:asset:bodyparts3d-4:hip-pelvis",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "hip-pelvis:femur"
+        "value": "hip-pelvis:femur:isa:FJ3259"
       }
     },
     {
-      "id": "somakine:instance:fibula",
-      "assetId": "somakine:asset:bodyparts3d-4:knee",
-      "laterality": "none",
+      "id": "somakine:instance:femur-fj3365",
+      "assetId": "somakine:asset:bodyparts3d-4:hip-pelvis",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "knee:fibula"
+        "value": "hip-pelvis:femur:isa:FJ3365"
+      }
+    },
+    {
+      "id": "somakine:instance:fibula-fj3260",
+      "assetId": "somakine:asset:bodyparts3d-4:knee",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "knee:fibula:isa:FJ3260"
+      }
+    },
+    {
+      "id": "somakine:instance:fibula-fj3366",
+      "assetId": "somakine:asset:bodyparts3d-4:knee",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "knee:fibula:isa:FJ3366"
       }
     },
     {
@@ -3606,30 +3649,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:fifth-metacarpal-bone",
+      "id": "somakine:instance:fifth-metacarpal-bone-fj3252",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:fifth-metacarpal-bone"
+        "value": "wrist-hand:fifth-metacarpal-bone:isa:FJ3252"
       }
     },
     {
-      "id": "somakine:instance:fifth-metatarsal-bone",
+      "id": "somakine:instance:fifth-metacarpal-bone-fj3358",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:fifth-metacarpal-bone:isa:FJ3358"
+      }
+    },
+    {
+      "id": "somakine:instance:fifth-metatarsal-bone-fj3253",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:fifth-metatarsal-bone"
+        "value": "ankle-foot:fifth-metatarsal-bone:isa:FJ3253"
       }
     },
     {
-      "id": "somakine:instance:fifth-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:fifth-metatarsal-bone-fj3359",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:fifth-rib"
+        "value": "ankle-foot:fifth-metatarsal-bone:isa:FJ3359"
+      }
+    },
+    {
+      "id": "somakine:instance:fifth-rib-fj3232",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:fifth-rib:isa:FJ3232"
+      }
+    },
+    {
+      "id": "somakine:instance:fifth-rib-fj3342",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:fifth-rib:isa:FJ3342"
       }
     },
     {
@@ -3705,30 +3775,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:first-metacarpal-bone",
+      "id": "somakine:instance:first-metacarpal-bone-fj3240",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:first-metacarpal-bone"
+        "value": "wrist-hand:first-metacarpal-bone:isa:FJ3240"
       }
     },
     {
-      "id": "somakine:instance:first-metatarsal-bone",
+      "id": "somakine:instance:first-metacarpal-bone-fj3350",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:first-metacarpal-bone:isa:FJ3350"
+      }
+    },
+    {
+      "id": "somakine:instance:first-metatarsal-bone-fj3241",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:first-metatarsal-bone"
+        "value": "ankle-foot:first-metatarsal-bone:isa:FJ3241"
       }
     },
     {
-      "id": "somakine:instance:first-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:first-metatarsal-bone-fj3351",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:first-rib"
+        "value": "ankle-foot:first-metatarsal-bone:isa:FJ3351"
+      }
+    },
+    {
+      "id": "somakine:instance:first-rib-fj3228",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:first-rib:isa:FJ3228"
+      }
+    },
+    {
+      "id": "somakine:instance:first-rib-fj3334",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:first-rib:isa:FJ3334"
       }
     },
     {
@@ -3759,30 +3856,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:fourth-metacarpal-bone",
+      "id": "somakine:instance:fourth-metacarpal-bone-fj3249",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:fourth-metacarpal-bone"
+        "value": "wrist-hand:fourth-metacarpal-bone:isa:FJ3249"
       }
     },
     {
-      "id": "somakine:instance:fourth-metatarsal-bone",
+      "id": "somakine:instance:fourth-metacarpal-bone-fj3356",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:fourth-metacarpal-bone:isa:FJ3356"
+      }
+    },
+    {
+      "id": "somakine:instance:fourth-metatarsal-bone-fj3250",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:fourth-metatarsal-bone"
+        "value": "ankle-foot:fourth-metatarsal-bone:isa:FJ3250"
       }
     },
     {
-      "id": "somakine:instance:fourth-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:fourth-metatarsal-bone-fj3357",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:fourth-rib"
+        "value": "ankle-foot:fourth-metatarsal-bone:isa:FJ3357"
+      }
+    },
+    {
+      "id": "somakine:instance:fourth-rib-fj3231",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:fourth-rib:isa:FJ3231"
+      }
+    },
+    {
+      "id": "somakine:instance:fourth-rib-fj3340",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:fourth-rib:isa:FJ3340"
       }
     },
     {
@@ -3804,39 +3928,75 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:gluteus-medius",
+      "id": "somakine:instance:gluteus-medius-fj1419m",
       "assetId": "somakine:asset:bodyparts3d-4:hip-pelvis",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "hip-pelvis:gluteus-medius"
+        "value": "hip-pelvis:gluteus-medius:isa:FJ1419M"
       }
     },
     {
-      "id": "somakine:instance:hamate",
+      "id": "somakine:instance:gluteus-medius-fj1419",
+      "assetId": "somakine:asset:bodyparts3d-4:hip-pelvis",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "hip-pelvis:gluteus-medius:isa:FJ1419"
+      }
+    },
+    {
+      "id": "somakine:instance:hamate-fj3261",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:hamate"
+        "value": "wrist-hand:hamate:isa:FJ3261"
       }
     },
     {
-      "id": "somakine:instance:hip-bone",
+      "id": "somakine:instance:hamate-fj3367",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:hamate:isa:FJ3367"
+      }
+    },
+    {
+      "id": "somakine:instance:hip-bone-fj3288",
       "assetId": "somakine:asset:bodyparts3d-4:hip-pelvis",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "hip-pelvis:hip-bone"
+        "value": "hip-pelvis:hip-bone:isa:FJ3288"
       }
     },
     {
-      "id": "somakine:instance:humerus",
-      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
-      "laterality": "none",
+      "id": "somakine:instance:hip-bone-fj3152",
+      "assetId": "somakine:asset:bodyparts3d-4:hip-pelvis",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "shoulder:humerus"
+        "value": "hip-pelvis:hip-bone:isa:FJ3152"
+      }
+    },
+    {
+      "id": "somakine:instance:humerus-fj3262",
+      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "shoulder:humerus:isa:FJ3262"
+      }
+    },
+    {
+      "id": "somakine:instance:humerus-fj3368",
+      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "shoulder:humerus:isa:FJ3368"
       }
     },
     {
@@ -3849,39 +4009,75 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:inferior-nasal-concha",
+      "id": "somakine:instance:inferior-nasal-concha-fj3263",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:inferior-nasal-concha"
+        "value": "head-neck:inferior-nasal-concha:isa:FJ3263"
       }
     },
     {
-      "id": "somakine:instance:intermediate-cuneiform",
-      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "ankle-foot:intermediate-cuneiform"
-      }
-    },
-    {
-      "id": "somakine:instance:lacrimal-bone",
+      "id": "somakine:instance:inferior-nasal-concha-fj3369",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:lacrimal-bone"
+        "value": "head-neck:inferior-nasal-concha:isa:FJ3369"
       }
     },
     {
-      "id": "somakine:instance:lateral-cuneiform-bone",
+      "id": "somakine:instance:intermediate-cuneiform-fj3264",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:lateral-cuneiform-bone"
+        "value": "ankle-foot:intermediate-cuneiform:isa:FJ3264"
+      }
+    },
+    {
+      "id": "somakine:instance:intermediate-cuneiform-fj3370",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:intermediate-cuneiform:isa:FJ3370"
+      }
+    },
+    {
+      "id": "somakine:instance:lacrimal-bone-fj3265",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "head-neck:lacrimal-bone:isa:FJ3265"
+      }
+    },
+    {
+      "id": "somakine:instance:lacrimal-bone-fj3371",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "head-neck:lacrimal-bone:isa:FJ3371"
+      }
+    },
+    {
+      "id": "somakine:instance:lateral-cuneiform-bone-fj3267",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:lateral-cuneiform-bone:isa:FJ3267"
+      }
+    },
+    {
+      "id": "somakine:instance:lateral-cuneiform-bone-fj3373",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:lateral-cuneiform-bone:isa:FJ3373"
       }
     },
     {
@@ -3894,12 +4090,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:lunate",
+      "id": "somakine:instance:lunate-fj3268",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:lunate"
+        "value": "wrist-hand:lunate:isa:FJ3268"
+      }
+    },
+    {
+      "id": "somakine:instance:lunate-fj3374",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:lunate:isa:FJ3374"
       }
     },
     {
@@ -3912,93 +4117,183 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:maxilla",
+      "id": "somakine:instance:maxilla-fj3269",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:maxilla"
+        "value": "head-neck:maxilla:isa:FJ3269"
       }
     },
     {
-      "id": "somakine:instance:medial-cuneiform-bone",
+      "id": "somakine:instance:maxilla-fj3375",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "head-neck:maxilla:isa:FJ3375"
+      }
+    },
+    {
+      "id": "somakine:instance:medial-cuneiform-bone-fj3271",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:medial-cuneiform-bone"
+        "value": "ankle-foot:medial-cuneiform-bone:isa:FJ3271"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-fourth-toe",
+      "id": "somakine:instance:medial-cuneiform-bone-fj3377",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:middle-phalanx-of-fourth-toe"
+        "value": "ankle-foot:medial-cuneiform-bone:isa:FJ3377"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-index-finger",
+      "id": "somakine:instance:middle-phalanx-of-fourth-toe-fj3295",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:middle-phalanx-of-fourth-toe:isa:FJ3295"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-fourth-toe-fj3302",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:middle-phalanx-of-fourth-toe:isa:FJ3302"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-index-finger-fj3296",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:middle-phalanx-of-index-finger"
+        "value": "wrist-hand:middle-phalanx-of-index-finger:isa:FJ3296"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-little-finger",
+      "id": "somakine:instance:middle-phalanx-of-index-finger-fj3303",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:middle-phalanx-of-little-finger"
+        "value": "wrist-hand:middle-phalanx-of-index-finger:isa:FJ3303"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-little-toe",
-      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "ankle-foot:middle-phalanx-of-little-toe"
-      }
-    },
-    {
-      "id": "somakine:instance:middle-phalanx-of-middle-finger",
+      "id": "somakine:instance:middle-phalanx-of-little-finger-fj3297",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:middle-phalanx-of-middle-finger"
+        "value": "wrist-hand:middle-phalanx-of-little-finger:isa:FJ3297"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-ring-finger",
+      "id": "somakine:instance:middle-phalanx-of-little-finger-fj3304",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:middle-phalanx-of-ring-finger"
+        "value": "wrist-hand:middle-phalanx-of-little-finger:isa:FJ3304"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-second-toe",
+      "id": "somakine:instance:middle-phalanx-of-little-toe-fj3298",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:middle-phalanx-of-second-toe"
+        "value": "ankle-foot:middle-phalanx-of-little-toe:isa:FJ3298"
       }
     },
     {
-      "id": "somakine:instance:middle-phalanx-of-third-toe",
+      "id": "somakine:instance:middle-phalanx-of-little-toe-fj3305",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:middle-phalanx-of-third-toe"
+        "value": "ankle-foot:middle-phalanx-of-little-toe:isa:FJ3305"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-middle-finger-fj3299",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:middle-phalanx-of-middle-finger:isa:FJ3299"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-middle-finger-fj3306",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:middle-phalanx-of-middle-finger:isa:FJ3306"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-ring-finger-fj3291",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:middle-phalanx-of-ring-finger:isa:FJ3291"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-ring-finger-fj3292",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:middle-phalanx-of-ring-finger:isa:FJ3292"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-second-toe-fj3293",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:middle-phalanx-of-second-toe:isa:FJ3293"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-second-toe-fj3300",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:middle-phalanx-of-second-toe:isa:FJ3300"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-third-toe-fj3294",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:middle-phalanx-of-third-toe:isa:FJ3294"
+      }
+    },
+    {
+      "id": "somakine:instance:middle-phalanx-of-third-toe-fj3301",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:middle-phalanx-of-third-toe:isa:FJ3301"
       }
     },
     {
@@ -4011,21 +4306,39 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:navicular-bone-of-foot",
+      "id": "somakine:instance:navicular-bone-of-foot-fj3307",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:navicular-bone-of-foot"
+        "value": "ankle-foot:navicular-bone-of-foot:isa:FJ3307"
       }
     },
     {
-      "id": "somakine:instance:ninth-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:navicular-bone-of-foot-fj3308",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:ninth-rib"
+        "value": "ankle-foot:navicular-bone-of-foot:isa:FJ3308"
+      }
+    },
+    {
+      "id": "somakine:instance:ninth-rib-fj3236",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:ninth-rib:isa:FJ3236"
+      }
+    },
+    {
+      "id": "somakine:instance:ninth-rib-fj3348",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:ninth-rib:isa:FJ3348"
       }
     },
     {
@@ -4047,30 +4360,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:palatine-bone",
+      "id": "somakine:instance:palatine-bone-fj3273",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:palatine-bone"
+        "value": "head-neck:palatine-bone:isa:FJ3273"
       }
     },
     {
-      "id": "somakine:instance:parietal-bone",
+      "id": "somakine:instance:palatine-bone-fj3379",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:parietal-bone"
+        "value": "head-neck:palatine-bone:isa:FJ3379"
       }
     },
     {
-      "id": "somakine:instance:patella",
+      "id": "somakine:instance:parietal-bone-fj3274",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "head-neck:parietal-bone:isa:FJ3274"
+      }
+    },
+    {
+      "id": "somakine:instance:parietal-bone-fj3380",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "head-neck:parietal-bone:isa:FJ3380"
+      }
+    },
+    {
+      "id": "somakine:instance:patella-fj3275",
       "assetId": "somakine:asset:bodyparts3d-4:knee",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "knee:patella"
+        "value": "knee:patella:isa:FJ3275"
+      }
+    },
+    {
+      "id": "somakine:instance:patella-fj3381",
+      "assetId": "somakine:asset:bodyparts3d-4:knee",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "knee:patella:isa:FJ3381"
       }
     },
     {
@@ -4083,102 +4423,201 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:pisiform",
+      "id": "somakine:instance:pisiform-fj3276",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:pisiform"
+        "value": "wrist-hand:pisiform:isa:FJ3276"
       }
     },
     {
-      "id": "somakine:instance:proximal-phalanx-of-big-toe",
+      "id": "somakine:instance:pisiform-fj3382",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:pisiform:isa:FJ3382"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-big-toe-fj3329",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:proximal-phalanx-of-big-toe"
+        "value": "ankle-foot:proximal-phalanx-of-big-toe:isa:FJ3329"
       }
     },
     {
-      "id": "somakine:instance:proximal-phalanx-of-fourth-toe",
+      "id": "somakine:instance:proximal-phalanx-of-big-toe-fj3310",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:proximal-phalanx-of-fourth-toe"
+        "value": "ankle-foot:proximal-phalanx-of-big-toe:isa:FJ3310"
       }
     },
     {
-      "id": "somakine:instance:proximal-phalanx-of-index-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:proximal-phalanx-of-index-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:proximal-phalanx-of-little-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:proximal-phalanx-of-little-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:proximal-phalanx-of-little-toe",
+      "id": "somakine:instance:proximal-phalanx-of-fourth-toe-fj3312",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:proximal-phalanx-of-little-toe"
+        "value": "ankle-foot:proximal-phalanx-of-fourth-toe:isa:FJ3312"
       }
     },
     {
-      "id": "somakine:instance:proximal-phalanx-of-middle-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:proximal-phalanx-of-middle-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:proximal-phalanx-of-ring-finger",
-      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "wrist-hand:proximal-phalanx-of-ring-finger"
-      }
-    },
-    {
-      "id": "somakine:instance:proximal-phalanx-of-second-toe",
+      "id": "somakine:instance:proximal-phalanx-of-fourth-toe-fj3321",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:proximal-phalanx-of-second-toe"
+        "value": "ankle-foot:proximal-phalanx-of-fourth-toe:isa:FJ3321"
       }
     },
     {
-      "id": "somakine:instance:proximal-phalanx-of-third-toe",
-      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
-      "selector": {
-        "kind": "node-name",
-        "value": "ankle-foot:proximal-phalanx-of-third-toe"
-      }
-    },
-    {
-      "id": "somakine:instance:proximal-phalanx-of-thumb",
+      "id": "somakine:instance:proximal-phalanx-of-index-finger-fj3313",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:proximal-phalanx-of-thumb"
+        "value": "wrist-hand:proximal-phalanx-of-index-finger:isa:FJ3313"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-index-finger-fj3322",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-index-finger:isa:FJ3322"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-little-finger-fj3314",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-little-finger:isa:FJ3314"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-little-finger-fj3323",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-little-finger:isa:FJ3323"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-little-toe-fj3315",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:proximal-phalanx-of-little-toe:isa:FJ3315"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-little-toe-fj3324",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:proximal-phalanx-of-little-toe:isa:FJ3324"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-middle-finger-fj3316",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-middle-finger:isa:FJ3316"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-middle-finger-fj3325",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-middle-finger:isa:FJ3325"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-ring-finger-fj3317",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-ring-finger:isa:FJ3317"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-ring-finger-fj3326",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-ring-finger:isa:FJ3326"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-second-toe-fj3328",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:proximal-phalanx-of-second-toe:isa:FJ3328"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-second-toe-fj3319",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:proximal-phalanx-of-second-toe:isa:FJ3319"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-third-toe-fj3311",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:proximal-phalanx-of-third-toe:isa:FJ3311"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-third-toe-fj3320",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:proximal-phalanx-of-third-toe:isa:FJ3320"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-thumb-fj3318",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-thumb:isa:FJ3318"
+      }
+    },
+    {
+      "id": "somakine:instance:proximal-phalanx-of-thumb-fj3327",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:proximal-phalanx-of-thumb:isa:FJ3327"
       }
     },
     {
@@ -4254,12 +4693,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:radius",
+      "id": "somakine:instance:radius-fj3277",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:radius"
+        "value": "wrist-hand:radius:isa:FJ3277"
+      }
+    },
+    {
+      "id": "somakine:instance:radius-fj3349",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:radius:isa:FJ3349"
       }
     },
     {
@@ -4272,21 +4720,39 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:scaphoid",
+      "id": "somakine:instance:scaphoid-fj3278",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:scaphoid"
+        "value": "wrist-hand:scaphoid:isa:FJ3278"
       }
     },
     {
-      "id": "somakine:instance:scapula",
-      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
-      "laterality": "none",
+      "id": "somakine:instance:scaphoid-fj3383",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "shoulder:scapula"
+        "value": "wrist-hand:scaphoid:isa:FJ3383"
+      }
+    },
+    {
+      "id": "somakine:instance:scapula-fj3279",
+      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "shoulder:scapula:isa:FJ3279"
+      }
+    },
+    {
+      "id": "somakine:instance:scapula-fj3384",
+      "assetId": "somakine:asset:bodyparts3d-4:shoulder",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "shoulder:scapula:isa:FJ3384"
       }
     },
     {
@@ -4299,30 +4765,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:second-metacarpal-bone",
+      "id": "somakine:instance:second-metacarpal-bone-fj3243",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:second-metacarpal-bone"
+        "value": "wrist-hand:second-metacarpal-bone:isa:FJ3243"
       }
     },
     {
-      "id": "somakine:instance:second-metatarsal",
+      "id": "somakine:instance:second-metacarpal-bone-fj3352",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:second-metacarpal-bone:isa:FJ3352"
+      }
+    },
+    {
+      "id": "somakine:instance:second-metatarsal-fj3244",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:second-metatarsal"
+        "value": "ankle-foot:second-metatarsal:isa:FJ3244"
       }
     },
     {
-      "id": "somakine:instance:second-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:second-metatarsal-fj3353",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:second-rib"
+        "value": "ankle-foot:second-metatarsal:isa:FJ3353"
+      }
+    },
+    {
+      "id": "somakine:instance:second-rib-fj3229",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:second-rib:isa:FJ3229"
+      }
+    },
+    {
+      "id": "somakine:instance:second-rib-fj3336",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:second-rib:isa:FJ3336"
       }
     },
     {
@@ -4353,12 +4846,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:seventh-rib",
+      "id": "somakine:instance:seventh-rib-fj3234",
       "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:seventh-rib"
+        "value": "spine-trunk:seventh-rib:isa:FJ3234"
+      }
+    },
+    {
+      "id": "somakine:instance:seventh-rib-fj3346",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:seventh-rib:isa:FJ3346"
       }
     },
     {
@@ -4380,12 +4882,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:sixth-rib",
+      "id": "somakine:instance:sixth-rib-fj3233",
       "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:sixth-rib"
+        "value": "spine-trunk:sixth-rib:isa:FJ3233"
+      }
+    },
+    {
+      "id": "somakine:instance:sixth-rib-fj3344",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:sixth-rib:isa:FJ3344"
       }
     },
     {
@@ -4416,30 +4927,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:talus",
+      "id": "somakine:instance:talus-fj3280",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:talus"
+        "value": "ankle-foot:talus:isa:FJ3280"
       }
     },
     {
-      "id": "somakine:instance:temporal-bone",
+      "id": "somakine:instance:talus-fj3385",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:talus:isa:FJ3385"
+      }
+    },
+    {
+      "id": "somakine:instance:temporal-bone-fj3281",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:temporal-bone"
+        "value": "head-neck:temporal-bone:isa:FJ3281"
       }
     },
     {
-      "id": "somakine:instance:tenth-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:temporal-bone-fj3386",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:tenth-rib"
+        "value": "head-neck:temporal-bone:isa:FJ3386"
+      }
+    },
+    {
+      "id": "somakine:instance:tenth-rib-fj3225",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:tenth-rib:isa:FJ3225"
+      }
+    },
+    {
+      "id": "somakine:instance:tenth-rib-fj3330",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:tenth-rib:isa:FJ3330"
       }
     },
     {
@@ -4470,30 +5008,57 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:third-metacarpal-bone",
+      "id": "somakine:instance:third-metacarpal-bone-fj3246",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:third-metacarpal-bone"
+        "value": "wrist-hand:third-metacarpal-bone:isa:FJ3246"
       }
     },
     {
-      "id": "somakine:instance:third-metatarsal-bone",
+      "id": "somakine:instance:third-metacarpal-bone-fj3354",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:third-metacarpal-bone:isa:FJ3354"
+      }
+    },
+    {
+      "id": "somakine:instance:third-metatarsal-bone-fj3247",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:third-metatarsal-bone"
+        "value": "ankle-foot:third-metatarsal-bone:isa:FJ3247"
       }
     },
     {
-      "id": "somakine:instance:third-rib",
-      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "id": "somakine:instance:third-metatarsal-bone-fj3355",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:third-rib"
+        "value": "ankle-foot:third-metatarsal-bone:isa:FJ3355"
+      }
+    },
+    {
+      "id": "somakine:instance:third-rib-fj3230",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:third-rib:isa:FJ3230"
+      }
+    },
+    {
+      "id": "somakine:instance:third-rib-fj3338",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:third-rib:isa:FJ3338"
       }
     },
     {
@@ -4506,57 +5071,111 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:tibia",
+      "id": "somakine:instance:tibia-fj3282",
       "assetId": "somakine:asset:bodyparts3d-4:knee",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "knee:tibia"
+        "value": "knee:tibia:isa:FJ3282"
       }
     },
     {
-      "id": "somakine:instance:tibialis-posterior",
+      "id": "somakine:instance:tibia-fj3387",
+      "assetId": "somakine:asset:bodyparts3d-4:knee",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "knee:tibia:isa:FJ3387"
+      }
+    },
+    {
+      "id": "somakine:instance:tibialis-posterior-fj1440m",
       "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "ankle-foot:tibialis-posterior"
+        "value": "ankle-foot:tibialis-posterior:isa:FJ1440M"
       }
     },
     {
-      "id": "somakine:instance:trapezium",
+      "id": "somakine:instance:tibialis-posterior-fj1440",
+      "assetId": "somakine:asset:bodyparts3d-4:ankle-foot",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "ankle-foot:tibialis-posterior:isa:FJ1440"
+      }
+    },
+    {
+      "id": "somakine:instance:trapezium-fj3283",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:trapezium"
+        "value": "wrist-hand:trapezium:isa:FJ3283"
       }
     },
     {
-      "id": "somakine:instance:trapezoid",
+      "id": "somakine:instance:trapezium-fj3388",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "right",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:trapezoid"
+        "value": "wrist-hand:trapezium:isa:FJ3388"
       }
     },
     {
-      "id": "somakine:instance:triquetral",
+      "id": "somakine:instance:trapezoid-fj3284",
       "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "wrist-hand:triquetral"
+        "value": "wrist-hand:trapezoid:isa:FJ3284"
       }
     },
     {
-      "id": "somakine:instance:twelfth-rib",
+      "id": "somakine:instance:trapezoid-fj3389",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:trapezoid:isa:FJ3389"
+      }
+    },
+    {
+      "id": "somakine:instance:triquetral-fj3285",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "left",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:triquetral:isa:FJ3285"
+      }
+    },
+    {
+      "id": "somakine:instance:triquetral-fj3390",
+      "assetId": "somakine:asset:bodyparts3d-4:wrist-hand",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "wrist-hand:triquetral:isa:FJ3390"
+      }
+    },
+    {
+      "id": "somakine:instance:twelfth-rib-fj3227",
       "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "spine-trunk:twelfth-rib"
+        "value": "spine-trunk:twelfth-rib:isa:FJ3227"
+      }
+    },
+    {
+      "id": "somakine:instance:twelfth-rib-fj3332",
+      "assetId": "somakine:asset:bodyparts3d-4:spine-trunk",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "spine-trunk:twelfth-rib:isa:FJ3332"
       }
     },
     {
@@ -4569,12 +5188,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:ulna",
+      "id": "somakine:instance:ulna-fj3286",
       "assetId": "somakine:asset:bodyparts3d-4:elbow-forearm",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "elbow-forearm:ulna"
+        "value": "elbow-forearm:ulna:isa:FJ3286"
+      }
+    },
+    {
+      "id": "somakine:instance:ulna-fj3391",
+      "assetId": "somakine:asset:bodyparts3d-4:elbow-forearm",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "elbow-forearm:ulna:isa:FJ3391"
       }
     },
     {
@@ -4587,12 +5215,21 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:zygomatic-bone",
+      "id": "somakine:instance:zygomatic-bone-fj3287",
       "assetId": "somakine:asset:bodyparts3d-4:head-neck",
-      "laterality": "none",
+      "laterality": "left",
       "selector": {
         "kind": "node-name",
-        "value": "head-neck:zygomatic-bone"
+        "value": "head-neck:zygomatic-bone:isa:FJ3287"
+      }
+    },
+    {
+      "id": "somakine:instance:zygomatic-bone-fj3392",
+      "assetId": "somakine:asset:bodyparts3d-4:head-neck",
+      "laterality": "right",
+      "selector": {
+        "kind": "node-name",
+        "value": "head-neck:zygomatic-bone:isa:FJ3392"
       }
     },
     {
@@ -5064,24 +5701,6 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:right-long-plantar-ligament-fj1424",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
-      "laterality": "right",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:right-long-plantar-ligament:isa:FJ1424"
-      }
-    },
-    {
-      "id": "somakine:instance:left-long-plantar-ligament-fj1424m",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
-      "laterality": "left",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:left-long-plantar-ligament:isa:FJ1424M"
-      }
-    },
-    {
       "id": "somakine:instance:calcaneal-tendon-fj1405",
       "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
       "laterality": "right",
@@ -5097,24 +5716,6 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "selector": {
         "kind": "node-name",
         "value": "supplemental:calcaneal-tendon:isa:FJ1405M"
-      }
-    },
-    {
-      "id": "somakine:instance:right-calcaneal-tendon-fj1405",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
-      "laterality": "right",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:right-calcaneal-tendon:isa:FJ1405"
-      }
-    },
-    {
-      "id": "somakine:instance:left-calcaneal-tendon-fj1405m",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-ankle-foot-connective",
-      "laterality": "left",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:left-calcaneal-tendon:isa:FJ1405M"
       }
     },
     {
@@ -5136,39 +5737,12 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       }
     },
     {
-      "id": "somakine:instance:right-stylohyoid-ligament-fj2764",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
-      "laterality": "right",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:right-stylohyoid-ligament:isa:FJ2764"
-      }
-    },
-    {
-      "id": "somakine:instance:left-stylohyoid-ligament-fj2763",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
-      "laterality": "left",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:left-stylohyoid-ligament:isa:FJ2763"
-      }
-    },
-    {
       "id": "somakine:instance:intermediate-tendon-fj1581",
       "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
       "laterality": "none",
       "selector": {
         "kind": "node-name",
         "value": "supplemental:intermediate-tendon:isa:FJ1581"
-      }
-    },
-    {
-      "id": "somakine:instance:right-intermediate-tendon-fj1581",
-      "assetId": "somakine:asset:bodyparts3d-4:supplement-head-neck-connective",
-      "laterality": "right",
-      "selector": {
-        "kind": "node-name",
-        "value": "supplemental:right-intermediate-tendon:isa:FJ1581"
       }
     }
   ],
@@ -5253,7 +5827,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:calcaneus",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:calcaneus"
+        "somakine:instance:calcaneus-fj3256",
+        "somakine:instance:calcaneus-fj3360"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5266,7 +5841,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:capitate",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:capitate"
+        "somakine:instance:capitate-fj3257",
+        "somakine:instance:capitate-fj3361"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5279,7 +5855,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:clavicle",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:clavicle"
+        "somakine:instance:clavicle-fj3237",
+        "somakine:instance:clavicle-fj3362"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5303,7 +5880,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:cuboid-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:cuboid-bone"
+        "somakine:instance:cuboid-bone-fj3258",
+        "somakine:instance:cuboid-bone-fj3364"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5345,7 +5923,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-big-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-big-toe"
+        "somakine:instance:distal-phalanx-of-big-toe-fj3182",
+        "somakine:instance:distal-phalanx-of-big-toe-fj3192"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5358,7 +5937,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-fourth-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-fourth-toe"
+        "somakine:instance:distal-phalanx-of-fourth-toe-fj3181",
+        "somakine:instance:distal-phalanx-of-fourth-toe-fj3191"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5371,7 +5951,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-index-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-index-finger"
+        "somakine:instance:distal-phalanx-of-index-finger-fj3183",
+        "somakine:instance:distal-phalanx-of-index-finger-fj3193"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5384,7 +5965,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-little-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-little-finger"
+        "somakine:instance:distal-phalanx-of-little-finger-fj3184",
+        "somakine:instance:distal-phalanx-of-little-finger-fj3194"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5397,7 +5979,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-little-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-little-toe"
+        "somakine:instance:distal-phalanx-of-little-toe-fj3185",
+        "somakine:instance:distal-phalanx-of-little-toe-fj3195"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5410,7 +5993,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-middle-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-middle-finger"
+        "somakine:instance:distal-phalanx-of-middle-finger-fj3186",
+        "somakine:instance:distal-phalanx-of-middle-finger-fj3196"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5423,7 +6007,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-ring-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-ring-finger"
+        "somakine:instance:distal-phalanx-of-ring-finger-fj3187",
+        "somakine:instance:distal-phalanx-of-ring-finger-fj3197"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5436,7 +6021,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-second-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-second-toe"
+        "somakine:instance:distal-phalanx-of-second-toe-fj3179",
+        "somakine:instance:distal-phalanx-of-second-toe-fj3189"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5449,7 +6035,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-third-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-third-toe"
+        "somakine:instance:distal-phalanx-of-third-toe-fj3180",
+        "somakine:instance:distal-phalanx-of-third-toe-fj3190"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5462,7 +6049,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:distal-phalanx-of-thumb",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:distal-phalanx-of-thumb"
+        "somakine:instance:distal-phalanx-of-thumb-fj3188",
+        "somakine:instance:distal-phalanx-of-thumb-fj3198"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5475,7 +6063,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:eighth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:eighth-rib"
+        "somakine:instance:eighth-rib-fj3235",
+        "somakine:instance:eighth-rib-fj3347"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5501,7 +6090,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:eleventh-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:eleventh-rib"
+        "somakine:instance:eleventh-rib-fj3226",
+        "somakine:instance:eleventh-rib-fj3331"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5551,7 +6141,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:femur",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:femur"
+        "somakine:instance:femur-fj3259",
+        "somakine:instance:femur-fj3365"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5564,7 +6155,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fibula",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fibula"
+        "somakine:instance:fibula-fj3260",
+        "somakine:instance:fibula-fj3366"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5603,7 +6195,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fifth-metacarpal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fifth-metacarpal-bone"
+        "somakine:instance:fifth-metacarpal-bone-fj3252",
+        "somakine:instance:fifth-metacarpal-bone-fj3358"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5616,7 +6209,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fifth-metatarsal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fifth-metatarsal-bone"
+        "somakine:instance:fifth-metatarsal-bone-fj3253",
+        "somakine:instance:fifth-metatarsal-bone-fj3359"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5629,7 +6223,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fifth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fifth-rib"
+        "somakine:instance:fifth-rib-fj3232",
+        "somakine:instance:fifth-rib-fj3342"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5686,7 +6281,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:first-metacarpal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:first-metacarpal-bone"
+        "somakine:instance:first-metacarpal-bone-fj3240",
+        "somakine:instance:first-metacarpal-bone-fj3350"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5699,7 +6295,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:first-metatarsal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:first-metatarsal-bone"
+        "somakine:instance:first-metatarsal-bone-fj3241",
+        "somakine:instance:first-metatarsal-bone-fj3351"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5712,7 +6309,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:first-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:first-rib"
+        "somakine:instance:first-rib-fj3228",
+        "somakine:instance:first-rib-fj3334"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5775,7 +6373,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fourth-metacarpal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fourth-metacarpal-bone"
+        "somakine:instance:fourth-metacarpal-bone-fj3249",
+        "somakine:instance:fourth-metacarpal-bone-fj3356"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5788,7 +6387,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fourth-metatarsal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fourth-metatarsal-bone"
+        "somakine:instance:fourth-metatarsal-bone-fj3250",
+        "somakine:instance:fourth-metatarsal-bone-fj3357"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5801,7 +6401,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:fourth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:fourth-rib"
+        "somakine:instance:fourth-rib-fj3231",
+        "somakine:instance:fourth-rib-fj3340"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5862,7 +6463,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:gluteus-medius",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:gluteus-medius"
+        "somakine:instance:gluteus-medius-fj1419m",
+        "somakine:instance:gluteus-medius-fj1419"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5875,7 +6477,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:hamate",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:hamate"
+        "somakine:instance:hamate-fj3261",
+        "somakine:instance:hamate-fj3367"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5888,7 +6491,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:hip-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:hip-bone"
+        "somakine:instance:hip-bone-fj3288",
+        "somakine:instance:hip-bone-fj3152"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5923,7 +6527,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:humerus",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:humerus"
+        "somakine:instance:humerus-fj3262",
+        "somakine:instance:humerus-fj3368"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5960,7 +6565,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:inferior-nasal-concha",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:inferior-nasal-concha"
+        "somakine:instance:inferior-nasal-concha-fj3263",
+        "somakine:instance:inferior-nasal-concha-fj3369"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5973,7 +6579,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:intermediate-cuneiform",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:intermediate-cuneiform"
+        "somakine:instance:intermediate-cuneiform-fj3264",
+        "somakine:instance:intermediate-cuneiform-fj3370"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5986,7 +6593,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:lacrimal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:lacrimal-bone"
+        "somakine:instance:lacrimal-bone-fj3265",
+        "somakine:instance:lacrimal-bone-fj3371"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -5999,7 +6607,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:lateral-cuneiform-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:lateral-cuneiform-bone"
+        "somakine:instance:lateral-cuneiform-bone-fj3267",
+        "somakine:instance:lateral-cuneiform-bone-fj3373"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6058,7 +6667,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:lunate",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:lunate"
+        "somakine:instance:lunate-fj3268",
+        "somakine:instance:lunate-fj3374"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6084,7 +6694,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:maxilla",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:maxilla"
+        "somakine:instance:maxilla-fj3269",
+        "somakine:instance:maxilla-fj3375"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6097,7 +6708,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:medial-cuneiform-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:medial-cuneiform-bone"
+        "somakine:instance:medial-cuneiform-bone-fj3271",
+        "somakine:instance:medial-cuneiform-bone-fj3377"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6110,7 +6722,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-fourth-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-fourth-toe"
+        "somakine:instance:middle-phalanx-of-fourth-toe-fj3295",
+        "somakine:instance:middle-phalanx-of-fourth-toe-fj3302"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6123,7 +6736,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-index-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-index-finger"
+        "somakine:instance:middle-phalanx-of-index-finger-fj3296",
+        "somakine:instance:middle-phalanx-of-index-finger-fj3303"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6136,7 +6750,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-little-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-little-finger"
+        "somakine:instance:middle-phalanx-of-little-finger-fj3297",
+        "somakine:instance:middle-phalanx-of-little-finger-fj3304"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6149,7 +6764,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-little-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-little-toe"
+        "somakine:instance:middle-phalanx-of-little-toe-fj3298",
+        "somakine:instance:middle-phalanx-of-little-toe-fj3305"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6162,7 +6778,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-middle-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-middle-finger"
+        "somakine:instance:middle-phalanx-of-middle-finger-fj3299",
+        "somakine:instance:middle-phalanx-of-middle-finger-fj3306"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6175,7 +6792,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-ring-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-ring-finger"
+        "somakine:instance:middle-phalanx-of-ring-finger-fj3291",
+        "somakine:instance:middle-phalanx-of-ring-finger-fj3292"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6188,7 +6806,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-second-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-second-toe"
+        "somakine:instance:middle-phalanx-of-second-toe-fj3293",
+        "somakine:instance:middle-phalanx-of-second-toe-fj3300"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6201,7 +6820,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:middle-phalanx-of-third-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:middle-phalanx-of-third-toe"
+        "somakine:instance:middle-phalanx-of-third-toe-fj3294",
+        "somakine:instance:middle-phalanx-of-third-toe-fj3301"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6238,7 +6858,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:navicular-bone-of-foot",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:navicular-bone-of-foot"
+        "somakine:instance:navicular-bone-of-foot-fj3307",
+        "somakine:instance:navicular-bone-of-foot-fj3308"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6251,7 +6872,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:ninth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:ninth-rib"
+        "somakine:instance:ninth-rib-fj3236",
+        "somakine:instance:ninth-rib-fj3348"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6301,7 +6923,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:palatine-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:palatine-bone"
+        "somakine:instance:palatine-bone-fj3273",
+        "somakine:instance:palatine-bone-fj3379"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6314,7 +6937,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:parietal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:parietal-bone"
+        "somakine:instance:parietal-bone-fj3274",
+        "somakine:instance:parietal-bone-fj3380"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6327,7 +6951,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:patella",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:patella"
+        "somakine:instance:patella-fj3275",
+        "somakine:instance:patella-fj3381"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6364,7 +6989,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:pisiform",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:pisiform"
+        "somakine:instance:pisiform-fj3276",
+        "somakine:instance:pisiform-fj3382"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6377,7 +7003,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-big-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-big-toe"
+        "somakine:instance:proximal-phalanx-of-big-toe-fj3329",
+        "somakine:instance:proximal-phalanx-of-big-toe-fj3310"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6390,7 +7017,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-fourth-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-fourth-toe"
+        "somakine:instance:proximal-phalanx-of-fourth-toe-fj3312",
+        "somakine:instance:proximal-phalanx-of-fourth-toe-fj3321"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6403,7 +7031,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-index-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-index-finger"
+        "somakine:instance:proximal-phalanx-of-index-finger-fj3313",
+        "somakine:instance:proximal-phalanx-of-index-finger-fj3322"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6416,7 +7045,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-little-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-little-finger"
+        "somakine:instance:proximal-phalanx-of-little-finger-fj3314",
+        "somakine:instance:proximal-phalanx-of-little-finger-fj3323"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6429,7 +7059,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-little-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-little-toe"
+        "somakine:instance:proximal-phalanx-of-little-toe-fj3315",
+        "somakine:instance:proximal-phalanx-of-little-toe-fj3324"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6442,7 +7073,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-middle-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-middle-finger"
+        "somakine:instance:proximal-phalanx-of-middle-finger-fj3316",
+        "somakine:instance:proximal-phalanx-of-middle-finger-fj3325"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6455,7 +7087,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-ring-finger",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-ring-finger"
+        "somakine:instance:proximal-phalanx-of-ring-finger-fj3317",
+        "somakine:instance:proximal-phalanx-of-ring-finger-fj3326"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6468,7 +7101,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-second-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-second-toe"
+        "somakine:instance:proximal-phalanx-of-second-toe-fj3328",
+        "somakine:instance:proximal-phalanx-of-second-toe-fj3319"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6481,7 +7115,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-third-toe",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-third-toe"
+        "somakine:instance:proximal-phalanx-of-third-toe-fj3311",
+        "somakine:instance:proximal-phalanx-of-third-toe-fj3320"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6494,7 +7129,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:proximal-phalanx-of-thumb",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:proximal-phalanx-of-thumb"
+        "somakine:instance:proximal-phalanx-of-thumb-fj3318",
+        "somakine:instance:proximal-phalanx-of-thumb-fj3327"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6538,7 +7174,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:radius",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:radius"
+        "somakine:instance:radius-fj3277",
+        "somakine:instance:radius-fj3349"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6575,7 +7212,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:scaphoid",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:scaphoid"
+        "somakine:instance:scaphoid-fj3278",
+        "somakine:instance:scaphoid-fj3383"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6599,7 +7237,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:scapula",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:scapula"
+        "somakine:instance:scapula-fj3279",
+        "somakine:instance:scapula-fj3384"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6625,7 +7264,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:second-metacarpal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:second-metacarpal-bone"
+        "somakine:instance:second-metacarpal-bone-fj3243",
+        "somakine:instance:second-metacarpal-bone-fj3352"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6638,7 +7278,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:second-metatarsal",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:second-metatarsal"
+        "somakine:instance:second-metatarsal-fj3244",
+        "somakine:instance:second-metatarsal-fj3353"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6651,7 +7292,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:second-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:second-rib"
+        "somakine:instance:second-rib-fj3229",
+        "somakine:instance:second-rib-fj3336"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6703,7 +7345,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:seventh-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:seventh-rib"
+        "somakine:instance:seventh-rib-fj3234",
+        "somakine:instance:seventh-rib-fj3346"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6742,7 +7385,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:sixth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:sixth-rib"
+        "somakine:instance:sixth-rib-fj3233",
+        "somakine:instance:sixth-rib-fj3344"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6805,7 +7449,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:talus",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:talus"
+        "somakine:instance:talus-fj3280",
+        "somakine:instance:talus-fj3385"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6818,7 +7463,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:temporal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:temporal-bone"
+        "somakine:instance:temporal-bone-fj3281",
+        "somakine:instance:temporal-bone-fj3386"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6831,7 +7477,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:tenth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:tenth-rib"
+        "somakine:instance:tenth-rib-fj3225",
+        "somakine:instance:tenth-rib-fj3330"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6883,7 +7530,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:third-metacarpal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:third-metacarpal-bone"
+        "somakine:instance:third-metacarpal-bone-fj3246",
+        "somakine:instance:third-metacarpal-bone-fj3354"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6896,7 +7544,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:third-metatarsal-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:third-metatarsal-bone"
+        "somakine:instance:third-metatarsal-bone-fj3247",
+        "somakine:instance:third-metatarsal-bone-fj3355"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6909,7 +7558,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:third-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:third-rib"
+        "somakine:instance:third-rib-fj3230",
+        "somakine:instance:third-rib-fj3338"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6935,7 +7585,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:tibia",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:tibia"
+        "somakine:instance:tibia-fj3282",
+        "somakine:instance:tibia-fj3387"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6948,7 +7599,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:tibialis-posterior",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:tibialis-posterior"
+        "somakine:instance:tibialis-posterior-fj1440m",
+        "somakine:instance:tibialis-posterior-fj1440"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6983,7 +7635,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:trapezium",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:trapezium"
+        "somakine:instance:trapezium-fj3283",
+        "somakine:instance:trapezium-fj3388"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -6996,7 +7649,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:trapezoid",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:trapezoid"
+        "somakine:instance:trapezoid-fj3284",
+        "somakine:instance:trapezoid-fj3389"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7009,7 +7663,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:triquetral",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:triquetral"
+        "somakine:instance:triquetral-fj3285",
+        "somakine:instance:triquetral-fj3390"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7022,7 +7677,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:twelfth-rib",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:twelfth-rib"
+        "somakine:instance:twelfth-rib-fj3227",
+        "somakine:instance:twelfth-rib-fj3332"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7048,7 +7704,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:ulna",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:ulna"
+        "somakine:instance:ulna-fj3286",
+        "somakine:instance:ulna-fj3391"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7085,7 +7742,8 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "structureId": "somakine:structure:zygomatic-bone",
       "mode": "direct",
       "instanceIds": [
-        "somakine:instance:zygomatic-bone"
+        "somakine:instance:zygomatic-bone-fj3287",
+        "somakine:instance:zygomatic-bone-fj3392"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7470,64 +8128,12 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "reviewState": "source-reviewed"
     },
     {
-      "id": "somakine:representation:right-long-plantar-ligament",
-      "structureId": "somakine:structure:right-long-plantar-ligament",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:right-long-plantar-ligament-fj1424"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:representation:left-long-plantar-ligament",
-      "structureId": "somakine:structure:left-long-plantar-ligament",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:left-long-plantar-ligament-fj1424m"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
       "id": "somakine:representation:calcaneal-tendon",
       "structureId": "somakine:structure:calcaneal-tendon",
       "mode": "direct",
       "instanceIds": [
         "somakine:instance:calcaneal-tendon-fj1405",
         "somakine:instance:calcaneal-tendon-fj1405m"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:representation:right-calcaneal-tendon",
-      "structureId": "somakine:structure:right-calcaneal-tendon",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:right-calcaneal-tendon-fj1405"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:representation:left-calcaneal-tendon",
-      "structureId": "somakine:structure:left-calcaneal-tendon",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:left-calcaneal-tendon-fj1405m"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7550,50 +8156,11 @@ export const bodyParts3DMusculoskeletal: DataPack = {
       "reviewState": "source-reviewed"
     },
     {
-      "id": "somakine:representation:right-stylohyoid-ligament",
-      "structureId": "somakine:structure:right-stylohyoid-ligament",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:right-stylohyoid-ligament-fj2764"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:representation:left-stylohyoid-ligament",
-      "structureId": "somakine:structure:left-stylohyoid-ligament",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:left-stylohyoid-ligament-fj2763"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
       "id": "somakine:representation:intermediate-tendon",
       "structureId": "somakine:structure:intermediate-tendon",
       "mode": "direct",
       "instanceIds": [
         "somakine:instance:intermediate-tendon-fj1581"
-      ],
-      "contextStructureIds": [],
-      "sourceIds": [
-        "bodyparts3d-4"
-      ],
-      "reviewState": "source-reviewed"
-    },
-    {
-      "id": "somakine:representation:right-intermediate-tendon",
-      "structureId": "somakine:structure:right-intermediate-tendon",
-      "mode": "direct",
-      "instanceIds": [
-        "somakine:instance:right-intermediate-tendon-fj1581"
       ],
       "contextStructureIds": [],
       "sourceIds": [
@@ -7791,16 +8358,9 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "somakine:structure:tarsal-ligament": "Tarsal ligament",
         "somakine:structure:plantar-tarsal-ligament": "Plantar tarsal ligament",
         "somakine:structure:long-plantar-ligament": "Long plantar ligament",
-        "somakine:structure:right-long-plantar-ligament": "Right long plantar ligament",
-        "somakine:structure:left-long-plantar-ligament": "Left long plantar ligament",
         "somakine:structure:calcaneal-tendon": "Calcaneal tendon",
-        "somakine:structure:right-calcaneal-tendon": "Right calcaneal tendon",
-        "somakine:structure:left-calcaneal-tendon": "Left calcaneal tendon",
         "somakine:structure:stylohyoid-ligament": "Stylohyoid ligament",
-        "somakine:structure:right-stylohyoid-ligament": "Right stylohyoid ligament",
-        "somakine:structure:left-stylohyoid-ligament": "Left stylohyoid ligament",
-        "somakine:structure:intermediate-tendon": "Intermediate tendon",
-        "somakine:structure:right-intermediate-tendon": "Right intermediate tendon"
+        "somakine:structure:intermediate-tendon": "Intermediate tendon"
       },
       "aliases": {
         "somakine:region:head-neck": [
@@ -7898,7 +8458,7 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "somakine:structure:quadriceps": "股四头肌",
         "somakine:structure:patellar-tendon": "髌腱",
         "somakine:structure:intermediate-cuneiform": "中间楔骨",
-        "somakine:structure:second-metatarsal": "第2跖骨",
+        "somakine:structure:second-metatarsal": "第二跖骨",
         "somakine:structure:lisfranc-joint-complex": "Lisfranc 关节复合体",
         "somakine:structure:lisfranc-ligament": "Lisfranc 韧带",
         "somakine:structure:tibialis-posterior": "胫骨后肌",
@@ -8010,40 +8570,33 @@ export const bodyParts3DMusculoskeletal: DataPack = {
         "somakine:structure:articular-disk-of-symphysis": "联合关节盘",
         "somakine:structure:intervertebral-symphysis": "椎间联合",
         "somakine:structure:intervertebral-symphysis-of-axis": "寰枢椎间联合",
-        "somakine:structure:third-cervical-intervertebral-symphysis": "第3颈椎椎间联合",
-        "somakine:structure:fourth-cervical-intervertebral-symphysis": "第4颈椎椎间联合",
-        "somakine:structure:fifth-cervical-intervertebral-symphysis": "第5颈椎椎间联合",
-        "somakine:structure:sixth-cervical-intervertebral-symphysis": "第6颈椎椎间联合",
-        "somakine:structure:seventh-cervical-intervertebral-symphysis": "第7颈椎椎间联合",
-        "somakine:structure:first-thoracic-intervertebral-symphysis": "第1胸椎椎间联合",
-        "somakine:structure:second-thoracic-intervertebral-symphysis": "第2胸椎椎间联合",
-        "somakine:structure:third-thoracic-intervertebral-symphysis": "第3胸椎椎间联合",
-        "somakine:structure:fourth-thoracic-intervertebral-symphysis": "第4胸椎椎间联合",
-        "somakine:structure:fifth-thoracic-intervertebral-symphysis": "第5胸椎椎间联合",
-        "somakine:structure:sixth-thoracic-intervertebral-symphysis": "第6胸椎椎间联合",
-        "somakine:structure:seventh-thoracic-intervertebral-symphysis": "第7胸椎椎间联合",
-        "somakine:structure:eighth-thoracic-intervertebral-symphysis": "第8胸椎椎间联合",
-        "somakine:structure:ninth-thoracic-intervertebral-symphysis": "第9胸椎椎间联合",
-        "somakine:structure:tenth-thoracic-intervertebral-symphysis": "第10胸椎椎间联合",
-        "somakine:structure:eleventh-thoracic-intervertebral-symphysis": "第11胸椎椎间联合",
-        "somakine:structure:first-lumbar-intervertebral-symphysis": "第1腰椎椎间联合",
-        "somakine:structure:second-lumbar-intervertebral-symphysis": "第2腰椎椎间联合",
-        "somakine:structure:third-lumbar-intervertebral-symphysis": "第3腰椎椎间联合",
-        "somakine:structure:fourth-lumbar-intervertebral-symphysis": "第4腰椎椎间联合",
-        "somakine:structure:fifth-lumbar-intervertebral-symphysis": "第5腰椎椎间联合",
+        "somakine:structure:third-cervical-intervertebral-symphysis": "第三颈椎椎间联合",
+        "somakine:structure:fourth-cervical-intervertebral-symphysis": "第四颈椎椎间联合",
+        "somakine:structure:fifth-cervical-intervertebral-symphysis": "第五颈椎椎间联合",
+        "somakine:structure:sixth-cervical-intervertebral-symphysis": "第六颈椎椎间联合",
+        "somakine:structure:seventh-cervical-intervertebral-symphysis": "第七颈椎椎间联合",
+        "somakine:structure:first-thoracic-intervertebral-symphysis": "第一胸椎椎间联合",
+        "somakine:structure:second-thoracic-intervertebral-symphysis": "第二胸椎椎间联合",
+        "somakine:structure:third-thoracic-intervertebral-symphysis": "第三胸椎椎间联合",
+        "somakine:structure:fourth-thoracic-intervertebral-symphysis": "第四胸椎椎间联合",
+        "somakine:structure:fifth-thoracic-intervertebral-symphysis": "第五胸椎椎间联合",
+        "somakine:structure:sixth-thoracic-intervertebral-symphysis": "第六胸椎椎间联合",
+        "somakine:structure:seventh-thoracic-intervertebral-symphysis": "第七胸椎椎间联合",
+        "somakine:structure:eighth-thoracic-intervertebral-symphysis": "第八胸椎椎间联合",
+        "somakine:structure:ninth-thoracic-intervertebral-symphysis": "第九胸椎椎间联合",
+        "somakine:structure:tenth-thoracic-intervertebral-symphysis": "第十胸椎椎间联合",
+        "somakine:structure:eleventh-thoracic-intervertebral-symphysis": "第十一胸椎椎间联合",
+        "somakine:structure:first-lumbar-intervertebral-symphysis": "第一腰椎椎间联合",
+        "somakine:structure:second-lumbar-intervertebral-symphysis": "第二腰椎椎间联合",
+        "somakine:structure:third-lumbar-intervertebral-symphysis": "第三腰椎椎间联合",
+        "somakine:structure:fourth-lumbar-intervertebral-symphysis": "第四腰椎椎间联合",
+        "somakine:structure:fifth-lumbar-intervertebral-symphysis": "第五腰椎椎间联合",
         "somakine:structure:tarsal-ligament": "跗骨韧带",
         "somakine:structure:plantar-tarsal-ligament": "足底跗骨韧带",
         "somakine:structure:long-plantar-ligament": "长跖韧带",
-        "somakine:structure:right-long-plantar-ligament": "右长跖韧带",
-        "somakine:structure:left-long-plantar-ligament": "左长跖韧带",
         "somakine:structure:calcaneal-tendon": "跟腱",
-        "somakine:structure:right-calcaneal-tendon": "右跟腱",
-        "somakine:structure:left-calcaneal-tendon": "左跟腱",
         "somakine:structure:stylohyoid-ligament": "茎突舌骨韧带",
-        "somakine:structure:right-stylohyoid-ligament": "右茎突舌骨韧带",
-        "somakine:structure:left-stylohyoid-ligament": "左茎突舌骨韧带",
-        "somakine:structure:intermediate-tendon": "中间腱",
-        "somakine:structure:right-intermediate-tendon": "右中间腱"
+        "somakine:structure:intermediate-tendon": "中间腱"
       },
       "aliases": {
         "somakine:region:head-neck": [
@@ -8094,10 +8647,10 @@ export const bodyParts3DMusculoskeletal: DataPack = {
 
 export const bodyParts3DMusculoskeletalStats = {
   "regions": 8,
-  "structures": 187,
+  "structures": 180,
   "assets": 15,
   "coverage": {
-    "direct": 158,
+    "direct": 151,
     "compound": 4,
     "context": 0,
     "unavailable": 25
